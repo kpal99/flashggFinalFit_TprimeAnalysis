@@ -1,0 +1,2 @@
+SysError in <TFile::TFile>: file higgsCombine_paramFit_Test_CMS_hgg_ElectronReco_2017.MultiDimFit.mH125.root can not be opened (Disk quota exceeded)
+Error in <TFile::WriteTObject>: Directory higgsCombine_paramFit_Test_CMS_hgg_ElectronReco_2017.MultiDimFit.mH125.root is not writable

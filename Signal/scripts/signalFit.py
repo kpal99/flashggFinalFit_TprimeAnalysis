@@ -21,6 +21,7 @@ from plottingTools import *
 
 # Constant
 MHLow, MHHigh = '120', '130'
+#MHLow, MHHigh = '115', '135'
 MHNominal = '125'
 
 def leave():
@@ -93,8 +94,10 @@ nominalWSFileName = glob.glob("%s/output*M%s*%s.root"%(opt.inputWSDir,MHNominal,
 f0 = ROOT.TFile(nominalWSFileName,"read")
 inputWS0 = f0.Get(inputWSName__)
 xvar = inputWS0.var(opt.xvar)
+xvar.setBinning(ROOT.RooUniformBinning(100,180,320))
 xvarFit = xvar.Clone()
 dZ = inputWS0.var("dZ")
+dZ.setBinning(ROOT.RooUniformBinning(-20,20,40))
 aset = ROOT.RooArgSet(xvar,dZ)
 f0.Close()
 

@@ -19,6 +19,11 @@ def get_options():
   parser.add_option('--jobOpts', dest='jobOpts', default='', help="Additional options to add to job submission. For Condor separate individual options with a colon (specify all within quotes e.g. \"option_xyz = abc+option_123 = 456\")")
   parser.add_option('--groupSignalFitJobsByCat', dest='groupSignalFitJobsByCat', default=False, action="store_true", help="Option to group signalFit jobs by category")
   parser.add_option('--printOnly', dest='printOnly', default=False, action="store_true", help="Dry run: print submission files only")
+  parser.add_option('--procs', dest='procs', default='', help="procs")
+  parser.add_option('--inputWSDir', dest='inputWSDir', default='', help="Input WS files path")
+  parser.add_option('--ext', dest='ext', default='', help="ext for signal model outputs")
+  parser.add_option('--analysis', dest='analysis', default='', help="Analysis name user defined")
+  parser.add_option('--year', dest='year', default='', help="year")
   return parser.parse_args()
 (opt,args) = get_options()
 
@@ -39,12 +44,13 @@ if opt.inputConfig != '':
     _cfg = signalScriptCfg
 
     #Extract options
-    options['inputWSDir']   = _cfg['inputWSDir']
-    options['procs']        = _cfg['procs']
+#    options['inputWSDir']   = _cfg['inputWSDir']
+
+#    options['procs']        = _cfg['procs']
     options['cats']         = _cfg['cats']
-    options['ext']          = _cfg['ext']
-    options['analysis']     = _cfg['analysis']
-    options['year']         = _cfg['year']
+#    options['ext']          = _cfg['ext']
+#    options['analysis']     = _cfg['analysis']
+#    options['year']         = _cfg['year']
     options['massPoints']   = _cfg['massPoints']
     options['scales']       = _cfg['scales']
     options['scalesCorr']   = _cfg['scalesCorr']
@@ -58,7 +64,11 @@ if opt.inputConfig != '':
     options['jobOpts']                 = opt.jobOpts
     options['groupSignalFitJobsByCat'] = opt.groupSignalFitJobsByCat
     options['printOnly']               = opt.printOnly
-  
+    options['procs']                   = opt.procs 
+    options['inputWSDir']              = opt.inputWSDir
+    options['ext']                     = opt.ext
+    options['analysis']                = opt.analysis
+    options['year']                    = opt.year  
     #Delete copy of file
     os.system("rm config.py")
   

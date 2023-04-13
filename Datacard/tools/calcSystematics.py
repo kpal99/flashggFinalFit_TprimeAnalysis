@@ -56,7 +56,7 @@ def getValueFromJson(row,uncertainties,sname):
 # b) Symmetric weight in nominal RooDataSet: "s_w"
 # c) Anti-symmetric shifts in RooDataHist: "a_h"
 def factoryType(d,s):
-
+  print s['name']
   #Fix for pdfWeight (as Nweights > 10)
   if('pdfWeight' in s['name']): return "s_w"
   #if('pdfWeight' in s['name'])|('alphaSWeight' in s['name']): return "s_w"
@@ -67,7 +67,6 @@ def factoryType(d,s):
     ws = f.Get(inputWSName__)
     dataHistUp = "%s_%sUp01sigma"%(r.nominalDataName,s['name'])
     dataHistDown = "%s_%sDown01sigma"%(r.nominalDataName,s['name'])
-
     # Check if syst is var (i.e. weight) in workspace
     if ws.allVars().selectByName("%s*"%(s['name'])).getSize():
       nWeights = ws.allVars().selectByName("%s*"%(s['name'])).getSize()

@@ -1,0 +1,2 @@
+Error when configuring the combiner:
+	You can't set toysNoSystematics and toysFrequentist options at the same time

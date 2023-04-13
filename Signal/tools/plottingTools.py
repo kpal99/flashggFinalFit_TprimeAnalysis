@@ -274,7 +274,6 @@ def plotPdfComponents(ssf,_outdir='./',_extension='',_proc='',_cat=''):
 
 # Plot final pdf for each mass point
 def plotInterpolation(_finalModel,_outdir='./',_massPoints='120,121,122,123,124,125,126,127,128,129,130'):
-
   canv = ROOT.TCanvas()
   colors = [ROOT.kRed,ROOT.kCyan,ROOT.kBlue+1,ROOT.kOrange-3,ROOT.kMagenta-7,ROOT.kGreen+1,ROOT.kYellow-7,ROOT.kViolet+6,ROOT.kTeal+1,ROOT.kPink+1,ROOT.kAzure+1]
   colorMap = {}
@@ -345,7 +344,8 @@ def plotInterpolation(_finalModel,_outdir='./',_massPoints='120,121,122,123,124,
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Plot splines
-def plotSplines(_finalModel,_outdir="./",_nominalMass='125',splinesToPlot=['xs','br','ea','fracRV']):
+#def plotSplines(_finalModel,_outdir="./",_nominalMass='125',splinesToPlot=['xs','br','ea','fracRV']):
+def plotSplines(_finalModel,_outdir="./",_nominalMass='125',splinesToPlot=['xs','br','ea']):
   canv = ROOT.TCanvas()
   colorMap = {'xs':ROOT.kRed-4,'br':ROOT.kAzure+1,'ea':ROOT.kGreen+1,'fracRV':ROOT.kMagenta-7,'norm':ROOT.kBlack}
   grs = od()
@@ -354,6 +354,7 @@ def plotSplines(_finalModel,_outdir="./",_nominalMass='125',splinesToPlot=['xs',
   # Get value at nominal mass
   xnom = od()
   _finalModel.MH.setVal(float(_nominalMass))
+  for sp in splinesToPlot: print _finalModel.Splines[sp].getVal()
   for sp in splinesToPlot: xnom[sp] = _finalModel.Splines[sp].getVal()
   _finalModel.intLumi.setVal(float(lumiMap[_finalModel.year]))
   xnom['norm'] = _finalModel.Functions['final_normThisLumi'].getVal()
@@ -552,12 +553,16 @@ def plotSignalModel(_hists,_opt,_outdir=".",offset=0.02):
   if len(_opt.years.split(","))>1: yearStr, yearExt = "", ""
   else: yearStr, yearExt = _opt.years, "_%s"%_opt.years
 
+  catStr, catExt = Translate(_opt.cats,translateCats), _opt.cats  
+
   if _opt.cats == 'all': catStr, catExt = "All categories", "all"
+  elif _opt.cats == 'THQLeptonicTag': catStr, catExt = "Leptonic", "THQLeptonicTag"
+  elif _opt.cats == 'THQHadronicTag': catStr, catExt = "Hadronic", "THQHadronicTag"
   elif _opt.cats == 'wall': catStr, catExt = "#splitline{All Categories}{S/(S+B) weighted}", "wall"
   elif len(_opt.cats.split(","))>1: procStr, procExt = "Multiple categories", "multipleCats"
   else: catStr, catExt = Translate(_opt.cats,translateCats), _opt.cats
  
-  lat1.DrawLatex(0.85,0.86,"%s"%catStr)
+  lat1.DrawLatex(0.8,0.86,"%s"%catStr)
   lat1.DrawLatex(0.83,0.8,"%s %s"%(procStr,yearStr))
 
   canv.Update()
@@ -565,3 +570,5 @@ def plotSignalModel(_hists,_opt,_outdir=".",offset=0.02):
   # Save canvas
   canv.SaveAs("%s/smodel_%s%s%s.pdf"%(_outdir,catExt,procExt,yearExt))
   canv.SaveAs("%s/smodel_%s%s%s.png"%(_outdir,catExt,procExt,yearExt))
+  canv.SaveAs("%s/smodel_%s%s%s.C"%(_outdir,catExt,procExt,yearExt))
+

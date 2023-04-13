@@ -3,7 +3,7 @@
         "pois":"r",
         "fits":"profile1D:syst:r",
         "points":"20:1",
-        "fit_opts":"--setParameterRanges r=0,2 --saveSpecifiedNuis all"
+        "fit_opts":"--setParameterRanges r=0,2 --saveSpecifiedNuis all --saveWorkspace"
     },
 
     "mu":{

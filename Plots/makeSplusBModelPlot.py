@@ -52,6 +52,7 @@ def get_options():
   parser.add_option("--translatePOIs", dest="translatePOIs", default=None, help="JSON to store poi translations")
   parser.add_option("--problematicCats", dest="problematicCats", default='', help='Problematic analysis categories to skip when processing all')
   parser.add_option("--doHHMjjFix", dest="doHHMjjFix", default=False, action="store_true", help="Do fix for HH analysis where some cats have different Mjj var")
+  parser.add_option("--Tmass", dest="Tmass", default=None, help="Tprime mass")
   return parser.parse_args()
 (opt,args) = get_options()
 
@@ -265,7 +266,6 @@ if opt.doBands:
       if opt.saveToyYields:
         print "      * Saving toy yields to: SplusBModels%s/toyYields_%s.pkl"%(opt.ext,opt.xvar.split(",")[0])
         with open("SplusBModels%s/toyYields_%s.pkl"%(opt.ext,opt.xvar.split(",")[0]),"w") as fD: pickle.dump(df_bands,fD)
-
 # Process each category separately
 for cidx in range(len(cats)):
   c = cats[cidx]
@@ -319,6 +319,17 @@ for cidx in range(len(cats)):
             }
   # Calculate yields
   SB, B = sbpdf.expectedEvents(_xvar_argset), bpdf.expectedEvents(_xvar_argset)
+#  B_inSR = bpdf.Integral(115,135)	
+  xvar.setRange("Range",115,135);
+#  xvar_argset_SR = ROOT.RooArgSet(xvar)
+  xvar.setRange("Range_1",100,180);
+#  xvar_argset_SR = ROOT.RooArgSet(xvar)
+#  xvar_argset_SR = ROOT.RooArgSet(xvar)
+#  B_inSR = bpdf.expectedEvents()
+#  code_ = bpdf.getAnalyticalIntegral(_xvar_argset,_xvar_argset,"Range")
+#  B_inSR = bpdf.analyticalIntegral(2,"Range")
+  B_inSR = bpdf.createIntegral(_xvar_argset, ROOT.RooFit.NormSet(_xvar_argset), ROOT.RooFit.Range("Range"))
+  B_inFR = bpdf.createIntegral(_xvar_argset, ROOT.RooFit.NormSet(_xvar_argset), ROOT.RooFit.Range("Range_1"))
   S = SB-B
   # If option doBkfRenormalization: renormalize B pdf to be S+B-S
   if opt.doBkgRenormalization:
@@ -329,7 +340,7 @@ for cidx in range(len(cats)):
     for h in h_sbpdf.itervalues(): h.Scale(normFactor_SB)
     for h in h_bpdf.itervalues(): h.Scale(normFactor_B)
     print "    * Yield for category: S = %.2f, B=%.2f"%(S,Bcorr)
-  else: print "    * Yield for category: S = %.2f, B=%.2f"%(S,B)
+  else: print "    * Yield for category: S = %.5f, B=%.2f, SB=%.5f, B_inSR=%.2f, B_inFR=%.2f"%(S,B,SB,B_inSR.getVal(), B_inFR.getVal())
 
   # Extract signal pdf
   print "    * creating pdf histogram: S"

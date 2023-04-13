@@ -29,10 +29,96 @@ globalXSBRMap['example']['THW'] = {'mode':'tHW'}
 # ...
 
 #Tprime Analysis
-globalXSBRMap['Tprime'] = od()
-globalXSBRMap['Tprime']['decay'] = {'mode':'hgg'}
-globalXSBRMap['Tprime']['THQ'] = {'mode':'constant','factor':0.05981}
+globalXSBRMap['Tprime_600'] = od()
+globalXSBRMap['Tprime_600']['decay'] = {'mode':'hgg'}
+globalXSBRMap['Tprime_600']['Tprime600'] = {'mode':'constant','factor':0.1764}
+globalXSBRMap['Tprime_600']['THQ'] = {'mode':'tHq'}
+globalXSBRMap['Tprime_600']['TTH'] = {'mode':'ttH'}
+globalXSBRMap['Tprime_600']['GG2H'] = {'mode':'ggH'}
+globalXSBRMap['Tprime_600']['VBF'] = {'mode':'qqH'}
+globalXSBRMap['Tprime_600']['VH'] = {'mode':'constant','factor':2.257}
 
+globalXSBRMap['Tprime_625'] = od()
+globalXSBRMap['Tprime_625']['decay'] = {'mode':'hgg'}
+globalXSBRMap['Tprime_625']['Tprime625'] = {'mode':'constant','factor':0.1489}
+globalXSBRMap['Tprime_625']['THQ'] = {'mode':'tHq'}
+#globalXSBRMap['Tprime_625']['TTH'] = {'mode':'ttH','factor':0.5}
+globalXSBRMap['Tprime_625']['GG2H'] = {'mode':'ggH'}
+globalXSBRMap['Tprime_625']['TTH'] = {'mode':'ttH'}
+globalXSBRMap['Tprime_625']['VBF'] = {'mode':'qqH'}
+globalXSBRMap['Tprime_625']['VH'] = {'mode':'constant','factor':2.257}
+
+globalXSBRMap['Tprime_650'] = od()
+globalXSBRMap['Tprime_650']['decay'] = {'mode':'hgg'}
+globalXSBRMap['Tprime_650']['Tprime650'] = {'mode':'constant','factor':0.1213}
+globalXSBRMap['Tprime_650']['THQ'] = {'mode':'tHq'}
+globalXSBRMap['Tprime_650']['TTH'] = {'mode':'ttH'}
+globalXSBRMap['Tprime_650']['GG2H'] = {'mode':'ggH'}
+globalXSBRMap['Tprime_650']['VBF'] = {'mode':'qqH'}
+globalXSBRMap['Tprime_650']['VH'] = {'mode':'constant','factor':2.257}
+
+globalXSBRMap['Tprime_675'] = od()
+globalXSBRMap['Tprime_675']['decay'] = {'mode':'hgg'}
+globalXSBRMap['Tprime_675']['Tprime675'] = {'mode':'constant','factor':0.1050}
+globalXSBRMap['Tprime_675']['THQ'] = {'mode':'tHq'}
+globalXSBRMap['Tprime_675']['TTH'] = {'mode':'ttH'}
+globalXSBRMap['Tprime_675']['GG2H'] = {'mode':'ggH'}
+globalXSBRMap['Tprime_675']['VBF'] = {'mode':'qqH'}
+globalXSBRMap['Tprime_675']['VH'] = {'mode':'constant','factor':2.257}
+
+globalXSBRMap['Tprime_700'] = od()
+globalXSBRMap['Tprime_700']['decay'] = {'mode':'hgg'}
+globalXSBRMap['Tprime_700']['Tprime700'] = {'mode':'constant','factor':0.0886}
+globalXSBRMap['Tprime_700']['THQ'] = {'mode':'tHq'}
+globalXSBRMap['Tprime_700']['TTH'] = {'mode':'ttH'}
+globalXSBRMap['Tprime_700']['GG2H'] = {'mode':'ggH'}
+globalXSBRMap['Tprime_700']['VBF'] = {'mode':'qqH'}
+globalXSBRMap['Tprime_700']['VH'] = {'mode':'constant','factor':2.257}
+
+globalXSBRMap['Tprime_800'] = od()
+globalXSBRMap['Tprime_800']['decay'] = {'mode':'hgg'}
+globalXSBRMap['Tprime_800']['Tprime800'] = {'mode':'constant','factor':0.0459}
+globalXSBRMap['Tprime_800']['THQ'] = {'mode':'tHq'}
+globalXSBRMap['Tprime_800']['TTH'] = {'mode':'ttH'}
+globalXSBRMap['Tprime_800']['GG2H'] = {'mode':'ggH'}
+globalXSBRMap['Tprime_800']['VBF'] = {'mode':'qqH'}
+globalXSBRMap['Tprime_800']['VH'] = {'mode':'constant','factor':2.257}
+
+globalXSBRMap['Tprime_900'] = od()
+globalXSBRMap['Tprime_900']['decay'] = {'mode':'hgg'}
+globalXSBRMap['Tprime_900']['Tprime900'] = {'mode':'constant','factor':0.0251}
+globalXSBRMap['Tprime_900']['THQ'] = {'mode':'tHq'}
+globalXSBRMap['Tprime_900']['TTH'] = {'mode':'ttH'}
+globalXSBRMap['Tprime_900']['GG2H'] = {'mode':'ggH'}
+globalXSBRMap['Tprime_900']['VBF'] = {'mode':'qqH'}
+globalXSBRMap['Tprime_900']['VH'] = {'mode':'constant','factor':2.257}
+
+globalXSBRMap['Tprime_1000'] = od()
+globalXSBRMap['Tprime_1000']['decay'] = {'mode':'hgg'}
+globalXSBRMap['Tprime_1000']['Tprime1000'] = {'mode':'constant','factor':0.0145}
+globalXSBRMap['Tprime_1000']['THQ'] = {'mode':'tHq'}
+globalXSBRMap['Tprime_1000']['TTH'] = {'mode':'ttH'}
+globalXSBRMap['Tprime_1000']['GG2H'] = {'mode':'ggH'}
+globalXSBRMap['Tprime_1000']['VBF'] = {'mode':'qqH'}
+globalXSBRMap['Tprime_1000']['VH'] = {'mode':'constant','factor':2.257}
+
+globalXSBRMap['Tprime_1100'] = od()
+globalXSBRMap['Tprime_1100']['decay'] = {'mode':'hgg'}
+globalXSBRMap['Tprime_1100']['Tprime1100'] = {'mode':'constant','factor':0.00867}
+globalXSBRMap['Tprime_1100']['THQ'] = {'mode':'tHq'}
+globalXSBRMap['Tprime_1100']['TTH'] = {'mode':'ttH'}
+globalXSBRMap['Tprime_1100']['GG2H'] = {'mode':'ggH'}
+globalXSBRMap['Tprime_1100']['VBF'] = {'mode':'qqH'}
+globalXSBRMap['Tprime_1100']['VH'] = {'mode':'constant','factor':2.257}
+
+globalXSBRMap['Tprime_1200'] = od()
+globalXSBRMap['Tprime_1200']['decay'] = {'mode':'hgg'}
+globalXSBRMap['Tprime_1200']['Tprime1200'] = {'mode':'constant','factor':0.00536}
+globalXSBRMap['Tprime_1200']['THQ'] = {'mode':'tHq'}
+globalXSBRMap['Tprime_1200']['TTH'] = {'mode':'ttH'}
+globalXSBRMap['Tprime_1200']['GG2H'] = {'mode':'ggH'}
+globalXSBRMap['Tprime_1200']['VBF'] = {'mode':'qqH'}
+globalXSBRMap['Tprime_1200']['VH'] = {'mode':'constant','factor':2.257}
 # STXS analysis: add factor for bin composition
 globalXSBRMap['STXS'] = od()
 globalXSBRMap['STXS']['decay'] = {'mode':'hgg'}

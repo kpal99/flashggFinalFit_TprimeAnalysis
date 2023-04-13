@@ -18,7 +18,7 @@ def extractWSFileNames( _inputWSDir ):
   if not os.path.isdir(_inputWSDir):
     print " --> [ERROR] No such directory (%s)"
     return False
-  return glob.glob("%s/output_*Tprime700*.root"%_inputWSDir)
+  return glob.glob("%s/output_*.root"%_inputWSDir)
 
 def extractListOfProcs( _listOfWSFileNames ):
   procs = []
@@ -80,6 +80,17 @@ def signalFromFileName(_fileName):
   elif "THQ" in _fileName: p = "thq"
   elif "THW" in _fileName: p = "thw"
   elif "bbH" in _fileName: p = "bbh"
+  elif "VH" in _fileName: p = "vh"
+  elif "Tprime600" in _fileName: p = "TprimeM600"
+  elif "Tprime625" in _fileName: p = "TprimeM625"
+  elif "Tprime650" in _fileName: p = "TprimeM650"
+  elif "Tprime675" in _fileName: p = "TprimeM675"
+  elif "Tprime700" in _fileName: p = "TprimeM700"
+  elif "Tprime800" in _fileName: p = "TprimeM800"
+  elif "Tprime900" in _fileName: p = "TprimeM900"
+  elif "Tprime1000" in _fileName: p = "TprimeM1000"
+  elif "Tprime1100" in _fileName: p = "TprimeM1100"
+  elif "Tprime1200" in _fileName: p = "TprimeM1200"
   else:
     print " --> [ERROR]: cannot extract production mode from input file name. Please update tools.commonTools.signalFromFileName"
     exit(1)
@@ -100,6 +111,17 @@ procToDataMap['THW'] = 'thw'
 procToDataMap['GG2HQQ'] = 'ggzh'
 procToDataMap['GG2HLL'] = 'ggzh'
 procToDataMap['GG2HNUNU'] = 'ggzh'
+procToDataMap['VH'] = 'vh'
+procToDataMap['Tprime600'] = 'TprimeM600'
+procToDataMap['Tprime625'] = 'TprimeM625'
+procToDataMap['Tprime650'] = 'TprimeM650'
+procToDataMap['Tprime675'] = 'TprimeM675'
+procToDataMap['Tprime700'] = 'TprimeM700'
+procToDataMap['Tprime800'] = 'TprimeM800'
+procToDataMap['Tprime900'] = 'TprimeM900'
+procToDataMap['Tprime1000'] = 'TprimeM1000'
+procToDataMap['Tprime1100'] = 'TprimeM1100'
+procToDataMap['Tprime1200'] = 'TprimeM1200'
 def procToData( _proc ):
   k = _proc.split("_")[0]
   if k in procToDataMap: _proc = re.sub( k, procToDataMap[k], _proc )
@@ -126,7 +148,17 @@ procToDatacardNameMap["TH"] = "tHq"
 procToDatacardNameMap["GG2HQQ"] = "ggZH_had"
 procToDatacardNameMap["GG2HLL"] = "ggZH_ll"
 procToDatacardNameMap["GG2HNUNU"] = "ggZH_nunu"
-
+procToDatacardNameMap["VH"] = "VH"
+procToDatacardNameMap["Tprime600"] = "TvlqM600"
+procToDatacardNameMap["Tprime625"] = "TvlqM625"
+procToDatacardNameMap["Tprime650"] = "TvlqM650"
+procToDatacardNameMap["Tprime675"] = "TvlqM675"
+procToDatacardNameMap["Tprime700"] = "TvlqM700"
+procToDatacardNameMap["Tprime800"] = "TvlqM800"
+procToDatacardNameMap["Tprime900"] = "TvlqM900"
+procToDatacardNameMap["Tprime1000"] = "TvlqM1000"
+procToDatacardNameMap["Tprime1100"] = "TvlqM1100"
+procToDatacardNameMap["Tprime1200"] = "TvlqM1200"
 def procToDatacardName( _proc ):
   k = _proc.split("_")[0]
   if k in procToDatacardNameMap: _proc = re.sub( k, procToDatacardNameMap[k], _proc )

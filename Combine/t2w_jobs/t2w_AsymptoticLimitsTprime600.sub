@@ -1,0 +1,7 @@
+executable          = /afs/cern.ch/work/p/prsaha/public/FinalFit_lite/CMSSW_10_2_13/src/flashggFinalFit/Combine/t2w_jobs/t2w_AsymptoticLimitsTprime600.sh
+output              = /afs/cern.ch/work/p/prsaha/public/FinalFit_lite/CMSSW_10_2_13/src/flashggFinalFit/Combine/t2w_jobs/t2w_AsymptoticLimitsTprime600.sh.out
+error               = /afs/cern.ch/work/p/prsaha/public/FinalFit_lite/CMSSW_10_2_13/src/flashggFinalFit/Combine/t2w_jobs/t2w_AsymptoticLimitsTprime600.sh.err
+log                 = /afs/cern.ch/work/p/prsaha/public/FinalFit_lite/CMSSW_10_2_13/src/flashggFinalFit/Combine/t2w_jobs/t2w_AsymptoticLimitsTprime600.sh.log
++JobFlavour         = "workday"
+RequestCpus         = 4
+queue

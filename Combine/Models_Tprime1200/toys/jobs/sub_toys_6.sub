@@ -1,0 +1,13 @@
+universe = vanilla
+Executable = sub_toys_6.sh
+Arguments = 6
+output                = /afs/cern.ch/work/p/prsaha/public/FinalFit_lite/CMSSW_10_2_13/src/flashggFinalFit/Combine/Models_Tprime1200/toys/jobs/sub_toys_6.$(ClusterId).$(ProcId).out
+error                 = /afs/cern.ch/work/p/prsaha/public/FinalFit_lite/CMSSW_10_2_13/src/flashggFinalFit/Combine/Models_Tprime1200/toys/jobs/sub_toys_6.$(ClusterId).$(ProcId).err
+log                   = /afs/cern.ch/work/p/prsaha/public/FinalFit_lite/CMSSW_10_2_13/src/flashggFinalFit/Combine/Models_Tprime1200/toys/jobs/sub_toys_6.$(ClusterId).log
+
+on_exit_hold = (ExitBySignal == True) || (ExitCode != 0)
+periodic_release =  (NumJobStarts < 3) && ((CurrentTime - EnteredCurrentStatus) > 600)
+
++JobFlavour = "espresso"
+Queue
+

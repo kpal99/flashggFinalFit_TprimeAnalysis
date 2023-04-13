@@ -5,7 +5,7 @@
 # SCRAM business
 __init__.py
 *.pyc
-
+.__afs*
 # CRAB3 stuff
 crab_*
 crabConfig_*
@@ -15,7 +15,7 @@ crabConfig_*
 
 # ROOT-related files
 *.root
-*.C
+#*.C
 *_cc.d
 *_cc.so
 *_C.d

@@ -87,7 +87,8 @@ def makeSplusBPlot(workspace,hD,hSB,hB,hS,hDr,hBr,hSr,cat,options,dB=None,reduce
       for h in h_ipdf.itervalues(): h.GetXaxis().SetRangeUser(reduceRange[0],reduceRange[1])
   
   canv = ROOT.TCanvas("canv_%s"%cat,"canv_%s"%cat,700,700)
-  pad1 = ROOT.TPad("pad1_%s"%cat,"pad1_%s"%cat,0,0.25,1,1)
+#  pad1 = ROOT.TPad("pad1_%s"%cat,"pad1_%s"%cat,0,0.25,1,1)
+  pad1 = ROOT.TPad("pad1_%s"%cat,"pad1_%s"%cat,0,0.222,1,1)
   pad1.SetTickx()
   pad1.SetTicky()
   pad1.SetBottomMargin(0.18)
@@ -110,7 +111,8 @@ def makeSplusBPlot(workspace,hD,hSB,hB,hS,hDr,hBr,hSr,cat,options,dB=None,reduce
   pad1.cd()
   h_axes = hD.Clone()
   h_axes.Reset()
-  if options.doBands: h_axes.SetMaximum((hD.GetMaximum()+hD.GetBinError(hD.GetMaximumBin()))*1.4)
+  hD.SetBinErrorOption(ROOT.TH1.kPoisson)
+  if options.doBands: h_axes.SetMaximum((hD.GetMaximum()+hD.GetBinErrorUp(hD.GetMaximumBin()))*1.4)
   else: h_axes.SetMaximum((hD.GetMaximum()+hD.GetBinError(hD.GetMaximumBin()))*1.3)
   h_axes.SetMinimum(0.)
   h_axes.SetTitle("")
@@ -135,6 +137,7 @@ def makeSplusBPlot(workspace,hD,hSB,hB,hS,hDr,hBr,hSr,cat,options,dB=None,reduce
       xerr = 0.5*(h_axes.GetXaxis().GetBinWidth(ibin))
       bkgval = hB['nBins'].GetBinContent(ibin)
       properties = extractBandProperties(dB,cat,ibin)
+#      print "%f and %f and %f"%(properties['down1sigma'],properties['median'],properties['up1sigma'])
       gr_1sig.SetPoint(gr_i,xval,properties['median'])
       gr_2sig.SetPoint(gr_i,xval,properties['median'])
       gr_1sig_r.SetPoint(gr_i,xval,properties['median']-bkgval)
@@ -145,8 +148,10 @@ def makeSplusBPlot(workspace,hD,hSB,hB,hS,hDr,hBr,hSr,cat,options,dB=None,reduce
       gr_2sig_r.SetPointError(gr_i,xerr,xerr,properties['median']-properties['down2sigma'],properties['up2sigma']-properties['median'])
       gr_i += 1
     gr_1sig.SetFillColor(ROOT.kGreen)
+    gr_1sig.SetLineColor(0)
     gr_1sig.SetFillStyle(1001)
     gr_2sig.SetFillColor(ROOT.kYellow)
+    gr_2sig.SetLineColor(0)
     gr_2sig.SetFillStyle(1001)
     gr_1sig_r.SetFillColor(ROOT.kGreen)
     gr_1sig_r.SetFillStyle(1001)
@@ -155,7 +160,7 @@ def makeSplusBPlot(workspace,hD,hSB,hB,hS,hDr,hBr,hSr,cat,options,dB=None,reduce
     gr_2sig.Draw("LE3SAME")
     gr_1sig.Draw("LE3SAME")
   # Add legend
-  if options.doBands: leg = ROOT.TLegend(0.58,0.46,0.86,0.76)
+  if options.doBands: leg = ROOT.TLegend(0.7,0.46,0.86,0.7)
   else: leg = ROOT.TLegend(0.58,0.52,0.86,0.76)
   leg.SetFillStyle(0)
   leg.SetLineColor(0)
@@ -163,13 +168,16 @@ def makeSplusBPlot(workspace,hD,hSB,hB,hS,hDr,hBr,hSr,cat,options,dB=None,reduce
   leg.AddEntry(hD,"Data","ep")
   if options.unblind:
     leg.AddEntry(hSB['pdfNBins'],"S+B fit","l")
-    leg.AddEntry(hB['pdfNBins'],"B component","l")
+#    leg.AddEntry(hSB['pdfNBins'],"B fit + T' #rightarrow tH","l")
+#    leg.AddEntry(hB['pdfNBins'],"B component","l")
   else:
     leg.AddEntry(hB['pdfNBins'],"B fit","l")
     leg.AddEntry(hS['pdfNBins'],"S model","fl")
   if options.doBands:
-    leg.AddEntry(gr_1sig,"#pm1 #sigma","F")
-    leg.AddEntry(gr_2sig,"#pm2 #sigma","F")
+#    leg.AddEntry(gr_1sig,"#pm1 #sigma","F")
+#    leg.AddEntry(gr_2sig,"#pm2 #sigma","F")
+    leg.AddEntry(gr_1sig,"68% CL","F")
+    leg.AddEntry(gr_2sig,"95% CL","F")
   leg.Draw("Same")
   # Set pdf style
   if options.unblind:
@@ -179,7 +187,7 @@ def makeSplusBPlot(workspace,hD,hSB,hB,hS,hDr,hBr,hSr,cat,options,dB=None,reduce
     hB['pdfNBins'].SetLineWidth(3)
     hB['pdfNBins'].SetLineColor(2)
     hB['pdfNBins'].SetLineStyle(2)
-    hB['pdfNBins'].Draw("Hist same c")
+#    hB['pdfNBins'].Draw("Hist same c")
   else:
     hS['pdfNBins'].SetLineWidth(3)
     hS['pdfNBins'].SetLineColor(9)
@@ -194,6 +202,7 @@ def makeSplusBPlot(workspace,hD,hSB,hB,hS,hDr,hBr,hSr,cat,options,dB=None,reduce
   hD.SetMarkerStyle(20)
   hD.SetMarkerColor(1)
   hD.SetLineColor(1)
+#  hD.SetBinErrorOption(ROOT.TH1.kPoisson)
   hD.Draw("Same PE")
   # Add TLatex to plot
   lat0 = ROOT.TLatex()
@@ -201,19 +210,37 @@ def makeSplusBPlot(workspace,hD,hSB,hB,hS,hDr,hBr,hSr,cat,options,dB=None,reduce
   lat0.SetTextAlign(11)
   lat0.SetNDC()
   lat0.SetTextSize(0.06)
-  lat0.DrawLatex(0.12,0.92,"#bf{CMS} #it{Preliminary}")
+  #lat0.DrawLatex(0.15,0.83,"#bf{CMS} #it{Preliminary}")
+  lat0.DrawLatex(0.15,0.83,"#bf{CMS}")
   #lat0.DrawLatex(0.12,0.92,"#bf{CMS}")
-  lat0.DrawLatex(0.6,0.92,"137 fb^{-1} (13 TeV)")
-  lat0.DrawLatex(0.6,0.8,"#scale[0.75]{%s}"%Translate(cat,translateCats))
-  lat0.DrawLatex(0.15,0.83,"#scale[0.75]{H#rightarrow#gamma#gamma}")
+  lat0.DrawLatex(0.6,0.92,"138 fb^{-1} (13 TeV)")
+  
+  if cat=="all":
+#     lat0.DrawLatex(0.6,0.8,"#scale[0.75]{Combined}")
+#    lat0.DrawLatex(0.5,0.73,"#scale[0.75]{Combined}")
+     lat0.DrawLatex(0.6,0.8,"")
+  elif cat == "THQHadronicTag" :
+     lat0.DrawLatex(0.6,0.8,"#scale[0.75]{Hadronic}")
+  elif cat == "THQLeptonicTag" :
+     lat0.DrawLatex(0.6,0.8,"#scale[0.75]{Leptonic}")
+  else:     
+     lat0.DrawLatex(0.6,0.8,"#scale[0.75]{%s}"%Translate(cat,translateCats))
+  lat0.DrawLatex(0.5,0.83,"#scale[0.75]{H #rightarrow #gamma#gamma}")
   #lat0.DrawLatex(0.15,0.83,"#scale[0.75]{H#rightarrow#gamma#gamma, m_{H} = 125.38 GeV}")
   if(options.loadSnapshot is not None):
-    lat0.DrawLatex(0.15,0.77,"#scale[0.5]{(#hat{#mu}_{ggH},#hat{#mu}_{VBF},#hat{#mu}_{VH},#hat{#mu}_{top}) = (0.98,1.15,0.71,1.40)}")
-    #lat0.DrawLatex(0.15,0.77,"#scale[0.75]{#hat{#mu} = 1.03}")
+#    lat0.DrawLatex(0.15,0.77,"#scale[0.5]{(#hat{#mu}_{ggH},#hat{#mu}_{VBF},#hat{#mu}_{VH},#hat{#mu}_{top}) = (0.98,1.15,0.71,1.40)}")
+#    lat0.DrawLatex(0.15,0.77,"#scale[0.8]{%s, #hat{#mu} = 1}"%(options.ext.split("_")[1]))
+#    lat0.DrawLatex(0.15,0.77,"#scale[0.75]{#hat{#mu} = 1}")
+#     lat0.DrawLatex(0.15,0.77,"")
     #muhat_ggh, muhat_vbf, muhat_vh, muhat_top, mhhat = workspace.var("r_ggH").getVal(), workspace.var("r_VBF").getVal(), workspace.var("r_VH").getVal(), workspace.var("r_top").getVal(), workspace.var("MH").getVal()
+
     #lat0.DrawLatex(0.13,0.77,"#scale[0.6]{(#hat{#mu}_{ggH},#hat{#mu}_{VBF},#hat{#mu}_{VH},#hat{#mu}_{top}) = (%.2f,%.2f,%.2f,%.2f)}"%(muhat_ggh,muhat_vbf,muhat_vh,muhat_top))
-    #muhat, mhhat = workspace.var("r").getVal(), workspace.var("MH").getVal()
-    #lat0.DrawLatex(0.13,0.77,"#scale[0.75]{#hat{m}_{H} = %.1f GeV, #hat{#mu} = %.2f}"%(mhhat,muhat))
+    muhat, mhhat = workspace.var("r").getVal(), workspace.var("MH").getVal()
+    lat0.DrawLatex(0.5,0.78,"#scale[0.75]{m_{H} = %.1f GeV, #hat{#mu} = %.2f}"%(mhhat,muhat))
+#    lat0.DrawLatex(0.15,0.77,"#scale[0.75]{Higgs mass = %.1f GeV}"%(mhhat))
+  if(options.Tmass is not None):
+    lat0.DrawLatex(0.15,0.78,"#scale[0.75]{M_{T'} = %s GeV}"%(options.Tmass))
+    lat0.DrawLatex(0.15,0.72,"#scale[0.75]{T' #rightarrow tH}")
   #elif options.parameterMap is not None:
   #  poiStr = ''
   #  for kv in options.parameterMap.split(","):
@@ -221,13 +248,32 @@ def makeSplusBPlot(workspace,hD,hSB,hB,hS,hDr,hBr,hSr,cat,options,dB=None,reduce
   #    poiStr += ' %s = %.1f,'%(Translate(k,translatePOIs),float(v))
   #  poiStr = poiStr[:-1]
   #  lat0.DrawLatex(0.13,0.77,"#scale[0.75]{%s}"%poiStr)
-  else: lat0.DrawLatex(0.15,0.77,"#scale[0.75]{m_{H} = 125.0 GeV, #mu = 1.0}")
+  else: lat0.DrawLatex(0.15,0.77,"#scale[0.75]{m_{H} = 125.0 GeV, #mu = 1.0}") 
+
+  gDr = ROOT.TGraphAsymmErrors(hDr);
+  for ibin in range(hDr.GetXaxis().GetFirst(), hDr.GetNbinsX()+1): 
+    gDr.SetPointEYlow(ibin-1, hD.GetBinErrorLow(ibin))
+    gDr.SetPointEYhigh(ibin-1, hD.GetBinErrorUp(ibin))
+    gDr.SetPointEXlow(ibin-1, 0)
+    gDr.SetPointEXhigh(ibin-1, 0)
+    if hD.GetBinContent(ibin) == 0:
+       gDr.SetPointEYlow(ibin-1, hDr.GetBinErrorLow(ibin))
+    hDr.SetBinError(ibin, 0)    
+#  gDr.GetXaxis().SetRangeUser(100, 180)
+  hDr.SetLineColor(0)
+  gDr.SetLineColor(1)
+#  gDr.GetYaxis().SetNdivisions(1);
+  ROOT.gPad.RedrawAxis();
   # Ratio plot
   pad2.cd()
   h_axes_ratio = hDr.Clone()
-  h_axes_ratio.Reset()
-  h_axes_ratio.SetMaximum(max((hDr.GetMaximum()+hDr.GetBinError(hDr.GetMaximumBin()))*1.5,hSr.GetMaximum()*1.2))
-  h_axes_ratio.SetMinimum((hDr.GetMinimum()-hDr.GetBinError(hDr.GetMinimumBin()))*1.3)
+#  h_axes_ratio = gDr.Clone()
+#  h_axes_ratio.Reset()
+#  h_axes_ratio.SetMaximum(max((hDr.GetMaximum()+hDr.GetBinErrorUp(hDr.GetMaximumBin()))*1.5,hSr.GetMaximum()*1.2))
+#  h_axes_ratio.SetMaximum(max((hDr.GetMaximum()+hD.GetBinErrorUp(hDr.GetMaximumBin()))*1.4,hSr.GetMaximum()*1.2))
+  h_axes_ratio.SetMaximum(max((hDr.GetMaximum()+hD.GetBinErrorUp(hDr.GetMaximumBin()))*1.1,hSr.GetMaximum()*1.2))
+#  h_axes_ratio.SetMinimum((hDr.GetMinimum()-hD.GetBinError(hDr.GetMinimumBin()))*1.3)
+  h_axes_ratio.SetMinimum((hDr.GetMinimum()-hD.GetBinError(hDr.GetMinimumBin()))*1.3)
   h_axes_ratio.SetTitle("")
   h_axes_ratio.GetXaxis().SetTitleSize(0.05*padSizeRatio)
   h_axes_ratio.GetXaxis().SetLabelSize(0.035*padSizeRatio)
@@ -235,8 +281,17 @@ def makeSplusBPlot(workspace,hD,hSB,hB,hS,hDr,hBr,hSr,cat,options,dB=None,reduce
   h_axes_ratio.GetXaxis().SetTickLength(0.03*padSizeRatio)
   h_axes_ratio.GetYaxis().SetLabelSize(0.035*padSizeRatio)
   h_axes_ratio.GetYaxis().SetLabelOffset(0.007)
-  h_axes_ratio.GetYaxis().SetTitle("")
+  h_axes_ratio.GetYaxis().SetTitle("Data - Bkg")
+  h_axes_ratio.GetYaxis().SetTitleSize(0.05*padSizeRatio)
+  h_axes_ratio.GetYaxis().SetTitleOffset(0.45)
+  #h_axes_ratio.GetYaxis().SetNdivisions(10)
+  #h_axes_ratio.GetYaxis().SetLabelSize(0.035)
+  #h_axes_ratio.GetYaxis().SetLabelOffset(0.007)
+  h_axes_ratio.GetXaxis().SetRangeUser(100, 180)
+
+#  h_axes_ratio.Draw("APZ[")
   h_axes_ratio.Draw()
+
   # Draw bands 
   if options.doBands:
     gr_2sig_r.Draw("LE3SAME")
@@ -261,20 +316,27 @@ def makeSplusBPlot(workspace,hD,hSB,hB,hS,hDr,hBr,hSr,cat,options,dB=None,reduce
     hBr.SetLineColor(2)
     hBr.Draw("Hist same c")
   # Set data style
+  gDr.Draw("PZ[");
   hDr.SetMarkerStyle(20)
   hDr.SetMarkerColor(1)
   hDr.SetLineColor(1)
-  hDr.Draw("Same PE")
+  hDr.Draw("Same P")
+#  gDr.Draw("SAME APZ[");
   # Add TLatex to ratio plot
   lat1 = ROOT.TLatex()
   lat1.SetTextFont(42)
   lat1.SetTextAlign(33)
   lat1.SetNDC(1)
   lat1.SetTextSize(0.045*padSizeRatio)
-  lat1.DrawLatex(0.87,0.91,"B component subtracted")
-
+#  lat1.DrawLatex(0.87,0.91,"B component subtracted")
+#  lat1.DrawLatex(0.83,0.91,"Background (B) component subtracted")
   # Save canvas
   canv.Update()
-  canv.SaveAs("./SplusBModels%s/%s_%s.png"%(options.ext,cat,options.xvar.split(",")[0]))
-  canv.SaveAs("./SplusBModels%s/%s_%s.pdf"%(options.ext,cat,options.xvar.split(",")[0]))
+  ROOT.gPad.RedrawAxis();
+#  canv.SaveAs("./SplusBModels%s/%s_%s.png"%(options.ext,cat,options.xvar.split(",")[0]))
+#  canv.SaveAs("./SplusBModels%s/%s_%s.pdf"%(options.ext,cat,options.xvar.split(",")[0]))
+  canv.SaveAs("./SplusBModels%s/%s_%s%s.png"%(options.ext,cat,options.xvar.split(",")[0],options.ext))
+  canv.SaveAs("./SplusBModels%s/%s_%s%s.pdf"%(options.ext,cat,options.xvar.split(",")[0],options.ext))
+  canv.SaveAs("./SplusBModels%s/%s_%s%s.C"%(options.ext,cat,options.xvar.split(",")[0],options.ext))
+#  canv.SaveAs("./SplusBModels%s/%s_%s%s.root"%(options.ext,cat,options.xvar.split(",")[0],options.ext))
   #raw_input("Press any key to continue...")

@@ -1,6 +1,18 @@
 models = {
   "mu_inclusive":"",
 
+  "AsymptoticLimits":"-P HiggsAnalysis.CombinedLimit.PhysicsModel:multiSignalModel \
+--PO \"map=.*/Tvlq.*:r_Tvlq[1,0,100]\" \
+",
+
+  "AsymptoticLimits___":"-P HiggsAnalysis.CombinedLimit.PhysicsModel:multiSignalModel \
+--PO \"map=.*/ttH.*:r_ttH[1,0,2]\" \
+--PO \"map=.*/tHq.*:r_tHq[1,0,2]\" \
+--PO \"map=.*/Tvlq.*:r_Tvlq[1,0,10]\" \
+--PO \"map=.*/qqH.*:r_qqH[1,0,2]\" \
+--PO \"map=.*/ggH.*:r_ggH[1,0,2]\" \
+",
+
   "mu":"-P HiggsAnalysis.CombinedLimit.PhysicsModel:multiSignalModel \
 --PO \"map=.*/ggH.*:r_ggH[1,0,2]\" \
 --PO \"map=.*/bbH.*:r_ggH[1,0,2]\" \

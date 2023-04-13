@@ -1,5 +1,4 @@
 # Script to make toys from inputWS: to be used for making bands in S+B model plot
-
 import os, sys
 import re
 from optparse import OptionParser
@@ -92,17 +91,20 @@ elif opt.batch == 'condor':
   fsub.write("itoy=$1\n\n")
   # Generate command
   fsub.write("#Generate command\n")
-  gen_cmd = "combine %s -m %.3f -M GenerateOnly --saveWorkspace --toysFrequentist --bypassFrequentistFit -t 1 %s -s -1 -n _${itoy}_gen_step"%(inputWSFile,mh_bf,setParamStr)
+#  gen_cmd = "combine %s -m %.3f -M GenerateOnly --saveWorkspace --toysFrequentist --bypassFrequentistFit -t 1 %s -s -1 -n _${itoy}_gen_step"%(inputWSFile,mh_bf,setParamStr)
+  gen_cmd = "combine %s -m %.3f -M GenerateOnly --saveWorkspace --toysFrequentist --bypassFrequentistFit -t %s %s -s -1 -n _${itoy}_gen_step"%(inputWSFile,mh_bf,opt.nToys,setParamStr)
   if opt.loadSnapshot is not None: gen_cmd += " --snapshotName %s"%opt.loadSnapshot
   fsub.write("%s\n\n"%gen_cmd)
   # Fit cmd
   fsub.write("#Fit command\n")
   fsub.write("mv higgsCombine_${itoy}_gen_step*.root gen_${itoy}.root\n")
-  fit_cmd = "combine gen_${itoy}.root -m %.3f -M MultiDimFit -P %s --floatOtherPOIs=1 --saveWorkspace --toysFrequentist --bypassFrequentistFit -t 1 %s -s -1 -n _${itoy}_fit_step --cminDefaultMinimizerStrategy 0 --X-rtd MINIMIZER_freezeDisassociatedParams --X-rtd MINIMIZER_multiMin_hideConstants --X-rtd MINIMIZER_multiMin_maskConstraints --X-rtd MINIMIZER_multiMin_maskChannels=2"%(mh_bf,opt.POIs.split(",")[0],setParamStr)
+#  fit_cmd = "combine gen_${itoy}.root -m %.3f -M MultiDimFit -P %s --floatOtherPOIs=1 --saveWorkspace --toysFrequentist --bypassFrequentistFit -t 1 %s -s -1 -n _${itoy}_fit_step --cminDefaultMinimizerStrategy 0 --X-rtd MINIMIZER_freezeDisassociatedParams --X-rtd MINIMIZER_multiMin_hideConstants --X-rtd MINIMIZER_multiMin_maskConstraints --X-rtd MINIMIZER_multiMin_maskChannels=2"%(mh_bf,opt.POIs.split(",")[0],setParamStr)
+  fit_cmd = "combine gen_${itoy}.root -m %.3f -M MultiDimFit -P %s --floatOtherPOIs=1 --saveWorkspace --toysFrequentist --bypassFrequentistFit -t %s %s -s -1 -n _${itoy}_fit_step --cminDefaultMinimizerStrategy 0 --X-rtd MINIMIZER_freezeDisassociatedParams --X-rtd MINIMIZER_multiMin_hideConstants --X-rtd MINIMIZER_multiMin_maskConstraints --X-rtd MINIMIZER_multiMin_maskChannels=2"%(mh_bf,opt.POIs.split(",")[0],opt.nToys,setParamStr)
   fsub.write("%s\n\n"%fit_cmd)
   # Throw cmd
   fsub.write("#Throw command\n")
   fsub.write("mv higgsCombine_${itoy}_fit_step*.root fit_${itoy}.root\n")
+#  throw_cmd = "combine fit_${itoy}.root -m %.3f --snapshotName MultiDimFit -M GenerateOnly --saveToys --toysFrequentist --bypassFrequentistFit -t -1 -n _${itoy}_throw_step %s"%(mh_bf,setParam0Str)
   throw_cmd = "combine fit_${itoy}.root -m %.3f --snapshotName MultiDimFit -M GenerateOnly --saveToys --toysFrequentist --bypassFrequentistFit -t -1 -n _${itoy}_throw_step %s"%(mh_bf,setParam0Str)
   fsub.write("%s\n\n"%throw_cmd)
   # Clean up
@@ -113,6 +115,7 @@ elif opt.batch == 'condor':
   # Write condor submission file
   fcondor = open("./SplusBModels%s/toys/jobs/sub_toys.sub"%opt.ext,'w')
   fcondor.write("executable = sub_toys.sh\n")
+#  fcondor.write("arguments = %s\n"%opt.nToys)
   fcondor.write("arguments = $(ProcId)\n")
   fcondor.write("output                = %s/src/flashggFinalFit/Plots/SplusBModels%s/toys/jobs/sub_toys.$(ClusterId).$(ProcId).out\n"%(os.environ['CMSSW_BASE'],opt.ext))
   fcondor.write("error                 = %s/src/flashggFinalFit/Plots/SplusBModels%s/toys/jobs/sub_toys.$(ClusterId).$(ProcId).err\n"%(os.environ['CMSSW_BASE'],opt.ext))
@@ -121,7 +124,8 @@ elif opt.batch == 'condor':
   fcondor.write("periodic_release =  (NumJobStarts < 3) && ((CurrentTime - EnteredCurrentStatus) > 600)\n\n")
   fcondor.write("+JobFlavour = \"%s\"\n"%opt.queue)
   fcondor.write("queue %s\n"%opt.nToys)
-
+#  fcondor.write("Queue 1\n")
+  fcondor.close()
   # Submission
   os.system("chmod 775 ./SplusBModels%s/toys/jobs/sub_toys.sh"%opt.ext)
   if not opt.dryRun: os.system("cd ./SplusBModels%s/toys/jobs; source /cvmfs/cms.cern.ch/cmsset_default.sh; eval `scramv1 runtime -sh`; condor_submit sub_toys.sub; cd ../../.."%opt.ext)

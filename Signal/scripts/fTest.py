@@ -20,7 +20,7 @@ from simultaneousFit import *
 from plottingTools import *
 
 MHLow, MHHigh = '120', '130'
-
+#MHLow, MHHigh = '115', '135'
 def leave():
   print "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ HGG SIGNAL FTEST (END) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
   exit()
@@ -53,14 +53,20 @@ if opt.doPlots:
 # Load xvar to fit
 nominalWSFileName = glob.glob("%s/output*"%(opt.inputWSDir))[0]
 f0 = ROOT.TFile(nominalWSFileName,"read")
+print "I am here %s"%f0.GetSize()
+print inputWSName__
+print f0.Print()
+print f0.ls()
 inputWS0 = f0.Get(inputWSName__)
+#sys.exit(1)
+#inputWS0 = f0.Get("tagsDumper/cms_hgg_13TeV")
 xvar = inputWS0.var(opt.xvar)
 xvar.setBinning(ROOT.RooUniformBinning(100,180,320))
 xvarFit = xvar.Clone()
 dZ = inputWS0.var("dZ")
+dZ.setBinning(ROOT.RooUniformBinning(-20,20,40))
 aset = ROOT.RooArgSet(xvar,dZ)
 f0.Close()
-
 # Create MH var
 MH = ROOT.RooRealVar("MH","m_{H}", int(MHLow), int(MHHigh))
 MH.setUnit("GeV")
@@ -70,9 +76,13 @@ MH.setConstant(True)
 df = pd.DataFrame(columns=['proc','sumEntries','nRV','nWV'])
 procYields = od()
 for proc in opt.procs.split(","):
+  print "%s/output*M%s*%s.root"%(opt.inputWSDir,opt.mass,proc)
   WSFileName = glob.glob("%s/output*M%s*%s.root"%(opt.inputWSDir,opt.mass,proc))[0]
   f = ROOT.TFile(WSFileName,"read")
   inputWS = f.Get(inputWSName__)
+  print proc
+  print procToData(proc.split("_")[0])
+  print "%s_%s_%s_%s"%(procToData(proc.split("_")[0]),opt.mass,sqrts__,opt.cat)
   d = reduceDataset(inputWS.data("%s_%s_%s_%s"%(procToData(proc.split("_")[0]),opt.mass,sqrts__,opt.cat)),aset)
   df.loc[len(df)] = [proc,d.sumEntries(),1,1]
   inputWS.Delete()
@@ -84,7 +94,6 @@ else: procsToFTest = list(df.sort_values('sumEntries',ascending=False)[0:opt.nPr
 for pidx, proc in enumerate(procsToFTest): 
 
   print "\n --> Process (%g): %s"%(pidx,proc)
-
   # Split dataset to RV/WV: ssf requires input as dict (with mass point as key)
   datasets_RV, datasets_WV = od(), od()
   WSFileName = glob.glob("%s/output*M%s*%s.root"%(opt.inputWSDir,opt.mass,proc))[0]

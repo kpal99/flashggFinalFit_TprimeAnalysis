@@ -8,7 +8,7 @@ import ROOT
 import pandas as pd
 import glob
 import pickle
-from collections import OrderedDict
+from collections import OrderedDict as od
 from systematics import theory_systematics, experimental_systematics, signal_shape_systematics
 
 def get_options():
@@ -17,7 +17,7 @@ def get_options():
   parser.add_option('--years', dest='years', default='2016,2017,2018', help="Comma separated list of years in makeYields output")
   # For pruning processes
   parser.add_option('--prune', dest='prune', default=False, action="store_true", help="Prune proc x cat which make up less than pruneThreshold (default 0.1%) of given total category")
-  parser.add_option('--pruneThreshold', dest='pruneThreshold', default=0.001, type='float', help="Threshold with which to prune proc x cat as fraction of total category yield (default=0.1%)")
+  parser.add_option('--pruneThreshold', dest='pruneThreshold', default=0.00001, type='float', help="Threshold with which to prune proc x cat as fraction of total category yield (default=0.1%)")
   parser.add_option('--doTrueYield', dest='doTrueYield', default=False, action="store_true", help="For pruning: use true number of expected events for proc x cat i.e. Product(XS,BR,eff*acc,lumi). Use only if NOTAG dataset has been included. If false then will use nominal_yield (i.e. sumEntries)")
   parser.add_option('--mass', dest='mass', default='125', help="MH mass: required for doTrueYield")
   parser.add_option('--analysis', dest='analysis', default='STXS', help="Analysis extension: required for doTrueYield (see ./tools/XSBR.py for example)")
@@ -158,7 +158,7 @@ if opt.saveDataFrame:
 print " .........................................................................................."
 fdataName = "%s.txt"%opt.output
 print " --> Writing to datacard file: %s"%fdataName
-from tools.writeToDatacard import writePreamble, writeProcesses, writeSystematic, writeMCStatUncertainty, writePdfIndex, writeBreak
+from tools.writeToDatacard import writePreamble, writeProcesses, writeSystematic, writeMCStatUncertainty, writePdfIndex, writeBreak#, writeProcScaler 
 fdata = open(fdataName,"w")
 if not writePreamble(fdata,opt): 
   print " --> [ERROR] in writing preamble. Leaving..."
@@ -190,6 +190,9 @@ writeBreak(fdata)
 if not writePdfIndex(fdata,data,opt):
   print " --> [ERROR] in writing pdf indices. Leaving..."
   leave()
+#if not writeProcScaler(fdata,data,opt):
+#  print " --> [ERROR] in writing scalar. Leaving..."
+#  leave()
 fdata.close()
 
 leave()

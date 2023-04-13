@@ -376,7 +376,9 @@ void plot(RooRealVar *mass, RooMultiPdf *pdfs, RooCategory *catIndex, RooDataSet
 
   int currentIndex = catIndex->getIndex();
   TObject *datLeg = plot->getObject(int(plot->numItems()-1));
-  leg->AddEntry(datLeg,Form("Data - %s",flashggCats_[cat].c_str()),"LEP");
+  if(flashggCats_[cat] == "THQLeptonicTag") leg->AddEntry(datLeg,Form("Data - %s","Leptonic"),"LEP");
+  else if (flashggCats_[cat] == "THQHadronicTag") leg->AddEntry(datLeg,Form("Data - %s","Hadronic"),"LEP");
+  else leg->AddEntry(datLeg,Form("Data - %s",flashggCats_[cat].c_str()),"LEP");
   int style=1;
   RooAbsPdf *pdf;
   RooCurve *nomBkgCurve;
@@ -474,10 +476,17 @@ void plot(RooRealVar *mass, map<string,RooAbsPdf*> pdfs, RooDataSet *data, strin
   else data->plotOn(plot,Binning(mgg_high-mgg_low));
 
   TObject *datLeg = plot->getObject(int(plot->numItems()-1));
+	cout<<"flashggCats_.size()-------------------------------->"<<flashggCats_.size()<<endl;
+	cout<<"flashggCats_[cat].c_str()-------------------------------->"<<flashggCats_[cat].c_str()<<endl;
 	if(flashggCats_.size() >0){
-  leg->AddEntry(datLeg,Form("Data - %s",flashggCats_[cat].c_str()),"LEP");
-	} else {
-  leg->AddEntry(datLeg,Form("Data - %d",cat),"LEP");
+        if(flashggCats_[cat] == "THQLeptonicTag") leg->AddEntry(datLeg,Form("Data - %s","Leptonic"),"LEP");
+        else if (flashggCats_[cat] == "THQHadronicTag") leg->AddEntry(datLeg,Form("Data - %s","Hadronic"),"LEP");
+		else leg->AddEntry(datLeg,Form("Data - %s",flashggCats_[cat].c_str()),"LEP");
+	} 
+	else {
+        if(flashggCats_[cat] == "THQLeptonicTag") leg->AddEntry(datLeg,Form("Data - %s","Leptonic"),"LEP");
+        else if (flashggCats_[cat] == "THQHadronicTag") leg->AddEntry(datLeg,Form("Data - %s","Hadronic"),"LEP");
+		else leg->AddEntry(datLeg,Form("Data - %d",cat),"LEP");		
 	}
   int i=0;
   int style=1;
@@ -499,6 +508,7 @@ void plot(RooRealVar *mass, map<string,RooAbsPdf*> pdfs, RooDataSet *data, strin
   CMS_lumi( canv, 0, 0);
   canv->SaveAs(Form("%s.pdf",name.c_str()));
   canv->SaveAs(Form("%s.png",name.c_str()));
+  canv->SaveAs(Form("%s.C",name.c_str()));	
   delete canv;
 }
 
@@ -734,6 +744,7 @@ int main(int argc, char* argv[]){
 
 	PdfModelBuilder pdfsModel;
 	RooRealVar *mass = (RooRealVar*)inWS->var("CMS_hgg_mass");
+	mass->setBinning(RooUniformBinning(100,180,320));
 	std:: cout << "[INFO] Got mass from ws " << mass << std::endl;
 	pdfsModel.setObsVar(mass);
 	double upperEnvThreshold = 0.1; // upper threshold on delta(chi2) to include function in envelope (looser than truth function)

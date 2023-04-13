@@ -1,0 +1,11 @@
+executable = sub_toys.sh
+arguments = 500
+output                = /afs/cern.ch/work/p/prsaha/public/FinalFit_lite/CMSSW_10_2_13/src/flashggFinalFit/Plots/SplusBModels/toys/jobs/sub_toys.$(ClusterId).$(ProcId).out
+error                 = /afs/cern.ch/work/p/prsaha/public/FinalFit_lite/CMSSW_10_2_13/src/flashggFinalFit/Plots/SplusBModels/toys/jobs/sub_toys.$(ClusterId).$(ProcId).err
+log                   = /afs/cern.ch/work/p/prsaha/public/FinalFit_lite/CMSSW_10_2_13/src/flashggFinalFit/Plots/SplusBModels/toys/jobs/sub_toys.$(ClusterId).log
+
+on_exit_hold = (ExitBySignal == True) || (ExitCode != 0)
+periodic_release =  (NumJobStarts < 3) && ((CurrentTime - EnteredCurrentStatus) > 600)
+
++JobFlavour = "workday"
+queue 1
