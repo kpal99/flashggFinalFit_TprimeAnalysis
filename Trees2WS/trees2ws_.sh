@@ -1,0 +1,2 @@
+for m in {7,10,14,20,24}00; for d in {10,30}; echo python trees2ws.py --inputConfig config_test.py --inputTreeFile ~eos/tprime_ww/test1_tprime/storeChanged/output_M"$m"_decay"$d"pct_sch.root --productionMode TprimeM"$m"Decay"$d"pctSch --year 2018 && \
+python trees2ws.py --inputConfig config_test.py --inputTreeFile ~eos/tprime_ww/test1_tprime/storeChanged/output_M"$m"_decay"$d"pct_sch.root --productionMode TprimeM"$m"Decay"$d"pctSch --year 2018
