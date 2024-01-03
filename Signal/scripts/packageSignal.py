@@ -36,7 +36,11 @@ packagedWS.imp = getattr(packagedWS,"import")
 # Extract merged datasets
 data_merged = {}
 data_merged_names = []
-for mp in opt.massPoints.split(","): 
+for mp in opt.massPoints.split(","):
+  print " --> Merging mass point %s"%mp
+  print fNames[opt.exts.split(",")[0]][0]
+  print ROOT.TFile(fNames[opt.exts.split(",")[0]][0]).Get("wsig_13TeV").data("sig_mass_m%s_%s"%(mp,opt.cat)).GetName()
+  print
   data_merged["m%s"%mp] = ROOT.TFile(fNames[opt.exts.split(",")[0]][0]).Get("wsig_13TeV").data("sig_mass_m%s_%s"%(mp,opt.cat)).emptyClone("sig_mass_m%s_%s"%(mp,opt.cat))
   data_merged_names.append( data_merged["m%s"%mp].GetName() )
 
