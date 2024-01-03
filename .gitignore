@@ -37,3 +37,5 @@ AutoDict_*
 # Output dirs in signal and bkg
 Signal/outdir_*
 Background/outdir_*
+**/.archives_txt/
+**/archive/
