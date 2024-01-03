@@ -46,6 +46,206 @@ globalReplacementMap["Tprime_600"]["catRVMap"] = od()
 globalReplacementMap["Tprime_600"]["catRVMap"]["THQLeptonicTag"] = "THQLeptonicTag"
 globalReplacementMap["Tprime_600"]["catRVMap"]["THQHadronicTag"] = "THQHadronicTag"
 '''
+globalReplacementMap['TprimeM700Decay10pctSch'] = od()
+globalReplacementMap['TprimeM700Decay10pctSch']['procWV'] = "THQ"
+globalReplacementMap['TprimeM700Decay10pctSch']['catWV'] = "THQLeptonicTag"
+globalReplacementMap['TprimeM700Decay10pctSch']['procRVMap'] = od()
+globalReplacementMap["TprimeM700Decay10pctSch"]["procRVMap"]["THQLeptonicTag"] = "THQ"
+globalReplacementMap["TprimeM700Decay10pctSch"]["procRVMap"]["THQHadronicTag"] = "THQ"
+globalReplacementMap["TprimeM700Decay10pctSch"]["catRVMap"] = od()
+globalReplacementMap["TprimeM700Decay10pctSch"]["catRVMap"]["THQLeptonicTag"] = "THQLeptonicTag"
+globalReplacementMap["TprimeM700Decay10pctSch"]["catRVMap"]["THQHadronicTag"] = "THQHadronicTag"
+
+globalReplacementMap['TprimeM700Decay30pctSch'] = od()
+globalReplacementMap['TprimeM700Decay30pctSch']['procWV'] = "THQ"
+globalReplacementMap['TprimeM700Decay30pctSch']['catWV'] = "THQLeptonicTag"
+globalReplacementMap['TprimeM700Decay30pctSch']['procRVMap'] = od()
+globalReplacementMap["TprimeM700Decay30pctSch"]["procRVMap"]["THQLeptonicTag"] = "THQ"
+globalReplacementMap["TprimeM700Decay30pctSch"]["procRVMap"]["THQHadronicTag"] = "THQ"
+globalReplacementMap["TprimeM700Decay30pctSch"]["catRVMap"] = od()
+globalReplacementMap["TprimeM700Decay30pctSch"]["catRVMap"]["THQLeptonicTag"] = "THQLeptonicTag"
+globalReplacementMap["TprimeM700Decay30pctSch"]["catRVMap"]["THQHadronicTag"] = "THQHadronicTag"
+
+globalReplacementMap['TprimeM1000Decay10pctSch'] = od()
+globalReplacementMap['TprimeM1000Decay10pctSch']['procWV'] = "THQ"
+globalReplacementMap['TprimeM1000Decay10pctSch']['catWV'] = "THQLeptonicTag"
+globalReplacementMap['TprimeM1000Decay10pctSch']['procRVMap'] = od()
+globalReplacementMap["TprimeM1000Decay10pctSch"]["procRVMap"]["THQLeptonicTag"] = "THQ"
+globalReplacementMap["TprimeM1000Decay10pctSch"]["procRVMap"]["THQHadronicTag"] = "THQ"
+globalReplacementMap["TprimeM1000Decay10pctSch"]["catRVMap"] = od()
+globalReplacementMap["TprimeM1000Decay10pctSch"]["catRVMap"]["THQLeptonicTag"] = "THQLeptonicTag"
+globalReplacementMap["TprimeM1000Decay10pctSch"]["catRVMap"]["THQHadronicTag"] = "THQHadronicTag"
+
+globalReplacementMap['TprimeM1000Decay30pctSch'] = od()
+globalReplacementMap['TprimeM1000Decay30pctSch']['procWV'] = "THQ"
+globalReplacementMap['TprimeM1000Decay30pctSch']['catWV'] = "THQLeptonicTag"
+globalReplacementMap['TprimeM1000Decay30pctSch']['procRVMap'] = od()
+globalReplacementMap["TprimeM1000Decay30pctSch"]["procRVMap"]["THQLeptonicTag"] = "THQ"
+globalReplacementMap["TprimeM1000Decay30pctSch"]["procRVMap"]["THQHadronicTag"] = "THQ"
+globalReplacementMap["TprimeM1000Decay30pctSch"]["catRVMap"] = od()
+globalReplacementMap["TprimeM1000Decay30pctSch"]["catRVMap"]["THQLeptonicTag"] = "THQLeptonicTag"
+globalReplacementMap["TprimeM1000Decay30pctSch"]["catRVMap"]["THQHadronicTag"] = "THQHadronicTag"
+
+globalReplacementMap['TprimeM1400Decay10pctSch'] = od()
+globalReplacementMap['TprimeM1400Decay10pctSch']['procWV'] = "THQ"
+globalReplacementMap['TprimeM1400Decay10pctSch']['catWV'] = "THQLeptonicTag"
+globalReplacementMap['TprimeM1400Decay10pctSch']['procRVMap'] = od()
+globalReplacementMap["TprimeM1400Decay10pctSch"]["procRVMap"]["THQLeptonicTag"] = "THQ"
+globalReplacementMap["TprimeM1400Decay10pctSch"]["procRVMap"]["THQHadronicTag"] = "THQ"
+globalReplacementMap["TprimeM1400Decay10pctSch"]["catRVMap"] = od()
+globalReplacementMap["TprimeM1400Decay10pctSch"]["catRVMap"]["THQLeptonicTag"] = "THQLeptonicTag"
+globalReplacementMap["TprimeM1400Decay10pctSch"]["catRVMap"]["THQHadronicTag"] = "THQHadronicTag"
+
+globalReplacementMap['TprimeM1400Decay30pctSch'] = od()
+globalReplacementMap['TprimeM1400Decay30pctSch']['procWV'] = "THQ"
+globalReplacementMap['TprimeM1400Decay30pctSch']['catWV'] = "THQLeptonicTag"
+globalReplacementMap['TprimeM1400Decay30pctSch']['procRVMap'] = od()
+globalReplacementMap["TprimeM1400Decay30pctSch"]["procRVMap"]["THQLeptonicTag"] = "THQ"
+globalReplacementMap["TprimeM1400Decay30pctSch"]["procRVMap"]["THQHadronicTag"] = "THQ"
+globalReplacementMap["TprimeM1400Decay30pctSch"]["catRVMap"] = od()
+globalReplacementMap["TprimeM1400Decay30pctSch"]["catRVMap"]["THQLeptonicTag"] = "THQLeptonicTag"
+globalReplacementMap["TprimeM1400Decay30pctSch"]["catRVMap"]["THQHadronicTag"] = "THQHadronicTag"
+
+globalReplacementMap['TprimeM2000Decay10pctSch'] = od()
+globalReplacementMap['TprimeM2000Decay10pctSch']['procWV'] = "THQ"
+globalReplacementMap['TprimeM2000Decay10pctSch']['catWV'] = "THQLeptonicTag"
+globalReplacementMap['TprimeM2000Decay10pctSch']['procRVMap'] = od()
+globalReplacementMap["TprimeM2000Decay10pctSch"]["procRVMap"]["THQLeptonicTag"] = "THQ"
+globalReplacementMap["TprimeM2000Decay10pctSch"]["procRVMap"]["THQHadronicTag"] = "THQ"
+globalReplacementMap["TprimeM2000Decay10pctSch"]["catRVMap"] = od()
+globalReplacementMap["TprimeM2000Decay10pctSch"]["catRVMap"]["THQLeptonicTag"] = "THQLeptonicTag"
+globalReplacementMap["TprimeM2000Decay10pctSch"]["catRVMap"]["THQHadronicTag"] = "THQHadronicTag"
+
+globalReplacementMap['TprimeM2000Decay30pctSch'] = od()
+globalReplacementMap['TprimeM2000Decay30pctSch']['procWV'] = "THQ"
+globalReplacementMap['TprimeM2000Decay30pctSch']['catWV'] = "THQLeptonicTag"
+globalReplacementMap['TprimeM2000Decay30pctSch']['procRVMap'] = od()
+globalReplacementMap["TprimeM2000Decay30pctSch"]["procRVMap"]["THQLeptonicTag"] = "THQ"
+globalReplacementMap["TprimeM2000Decay30pctSch"]["procRVMap"]["THQHadronicTag"] = "THQ"
+globalReplacementMap["TprimeM2000Decay30pctSch"]["catRVMap"] = od()
+globalReplacementMap["TprimeM2000Decay30pctSch"]["catRVMap"]["THQLeptonicTag"] = "THQLeptonicTag"
+globalReplacementMap["TprimeM2000Decay30pctSch"]["catRVMap"]["THQHadronicTag"] = "THQHadronicTag"
+
+globalReplacementMap['TprimeM2400Decay10pctSch'] = od()
+globalReplacementMap['TprimeM2400Decay10pctSch']['procWV'] = "THQ"
+globalReplacementMap['TprimeM2400Decay10pctSch']['catWV'] = "THQLeptonicTag"
+globalReplacementMap['TprimeM2400Decay10pctSch']['procRVMap'] = od()
+globalReplacementMap["TprimeM2400Decay10pctSch"]["procRVMap"]["THQLeptonicTag"] = "THQ"
+globalReplacementMap["TprimeM2400Decay10pctSch"]["procRVMap"]["THQHadronicTag"] = "THQ"
+globalReplacementMap["TprimeM2400Decay10pctSch"]["catRVMap"] = od()
+globalReplacementMap["TprimeM2400Decay10pctSch"]["catRVMap"]["THQLeptonicTag"] = "THQLeptonicTag"
+globalReplacementMap["TprimeM2400Decay10pctSch"]["catRVMap"]["THQHadronicTag"] = "THQHadronicTag"
+
+globalReplacementMap['TprimeM2400Decay30pctSch'] = od()
+globalReplacementMap['TprimeM2400Decay30pctSch']['procWV'] = "THQ"
+globalReplacementMap['TprimeM2400Decay30pctSch']['catWV'] = "THQLeptonicTag"
+globalReplacementMap['TprimeM2400Decay30pctSch']['procRVMap'] = od()
+globalReplacementMap["TprimeM2400Decay30pctSch"]["procRVMap"]["THQLeptonicTag"] = "THQ"
+globalReplacementMap["TprimeM2400Decay30pctSch"]["procRVMap"]["THQHadronicTag"] = "THQ"
+globalReplacementMap["TprimeM2400Decay30pctSch"]["catRVMap"] = od()
+globalReplacementMap["TprimeM2400Decay30pctSch"]["catRVMap"]["THQLeptonicTag"] = "THQLeptonicTag"
+globalReplacementMap["TprimeM2400Decay30pctSch"]["catRVMap"]["THQHadronicTag"] = "THQHadronicTag"
+
+globalReplacementMap['Tprime_600'] = od()
+globalReplacementMap['Tprime_600']['procWV'] = "THQ"
+globalReplacementMap['Tprime_600']['catWV'] = "THQLeptonicTag"
+globalReplacementMap['Tprime_600']['procRVMap'] = od()
+globalReplacementMap["Tprime_600"]["procRVMap"]["THQLeptonicTag"] = "THQ"
+globalReplacementMap["Tprime_600"]["procRVMap"]["THQHadronicTag"] = "THQ"
+globalReplacementMap["Tprime_600"]["catRVMap"] = od()
+globalReplacementMap["Tprime_600"]["catRVMap"]["THQLeptonicTag"] = "THQLeptonicTag"
+globalReplacementMap["Tprime_600"]["catRVMap"]["THQHadronicTag"] = "THQHadronicTag"
+
+globalReplacementMap['Tprime_625'] = od()
+globalReplacementMap['Tprime_625']['procWV'] = "Tprime625"
+globalReplacementMap['Tprime_625']['catWV'] = "THQLeptonicTag"
+globalReplacementMap['Tprime_625']['procRVMap'] = od()
+globalReplacementMap["Tprime_625"]["procRVMap"]["THQLeptonicTag"] = "Tprime625"
+globalReplacementMap["Tprime_625"]["catRVMap"] = od()
+globalReplacementMap["Tprime_625"]["catRVMap"]["THQLeptonicTag"] = "THQLeptonicTag"
+globalReplacementMap["Tprime_625"]["procRVMap"]["THQHadronicTag"] = "Tprime625"
+globalReplacementMap["Tprime_625"]["catRVMap"]["THQHadronicTag"] = "THQHadronicTag"
+
+globalReplacementMap['Tprime_650'] = od()
+globalReplacementMap['Tprime_650']['procWV'] = "Tprime650"
+globalReplacementMap['Tprime_650']['catWV'] = "THQLeptonicTag"
+globalReplacementMap['Tprime_650']['procRVMap'] = od()
+globalReplacementMap["Tprime_650"]["procRVMap"]["THQLeptonicTag"] = "Tprime650"
+globalReplacementMap["Tprime_650"]["catRVMap"] = od()
+globalReplacementMap["Tprime_650"]["catRVMap"]["THQLeptonicTag"] = "THQLeptonicTag"
+globalReplacementMap["Tprime_650"]["procRVMap"]["THQHadronicTag"] = "Tprime650"
+globalReplacementMap["Tprime_650"]["catRVMap"]["THQHadronicTag"] = "THQHadronicTag"
+
+globalReplacementMap['Tprime_675'] = od()
+globalReplacementMap['Tprime_675']['procWV'] = "Tprime675"
+globalReplacementMap['Tprime_675']['catWV'] = "THQLeptonicTag"
+globalReplacementMap['Tprime_675']['procRVMap'] = od()
+globalReplacementMap["Tprime_675"]["procRVMap"]["THQLeptonicTag"] = "Tprime675"
+globalReplacementMap["Tprime_675"]["catRVMap"] = od()
+globalReplacementMap["Tprime_675"]["catRVMap"]["THQLeptonicTag"] = "THQLeptonicTag"
+globalReplacementMap["Tprime_675"]["procRVMap"]["THQHadronicTag"] = "Tprime675"
+globalReplacementMap["Tprime_675"]["catRVMap"]["THQHadronicTag"] = "THQHadronicTag"
+
+globalReplacementMap['Tprime_700'] = od()
+globalReplacementMap['Tprime_700']['procWV'] = "Tprime700"
+globalReplacementMap['Tprime_700']['catWV'] = "THQLeptonicTag"
+globalReplacementMap['Tprime_700']['procRVMap'] = od()
+globalReplacementMap["Tprime_700"]["procRVMap"]["THQLeptonicTag"] = "Tprime700"
+globalReplacementMap["Tprime_700"]["catRVMap"] = od()
+globalReplacementMap["Tprime_700"]["catRVMap"]["THQLeptonicTag"] = "THQLeptonicTag"
+globalReplacementMap["Tprime_700"]["procRVMap"]["THQHadronicTag"] = "Tprime700"
+globalReplacementMap["Tprime_700"]["catRVMap"]["THQHadronicTag"] = "THQHadronicTag"
+
+globalReplacementMap['Tprime_800'] = od()
+globalReplacementMap['Tprime_800']['procWV'] = "Tprime800"
+globalReplacementMap['Tprime_800']['catWV'] = "THQLeptonicTag"
+globalReplacementMap['Tprime_800']['procRVMap'] = od()
+globalReplacementMap["Tprime_800"]["procRVMap"]["THQLeptonicTag"] = "Tprime800"
+globalReplacementMap["Tprime_800"]["catRVMap"] = od()
+globalReplacementMap["Tprime_800"]["catRVMap"]["THQLeptonicTag"] = "THQLeptonicTag"
+globalReplacementMap["Tprime_800"]["procRVMap"]["THQHadronicTag"] = "Tprime800"
+globalReplacementMap["Tprime_800"]["catRVMap"]["THQHadronicTag"] = "THQHadronicTag"
+
+globalReplacementMap['Tprime_900'] = od()
+globalReplacementMap['Tprime_900']['procWV'] = "Tprime900"
+globalReplacementMap['Tprime_900']['catWV'] = "THQLeptonicTag"
+globalReplacementMap['Tprime_900']['procRVMap'] = od()
+globalReplacementMap["Tprime_900"]["procRVMap"]["THQLeptonicTag"] = "Tprime900"
+globalReplacementMap["Tprime_900"]["catRVMap"] = od()
+globalReplacementMap["Tprime_900"]["catRVMap"]["THQLeptonicTag"] = "THQLeptonicTag"
+globalReplacementMap["Tprime_900"]["procRVMap"]["THQHadronicTag"] = "Tprime900"
+globalReplacementMap["Tprime_900"]["catRVMap"]["THQHadronicTag"] = "THQHadronicTag"
+
+globalReplacementMap['Tprime_1000'] = od()
+globalReplacementMap['Tprime_1000']['procWV'] = "Tprime1000"
+globalReplacementMap['Tprime_1000']['catWV'] = "THQLeptonicTag"
+globalReplacementMap['Tprime_1000']['procRVMap'] = od()
+globalReplacementMap["Tprime_1000"]["procRVMap"]["THQLeptonicTag"] = "Tprime1000"
+globalReplacementMap["Tprime_1000"]["catRVMap"] = od()
+globalReplacementMap["Tprime_1000"]["catRVMap"]["THQLeptonicTag"] = "THQLeptonicTag"
+globalReplacementMap["Tprime_1000"]["procRVMap"]["THQHadronicTag"] = "Tprime1000"
+globalReplacementMap["Tprime_1000"]["catRVMap"]["THQHadronicTag"] = "THQHadronicTag"
+
+globalReplacementMap['Tprime_1100'] = od()
+globalReplacementMap['Tprime_1100']['procWV'] = "Tprime1100"
+globalReplacementMap['Tprime_1100']['catWV'] = "THQLeptonicTag"
+globalReplacementMap['Tprime_1100']['procRVMap'] = od()
+globalReplacementMap["Tprime_1100"]["procRVMap"]["THQLeptonicTag"] = "Tprime1100"
+globalReplacementMap["Tprime_1100"]["catRVMap"] = od()
+globalReplacementMap["Tprime_1100"]["catRVMap"]["THQLeptonicTag"] = "THQLeptonicTag"
+globalReplacementMap["Tprime_1100"]["procRVMap"]["THQHadronicTag"] = "Tprime1100"
+globalReplacementMap["Tprime_1100"]["catRVMap"]["THQHadronicTag"] = "THQHadronicTag"
+
+globalReplacementMap['Tprime_1200'] = od()
+globalReplacementMap['Tprime_1200']['procWV'] = "Tprime1200"
+globalReplacementMap['Tprime_1200']['catWV'] = "THQLeptonicTag"
+globalReplacementMap['Tprime_1200']['procRVMap'] = od()
+globalReplacementMap["Tprime_1200"]["procRVMap"]["THQLeptonicTag"] = "Tprime1200"
+globalReplacementMap["Tprime_1200"]["catRVMap"] = od()
+globalReplacementMap["Tprime_1200"]["catRVMap"]["THQLeptonicTag"] = "THQLeptonicTag"
+globalReplacementMap["Tprime_1200"]["procRVMap"]["THQHadronicTag"] = "Tprime1200"
+globalReplacementMap["Tprime_1200"]["catRVMap"]["THQHadronicTag"] = "THQHadronicTag"
+
 globalReplacementMap['Tprime_600'] = od()
 globalReplacementMap['Tprime_600']['procWV'] = "THQ"
 globalReplacementMap['Tprime_600']['catWV'] = "THQLeptonicTag"
