@@ -1,7 +1,7 @@
 # Python script to hold XS * BR for normalisation of signal models
 from collections import OrderedDict as od
 from commonObjects import *
-  
+
 # Add analyses to globalReplacementMap. See "STXS" as an example
 globalXSBRMap = od()
 
@@ -29,6 +29,46 @@ globalXSBRMap['example']['THW'] = {'mode':'tHW'}
 # ...
 
 #Tprime Analysis
+globalXSBRMap['TprimeM700Decay10pctSch'] = od()
+globalXSBRMap['TprimeM700Decay10pctSch']['decay'] = {'mode':'hgg'}
+globalXSBRMap['TprimeM700Decay10pctSch']['TprimeM700Decay10pctSch'] = {'mode':'constant','factor':0.003583}
+
+globalXSBRMap['TprimeM700Decay30pctSch'] = od()
+globalXSBRMap['TprimeM700Decay30pctSch']['decay'] = {'mode':'hgg'}
+globalXSBRMap['TprimeM700Decay30pctSch']['TprimeM700Decay30pctSch'] = {'mode':'constant','factor':0.001175}
+
+globalXSBRMap['TprimeM1000Decay10pctSch'] = od()
+globalXSBRMap['TprimeM1000Decay10pctSch']['decay'] = {'mode':'hgg'}
+globalXSBRMap['TprimeM1000Decay10pctSch']['TprimeM1000Decay10pctSch'] = {'mode':'constant','factor':0.001369}
+
+globalXSBRMap['TprimeM1000Decay30pctSch'] = od()
+globalXSBRMap['TprimeM1000Decay30pctSch']['decay'] = {'mode':'hgg'}
+globalXSBRMap['TprimeM1000Decay30pctSch']['TprimeM1000Decay30pctSch'] = {'mode':'constant','factor':0.0005049}
+
+globalXSBRMap['TprimeM1400Decay10pctSch'] = od()
+globalXSBRMap['TprimeM1400Decay10pctSch']['decay'] = {'mode':'hgg'}
+globalXSBRMap['TprimeM1400Decay10pctSch']['TprimeM1400Decay10pctSch'] = {'mode':'constant','factor':0.0004833}
+
+globalXSBRMap['TprimeM1400Decay30pctSch'] = od()
+globalXSBRMap['TprimeM1400Decay30pctSch']['decay'] = {'mode':'hgg'}
+globalXSBRMap['TprimeM1400Decay30pctSch']['TprimeM1400Decay30pctSch'] = {'mode':'constant','factor':0.0002052}
+
+globalXSBRMap['TprimeM2000Decay10pctSch'] = od()
+globalXSBRMap['TprimeM2000Decay10pctSch']['decay'] = {'mode':'hgg'}
+globalXSBRMap['TprimeM2000Decay10pctSch']['TprimeM2000Decay10pctSch'] = {'mode':'constant','factor':0.0001338}
+
+globalXSBRMap['TprimeM2000Decay30pctSch'] = od()
+globalXSBRMap['TprimeM2000Decay30pctSch']['decay'] = {'mode':'hgg'}
+globalXSBRMap['TprimeM2000Decay30pctSch']['TprimeM2000Decay30pctSch'] = {'mode':'constant','factor':0.0000748}
+
+globalXSBRMap['TprimeM2400Decay10pctSch'] = od()
+globalXSBRMap['TprimeM2400Decay10pctSch']['decay'] = {'mode':'hgg'}
+globalXSBRMap['TprimeM2400Decay10pctSch']['TprimeM2400Decay10pctSch'] = {'mode':'constant','factor':0.00006816}
+
+globalXSBRMap['TprimeM2400Decay30pctSch'] = od()
+globalXSBRMap['TprimeM2400Decay30pctSch']['decay'] = {'mode':'hgg'}
+globalXSBRMap['TprimeM2400Decay30pctSch']['TprimeM2400Decay30pctSch'] = {'mode':'constant','factor':0.00004314}
+
 globalXSBRMap['Tprime_600'] = od()
 globalXSBRMap['Tprime_600']['decay'] = {'mode':'hgg'}
 globalXSBRMap['Tprime_600']['Tprime600'] = {'mode':'constant','factor':0.1764}
