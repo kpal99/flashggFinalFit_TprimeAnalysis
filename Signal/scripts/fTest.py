@@ -160,6 +160,8 @@ for pidx, proc in enumerate(procsToFTest):
 # Make output
 if not os.path.isdir("%s/outdir_%s/fTest/json"%(swd__,opt.ext)): os.system("mkdir %s/outdir_%s/fTest/json"%(swd__,opt.ext))
 ff = open("%s/outdir_%s/fTest/json/nGauss_%s.json"%(swd__,opt.ext,opt.cat),"w")
+# Output written in
+print  "Output written in: %s/outdir_%s/fTest/json/nGauss_%s.json"%(swd__,opt.ext,opt.cat)
 ff.write("{\n")
 # Iterate over rows in dataframe: sorted by sumEntries
 pitr = 1
