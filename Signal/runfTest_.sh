@@ -28,9 +28,9 @@ do
     for d in 10 30
     do
         if $MKDIR; then
-            echo python RunSignalScripts.py --inputConfig config_Tprime.py --mode fTest --inputWSDir $INPUTDIR/ws_TprimeM"$m"Decay"$d"pctSch  --ext TprimeM"$m"Decay"$d"pctSch --year 2018 --analysis TprimeM"$m" --procs TprimeM"$m"Decay"$d"pctSch --modeOpts --skipWV '"--nProcsToFTest -1 --doPlots"' --printOnly
+            echo python RunSignalScripts.py --inputConfig config_Tprime.py --mode fTest --inputWSDir $INPUTDIR/ws_TprimeM"$m"Decay"$d"pctSch  --ext TprimeM"$m"Decay"$d"pctSch --year 2018 --analysis TprimeM"$m"Decay"$d"pctSch --procs TprimeM"$m"Decay"$d"pctSch --modeOpts --skipWV '"--nProcsToFTest -1 --doPlots"' --printOnly
             if $RUN; then
-                python RunSignalScripts.py --inputConfig config_Tprime.py --mode fTest --inputWSDir $INPUTDIR/ws_TprimeM"$m"Decay"$d"pctSch  --ext TprimeM"$m"Decay"$d"pctSch --year 2018 --analysis TprimeM"$m" --procs TprimeM"$m"Decay"$d"pctSch --modeOpts --skipWV '"--nProcsToFTest -1 --doPlots"' --printOnly
+                python RunSignalScripts.py --inputConfig config_Tprime.py --mode fTest --inputWSDir $INPUTDIR/ws_TprimeM"$m"Decay"$d"pctSch  --ext TprimeM"$m"Decay"$d"pctSch --year 2018 --analysis TprimeM"$m"Decay"$d"pctSch --procs TprimeM"$m"Decay"$d"pctSch --modeOpts --skipWV '"--nProcsToFTest -1 --doPlots"' --printOnly
                 echo   # to add new line after output of above script
             fi
         fi

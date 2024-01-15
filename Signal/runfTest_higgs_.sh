@@ -26,9 +26,9 @@ export PYTHONPATH=$PYTHONPATH:$CMSSW_BASE/src/flashggFinalFit/tools:$CMSSW_BASE/
 for i in GG2H VBF TTH
 do
     if $MKDIR; then
-        echo python RunSignalScripts.py --inputConfig config_Tprime.py --mode fTest --inputWSDir $INPUTDIR/ws_$i  --ext $i --year 2018 --analysis Tprime --procs $i --modeOpts --skipWV '"--nProcsToFTest -1 --doPlots"' --printOnly
+        echo python RunSignalScripts.py --inputConfig config_Tprime.py --mode fTest --inputWSDir $INPUTDIR/ws_$i  --ext $i --year 2018 --analysis $i --procs $i --modeOpts --skipWV '"--nProcsToFTest -1 --doPlots"' --printOnly
         if $RUN; then
-            python RunSignalScripts.py --inputConfig config_Tprime.py --mode fTest --inputWSDir $INPUTDIR/ws_$i  --ext $i --year 2018 --analysis Tprime --procs $i --modeOpts --skipWV '"--nProcsToFTest -1 --doPlots"' --printOnly
+            python RunSignalScripts.py --inputConfig config_Tprime.py --mode fTest --inputWSDir $INPUTDIR/ws_$i  --ext $i --year 2018 --analysis $i --procs $i --modeOpts --skipWV '"--nProcsToFTest -1 --doPlots"' --printOnly
             echo   # to add new line after output of above script
         fi
     fi
