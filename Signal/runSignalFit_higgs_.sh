@@ -11,7 +11,7 @@ case $opt in
     n) RUN=false;;
     s) RUNCREATEDSCRIPTS=true;;
     h) echo "Usage: $0 [-m] [-n] [-s]"
-       echo "  -m: create required directories for fTest"
+       echo "  -m: create required directories for signalFit"
        echo "  -n: dry run, just print the commands to be run for any given flag"
        echo "  -s: run final scripts which are found in outdir_*"
        exit 0;;
