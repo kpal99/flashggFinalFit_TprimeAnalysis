@@ -69,6 +69,26 @@ globalXSBRMap['TprimeM2400Decay30pctSch'] = od()
 globalXSBRMap['TprimeM2400Decay30pctSch']['decay'] = {'mode':'hgg'}
 globalXSBRMap['TprimeM2400Decay30pctSch']['TprimeM2400Decay30pctSch'] = {'mode':'constant','factor':0.00004314}
 
+globalXSBRMap['GG2H'] = od()
+globalXSBRMap['GG2H']['decay'] = {'mode':'hgg'}
+globalXSBRMap['GG2H']['GG2H'] = {'mode':'constant','factor':48.5800}
+
+globalXSBRMap['THQ'] = od()
+globalXSBRMap['THQ']['decay'] = {'mode':'hgg'}
+globalXSBRMap['THQ']['THQ'] = {'mode':'constant','factor':0.07425}
+
+globalXSBRMap['TTH'] = od()
+globalXSBRMap['TTH']['decay'] = {'mode':'hgg'}
+globalXSBRMap['TTH']['TTH'] = {'mode':'constant','factor':0.5071}
+
+globalXSBRMap['VBF'] = od()
+globalXSBRMap['VBF']['decay'] = {'mode':'hgg'}
+globalXSBRMap['VBF']['VBF'] = {'mode':'constant','factor':3.7820}
+
+globalXSBRMap['VH'] = od()
+globalXSBRMap['VH']['decay'] = {'mode':'hgg'}
+globalXSBRMap['VH']['VH'] = {'mode':'constant','factor':2.257}
+
 globalXSBRMap['Tprime_600'] = od()
 globalXSBRMap['Tprime_600']['decay'] = {'mode':'hgg'}
 globalXSBRMap['Tprime_600']['Tprime600'] = {'mode':'constant','factor':0.1764}
