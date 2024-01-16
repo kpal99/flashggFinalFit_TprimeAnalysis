@@ -19,8 +19,6 @@ case $opt in
 esac
 done
 
-# for --skipWV, see
-# https://github.com/cms-analysis/flashggFinalFit/blob/dev_fggfinalfits_lite/Signal/README.md?plain=1#L37
 INPUTDIR=/eos/user/k/kpal/tprime_ww/test1_tprime/storeChanged
 export PYTHONPATH=$PYTHONPATH:$CMSSW_BASE/src/flashggFinalFit/tools:$CMSSW_BASE/src/flashggFinalFit/Signal/tools
 for m in {7,10,14,20,24}00
@@ -28,7 +26,7 @@ do
     for d in 10 30
     do
         if $MKDIR; then
-            echo python RunSignalScripts.py --inputConfig config_Tprime.py --mode signalFit --inputWSDir $INPUTDIR/ws_TprimeM"$m"Decay"$d"pctSch  --ext TprimeM"$m"Decay"$d"pctSch --year 2018 --analysis TprimeM"$m"Decay"$d"pctSch --procs TprimeM"$m"Decay"$d"pctSch --printOnly --modeOpts '"--skipVertexScenarioSplit --doPlots --skipSystematics"' 
+            echo python RunSignalScripts.py --inputConfig config_Tprime.py --mode signalFit --inputWSDir $INPUTDIR/ws_TprimeM"$m"Decay"$d"pctSch  --ext TprimeM"$m"Decay"$d"pctSch --year 2018 --analysis TprimeM"$m"Decay"$d"pctSch --procs TprimeM"$m"Decay"$d"pctSch --printOnly --modeOpts '"--skipVertexScenarioSplit --doPlots --skipSystematics"'
             if $RUN; then
                 python RunSignalScripts.py --inputConfig config_Tprime.py --mode signalFit --inputWSDir $INPUTDIR/ws_TprimeM"$m"Decay"$d"pctSch  --ext TprimeM"$m"Decay"$d"pctSch --year 2018 --analysis TprimeM"$m"Decay"$d"pctSch --procs TprimeM"$m"Decay"$d"pctSch --printOnly --modeOpts '"--skipVertexScenarioSplit --doPlots --skipSystematics"'
                 echo   # to add new line after output of above script

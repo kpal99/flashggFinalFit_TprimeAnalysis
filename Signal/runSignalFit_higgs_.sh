@@ -19,8 +19,6 @@ case $opt in
 esac
 done
 
-# for --skipWV, see
-# https://github.com/cms-analysis/flashggFinalFit/blob/dev_fggfinalfits_lite/Signal/README.md?plain=1#L37
 INPUTDIR=/eos/user/k/kpal/tprime_ww/full1_bkg_h/storeChanged
 export PYTHONPATH=$PYTHONPATH:$CMSSW_BASE/src/flashggFinalFit/tools:$CMSSW_BASE/src/flashggFinalFit/Signal/tools
 for i in VBF TTH #GG2H , since GG2H interal is negative
