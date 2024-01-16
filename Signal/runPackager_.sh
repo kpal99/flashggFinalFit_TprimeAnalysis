@@ -4,16 +4,16 @@ RUN=true
 MKDIR=false
 RUNCREATEDSCRIPTS=false
 # get the options passed to the script
-while getopts "mnsh" opt;
+while getopts "mnrh" opt;
 do
 case $opt in
     m) MKDIR=true;;
     n) RUN=false;;
-    s) RUNCREATEDSCRIPTS=true;;
-    h) echo "Usage: $0 [-m] [-n] [-s]"
+    r) RUNCREATEDSCRIPTS=true;;
+    h) echo "Usage: $0 [-m] [-n] [-r]"
        echo "  -m: create required directories for packaging"
        echo "  -n: dry run, just print the commands to be run for any given flag"
-       echo "  -s: run final Scripts which are found in outdir_*"
+       echo "  -r: run final Scripts which are found in outdir_*"
        exit 0;;
     \?) exit ;;
 esac
