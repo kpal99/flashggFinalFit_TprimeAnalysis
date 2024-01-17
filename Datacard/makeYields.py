@@ -80,6 +80,9 @@ data = pd.DataFrame( columns=columns_data )
 # FILL DATAFRAME: all processes
 print " .........................................................................................."
 
+# getting TPrimeM$mDecay$dpctSch from here
+# will replace it with procOriginal later in modelWSFile
+sigProc = max(procs, key=len)
 # Signal processes
 for year in years:
   for proc in procs:
@@ -115,6 +118,7 @@ for year in years:
     if opt.cat == "NOTAG": _modelWSFile, _model = '-', '-'
     else:
       _modelWSFile = "%s/CMS-HGG_sigfit_%s_%s.root"%(opt.sigModelWSDir,opt.sigModelExt,_cat)
+      _modelWSFile = _modelWSFile.replace(sigProc,_procOriginal)
       _model = "%s_%s:%s_%s"%(outputWSName__,sqrts__,outputWSObjectTitle__,_id)
 
     # Extract rate from lumi
