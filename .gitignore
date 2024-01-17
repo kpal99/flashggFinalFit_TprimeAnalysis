@@ -42,3 +42,6 @@ Background/outdir_*
 
 # Codebase specific ignore
 Datacard/yields_*
+
+#ctags
+tags
