@@ -39,3 +39,6 @@ Signal/outdir_*
 Background/outdir_*
 **/.archives_txt/
 **/archive/
+
+# Codebase specific ignore
+Datacard/yields_*
