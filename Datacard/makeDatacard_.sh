@@ -46,13 +46,13 @@ do
                     if [ ! -d yields_TprimeM"$m"Decay"$d"pctSch_$cat ]; then
                         echo mkdir -v yields_TprimeM"$m"Decay"$d"pctSch_$cat
                     fi
-                    echo ln -svf yields_TprimeM"$m"Decay"$d"pctSch/$cat.pkl yields_TprimeM"$m"Decay"$d"pctSch_$cat/$cat.pkl
+                    echo ln -svf $PWD/yields_TprimeM"$m"Decay"$d"pctSch/$cat.pkl yields_TprimeM"$m"Decay"$d"pctSch_$cat/$cat.pkl
                     echo python makeDatacard.py --years 2018 --prune --ext TprimeM"$m"Decay"$d"pctSch_$cat --output yields_TprimeM"$m"Decay"$d"pctSch_$cat/Datacard_TprimeM"$m"Decay"$d"pctSch_"$cat"_$LABEL
                     if $RUN; then
                         if [ ! -d yields_TprimeM"$m"Decay"$d"pctSch_$cat ]; then
                             mkdir -v yields_TprimeM"$m"Decay"$d"pctSch_$cat
                         fi
-                        ln -svf yields_TprimeM"$m"Decay"$d"pctSch/$cat.pkl yields_TprimeM"$m"Decay"$d"pctSch_$cat/$cat.pkl
+                        ln -svf $PWD/yields_TprimeM"$m"Decay"$d"pctSch/$cat.pkl yields_TprimeM"$m"Decay"$d"pctSch_$cat/$cat.pkl
                         python makeDatacard.py --years 2018 --prune --ext TprimeM"$m"Decay"$d"pctSch_$cat --output yields_TprimeM"$m"Decay"$d"pctSch_$cat/Datacard_TprimeM"$m"Decay"$d"pctSch_"$cat"_$LABEL
                         echo   # to add new line after output of above script
                     fi
