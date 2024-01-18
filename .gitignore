@@ -2,6 +2,9 @@
 *.swp
 *~
 
+# Orig files before modifying them, there are tracked by git so :shrug:
+*.Orig
+
 # SCRAM business
 __init__.py
 *.pyc
