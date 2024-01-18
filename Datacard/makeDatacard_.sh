@@ -37,7 +37,6 @@ do
             if $RUN; then
                 python makeDatacard.py --years 2018 --prune --ext TprimeM"$m"Decay"$d"pctSch --output yields_TprimeM"$m"Decay"$d"pctSch/Datacard_TprimeM"$m"Decay"$d"pctSch_$LABEL
                 # don't require --doSystematics flag, incorporated in $LABEL variable, see help
-                sleep 1 # else this command is not completed and we are moving to categories and they don't find files
                 echo   # to add new line after output of above script
             fi
             if $CATEGORY; then
