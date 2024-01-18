@@ -47,7 +47,7 @@ def writeProcesses(f,d,options):
       if r['proc'] == "data_obs": continue
       lbin_procXcat += "%-55s "%cat
       lproc += "%-55s "%r['proc']
-      if "Tvlq" in r['proc']: 
+      if "Tprime" in r['proc']:
 	print "Proc %s SigId %i"%(r['proc'],sigID) 
 	lprocid += "%-55s "%sigID
 	sigID -= 1
