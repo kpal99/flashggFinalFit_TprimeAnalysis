@@ -1,7 +1,6 @@
 #!/bin/bash
 
 RUN=true
-MKDIR=false
 RUNSCRIPTS=false
 LABEL=StatOnly
 CATEGORY=false
