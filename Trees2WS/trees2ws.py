@@ -240,7 +240,8 @@ for stxsId in data[stxsVar].unique():
     # Define output workspace file
     outputWSDir = "/".join(opt.inputTreeFile.split("/")[:-1])+"/ws_%s"%dataToProc(opt.productionMode)
     if not os.path.exists(outputWSDir): os.system("mkdir %s"%outputWSDir)
-    outputWSFile = outputWSDir+"/"+re.sub(".root","_%s.root"%dataToProc(opt.productionMode),opt.inputTreeFile.split("/")[-1])
+    #outputWSFile = outputWSDir+"/"+re.sub(".root","_%s.root"%dataToProc(opt.productionMode),opt.inputTreeFile.split("/")[-1])
+    outputWSFile = outputWSDir+"/"+os.path.basename(opt.inputTreeFile)
     print(" --> Creating output workspace: (%s)"%outputWSFile)
     
   # Open file and initiate workspace
