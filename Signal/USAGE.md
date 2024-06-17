@@ -14,4 +14,8 @@
 1. Packaging
 1. Plotting
 
-- Find associated shell script in this folder to work with
+- Find associated shell script in this folder
+
+
+### Copy plot
+- For copying output plots, do `source cp_Plots.sh`
