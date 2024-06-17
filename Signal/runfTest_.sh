@@ -35,10 +35,11 @@ do
         do
             if $MKDIR; then
                 echo python3 make_config.py --inputWSDir $INPUTDIR/TprimeM"$m"Decay"$d"pct$mode/ws_TprimeM"$m"Decay"$d"pct$mode --procs TprimeM"$m"Decay"$d"pct$mode --year $YEAR
-                echo python3 RunSignalScripts.py --inputConfig config/TprimeM"$m"Decay"$d"pct$mode.py --mode fTest --modeOpts '"--doPlots"' --printOnly
+                # by the nature of echo and shell, we are not seeing "" in shell, but it's being passed in python correctly, thus "" in '' for echo
+                echo python3 RunSignalScripts.py --inputConfig config/TprimeM"$m"Decay"$d"pct$mode.py --mode fTest --printOnly --modeOpts '"--doPlots --nProcsToFTest -1 --skipWV"'
                 if $RUN; then
                     python3 make_config.py --inputWSDir $INPUTDIR/TprimeM"$m"Decay"$d"pct$mode/ws_TprimeM"$m"Decay"$d"pct$mode --procs TprimeM"$m"Decay"$d"pct$mode --year $YEAR
-                    python3 RunSignalScripts.py --inputConfig config/TprimeM"$m"Decay"$d"pct$mode.py --mode fTest --modeOpts '"--doPlots"' --printOnly
+                    python3 RunSignalScripts.py --inputConfig config/TprimeM"$m"Decay"$d"pct$mode.py --mode fTest --printOnly --modeOpts "--doPlots --nProcsToFTest -1 --skipWV"
                     echo   # to add new line after output of above script
                 fi
             fi
