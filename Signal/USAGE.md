@@ -18,4 +18,4 @@
 
 
 ### Copy plot
-- For copying output plots, do `source cp_Plots.sh`
+- For copying output plots, do `source rsyncPlots.sh`
