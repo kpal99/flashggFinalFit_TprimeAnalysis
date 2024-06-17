@@ -130,6 +130,8 @@ def plotFTest(ssfs,_opt=1,_outdir='./',_extension='',_proc='',_cat='',_mass='125
   canv.Update()
   canv.SaveAs("%s/fTest_%s_%s_%s.png"%(_outdir,_cat,_proc,_extension))
   canv.SaveAs("%s/fTest_%s_%s_%s.pdf"%(_outdir,_cat,_proc,_extension))
+  canv.SaveAs("%s/fTest_%s_%s_%s.C"%(_outdir,_cat,_proc,_extension))
+  canv.SaveAs("%s/fTest_%s_%s_%s.root"%(_outdir,_cat,_proc,_extension))
 
 # Plot reduced chi2 vs nGauss
 def plotFTestResults(ssfs,_opt,_outdir="./",_extension='',_proc='',_cat='',_mass='125'):
@@ -179,6 +181,8 @@ def plotFTestResults(ssfs,_opt,_outdir="./",_extension='',_proc='',_cat='',_mass
   canv.Update()
   canv.SaveAs("%s/fTest_%s_%s_%s_chi2_vs_nGauss.png"%(_outdir,_cat,_proc,_extension))
   canv.SaveAs("%s/fTest_%s_%s_%s_chi2_vs_nGauss.pdf"%(_outdir,_cat,_proc,_extension))
+  canv.SaveAs("%s/fTest_%s_%s_%s_chi2_vs_nGauss.C"%(_outdir,_cat,_proc,_extension))
+  canv.SaveAs("%s/fTest_%s_%s_%s_chi2_vs_nGauss.root"%(_outdir,_cat,_proc,_extension))
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Signal fit plots
@@ -273,6 +277,8 @@ def plotPdfComponents(ssf,_outdir='./',_extension='',_proc='',_cat=''):
   canv.Update()
   canv.SaveAs("%s/%sshape_pdf_components_%s_%s.png"%(_outdir,_extension,_proc,_cat))
   canv.SaveAs("%s/%sshape_pdf_components_%s_%s.pdf"%(_outdir,_extension,_proc,_cat))
+  canv.SaveAs("%s/%sshape_pdf_components_%s_%s.C"%(_outdir,_extension,_proc,_cat))
+  canv.SaveAs("%s/%sshape_pdf_components_%s_%s.root"%(_outdir,_extension,_proc,_cat))
 
 # Plot final pdf for each mass point
 def plotInterpolation(_finalModel,_outdir='./',_massPoints='120,121,122,123,124,125,126,127,128,129,130'):
@@ -340,6 +346,8 @@ def plotInterpolation(_finalModel,_outdir='./',_massPoints='120,121,122,123,124,
   canv.Update()
   canv.SaveAs("%s/%s_model_vs_mH.png"%(_outdir,_finalModel.name))
   canv.SaveAs("%s/%s_model_vs_mH.pdf"%(_outdir,_finalModel.name))
+  canv.SaveAs("%s/%s_model_vs_mH.C"%(_outdir,_finalModel.name))
+  canv.SaveAs("%s/%s_model_vs_mH.root"%(_outdir,_finalModel.name))
 
 
 
@@ -420,6 +428,8 @@ def plotSplines(_finalModel,_outdir="./",_nominalMass='125',splinesToPlot=['xs',
   canv.Update()
   canv.SaveAs("%s/%s_splines.png"%(_outdir,_finalModel.name))
   canv.SaveAs("%s/%s_splines.pdf"%(_outdir,_finalModel.name))
+  canv.SaveAs("%s/%s_splines.C"%(_outdir,_finalModel.name))
+  canv.SaveAs("%s/%s_splines.root"%(_outdir,_finalModel.name))
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Function for plotting final signal model: neat
@@ -574,3 +584,5 @@ def plotSignalModel(_hists,_opt,_outdir=".",offset=0.02):
   # Save canvas
   canv.SaveAs("%s/smodel_%s%s%s.pdf"%(_outdir,catExt,procExt,yearExt))
   canv.SaveAs("%s/smodel_%s%s%s.png"%(_outdir,catExt,procExt,yearExt))
+  canv.SaveAs("%s/smodel_%s%s%s.C"%(_outdir,catExt,procExt,yearExt))
+  canv.SaveAs("%s/smodel_%s%s%s.root"%(_outdir,catExt,procExt,yearExt))
