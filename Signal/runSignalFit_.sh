@@ -11,7 +11,7 @@ case $opt in
     n) RUN=false;;
     r) RUNCREATEDSCRIPTS=true;;
     d) INPUTDIR=$OPTARG;;
-    h) echo "Usage: $0 [-m] [-n] [-r]"
+    h) echo "Usage: $0 [-m] [-n] [-r] [-y YEAR] [-h]"
        echo "  -m: create required directories for signalFit"
        echo "  -n: dry run, just print the commands to be run for any given flag"
        echo "  -r: run final scripts which are found in outdir_*"

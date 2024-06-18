@@ -776,3 +776,24 @@ globalXSBRMap['TprimeM900Decay5pctSch']['TprimeM900Decay5pctSch'] = {'mode':'con
 globalXSBRMap['TprimeM900Decay5pctTch'] = od()
 globalXSBRMap['TprimeM900Decay5pctTch']['decay'] = {'mode':'hgg'}
 globalXSBRMap['TprimeM900Decay5pctTch']['TprimeM900Decay5pctTch'] = {'mode':'constant','factor': 1.4259e-05}
+
+# Higgs Signal XS
+globalXSBRMap['GG2H'] = od()
+globalXSBRMap['GG2H']['decay'] = {'mode':'hgg'}
+globalXSBRMap['GG2H']['GG2H'] = {'mode':'constant','factor':48.5800}
+
+globalXSBRMap['THQ'] = od()
+globalXSBRMap['THQ']['decay'] = {'mode':'hgg'}
+globalXSBRMap['THQ']['THQ'] = {'mode':'constant','factor':0.07425}
+
+globalXSBRMap['TTH'] = od()
+globalXSBRMap['TTH']['decay'] = {'mode':'hgg'}
+globalXSBRMap['TTH']['TTH'] = {'mode':'constant','factor':0.5071}
+
+globalXSBRMap['VBF'] = od()
+globalXSBRMap['VBF']['decay'] = {'mode':'hgg'}
+globalXSBRMap['VBF']['VBF'] = {'mode':'constant','factor':3.7820}
+
+globalXSBRMap['VH'] = od()
+globalXSBRMap['VH']['decay'] = {'mode':'hgg'}
+globalXSBRMap['VH']['VH'] = {'mode':'constant','factor':2.257}
