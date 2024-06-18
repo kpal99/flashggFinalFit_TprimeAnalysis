@@ -45,14 +45,14 @@ do
                     for extension in pdf png C root
                     do
                         if $RUN; then
-                            cp -v outdir_packaged_TprimeM"$m"Decay"$d"pctSch/Plots/smodel_"$cat"_$YEAR."$extension" $EOSDIR/TprimeM"$m"Decay"$d"pctSch_smodel_"$cat"_$YEAR."$extension"
+                            cp -v outdir_packaged_TprimeM"$m"Decay"$d"pct$mode/Plots/smodel_"$cat"_$YEAR."$extension" $EOSDIR/TprimeM"$m"Decay"$d"pct$mode_smodel_"$cat"_$YEAR."$extension"
                         else
-                            echo cp -v outdir_packaged_TprimeM"$m"Decay"$d"pctSch/Plots/smodel_"$cat"_$YEAR."$extension" $EOSDIR/TprimeM"$m"Decay"$d"pctSch_smodel_"$cat"_$YEAR."$extension"
+                            echo cp -v outdir_packaged_TprimeM"$m"Decay"$d"pct$mode/Plots/smodel_"$cat"_$YEAR."$extension" $EOSDIR/TprimeM"$m"Decay"$d"pct$mode_smodel_"$cat"_$YEAR."$extension"
                         fi
                     done
                 fi
             done
-            echo
         done
     done
+    echo
 done
