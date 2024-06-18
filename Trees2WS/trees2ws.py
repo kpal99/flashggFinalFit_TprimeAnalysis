@@ -211,6 +211,7 @@ if not opt.doSTXSSplitting:
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # 2) Convert pandas dataframe to RooWorkspace
+higgsNameDict = {"GG2H": "ggh", "THQ": "thq", "TTH": "tth", "VBF": "vbf"}
 for stxsId in data[stxsVar].unique():
 
   # Split output files for different STXS bins
@@ -268,7 +269,10 @@ for stxsId in data[stxsVar].unique():
     aset = make_argset(ws,varNames)
 
     # Define RooDataSet
-    dName = "%s_%s_%s_%s"%(opt.productionMode,opt.inputMass,sqrts__,cat)
+    if opt.productionMode in higgsNameDict.keys():
+      dName = "%s_%s_%s_%s"%(higgsNameDict[opt.productionMode],opt.inputMass,sqrts__,cat)
+    else:
+      dName = "%s_%s_%s_%s"%(opt.productionMode,opt.inputMass,sqrts__,cat)
     d = ROOT.RooDataSet(dName,dName,aset,'weight') 
 
     # Loop over events in dataframe and add entry
@@ -288,7 +292,10 @@ for stxsId in data[stxsVar].unique():
           mask = (sdf['type']=='%s%s'%(s,direction))&(sdf['cat']==cat)
           
           # Define RooDataHist
-          hName = "%s_%s_%s_%s_%s%s01sigma"%(opt.productionMode,opt.inputMass,sqrts__,cat,s,direction)
+          if opt.productionMode in higgsNameDict.keys():
+              hName = "%s_%s_%s_%s_%s%s01sigma"%(higgsNameDict[opt.productionMode],opt.inputMass,sqrts__,cat,s,direction)
+          else:
+              hName = "%s_%s_%s_%s_%s%s01sigma"%(opt.productionMode,opt.inputMass,sqrts__,cat,s,direction)
 
           # Make argset: drop weight column for histogrammed observables
           systematicsVarsDropWeight = []
