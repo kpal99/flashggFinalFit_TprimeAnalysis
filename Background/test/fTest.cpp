@@ -450,6 +450,8 @@ void plot(RooRealVar *mass, RooMultiPdf *pdfs, RooCategory *catIndex, RooDataSet
   // enf extra bit for ratio plot///
   canv->SaveAs(Form("%s.pdf",name.c_str()));
   canv->SaveAs(Form("%s.png",name.c_str()));
+  canv->SaveAs(Form("%s.C",name.c_str()));
+  canv->SaveAs(Form("%s.root",name.c_str()));
   catIndex->setIndex(currentIndex);
   delete canv;
 }
@@ -498,6 +500,8 @@ void plot(RooRealVar *mass, map<string,RooAbsPdf*> pdfs, RooDataSet *data, strin
   CMS_lumi( canv, 0, 0);
   canv->SaveAs(Form("%s.pdf",name.c_str()));
   canv->SaveAs(Form("%s.png",name.c_str()));
+  canv->SaveAs(Form("%s.C",name.c_str()));
+  canv->SaveAs(Form("%s.root",name.c_str()));
   delete canv;
 }
 
