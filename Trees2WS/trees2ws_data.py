@@ -98,6 +98,9 @@ if cats == 'auto':
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Open input ROOT file
 f = ROOT.TFile(opt.inputTreeFile)
+for treeName in listOfTreeNames:
+    tree = f.Get(treeName)
+    tree.SetAlias("CMS_hgg_mass","mass")
 
 # Open output ROOT file and initiate workspace to store RooDataSets
 if opt.outputWSDir is not None: outputWSDir = opt.outputWSDir+"/ws"
