@@ -34,11 +34,11 @@ if $MKDIR; then
     fi
 fi
 if $RUNCREATEDSCRIPTS; then
-    for cat in THQLeptonicTag THQHadronicTag
+    for arg in 0 1
     do
-        echo ./outdir_bkg/fTestParallel/jobs/sub_fTestParallel_bkg_$cat.sh
+        echo outdir_bkg/fTestParallel/jobs/condor_fTestParallel_bkg.sh $arg
         if $RUN; then
-            ./outdir_bkg/fTestParallel/jobs/sub_fTestParallel_bkg_$cat.sh
+            outdir_bkg/fTestParallel/jobs/condor_fTestParallel_bkg.sh $arg
             echo   # to add new line after output of above script
         fi
     done
