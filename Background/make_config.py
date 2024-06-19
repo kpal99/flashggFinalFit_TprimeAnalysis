@@ -22,6 +22,7 @@ def make_config():
     # save configText to a file
     with open(f"config/config_{args.year}.py", "w") as f:
         f.write(configText)
+        print(f"Config file saved to config/config_{args.year}.py")
 
 
 if __name__ == '__main__':
