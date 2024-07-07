@@ -1,4 +1,4 @@
 globalXSBRMap['{{ process }}'] = od()
 globalXSBRMap['{{ process }}']['decay'] = {'mode':'hgg'}
-globalXSBRMap['{{ process }}']['{{ process }}'] = {'mode':'constant','factor': {{ xs }}}
+globalXSBRMap['{{ process }}']['{{ process }}'] = {'mode':'constant','factor': {{ xs_pb }}}
 
