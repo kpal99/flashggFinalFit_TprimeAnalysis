@@ -7,8 +7,8 @@ signalScriptCfg = {
   # Setup
   'inputWSDir':'{{ inputWSDir }}',
 #  'procs':'Tprime600,TTH,THQ,VBF,GG2H', # if auto: inferred automatically from filenames
-#  'procs':'THQ,TTH',
-  'procs':'{{ procs }}',
+  'procs':'{{ procs }}Sch,TTH,THQ,VBF,GG2H',
+#  'procs':'{{ tprimeProc }}Sch,{{ tprimeProc }}Tch,{{ tprimeProc }}Int,TTH,THQ,VBF,GG2H',
   'cats':'THQLeptonicTag,THQHadronicTag', # if auto: inferred automatically from (0) workspace
 #   'cats':'THQHadronicTag',
 #   'cats':'THQLeptonicTag',
@@ -16,7 +16,6 @@ signalScriptCfg = {
   'ext':'{{ procs }}',
 #  'analysis':'Tprime_%s'%_Tmass, # To specify which replacement dataset mapping (defined in ./python/replacementMap.py)
   'analysis':'{{ procs }}',
-#  'year':'%s'%_year, # Use 'combined' if merging all years: not recommended
   'year': '{{ year }}',
 #  'massPoints':'120,125,130',
   'massPoints':'125',
@@ -40,7 +39,6 @@ signalScriptCfg = {
   # Job submission options
 #  'batch':'IC', # ['condor','SGE','IC','local']
 #  'queue':'hep.q'
-  'batch':'condor', # ['condor','SGE','IC','local']
+  'batch':'local', # ['condor','SGE','IC','local']
   'queue':'espresso'
-
 }
