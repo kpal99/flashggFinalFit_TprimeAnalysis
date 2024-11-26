@@ -9,7 +9,6 @@ do
 case $opt in
     m) MKDIR=true;;
     n) RUN=false;;
-    r) RUNCREATEDSCRIPTS=true;;
     d) INPUTDIR=$OPTARG;;
     y) YEAR=$OPTARG;;
     h) echo "Usage: $0 [-m] [-n] [-r] [-d INPUTDIR] [-y YEAR] [-h]"
@@ -42,16 +41,6 @@ do
                     python3 RunSignalScripts.py --inputConfig config/TprimeM"$m"Decay"$d"pct$mode.py --mode fTest --printOnly --modeOpts "--doPlots --nProcsToFTest -1 --skipWV"
                     echo   # to add new line after output of above script
                 fi
-            fi
-            if $RUNCREATEDSCRIPTS; then
-                for arg in 0 1
-                do
-                    echo ./outdir_TprimeM"$m"Decay"$d"pct$mode/fTest/jobs/condor_fTest_TprimeM"$m"Decay"$d"pct$mode.sh $arg
-                    if $RUN; then
-                        ./outdir_TprimeM"$m"Decay"$d"pct$mode/fTest/jobs/condor_fTest_TprimeM"$m"Decay"$d"pct$mode.sh $arg
-                        echo   # to add new line after output of above script
-                    fi
-                done
             fi
         done
     done
