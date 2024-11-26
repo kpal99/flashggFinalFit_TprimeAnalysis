@@ -19,17 +19,38 @@ case $opt in
 esac
 done
 
-for m in  {7..12}00 {14,16,18,20,22,24,26}00;
+for m in  {7..12}00; # {14,16,18,20,22,24,26}00;
 do
-    for d in 5 20;
+    for d in 5; # 20;
     do
-        for mode in Sch Tch Int;
+        mkdir -pv $INPUTDIR/TprimeM"$m"Decay"$d"pct/ws_TprimeM"$m"Decay"$d"pct
+        # making Tprime workspaces
+        for mode in Sch; # Tch Int;
         do
-            echo python3 trees2ws.py --inputConfig config_test.py --inputTreeFile $INPUTDIR/TprimeM"$m"Decay"$d"pct$mode/output_M125_TprimeM"$m"Decay"$d"pct$mode.root --productionMode TprimeM"$m"Decay"$d"pct$mode --year $YEAR
+            echo python3 trees2ws.py --inputConfig config_test.py --inputTreeFile $INPUTDIR/TprimeM"$m"Decay"$d"pct/output_M125_TprimeM"$m"Decay"$d"pct$mode.root --productionMode TprimeM"$m"Decay"$d"pct$mode --year $YEAR
             if $RUN; then
-                python3 trees2ws.py --inputConfig config_test.py --inputTreeFile $INPUTDIR/TprimeM"$m"Decay"$d"pct$mode/output_M125_TprimeM"$m"Decay"$d"pct$mode.root --productionMode TprimeM"$m"Decay"$d"pct$mode --year $YEAR
+                python3 trees2ws.py --inputConfig config_test.py --inputTreeFile $INPUTDIR/TprimeM"$m"Decay"$d"pct/output_M125_TprimeM"$m"Decay"$d"pct$mode.root --productionMode TprimeM"$m"Decay"$d"pct$mode --year $YEAR
+                ln -svf $INPUTDIR/TprimeM"$m"Decay"$d"pct/ws_TprimeM"$m"Decay"$d"pct$mode/output_M125_TprimeM"$m"Decay"$d"pct$mode.root $INPUTDIR/TprimeM"$m"Decay"$d"pct/ws_TprimeM"$m"Decay"$d"pct
                 echo
             fi
         done
+
+        # making higgs workspaces
+        for higgsMode in GG2H THQ TTH VBF VH;
+        do
+            echo python3 trees2ws.py --inputConfig config_test.py --inputTreeFile $INPUTDIR/TprimeM"$m"Decay"$d"pct/output_M125_$higgsMode.root --productionMode $higgsMode --year $YEAR
+            if $RUN; then
+                python3 trees2ws.py --inputConfig config_test.py --inputTreeFile $INPUTDIR/TprimeM"$m"Decay"$d"pct/output_M125_$higgsMode.root --productionMode $higgsMode --year $YEAR
+                ln -svf $INPUTDIR/TprimeM"$m"Decay"$d"pct/ws_$higgsMode/output_M125_$higgsMode.root $INPUTDIR/TprimeM"$m"Decay"$d"pct/ws_TprimeM"$m"Decay"$d"pct
+                echo
+            fi
+        done
+
+        # making data workspaces
+        echo python3 trees2ws_data.py --inputConfig config_test.py --inputTreeFile $INPUTDIR/TprimeM"$m"Decay"$d"pct/allData.root
+        if $RUN; then
+            python3 trees2ws_data.py --inputConfig config_test.py --inputTreeFile $INPUTDIR/TprimeM"$m"Decay"$d"pct/allData.root
+            echo
+        fi
     done
 done
