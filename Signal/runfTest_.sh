@@ -3,18 +3,20 @@
 RUN=true
 TEST=false
 # get the options passed to the script
-while getopts "nhtd:y:" opt;
+while getopts "nhtd:y:p:" opt;
 do
 case $opt in
     n) RUN=false;;
     d) INPUTDIR=$OPTARG;;
     y) YEAR=$OPTARG;;
     t) TEST=true;;
-    h) echo "Usage: $0 [-n] [-d INPUTDIR] [-y YEAR] [-t] [-h]"
+    p) PLOTDIR=$OPTARG;;
+    h) echo "Usage: $0 [-n] [-d INPUTDIR] [-y YEAR] [-t] [-h] [-p PLOTDIR]"
        echo "  -d: input directory"
        echo "  -y: year"
        echo "  -n: dry run, just print the commands to be run for any given flag"
        echo "  -t: test, run for single mass, decay width"
+       echo "  -p: plot directory to sync plots to"
        echo "  -h: print this help message"
        exit 0;;
     \?) exit ;;
@@ -34,8 +36,15 @@ do
         if $RUN; then
             python3 make_config.py --inputWSDir $INPUTDIR/$TPRIMEPROC/ws_$TPRIMEPROC --procs $TPRIMEPROC --year 2017
             python3 RunSignalScripts.py --inputConfig config/$TPRIMEPROC.py --mode fTest --modeOpts "--doPlots --nProcsToFTest -1 --skipWV"
-            echo   # to add new line after output of above script
         fi
+        #
+        # if PLOTDIR is defined then copy plots to PLOTDIR
+        if [ $PLOTDIR ]; then
+          mkdir -pv $PLOTDIR/fTest/$TPRIMEPROC
+          rsync -ah --quiet --stats outdir_$TPRIMEPROC/fTest/Plots/ $PLOTDIR/fTest/$TPRIMEPROC/
+          cp -v $PLOTDIR/fTest/index.php $PLOTDIR/fTest/$TPRIMEPROC
+        fi
+        echo   # to add new line after output of above script
         [ $TEST = true ] && break
     done
     [ $TEST = true ] && break
