@@ -11,7 +11,7 @@ case $opt in
     d) INPUTDIR=$OPTARG;;
     y) YEAR=$OPTARG;;
     t) TEST=true;;
-    h) echo "trees2ws.sh [-n] [-d inputDir] [-y year]"
+    h) echo "trees2ws.sh [-n] [-d inputDir] [-y year] [-t] [-h]"
        echo "  -n: dry run, do not run the script"
        echo "  -d: input directory"
        echo "  -y: year"

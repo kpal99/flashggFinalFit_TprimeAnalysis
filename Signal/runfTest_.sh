@@ -10,7 +10,7 @@ case $opt in
     d) INPUTDIR=$OPTARG;;
     y) YEAR=$OPTARG;;
     t) TEST=true;;
-    h) echo "Usage: $0 [-m] [-n] [-r] [-d INPUTDIR] [-y YEAR] [-h]"
+    h) echo "Usage: $0 [-n] [-d INPUTDIR] [-y YEAR] [-t] [-h]"
        echo "  -d: input directory"
        echo "  -y: year"
        echo "  -n: dry run, just print the commands to be run for any given flag"
