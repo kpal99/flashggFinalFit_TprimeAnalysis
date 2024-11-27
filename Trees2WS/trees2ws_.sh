@@ -1,18 +1,21 @@
 #!/bin/bash
 
 RUN=true
+TEST=false
 # get the options passed to the script
 # get inputDir as argument
-while getopts "nhd:y:" opt
+while getopts "nhtd:y:" opt
 do
 case $opt in
     n) RUN=false;;
     d) INPUTDIR=$OPTARG;;
     y) YEAR=$OPTARG;;
+    t) TEST=true;;
     h) echo "trees2ws.sh [-n] [-d inputDir] [-y year]"
        echo "  -n: dry run, do not run the script"
        echo "  -d: input directory"
        echo "  -y: year"
+       echo "  -t: test, run for single mass, decay width"
        echo "  -h: print this message and exit"
        exit ;;
     \?) exit ;;
@@ -53,5 +56,7 @@ do
             python3 trees2ws_data.py --inputConfig config_test.py --inputTreeFile $INPUTDIR/$TPRIMEPROC/allData.root
             echo
         fi
+        [ $TEST = true ] && break
     done
+    [ $TEST = true ] && break
 done
