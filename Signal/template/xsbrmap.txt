@@ -1,0 +1,10 @@
+globalXSBRMap['{{ process }}'] = od()
+globalXSBRMap['{{ process }}']['decay'] = {'mode':'hgg'}
+globalXSBRMap['{{ process }}']['{{ process }}Sch'] = {'mode':'constant','factor': {{ xsSch }}}
+globalXSBRMap['{{ process }}']['{{ process }}Tch'] = {'mode':'constant','factor': {{ xsTch }}}
+globalXSBRMap['{{ process }}']['{{ process }}Int'] = {'mode':'constant','factor': {{ xsInt }}}
+globalXSBRMap['{{ process }}']['GG2H'] = {'mode':'ggH'}
+globalXSBRMap['{{ process }}']['THQ'] = {'mode':'tHq'}
+globalXSBRMap['{{ process }}']['TTH'] = {'mode':'ttH'}
+globalXSBRMap['{{ process }}']['VBF'] = {'mode':'qqH'}
+globalXSBRMap['{{ process }}']['VH'] = {'mode':'constant','factor': {{ xsVH }}}
