@@ -343,7 +343,14 @@ void plot(RooRealVar *mass, RooAbsPdf *pdf, RooDataSet *data, string name,vector
   lat->SetNDC();
   lat->SetTextFont(42);
   lat->DrawLatex(0.1,0.92,Form("#chi^{2} = %.3f, Prob = %.2f, Fit Status = %d ",chi2*(nBinsForMass-np),*prob,status));
-  canv->SaveAs(name.c_str());
+  size_t extPos = name.find(".pdf");
+  if (extPos != std::string::npos) {
+      name = name.substr(0, extPos); // Remove the ".pdf" extension
+  }
+  canv->SaveAs((name + ".pdf").c_str());
+  canv->SaveAs((name + ".png").c_str());
+  canv->SaveAs((name + ".C").c_str());
+  canv->SaveAs((name + ".root").c_str());
  	
 	//plot_chi2->Draw();
   //canv->SaveAs((name+"debug").c_str());
