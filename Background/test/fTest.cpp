@@ -227,6 +227,11 @@ double getGoodnessOfFit(RooRealVar *mass, RooAbsPdf *mpdf, RooDataSet *data, std
   double prob;
   int ntoys = 500;
   // Routine to calculate the goodness of fit. 
+  // Ensure the file name doesn't already have ".pdf" before appending
+  size_t extPos = name.find(".pdf");
+  if (extPos != std::string::npos) {
+      name = name.substr(0, extPos); // Remove the ".pdf" extension
+  }
   name+="_gofTest.pdf";
   RooRealVar norm("norm","norm",data->sumEntries(),0,10E6);
   //norm.removeRange();
