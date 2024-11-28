@@ -232,7 +232,7 @@ double getGoodnessOfFit(RooRealVar *mass, RooAbsPdf *mpdf, RooDataSet *data, std
   if (extPos != std::string::npos) {
       name = name.substr(0, extPos); // Remove the ".pdf" extension
   }
-  name+="_gofTest.pdf";
+  name+="_gofTest";
   RooRealVar norm("norm","norm",data->sumEntries(),0,10E6);
   //norm.removeRange();
 
@@ -294,7 +294,10 @@ double getGoodnessOfFit(RooRealVar *mass, RooAbsPdf *mpdf, RooDataSet *data, std
     TArrow lData(chi2*(nBinsForMass-np),toyhist.GetMaximum(),chi2*(nBinsForMass-np),0);
     lData.SetLineWidth(2);
     lData.Draw();
-    can->SaveAs(name.c_str());
+    can->SaveAs((name + ".pdf").c_str());
+    can->SaveAs((name + ".png").c_str());
+    can->SaveAs((name + ".C").c_str());
+    can->SaveAs((name + ".root").c_str());
 
     // back to best fit 	
     params->assignValueOnly(preParams);
