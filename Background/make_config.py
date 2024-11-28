@@ -10,6 +10,7 @@ def make_config():
 
     parser.add_argument('--inputWS', type=str, required=True, help="input workspace")
     parser.add_argument('--year', type=str, required=True, help="Year of the sample, e.g. 20UL17")
+    parser.add_argument('--ext', type=str, help="extensions in output config filename")
 
 # Parse the arguments
     args = parser.parse_args(None if sys.argv[1:] else ['--help'])
@@ -18,11 +19,11 @@ def make_config():
     with open("template/config.py") as f:
         configTemplate = f.read()
 
-    configText = jinja2.Template(configTemplate).render(inputWS=args.inputWS, year=args.year)
+    configText = jinja2.Template(configTemplate).render(inputWS=args.inputWS, year=args.year, ext=args.ext)
     # save configText to a file
-    with open(f"config/config_{args.year}.py", "w") as f:
+    with open(f"config/config_{args.ext}_{args.year}.py", "w") as f:
         f.write(configText)
-        print(f"Config file saved to config/config_{args.year}.py")
+        print(f"Config file saved to config/config_{args.ext}_{args.year}.py")
 
 
 if __name__ == '__main__':
