@@ -1,58 +1,46 @@
 #!/bin/bash
 
 RUN=true
-MKDIR=false
-RUNCREATEDSCRIPTS=false
-SYNC=false
+TEST=false
 # get the options passed to the script
-while getopts "nrhy:se:" opt;
+while getopts "nhty:p:" opt;
 do
 case $opt in
     n) RUN=false;;
-    r) RUNCREATEDSCRIPTS=true;;
     y) YEAR=$OPTARG;;
-    s) SYNC=true;;
-    e) EOSDIR=$OPTARG;;
-    h) echo "Usage: $0 [-n] [-r] [-h] [-s] [-e]"
+    t) TEST=true;;
+    p) PLOTDIR=$OPTARG;;
+    h) echo "Usage: $0 [-n] [-y YEAR] [-h]"
        echo "  -n: dry run, just print the commands to be run for any given flag"
-       echo "  -r: run final Scripts which are found in outdir_*"
        echo "  -y: year, can also take CSV i.e. '2016,2017,2018' "
-       echo "  -s: sync plots to ~b2g/plots, requires -e, -y"
-       echo "  -e: eos directory where plots are stored"
+       echo "  -t: test, run for single mass, decay width"
        echo "  -h: print this help message"
        exit 0;;
     \?) exit ;;
 esac
 done
 
-export PYTHONPATH=$PYTHONPATH:$CMSSW_BASE/src/flashggFinalFit/tools:$CMSSW_BASE/src/flashggFinalFit/Signal/tools
-for m in  {7..12}00 {14,16,18,20,22,24,26}00;
+for m in  {7..12}00 #{14,16,18,20,22,24,26}00;
 do
-    for d in 5 20
+    for d in 5 #20
     do
-        for mode in Sch #Tch Int
+        TPRIMEPROC=TprimeM"$m"Decay"$d"pct
+        for cat in THQLeptonicTag THQHadronicTag
         do
-            for cat in THQLeptonicTag THQHadronicTag
-            do
-                if $RUNCREATEDSCRIPTS; then
-                    echo python3 RunPlotter.py --procs all --cats $cat --ext packaged_TprimeM"$m"Decay"$d"pct$mode --years $YEAR
-                    if $RUN; then
-                        python3 RunPlotter.py --procs all --cats $cat --ext packaged_TprimeM"$m"Decay"$d"pct$mode --years $YEAR
-                        echo   # to add new line after output of above script
-                    fi
-                fi
-                if $SYNC && [ "$EOSDIR" != "" ]; then
-                    for extension in pdf png C root
-                    do
-                        if $RUN; then
-                            cp -v outdir_packaged_TprimeM"$m"Decay"$d"pct$mode/Plots/smodel_"$cat"_$YEAR."$extension" $EOSDIR/TprimeM"$m"Decay"$d"pct$mode_smodel_"$cat"_$YEAR."$extension"
-                        else
-                            echo cp -v outdir_packaged_TprimeM"$m"Decay"$d"pct$mode/Plots/smodel_"$cat"_$YEAR."$extension" $EOSDIR/TprimeM"$m"Decay"$d"pct$mode_smodel_"$cat"_$YEAR."$extension"
-                        fi
-                    done
-                fi
-            done
+            echo python3 RunPlotter.py --procs all --cats $cat --ext packaged_$TPRIMEPROC --years $YEAR
+            if $RUN; then
+                python3 RunPlotter.py --procs all --cats $cat --ext packaged_$TPRIMEPROC --years $YEAR
+                echo   # to add new line after output of above script
+            fi
+            if [ $PLOTDIR ] && $RUN ; then
+                for extension in pdf png C root
+                do
+                    cp -v outdir_packaged_$TPRIMEPROC/Plots/smodel_"$cat"_$YEAR."$extension" $PLOTDIR/finalFit/"$TPRIMEPROC"_"$cat"_$YEAR."$extension"
+                done
+            fi
         done
+        [ $TEST = true ] && break
     done
+    [ $TEST = true ] && break
     echo
 done
