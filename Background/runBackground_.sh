@@ -1,45 +1,38 @@
 #!/bin/bash
 
 RUN=true
-MKDIR=false
-RUNCREATEDSCRIPTS=false
+TEST=false
 # get the options passed to the script
-while getopts "mnrhy:w:" opt;
+while getopts "nhty:d:" opt;
 do
 case $opt in
-    m) MKDIR=true;;
     n) RUN=false;;
-    r) RUNCREATEDSCRIPTS=true;;
     y) YEAR=$OPTARG;;
-    w) INPUTWS=$OPTARG;;
-    h) echo "Usage: $0 [-m] [-n] [-r] [-y YEAR] [-w INPUTDIR] [-h]"
+    d) INPUTDIR=$OPTARG;;
+    t) TEST=true;;
+    h) echo "Usage: $0 [-y YEAR] [-d INPUTDIR] [-h] [-n] [-t]"
        echo "  -h: print this help"
-       echo "  -m: create required directories"
        echo "  -n: dry run, just print the commands to be run for any given flag"
        echo "  -y: year 2016,2017,2018,Combined"
-       echo "  -w: input directory"
-       echo "  -r: run final scripts which are found in outdir_*"
+       echo "  -d: input directory"
        exit 0;;
     \?) exit ;;
 esac
 done
 
-if $MKDIR; then
-    echo python3 make_config.py --inputWS $INPUTWS --year $YEAR
-    echo python3 RunBackgroundScripts.py --inputConfig config/config_$YEAR.py --mode fTestParallel --printOnly
-    if $RUN; then
-        python3 make_config.py --inputWS $INPUTWS --year $YEAR
-        python3 RunBackgroundScripts.py --inputConfig config/config_$YEAR.py --mode fTestParallel --printOnly
-        echo   # to add new line after output of above script
-    fi
-fi
-if $RUNCREATEDSCRIPTS; then
-    for arg in 0 1
+for m in  {7..12}00 #{14,16,18,20,22,24,26}00;
+do
+    for d in 5 #20
     do
-        echo outdir_bkg/fTestParallel/jobs/condor_fTestParallel_bkg.sh $arg
+        TPRIMEPROC=TprimeM"$m"Decay"$d"pct
+        echo python3 make_config.py --inputWS $INPUTDIR/$TPRIMEPROC/ws/allData.root --year $YEAR --ext $TPRIMEPROC
+        echo python3 RunBackgroundScripts.py --inputConfig config/config_"$TPRIMEPROC"_$YEAR.py --mode fTestParallel
         if $RUN; then
-            outdir_bkg/fTestParallel/jobs/condor_fTestParallel_bkg.sh $arg
+            python3 make_config.py --inputWS $INPUTDIR/$TPRIMEPROC/ws/allData.root --year $YEAR --ext $TPRIMEPROC
+            python3 RunBackgroundScripts.py --inputConfig config/config_"$TPRIMEPROC"_$YEAR.py --mode fTestParallel
             echo   # to add new line after output of above script
         fi
+        [ $TEST = true ] && break
     done
-fi
+    [ $TEST = true ] && break
+done
