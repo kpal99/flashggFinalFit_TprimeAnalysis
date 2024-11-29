@@ -30,11 +30,11 @@ do
     for d in 5 #20
     do
         TPRIMEPROC=TprimeM"$m"Decay"$d"pct
-        echo python3 make_config.py --inputWSDir $INPUTDIR/$TPRIMEPROC/ws_$TPRIMEPROC --procs $TPRIMEPROC --year 2017
+        echo python3 make_config.py --inputWSDir $INPUTDIR/$TPRIMEPROC/ws --procs $TPRIMEPROC --year 2017
         # by the nature of echo and shell, we are not seeing "" in shell, but it's being passed in python correctly, thus "" in '' for echo
         echo python3 RunSignalScripts.py --inputConfig config/$TPRIMEPROC.py --mode fTest --modeOpts '"--doPlots --nProcsToFTest -1 --skipWV"'
         if $RUN; then
-            python3 make_config.py --inputWSDir $INPUTDIR/$TPRIMEPROC/ws_$TPRIMEPROC --procs $TPRIMEPROC --year 2017
+            python3 make_config.py --inputWSDir $INPUTDIR/$TPRIMEPROC/ws --procs $TPRIMEPROC --year 2017
             python3 RunSignalScripts.py --inputConfig config/$TPRIMEPROC.py --mode fTest --modeOpts "--doPlots --nProcsToFTest -1 --skipWV"
         fi
         #
