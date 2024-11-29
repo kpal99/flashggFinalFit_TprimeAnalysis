@@ -25,7 +25,7 @@ def writeProcesses(f,d,options):
     # Loop over rows for respective category
     for ir,r in d[d['cat']==cat].iterrows():
       # Write to datacard
-      f.write("shapes      %-45s %-45s %s %s\n"%(r['proc'],r['cat'],r['modelWSFile'],r['model']))
+      f.write("%-45s %-45s %-45s %s %s\n"%("shapes",r['proc'],r['cat'],r['modelWSFile'],r['model']))
 
   # Bin, observation and rate lines
   lbreak = '----------------------------------------------------------------------------------------------------------------------------------'
