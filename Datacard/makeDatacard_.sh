@@ -3,12 +3,11 @@
 RUN=true
 TEST=false
 # get the options passed to the script
-while getopts "nhtd:" opt;
+while getopts "nht" opt;
 do
 case $opt in
     n) RUN=false;;
     t) TEST=true;;
-    d) INPUTDIR=$OPTARG;;
     h) echo "Usage: $0 [-n] [-h] [-t]"
        echo "  -n: dry run, just print the commands to be run for any given flag"
        echo "  -t: run test scripts"
