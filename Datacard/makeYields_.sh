@@ -9,7 +9,8 @@ case $opt in
     n) RUN=false;;
     t) TEST=true;;
     d) INPUTDIR=$OPTARG;;
-    h) echo "Usage: $0 [-n] [-h] [-t]"
+    h) echo "Usage: $0 [-n] [-h] [-t] [ -d INPUTDIR ]"
+       echo "  -d: input selection directory"
        echo "  -n: dry run, just print the commands to be run for any given flag"
        echo "  -t: run test scripts"
        echo "  -h: print this help message"
