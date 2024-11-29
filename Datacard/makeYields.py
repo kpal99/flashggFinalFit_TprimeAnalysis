@@ -117,7 +117,7 @@ for year in years:
     # Input model ws 
     if opt.cat == "NOTAG": _modelWSFile, _model = '-', '-'
     else:
-      _modelWSFile = "%s/CMS-HGG_sigfit_%s_%s.root"%(opt.sigModelWSDir,opt.sigModelExt,_cat)
+      _modelWSFile = "%s/CMS-HGG_sigfit_%s_%s_%s.root"%(opt.sigModelWSDir,opt.sigModelExt,opt.ext,_cat)
       _model = "%s_%s:%s_%s"%(outputWSName__,sqrts__,outputWSObjectTitle__,_id)
 
     # Extract rate from lumi
@@ -136,7 +136,7 @@ if( not opt.skipBkg)&( opt.cat != "NOTAG" ):
   _proc_data = "data_obs"
   if opt.mergeYears:
     _cat = opt.cat
-    _modelWSFile = "%s/CMS-HGG_%s_%s.root"%(opt.bkgModelWSDir,opt.bkgModelExt,_cat)
+    _modelWSFile = "%s/CMS-HGG_%s_%s_%s.root"%(opt.bkgModelWSDir,opt.bkgModelExt,opt.ext,_cat)
     _model_bkg = "%s:CMS_%s_%s_%s_bkgshape"%(bkgWSName__,decayMode,_cat,sqrts__)
     _model_data = "%s:roohist_data_mass_%s"%(bkgWSName__,_cat)
     _proc_s0 = '-' #not needed for data/bkg
@@ -152,7 +152,7 @@ if( not opt.skipBkg)&( opt.cat != "NOTAG" ):
     for year in years:
       _cat = "%s_%s"%(opt.cat,year)
       _catStripYear = opt.cat
-      _modelWSFile = "%s/CMS-HGG_%s_%s.root"%(opt.bkgModelWSDir,opt.bkgModelExt,_cat)
+      _modelWSFile = "%s/CMS-HGG_%s_%s_%s.root"%(opt.bkgModelWSDir,opt.bkgModelExt,opt.ext,_cat)
       _model_bkg = "%s:CMS_%s_%s_%s_bkgshape"%(bkgWSName__,decayMode,_cat,sqrts__)
       _model_data = "%s:roohist_data_mass_%s"%(bkgWSName__,_catStripYear)
       _proc_s0 = '-' #not needed for data/bkg
