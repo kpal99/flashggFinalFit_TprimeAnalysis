@@ -209,7 +209,8 @@ if opt.doSystematics:
 
 # Loop over signal rows in dataFrame: extract yields (nominal & systematic variations)
 totalSignalRows = float(data[data['type']=='sig'].shape[0])
-for ir,r in data[data['type']=='sig'].iterrows():
+#for ir,r in data[data['type']=='sig'].iterrows():
+for ir,r in data[data['procOriginal'].isin(procs)].iterrows():
 
   print(" --> Extracting yields: (%s,%s) [%.1f%%]"%(r['proc'],r['cat'],100*(float(ir)/totalSignalRows)))
 
