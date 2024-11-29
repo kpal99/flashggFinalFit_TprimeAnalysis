@@ -25,36 +25,36 @@ def writeProcesses(f,d,options):
     # Loop over rows for respective category
     for ir,r in d[d['cat']==cat].iterrows():
       # Write to datacard
-      f.write("shapes      %-55s %-40s %s %s\n"%(r['proc'],r['cat'],r['modelWSFile'],r['model']))
+      f.write("shapes      %-45s %-45s %s %s\n"%(r['proc'],r['cat'],r['modelWSFile'],r['model']))
 
   # Bin, observation and rate lines
   lbreak = '----------------------------------------------------------------------------------------------------------------------------------'
-  lbin_cat = '%-30s'%"bin"
-  lobs_cat = '%-30s'%"observation"
-  lbin_procXcat = '%-30s'%"bin"
-  lproc = '%-30s'%"process"
-  lprocid = '%-30s'%"process"
-  lrate = '%-30s'%"rate"        
+  lbin_cat = '%-45s'%"bin"
+  lobs_cat = '%-45s'%"observation"
+  lbin_procXcat = '%-45s'%"bin"
+  lproc = '%-45s'%"process"
+  lprocid = '%-45s'%"process"
+  lrate = '%-45s'%"rate"
   # Loop over categories
   for cat in d.cat.unique():
-    lbin_cat += "%-55s "%cat
-    lobs_cat += "%-55s "%"-1"
+    lbin_cat += "%-45s "%cat
+    lobs_cat += "%-45s "%"-1"
     sigID = 0
     bkgID = 1
     # Loop over rows for respective category
     for ir,r in d[d['cat']==cat].iterrows():
       if r['proc'] == "data_obs": continue
-      lbin_procXcat += "%-55s "%cat
-      lproc += "%-55s "%r['proc']
+      lbin_procXcat += "%-45s "%cat
+      lproc += "%-45s "%r['proc']
       if "tprime" in r['proc'].lower():
-        lprocid += "%-55s "%sigID
+        lprocid += "%-45s "%sigID
         sigID -= 1
       else:
-        lprocid += "%-55s "%bkgID
+        lprocid += "%-45s "%bkgID
         bkgID += 1
       #print(f" proc {r['proc']} :lprocid {lprocid.replace(' ','')}")
-      if r['rate'] == 1.0: lrate += "%-55.1f "%r['rate']
-      else: lrate += "%-55.7f "%r['rate']
+      if r['rate'] == 1.0: lrate += "%-45.1f "%r['rate']
+      else: lrate += "%-45.7f "%r['rate']
   #Remove final space from lines and add to file
   f.write("\n")
   for l in [lbreak,lbin_cat,lobs_cat,lbreak,lbin_procXcat,lproc,lprocid,lrate,lbreak]: 
@@ -165,21 +165,21 @@ def writeSystematic(f,d,s,options,stxsMergeScheme=None,scaleCorrScheme=None):
 def addSyst(l,v,s,p,c):
   #l-systematic line, v-value, s-systematic title, p-proc, c-cat
   if type(v) is str: 
-    l += "%-15s "%v
+    l += "%-45s "%v
     return l
   elif type(v) is list: 
     # Symmetric:
     if len(v) == 1: 
       # Check 1: variation is non-negligible. If not then skip
-      if abs(v[0]-1)<0.0005: l += "%-15s "%"-"
+      if abs(v[0]-1)<0.0005: l += "%-45s "%"-"
       # Check 2: variation is not negative. Print message and add - to datacard (cleaned later)
       elif v[0] < 0.: 
         print(" --> [WARNING] systematic %s: negative variation for (%s,%s)"%(s,p,c))
         #vstr = "%s"%v[0]
         vstr = "-"
-        l += "%-15s "%v[0]
+        l += "%-45s "%v[0]
       else:
-        l += "%-15.3f "%v[0]
+        l += "%-45.3f "%v[0]
     # Anti-symmetirc
     if len(v) == 2:
       # Check 1: variation is non-negligible. If not then skip
@@ -189,12 +189,12 @@ def addSyst(l,v,s,p,c):
         print(" --> [WARNING] systematic %s: negative variation for (%s,%s)"%(s,p,c))
         #vstr = "%.3f/%.3f"%(v[0],v[1])
         vstr = "-"
-        l += "%-15s "%vstr
+        l += "%-45s  "%vstr
       # Check 3: effect is approximately symmetric: then just add single up variation
       elif( abs((v[0]*v[1])-1)<0.0005 ): l += "%-15.3f "%v[1]
       else: 
         vstr = "%.3f/%.3f"%(v[0],v[1])
-        l += "%-15s "%vstr
+        l += "%-45s  "%vstr
     return l
   else:
     print(" --> [ERROR] systematic %s: value does not have type string or list for (%s,%s). Leaving..."%(s['title'],p,c))
@@ -218,7 +218,7 @@ def writeMCStatUncertainty(f,d,options):
       d[d['type']=='sig']
       stitle = "MCStat_%s_%s"%(year,scat)
       sprior = "lnN"
-      lsyst = '%-50s  %-10s    '%(stitle,sprior)
+      lsyst = '%-45s%-45s '%(stitle,sprior)
       # Loop over categories and then iterate over rows in category
       for cat in d.cat.unique():
         for ir,r in d[d['cat']==cat].iterrows():
@@ -239,7 +239,7 @@ def writePdfIndex(f,d,options):
   f.write("\n")
   for cat in d[~d['cat'].str.contains("NOTAG")].cat.unique(): 
     indexStr = "pdfindex_%s_13TeV"%cat
-    f.write("%-55s  discrete\n"%indexStr)
+    f.write("%-45sdiscrete\n"%indexStr)
   return True
 
 def writeBreak(f):
