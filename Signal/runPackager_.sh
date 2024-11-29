@@ -24,9 +24,10 @@ do
     for d in 5 #20
     do
         TPRIMEPROC=TprimeM"$m"Decay"$d"pct
-        echo python3 RunPackager.py --cats THQLeptonicTag,THQHadronicTag --exts $TPRIMEPROC --mergeYears --batch local --queue espresso --massPoints 125 --outputExt packaged_$TPRIMEPROC
+        YEAR=2017
+        echo python3 RunPackager.py --cats THQLeptonicTag,THQHadronicTag --exts $TPRIMEPROC --batch local --queue espresso --massPoints 125 --outputExt packaged_$TPRIMEPROC --year $YEAR
         if $RUN; then
-            python3 RunPackager.py --cats THQLeptonicTag,THQHadronicTag --exts $TPRIMEPROC --mergeYears --batch local --queue espresso --massPoints 125 --outputExt packaged_$TPRIMEPROC
+            python3 RunPackager.py --cats THQLeptonicTag,THQHadronicTag --exts $TPRIMEPROC --batch local --queue espresso --massPoints 125 --outputExt packaged_$TPRIMEPROC --year $YEAR
             echo   # to add new line after output of above script
             fi
         [ $TEST = true ] && break
