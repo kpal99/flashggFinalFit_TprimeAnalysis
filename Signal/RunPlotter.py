@@ -26,6 +26,7 @@ def get_options():
   parser.add_option("--translateProcs", dest="translateProcs", default=None, help="JSON to store proc translations")
   parser.add_option("--label", dest="label", default='Simulation Preliminary', help="CMS Sub-label")
   parser.add_option("--doFWHM", dest="doFWHM", default=False, action='store_true', help="Do FWHM")
+  parser.add_option("--mergeYears", dest='mergeYears', default=False, action="store_true", help="Merge specified categories across years")
   return parser.parse_args()
 (opt,args) = get_options()
 
@@ -49,7 +50,10 @@ if opt.cats in ['all','wall']:
     citr += 1
 else:
   for cat in opt.cats.split(","):
-    f = "%s/outdir_%s/CMS-HGG_sigfit_%s_%s.root"%(swd__,opt.ext,opt.ext,cat)
+    if opt.mergeYears:
+        f = "%s/outdir_%s/CMS-HGG_sigfit_%s_%s.root"%(swd__,opt.ext,opt.ext,cat)
+    else:
+        f = "%s/outdir_%s/CMS-HGG_sigfit_%s_%s_%s.root"%(swd__,opt.ext,opt.ext,cat,opt.years)
     inputFiles[cat] = f
     if citr == 0:
       w = ROOT.TFile(f).Get("wsig_13TeV")
