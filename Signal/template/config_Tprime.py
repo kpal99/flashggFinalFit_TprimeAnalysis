@@ -7,8 +7,8 @@ signalScriptCfg = {
   # Setup
   'inputWSDir':'{{ inputWSDir }}',
 #  'procs':'Tprime600,TTH,THQ,VBF,GG2H', # if auto: inferred automatically from filenames
-  'procs':'{{ procs }}Sch,TTH,THQ,VBF,GG2H',
-#  'procs':'{{ tprimeProc }}Sch,{{ tprimeProc }}Tch,{{ tprimeProc }}Int,TTH,THQ,VBF,GG2H',
+  'procs':'{{ procs }}Sch,GG2H,THQ,TTH,VBF,VH',
+# 'procs':'{{ procs }}Sch,{{ procs }}Tch,{{ procs }}Int,GG2H,THQ,TTH,VBF,VH',
   'cats':'THQLeptonicTag,THQHadronicTag', # if auto: inferred automatically from (0) workspace
 #   'cats':'THQHadronicTag',
 #   'cats':'THQLeptonicTag',
