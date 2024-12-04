@@ -101,6 +101,11 @@ def makeBrazilPlot(args):
 #                print(f"Tprime{mass[i]} mean = {qlimit[0]}")
 #        file_.Close()
 
+    # got from CAT tutorial
+    # https://gitlab.cern.ch/cms-analysis/analysisexamples/plotting-demo/-/blob/master/3-tutorial_CAT_limitplot.ipynb
+    oneStdDevColor = ROOT.TColor.GetColor("#FFDF7Fff")
+    twoStdDevColor = ROOT.TColor.GetColor("#85D1FBff")
+
     # Create graphs
     canvas = ROOT.TCanvas("", "", 0, 0, 600, 500)
     canvas.SetGridx()
@@ -115,14 +120,14 @@ def makeBrazilPlot(args):
     y1SigmaHigherError = abs(y - y1SigmaHigher)
     oneStdDevLine = ROOT.TGraphAsymmErrors(massCount, x, y,
                            massLengthZeros, massLengthZeros, y1SigmaLowerError, y1SigmaHigherError)
-    oneStdDevLine.SetFillColor(ROOT.kGreen)
+    oneStdDevLine.SetFillColor(oneStdDevColor)
     oneStdDevLine.SetLineWidth(0)
 
     y2SigmaLowerError = abs(y - y2SigmaLower)
     y2SigmaHigherError = abs(y - y2SigmaHigher)
     twoStdDevLine = ROOT.TGraphAsymmErrors(massCount, x, y,
                            massLengthZeros, massLengthZeros, y2SigmaLowerError, y2SigmaHigherError)
-    twoStdDevLine.SetFillColor(ROOT.kYellow)
+    twoStdDevLine.SetFillColor(twoStdDevColor)
     twoStdDevLine.SetLineWidth(0)
 
     twoStdDevLine.GetXaxis().SetTitle("T mass [GeV]")
@@ -159,6 +164,7 @@ def makeBrazilPlot(args):
     legend.SetNColumns(2)
     legend.SetBorderSize(0)
     legend.SetTextSize(0.03)
+    legend.SetFillStyle(0)
     legend.AddEntry(centralLine, "Expected (#mu)", "l")
     legend.AddEntry(theoryXsLine, "Theoretical (#mu)", "l")
     #legend.AddEntry(statOnlyLine, "Stat. Only (Cross-section)", "l")
@@ -195,14 +201,14 @@ def makeBrazilPlot(args):
     y1SigmaHigherError = abs(y - y1SigmaHigher)
     oneStdDevLine = ROOT.TGraphAsymmErrors(massCount, x, y,
                            massLengthZeros, massLengthZeros, y1SigmaLowerError, y1SigmaHigherError)
-    oneStdDevLine.SetFillColor(ROOT.kGreen)
+    oneStdDevLine.SetFillColor(oneStdDevColor)
     oneStdDevLine.SetLineWidth(0)
 
     y2SigmaLowerError = abs(y - y2SigmaLower)
     y2SigmaHigherError = abs(y - y2SigmaHigher)
     twoStdDevLine = ROOT.TGraphAsymmErrors(massCount, x, y,
                            massLengthZeros, massLengthZeros, y2SigmaLowerError, y2SigmaHigherError)
-    twoStdDevLine.SetFillColor(ROOT.kYellow)
+    twoStdDevLine.SetFillColor(twoStdDevColor)
     twoStdDevLine.SetLineWidth(0)
 
     twoStdDevLine.GetXaxis().SetTitle("T mass [GeV]")
@@ -238,6 +244,7 @@ def makeBrazilPlot(args):
     legend.SetNColumns(2)
     legend.SetBorderSize(0)
     legend.SetTextSize(0.03)
+    legend.SetFillStyle(0)
     legend.AddEntry(centralLine, "Expected (Cross-section)", "l")
     legend.AddEntry(theoryXsLine, "Theoretical (Cross-section)", "l")
     #legend.AddEntry(statOnlyLine, "Stat. Only (Cross-section)", "l")
