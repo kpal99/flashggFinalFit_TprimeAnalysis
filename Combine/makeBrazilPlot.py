@@ -62,16 +62,12 @@ def makeBrazilPlot(args):
         x[i] = mass
         for ievent in range(tree_.GetEntries()):
             tree_.GetEntry(ievent)
-            if ievent == 0:
-                ey2l[i] = qlimit[0]
-            elif ievent == 1:
-                eyl[i] = qlimit[0]
-            elif ievent == 2:
-                y[i] = qlimit[0]
-            elif ievent == 3:
-                eyh[i] = qlimit[0]
-            elif ievent == 4:
-                ey2h[i] = qlimit[0]
+            # switch statement in python
+            if   ievent == 0: ey2l[i] = qlimit[0]
+            elif ievent == 1: eyl[i]  = qlimit[0]
+            elif ievent == 2: y[i]    = qlimit[0]
+            elif ievent == 3: eyh[i]  = qlimit[0]
+            elif ievent == 4: ey2h[i] = qlimit[0]
         file_.Close()
         print(f"{tprimeProc}: {round(ey2l[i], 2)}, {round(eyl[i], 2)}, {round(y[i], 2)}, {round(eyh[i], 2)}, {round(ey2h[i], 2)}")
 
