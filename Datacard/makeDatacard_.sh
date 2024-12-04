@@ -23,6 +23,7 @@ do
     for d in 5 #20
     do
         TPRIMEPROC=TprimeM"$m"Decay"$d"pct
+        echo
         echo python3 makeDatacard.py --ext $TPRIMEPROC --years 2017 --doTrueYield --skipCOWCorr --doMCStatUncertainty --saveDataFrame --output Datacard_$TPRIMEPROC
         echo sed -i "s/Models/Models\/$TPRIMEPROC/g" Datacard_$TPRIMEPROC.txt
         if $RUN; then
