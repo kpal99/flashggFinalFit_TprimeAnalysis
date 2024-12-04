@@ -29,11 +29,12 @@ def makeBrazilPlot(args):
     x = np.zeros(massCount)
     y = np.zeros(massCount)
     y_stat = np.zeros(massCount)
-    eyl = np.zeros(massCount)
-    eyh = np.zeros(massCount)
-    ey2l = np.zeros(massCount)
-    ey2h = np.zeros(massCount)
+    y1SigmaLower = np.zeros(massCount)
+    y1SigmaHigher = np.zeros(massCount)
+    y2SigmaLower = np.zeros(massCount)
+    y2SigmaHigher = np.zeros(massCount)
     tprime_xs = np.zeros(massCount)
+    massLengthZeros = np.zeros(massCount)
 
     # Read data with systematics
     print("Limit with Systematics")
@@ -63,13 +64,13 @@ def makeBrazilPlot(args):
         for ievent in range(tree_.GetEntries()):
             tree_.GetEntry(ievent)
             # switch statement in python
-            if   ievent == 0: ey2l[i] = qlimit[0]
-            elif ievent == 1: eyl[i]  = qlimit[0]
+            if   ievent == 0: y2SigmaLower[i] = qlimit[0]
+            elif ievent == 1: y1SigmaLower[i]  = qlimit[0]
             elif ievent == 2: y[i]    = qlimit[0]
-            elif ievent == 3: eyh[i]  = qlimit[0]
-            elif ievent == 4: ey2h[i] = qlimit[0]
+            elif ievent == 3: y1SigmaHigher[i]  = qlimit[0]
+            elif ievent == 4: y2SigmaHigher[i] = qlimit[0]
         file_.Close()
-        print(f"{tprimeProc}: {round(ey2l[i], 2)}, {round(eyl[i], 2)}, {round(y[i], 2)}, {round(eyh[i], 2)}, {round(ey2h[i], 2)}")
+        print(f"{tprimeProc}: {round(y2SigmaLower[i], 2)}, {round(y1SigmaLower[i], 2)}, {round(y[i], 2)}, {round(y1SigmaHigher[i], 2)}, {round(y2SigmaHigher[i], 2)}")
 
 #    # Read data without systematics
 #    print("\nLimit without Systematics")
@@ -101,18 +102,31 @@ def makeBrazilPlot(args):
 #        file_.Close()
 
     # Create graphs
-    statOnlyLine = ROOT.TGraph(massCount, np.array(x, dtype=np.float64), np.array(y_stat, dtype=np.float64))
+    canvas = ROOT.TCanvas("", "", 0, 0, 600, 500)
+    canvas.SetGridx()
+    canvas.SetGridy()
+    canvas.SetLogy()
+
+    statOnlyLine = ROOT.TGraph(massCount, x, y_stat)
     statOnlyLine.SetLineColor(ROOT.kRed)
 
-    oneStdDevLine = ROOT.TGraphAsymmErrors(massCount, np.array(x, dtype=np.float64), np.array(y, dtype=np.float64),
-                           np.zeros(massCount), np.zeros(massCount), eyl, eyh)
-    oneStdDevLine.SetFillColor(ROOT.kGreen)
 
-    twoStdDevLine = ROOT.TGraphAsymmErrors(massCount, np.array(x, dtype=np.float64), np.array(y, dtype=np.float64),
-                            np.zeros(massCount), np.zeros(massCount), ey2l, ey2h)
+    y1SigmaLowerError = abs(y - y1SigmaLower)
+    y1SigmaHigherError = abs(y - y1SigmaHigher)
+    oneStdDevLine = ROOT.TGraphAsymmErrors(massCount, x, y,
+                           massLengthZeros, massLengthZeros, y1SigmaLowerError, y1SigmaHigherError)
+    oneStdDevLine.SetFillColor(ROOT.kGreen)
+    oneStdDevLine.SetLineWidth(0)
+
+    y2SigmaLowerError = abs(y - y2SigmaLower)
+    y2SigmaHigherError = abs(y - y2SigmaHigher)
+    twoStdDevLine = ROOT.TGraphAsymmErrors(massCount, x, y,
+                           massLengthZeros, massLengthZeros, y2SigmaLowerError, y2SigmaHigherError)
     twoStdDevLine.SetFillColor(ROOT.kYellow)
+    twoStdDevLine.SetLineWidth(0)
 
     twoStdDevLine.GetXaxis().SetTitle("T mass [GeV]")
+    #twoStdDevLine.GetYaxis().SetRangeUser(-10, 150)
     twoStdDevLine.GetYaxis().SetRangeUser(0.5, 500)
     #twoStdDevLine.GetYaxis().SetTitle("#sigma_{Tbq}#mathcal{B}_{T #to tH} [fb]")
     twoStdDevLine.GetYaxis().SetTitle("95% CL limit on #mu")
@@ -121,7 +135,7 @@ def makeBrazilPlot(args):
     centralLine = ROOT.TGraph(massCount, np.array(x, dtype=np.float64), np.array(y, dtype=np.float64))
     centralLine.SetLineWidth(2)
 
-    theoryXsLine = ROOT.TGraph(massCount, np.array(x, dtype=np.float64), np.array(np.ones(massCount), dtype=np.float64))
+    theoryXsLine = ROOT.TGraph(massCount, np.array(x, dtype=np.float64), np.ones(massCount))
     theoryXsLine.SetLineWidth(2)
     theoryXsLine.SetLineStyle(2)
 
@@ -146,12 +160,8 @@ def makeBrazilPlot(args):
     legend.AddEntry(oneStdDevLine, "#pm 1 std. deviation", "f")
     legend.AddEntry(twoStdDevLine, "#pm 2 std. deviation", "f")
 
-    canvas = ROOT.TCanvas("", "", 0, 0, 600, 500)
-    canvas.SetGridx()
-    canvas.SetGridy()
-    canvas.SetLogy()
     twoStdDevLine.Draw("a3")
-    oneStdDevLine.Draw("same3l")
+    oneStdDevLine.Draw("SAME 3l")
     centralLine.Draw("SAME")
     theoryXsLine.Draw("SAME")
     #g_stat.Draw("L SAME")
@@ -169,7 +179,7 @@ def makeBrazilPlot(args):
     print(f"Saved png, pdf, root, C: {fileName}")
 
     # Adjusting to cross-section
-    for line in [y, y_stat, ey2l, eyl, eyh, ey2h]:
+    for line in [y, y_stat, y2SigmaLower, y1SigmaLower, y1SigmaHigher, y2SigmaHigher]:
         line *= tprime_xs
 
 def main():
