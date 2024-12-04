@@ -24,16 +24,16 @@ def getCrossSection(coreName, csvFile):
 def makeBrazilPlot(args):
     massList = [700, 800, 900, 1000, 1100, 1200]
     decayWidthList = [5]
-    points = len(massList)
+    massCount = len(massList)
 
-    x = np.zeros(points)
-    y = np.zeros(points)
-    y_stat = np.zeros(points)
-    eyl = np.zeros(points)
-    eyh = np.zeros(points)
-    ey2l = np.zeros(points)
-    ey2h = np.zeros(points)
-    tprime_xs = np.zeros(points)
+    x = np.zeros(massCount)
+    y = np.zeros(massCount)
+    y_stat = np.zeros(massCount)
+    eyl = np.zeros(massCount)
+    eyh = np.zeros(massCount)
+    ey2l = np.zeros(massCount)
+    ey2h = np.zeros(massCount)
+    tprime_xs = np.zeros(massCount)
 
     # Read data with systematics
     print("Limit with Systematics")
@@ -77,7 +77,7 @@ def makeBrazilPlot(args):
 
 #    # Read data without systematics
 #    print("\nLimit without Systematics")
-#    for i in range(points):
+#    for i in range(massCount):
 #        xs = T_xs[i] * 1000 * 0.00223 if method == "xs_X_Br" else 1
 #
 #        # Open ROOT file
@@ -105,15 +105,15 @@ def makeBrazilPlot(args):
 #        file_.Close()
 
     # Create graphs
-    statOnlyLine = ROOT.TGraph(points, np.array(x, dtype=np.float64), np.array(y_stat, dtype=np.float64))
+    statOnlyLine = ROOT.TGraph(massCount, np.array(x, dtype=np.float64), np.array(y_stat, dtype=np.float64))
     statOnlyLine.SetLineColor(ROOT.kRed)
 
-    oneStdDevLine = ROOT.TGraphAsymmErrors(points, np.array(x, dtype=np.float64), np.array(y, dtype=np.float64),
-                           np.zeros(points), np.zeros(points), eyl, eyh)
+    oneStdDevLine = ROOT.TGraphAsymmErrors(massCount, np.array(x, dtype=np.float64), np.array(y, dtype=np.float64),
+                           np.zeros(massCount), np.zeros(massCount), eyl, eyh)
     oneStdDevLine.SetFillColor(ROOT.kGreen)
 
-    twoStdDevLine = ROOT.TGraphAsymmErrors(points, np.array(x, dtype=np.float64), np.array(y, dtype=np.float64),
-                            np.zeros(points), np.zeros(points), ey2l, ey2h)
+    twoStdDevLine = ROOT.TGraphAsymmErrors(massCount, np.array(x, dtype=np.float64), np.array(y, dtype=np.float64),
+                            np.zeros(massCount), np.zeros(massCount), ey2l, ey2h)
     twoStdDevLine.SetFillColor(ROOT.kYellow)
 
     twoStdDevLine.GetXaxis().SetTitle("T mass [GeV]")
@@ -122,10 +122,10 @@ def makeBrazilPlot(args):
     twoStdDevLine.GetYaxis().SetTitle("95% CL limit on #mu")
     twoStdDevLine.SetTitle("")
 
-    centralLine = ROOT.TGraph(points, np.array(x, dtype=np.float64), np.array(y, dtype=np.float64))
+    centralLine = ROOT.TGraph(massCount, np.array(x, dtype=np.float64), np.array(y, dtype=np.float64))
     centralLine.SetLineWidth(2)
 
-    theoryXsLine = ROOT.TGraph(points, np.array(x, dtype=np.float64), np.array(np.ones(points), dtype=np.float64))
+    theoryXsLine = ROOT.TGraph(massCount, np.array(x, dtype=np.float64), np.array(np.ones(massCount), dtype=np.float64))
     theoryXsLine.SetLineWidth(2)
     theoryXsLine.SetLineStyle(2)
 
