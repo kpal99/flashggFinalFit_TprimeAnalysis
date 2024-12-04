@@ -64,10 +64,10 @@ def makeBrazilPlot(args):
         for ievent in range(tree_.GetEntries()):
             tree_.GetEntry(ievent)
             # switch statement in python
-            if   ievent == 0: y2SigmaLower[i] = qlimit[0]
+            if   ievent == 0: y2SigmaLower[i]  = qlimit[0]
             elif ievent == 1: y1SigmaLower[i]  = qlimit[0]
-            elif ievent == 2: y[i]    = qlimit[0]
-            elif ievent == 3: y1SigmaHigher[i]  = qlimit[0]
+            elif ievent == 2: y[i]             = qlimit[0]
+            elif ievent == 3: y1SigmaHigher[i] = qlimit[0]
             elif ievent == 4: y2SigmaHigher[i] = qlimit[0]
         file_.Close()
         print(f"{tprimeProc}: {round(y2SigmaLower[i], 2)}, {round(y1SigmaLower[i], 2)}, {round(y[i], 2)}, {round(y1SigmaHigher[i], 2)}, {round(y2SigmaHigher[i], 2)}")
@@ -139,6 +139,11 @@ def makeBrazilPlot(args):
     theoryXsLine.SetLineWidth(2)
     theoryXsLine.SetLineStyle(2)
 
+    twoStdDevLine.Draw("a3")
+    oneStdDevLine.Draw("SAME 3l")
+    centralLine.Draw("SAME")
+    theoryXsLine.Draw("SAME")
+
     # Canvas and plotting
     tex1 = ROOT.TLatex()
     tex1.SetNDC()
@@ -150,7 +155,7 @@ def makeBrazilPlot(args):
     tex3.SetTextSize(0.04)
     tex3.DrawLatex(0.67, 0.91, "#bf{41.5 fb^{-1} (13 TeV)}")
 
-    legend = ROOT.TLegend(0.3, 0.75, 0.88, 0.88)
+    legend = ROOT.TLegend(0.15, 0.71, 0.88, 0.84)
     legend.SetNColumns(2)
     legend.SetBorderSize(0)
     legend.SetTextSize(0.03)
@@ -160,13 +165,7 @@ def makeBrazilPlot(args):
     legend.AddEntry(oneStdDevLine, "#pm 1 std. deviation", "f")
     legend.AddEntry(twoStdDevLine, "#pm 2 std. deviation", "f")
 
-    twoStdDevLine.Draw("a3")
-    oneStdDevLine.Draw("SAME 3l")
-    centralLine.Draw("SAME")
-    theoryXsLine.Draw("SAME")
     #g_stat.Draw("L SAME")
-    tex1.Draw()
-    tex3.Draw()
     legend.Draw()
     canvas.Update()
 
@@ -177,10 +176,85 @@ def makeBrazilPlot(args):
     canvas.SaveAs(f"{fileName}.C")
     canvas.SaveAs(f"{fileName}.root")
     print(f"Saved png, pdf, root, C: {fileName}")
+    canvas.Close()
 
     # Adjusting to cross-section
-    for line in [y, y_stat, y2SigmaLower, y1SigmaLower, y1SigmaHigher, y2SigmaHigher]:
-        line *= tprime_xs
+    for values in [y, y_stat, y2SigmaLower, y1SigmaLower, y1SigmaHigher, y2SigmaHigher]:
+        values *= tprime_xs
+
+    canvas = ROOT.TCanvas("", "", 0, 0, 600, 500)
+    canvas.SetGridx()
+    canvas.SetGridy()
+    canvas.SetLogy()
+
+    statOnlyLine = ROOT.TGraph(massCount, x, y_stat)
+    statOnlyLine.SetLineColor(ROOT.kRed)
+
+
+    y1SigmaLowerError = abs(y - y1SigmaLower)
+    y1SigmaHigherError = abs(y - y1SigmaHigher)
+    oneStdDevLine = ROOT.TGraphAsymmErrors(massCount, x, y,
+                           massLengthZeros, massLengthZeros, y1SigmaLowerError, y1SigmaHigherError)
+    oneStdDevLine.SetFillColor(ROOT.kGreen)
+    oneStdDevLine.SetLineWidth(0)
+
+    y2SigmaLowerError = abs(y - y2SigmaLower)
+    y2SigmaHigherError = abs(y - y2SigmaHigher)
+    twoStdDevLine = ROOT.TGraphAsymmErrors(massCount, x, y,
+                           massLengthZeros, massLengthZeros, y2SigmaLowerError, y2SigmaHigherError)
+    twoStdDevLine.SetFillColor(ROOT.kYellow)
+    twoStdDevLine.SetLineWidth(0)
+
+    twoStdDevLine.GetXaxis().SetTitle("T mass [GeV]")
+    #twoStdDevLine.GetYaxis().SetRangeUser(-10, 150)
+    twoStdDevLine.GetYaxis().SetRangeUser(0.01, 10)
+    twoStdDevLine.GetYaxis().SetTitle("#sigma_{Tbq}B_{T#rightarrow tH} [fb]")
+    twoStdDevLine.SetTitle("")
+
+    centralLine = ROOT.TGraph(massCount, np.array(x, dtype=np.float64), np.array(y, dtype=np.float64))
+    centralLine.SetLineWidth(2)
+
+    theoryXsLine = ROOT.TGraph(massCount, np.array(x, dtype=np.float64), tprime_xs)
+    theoryXsLine.SetLineWidth(2)
+    theoryXsLine.SetLineStyle(2)
+
+    twoStdDevLine.Draw("a3")
+    oneStdDevLine.Draw("SAME 3l")
+    centralLine.Draw("SAME")
+    theoryXsLine.Draw("SAME")
+
+    # Canvas and plotting
+    tex1 = ROOT.TLatex()
+    tex1.SetNDC()
+    tex1.SetTextSize(0.05)
+    tex1.DrawLatex(0.115, 0.85, "CMS #it{#bf{Preliminary}}")
+
+    tex3 = ROOT.TLatex()
+    tex3.SetNDC()
+    tex3.SetTextSize(0.04)
+    tex3.DrawLatex(0.67, 0.91, "#bf{41.5 fb^{-1} (13 TeV)}")
+
+    legend = ROOT.TLegend(0.15, 0.71, 0.88, 0.84)
+    legend.SetNColumns(2)
+    legend.SetBorderSize(0)
+    legend.SetTextSize(0.03)
+    legend.AddEntry(centralLine, "Expected (Cross-section)", "l")
+    legend.AddEntry(theoryXsLine, "Theoretical (Cross-section)", "l")
+    #legend.AddEntry(statOnlyLine, "Stat. Only (Cross-section)", "l")
+    legend.AddEntry(oneStdDevLine, "#pm 1 std. deviation", "f")
+    legend.AddEntry(twoStdDevLine, "#pm 2 std. deviation", "f")
+
+    #g_stat.Draw("L SAME")
+    legend.Draw()
+    canvas.Update()
+
+    # Save outputs
+    fileName = f"{args.outDir}/limit_xs_decay{decayWidthList[0]}pct"
+    canvas.SaveAs(f"{fileName}.png")
+    canvas.SaveAs(f"{fileName}.pdf")
+    canvas.SaveAs(f"{fileName}.C")
+    canvas.SaveAs(f"{fileName}.root")
+    print(f"Saved png, pdf, root, C: {fileName}")
 
 def main():
     parser = argparse.ArgumentParser(description="Used to print brazilian plots of asymptotic limits", epilog ="")
