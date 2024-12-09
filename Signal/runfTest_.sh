@@ -25,7 +25,7 @@ done
 
 # for --skipWV, see
 # https://github.com/cms-analysis/flashggFinalFit/blob/dev_fggfinalfits_lite/Signal/README.md?plain=1#L37
-for m in  {7..12}00 #{14,16,18,20,22,24,26}00;
+for m in  {7..12}00 {14,16,18,20}00 #{22,24,26}00;
 do
     for d in 5 #20
     do
