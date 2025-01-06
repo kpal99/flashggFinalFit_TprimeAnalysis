@@ -156,7 +156,7 @@ globalXSBRMap['STXS']['THW'] = {'mode':'tHW','factor':0.9894}
 #
 globalXSBRMap['TprimeM700Decay5pct'] = od()
 globalXSBRMap['TprimeM700Decay5pct']['decay'] = {'mode':'hgg'}
-globalXSBRMap['TprimeM700Decay5pct']['TprimeM700Decay5pctSch'] = {'mode':'constant','factor': 0.0886}
+globalXSBRMap['TprimeM700Decay5pct']['TprimeM700Decay5pctSch'] = {'mode':'constant','factor': 0.0071750863}
 globalXSBRMap['TprimeM700Decay5pct']['TprimeM700Decay5pctTch'] = {'mode':'constant','factor': 1.8059e-05}
 globalXSBRMap['TprimeM700Decay5pct']['TprimeM700Decay5pctInt'] = {'mode':'constant','factor': -0.000264191856}
 globalXSBRMap['TprimeM700Decay5pct']['GG2H'] = {'mode':'ggH'}
@@ -200,7 +200,7 @@ globalXSBRMap['TprimeM700Decay30pct']['VH'] = {'mode':'constant','factor': 2.257
 
 globalXSBRMap['TprimeM800Decay5pct'] = od()
 globalXSBRMap['TprimeM800Decay5pct']['decay'] = {'mode':'hgg'}
-globalXSBRMap['TprimeM800Decay5pct']['TprimeM800Decay5pctSch'] = {'mode':'constant','factor': 0.0459}
+globalXSBRMap['TprimeM800Decay5pct']['TprimeM800Decay5pctSch'] = {'mode':'constant','factor': 0.0051184082}
 globalXSBRMap['TprimeM800Decay5pct']['TprimeM800Decay5pctTch'] = {'mode':'constant','factor': 1.5962e-05}
 globalXSBRMap['TprimeM800Decay5pct']['TprimeM800Decay5pctInt'] = {'mode':'constant','factor': -0.001317628395}
 globalXSBRMap['TprimeM800Decay5pct']['GG2H'] = {'mode':'ggH'}
@@ -244,7 +244,7 @@ globalXSBRMap['TprimeM800Decay30pct']['VH'] = {'mode':'constant','factor': 2.257
 
 globalXSBRMap['TprimeM900Decay5pct'] = od()
 globalXSBRMap['TprimeM900Decay5pct']['decay'] = {'mode':'hgg'}
-globalXSBRMap['TprimeM900Decay5pct']['TprimeM900Decay5pctSch'] = {'mode':'constant','factor': 0.0251}
+globalXSBRMap['TprimeM900Decay5pct']['TprimeM900Decay5pctSch'] = {'mode':'constant','factor': 0.0036964502}
 globalXSBRMap['TprimeM900Decay5pct']['TprimeM900Decay5pctTch'] = {'mode':'constant','factor': 1.4259e-05}
 globalXSBRMap['TprimeM900Decay5pct']['TprimeM900Decay5pctInt'] = {'mode':'constant','factor': -0.0010869199726}
 globalXSBRMap['TprimeM900Decay5pct']['GG2H'] = {'mode':'ggH'}
@@ -288,7 +288,7 @@ globalXSBRMap['TprimeM900Decay30pct']['VH'] = {'mode':'constant','factor': 2.257
 
 globalXSBRMap['TprimeM1000Decay5pct'] = od()
 globalXSBRMap['TprimeM1000Decay5pct']['decay'] = {'mode':'hgg'}
-globalXSBRMap['TprimeM1000Decay5pct']['TprimeM1000Decay5pctSch'] = {'mode':'constant','factor': 0.0145}
+globalXSBRMap['TprimeM1000Decay5pct']['TprimeM1000Decay5pctSch'] = {'mode':'constant','factor': 0.0026629257}
 globalXSBRMap['TprimeM1000Decay5pct']['TprimeM1000Decay5pctTch'] = {'mode':'constant','factor': 1.2705e-05}
 globalXSBRMap['TprimeM1000Decay5pct']['TprimeM1000Decay5pctInt'] = {'mode':'constant','factor': -0.0013717108476}
 globalXSBRMap['TprimeM1000Decay5pct']['GG2H'] = {'mode':'ggH'}
@@ -332,7 +332,7 @@ globalXSBRMap['TprimeM1000Decay30pct']['VH'] = {'mode':'constant','factor': 2.25
 
 globalXSBRMap['TprimeM1100Decay5pct'] = od()
 globalXSBRMap['TprimeM1100Decay5pct']['decay'] = {'mode':'hgg'}
-globalXSBRMap['TprimeM1100Decay5pct']['TprimeM1100Decay5pctSch'] = {'mode':'constant','factor': 0.00867}
+globalXSBRMap['TprimeM1100Decay5pct']['TprimeM1100Decay5pctSch'] = {'mode':'constant','factor': 0.0019619488}
 globalXSBRMap['TprimeM1100Decay5pct']['TprimeM1100Decay5pctTch'] = {'mode':'constant','factor': 1.1412e-05}
 globalXSBRMap['TprimeM1100Decay5pct']['TprimeM1100Decay5pctInt'] = {'mode':'constant','factor': -0.001346053222}
 globalXSBRMap['TprimeM1100Decay5pct']['GG2H'] = {'mode':'ggH'}
@@ -376,7 +376,7 @@ globalXSBRMap['TprimeM1100Decay30pct']['VH'] = {'mode':'constant','factor': 2.25
 
 globalXSBRMap['TprimeM1200Decay5pct'] = od()
 globalXSBRMap['TprimeM1200Decay5pct']['decay'] = {'mode':'hgg'}
-globalXSBRMap['TprimeM1200Decay5pct']['TprimeM1200Decay5pctSch'] = {'mode':'constant','factor': 0.00536}
+globalXSBRMap['TprimeM1200Decay5pct']['TprimeM1200Decay5pctSch'] = {'mode':'constant','factor': 0.0014840209}
 globalXSBRMap['TprimeM1200Decay5pct']['TprimeM1200Decay5pctTch'] = {'mode':'constant','factor': 1.0274e-05}
 globalXSBRMap['TprimeM1200Decay5pct']['TprimeM1200Decay5pctInt'] = {'mode':'constant','factor': -0.0011203807296}
 globalXSBRMap['TprimeM1200Decay5pct']['GG2H'] = {'mode':'ggH'}
