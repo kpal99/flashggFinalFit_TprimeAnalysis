@@ -22,7 +22,7 @@ def getCrossSection(coreName, csvFile):
     return xs
 
 def makeBrazilPlot(args):
-    massList = [700, 800, 900, 1000, 1100, 1200]
+    massList = [700, 800, 900, 1000, 1100, 1200, 1400, 1600, 1800, 2000]
     decayWidthList = [5]
     massCount = len(massList)
 
@@ -132,7 +132,7 @@ def makeBrazilPlot(args):
 
     twoStdDevLine.GetXaxis().SetTitle("T mass [GeV]")
     #twoStdDevLine.GetYaxis().SetRangeUser(-10, 150)
-    twoStdDevLine.GetYaxis().SetRangeUser(0.5, 500)
+    twoStdDevLine.GetYaxis().SetRangeUser(0.5, 10000)
     #twoStdDevLine.GetYaxis().SetTitle("#sigma_{Tbq}#mathcal{B}_{T #to tH} [fb]")
     twoStdDevLine.GetYaxis().SetTitle("95% CL limit on #mu")
     twoStdDevLine.SetTitle("")
@@ -213,7 +213,7 @@ def makeBrazilPlot(args):
 
     twoStdDevLine.GetXaxis().SetTitle("T mass [GeV]")
     #twoStdDevLine.GetYaxis().SetRangeUser(-10, 150)
-    twoStdDevLine.GetYaxis().SetRangeUser(0.01, 10)
+    twoStdDevLine.GetYaxis().SetRangeUser(0.0001, 50)
     twoStdDevLine.GetYaxis().SetTitle("#sigma_{Tbq}B_{T#rightarrow tH} [fb]")
     twoStdDevLine.SetTitle("")
 
