@@ -50,4 +50,5 @@ Usage: ./runPlotter_.sh [-n] [-y YEAR] [-h]
   - Running following requires process in `tools/replacementMapy.py` and `tools/XSBRMap.py`
   - writing in `tools/replacementMapy.py` manually
   - For `tools/XSBRMap.py` we have process,xs file as CSV, thus using that generating entries for `tools/XSBRMap.py`
-     - See `tools/makeXSBRMap.py` and `tools/template/xsbrmap.txt`
+    - See `tools/makeXSBRMap.py` and `tools/template/xsbrmap.txt`
+    - **TODO**: process,xs CSV have been changed to json, need to update `tools/makeXSBRMap.py` accordingly
