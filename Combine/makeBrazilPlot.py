@@ -22,7 +22,7 @@ def getCrossSection(coreName, csvFile):
     return xs
 
 def makeBrazilPlot(args):
-    massList = [700, 800, 900, 1000, 1100, 1200, 1400, 1600, 1800, 2000]
+    massList = [700, 800, 900, 1000, 1100, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600]
     decayWidthList = [5]
     massCount = len(massList)
 
@@ -36,8 +36,6 @@ def makeBrazilPlot(args):
     tprime_xs = np.zeros(massCount)
     massLengthZeros = np.zeros(massCount)
 
-    # Read data with systematics
-    print("Limit with Systematics")
     i = -1
     for mass in massList:
         i += 1
