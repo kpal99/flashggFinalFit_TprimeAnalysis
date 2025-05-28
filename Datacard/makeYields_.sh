@@ -19,9 +19,9 @@ case $opt in
 esac
 done
 
-for m in  {7..12}00 {14,16,18,20}00 #{22,24,26}00;
+for m in  {7..12}00 {14,16,18,20,22,24,26}00
 do
-    for d in 5 #20
+    for d in 5 10 20 30
     do
         TPRIMEPROC=TprimeM"$m"Decay"$d"pct
         echo python3 RunYields.py --inputWSDirMap 2017=$INPUTDIR/$TPRIMEPROC/ws/ --cats auto --procs "$TPRIMEPROC"Sch,GG2H,THQ,TTH,VBF,VH auto --ext $TPRIMEPROC --skipCOWCorr --batch local --queue espresso
