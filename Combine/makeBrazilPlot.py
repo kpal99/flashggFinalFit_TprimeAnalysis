@@ -267,7 +267,7 @@ def main():
 # Add the arguments
     parser.add_argument("--csvFile", required=True, help="Name of the XS csv file")
     parser.add_argument("--outDir", required=True, help="Name of the output directory")
-    parser.add_argument("--mH", required=True, type=float, help="Mass of Higgs using during asymptotic limit calculations")
+    parser.add_argument("--mH", default=125.38, type=float, help="Mass of Higgs using during asymptotic limit calculations, default is 125.38")
 
 # Parse the arguments
     args = parser.parse_args(None if sys.argv[1:] else ['--help'])
