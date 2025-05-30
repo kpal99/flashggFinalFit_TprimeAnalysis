@@ -67,12 +67,12 @@ def make2DLimitPlot(args):
     tex1 = ROOT.TLatex()
     tex1.SetNDC()
     tex1.SetTextSize(0.045)
-    tex1.DrawLatex(0.15, 0.92, "CMS #bf{Preliminary}")
+    tex1.DrawLatex(0.10, 0.92, "CMS #bf{Preliminary}")
 
     tex2 = ROOT.TLatex()
     tex2.SetNDC()
     tex2.SetTextSize(0.04)
-    tex2.DrawLatex(0.67, 0.92, "#bf{41.5 fb^{-1} (13 TeV)}")
+    tex2.DrawLatex(0.66, 0.92, "#bf{41.5 fb^{-1} (13 TeV)}")
 
     outputFile = f"{args.outDir}/limit_2D"
     canvas.SaveAs(f"{outputFile}.png")
