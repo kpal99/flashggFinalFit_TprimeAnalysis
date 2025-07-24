@@ -4,18 +4,18 @@ RUN=true
 TEST=false
 # get the options passed to the script
 # get inputDir as argument
-while getopts "nhd:y:p:" opt
+while getopts "nhd:y:s:" opt
 do
 case $opt in
     n) RUN=false;;
     d) INPUTDIR=$OPTARG;;
     y) YEAR=$OPTARG;;
-    p) TPRIMEPROC=$OPTARG;;
+    s) TPRIMEPROC=$OPTARG;;
     h) echo "trees2ws_.sh [-n] [-d inputDir] [-y year] [-t] [-h]"
        echo "  -n: dry run, do not run the script"
        echo "  -d: input directory"
        echo "  -y: year"
-       echo "  -p: Tprime process name"
+       echo "  -s: specify singal process to use, TRPIMEPROC"
        echo "  -h: print this message and exit"
        exit ;;
     \?) exit ;;
