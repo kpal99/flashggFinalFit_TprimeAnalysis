@@ -3,33 +3,30 @@
 RUN=true
 TEST=false
 # get the options passed to the script
-while getopts "nhty:p:" opt;
+while getopts "nhy:p:s:" opt;
 do
 case $opt in
     n) RUN=false;;
-    t) TEST=true;;
+    y) YEAR=$OPTARG;;
     p) PLOTDIR=$OPTARG;;
-    h) echo "Usage: $0 [-n] [-y YEAR] [-t] [-h] [-p PLOTDIR]"
+    s) TPRIMEPROC=$OPTARG;;
+    h) echo "Usage: $0 [-n] -y YEAR [-h] -p PLOTDIR -s TPRIMEPROC"
        echo "  -n: dry run, just print the commands to be run for any given flag"
        echo "  -y: year"
-       echo "  -t: test, run for single mass, decay width"
        echo "  -p: plot directory to sync plots to"
+       echo "  -s: signal process to use, TPRIMEPROC"
        echo "  -h: print this help message and exit"
        exit 0;;
     \?) exit ;;
 esac
 done
 
-for m in  {7..12}00 {14,16,18,20,22,24,26}00
-do
-    for d in 5 10 20 30
-    do
-        # Uses configFile created by runfTest_.sh
-        TPRIMEPROC=TprimeM"$m"Decay"$d"pct
-        echo python3 RunSignalScripts.py --inputConfig config/$TPRIMEPROC.py --mode signalFit --modeOpts '"--doPlots --skipSystematics --skipVertexScenarioSplit"'
-        if $RUN; then
-            python3 RunSignalScripts.py --inputConfig config/$TPRIMEPROC.py --mode signalFit --modeOpts "--doPlots --skipSystematics --skipVertexScenarioSplit"
-        fi
+cd $(dirname $0)
+# Uses configFile created by runfTest_.sh
+echo python3 RunSignalScripts.py --inputConfig config/${TPRIMEPROC}_${YEAR}.py --mode signalFit --modeOpts '"--doPlots --skipSystematics --skipVertexScenarioSplit"'
+if $RUN; then
+    python3 RunSignalScripts.py --inputConfig config/${TPRIMEPROC}_${YEAR}.py --mode signalFit --modeOpts "--doPlots --skipSystematics --skipVertexScenarioSplit"
+fi
 # getting following error after plotting, will figure out later
 ## Traceback (most recent call last):
 ##   File "/afs/cern.ch/work/k/kpal/private/finalfits-hDNA/CMSSW_14_1_0_pre4/src/flashggFinalFit/Signal/scripts/signalFit.py", line 326, in <module>
@@ -38,14 +35,7 @@ do
 ##     for sp in splinesToPlot: xnom[sp] = _finalModel.Splines[sp].getVal()
 ## KeyError: 'fracRV'
 
-        if [ $PLOTDIR ]; then
-          mkdir -pv $PLOTDIR/signalFit/$TPRIMEPROC
-          echo rsync -ah --quiet --stats outdir_$TPRIMEPROC/signalFit/Plots/ $PLOTDIR/signalFit/$TPRIMEPROC/
-          rsync -ah --quiet --stats outdir_$TPRIMEPROC/signalFit/Plots/ $PLOTDIR/signalFit/$TPRIMEPROC/
-          cp -v $PLOTDIR/signalFit/index.php $PLOTDIR/signalFit/$TPRIMEPROC
-        fi
-        echo   # to add new line after output of above script
-        [ $TEST = true ] && break
-    done
-    [ $TEST = true ] && break
-done
+mkdir -pv $PLOTDIR/$YEAR/signalFit/$TPRIMEPROC
+echo rsync -ah --quiet --stats outdir_${TPRIMEPROC}_${YEAR}/signalFit/Plots/ $PLOTDIR/$YEAR/signalFit/$TPRIMEPROC/
+rsync -ah --quiet --stats outdir_${TPRIMEPROC}_${YEAR}/signalFit/Plots/ $PLOTDIR/$YEAR/signalFit/$TPRIMEPROC/
+cp -v $PLOTDIR/$YEAR/signalFit/index.php $PLOTDIR/$YEAR/signalFit/$TPRIMEPROC

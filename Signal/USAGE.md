@@ -15,7 +15,7 @@ Usage: ./runfTest_all.sh [-n] -d INPUTDIR -y YEAR [-t] [-h] -p PLOTDIR
 
 2. signalFit, `./runSignalFit_.sh -h`
 ```bash
-Usage: ./runSignalFit_.sh [-n] [-y YEAR] [-t] [-h] [-p PLOTDIR]
+Usage: ./Signal/runSignalFit_all.sh [-n] -y YEAR [-t] [-h] -p PLOTDIR
   -n: dry run, just print the commands to be run for any given flag
   -y: year
   -t: test, run for single mass, decay width
