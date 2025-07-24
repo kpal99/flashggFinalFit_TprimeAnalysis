@@ -11,7 +11,7 @@ case $opt in
     d) INPUTDIR=$OPTARG;;
     t) TEST=true;;
     p) PLOTDIR=$OPTARG;;
-    h) echo "Usage: $0 [-y YEAR] [-d INPUTDIR] [-p PLOTDIR] [-h] [-n] [-t]"
+    h) echo "Usage: $0 -y YEAR -d INPUTDIR -p PLOTDIR [-h] [-n] [-t]"
        echo "  -h: print this help"
        echo "  -n: dry run, just print the commands to be run for any given flag"
        echo "  -y: year 2016,2017,2018,Combined"
@@ -23,23 +23,16 @@ case $opt in
 esac
 done
 
+cd $(dirname $0)
 for m in  {7..12}00 {14,16,18,20,22,24,26}00
 do
     for d in 5 10 20 30
     do
         TPRIMEPROC=TprimeM"$m"Decay"$d"pct
-        echo python3 make_config.py --inputWS $INPUTDIR/$TPRIMEPROC/ws/allData.root --year $YEAR --ext $TPRIMEPROC
-        echo python3 RunBackgroundScripts.py --inputConfig config/config_"$TPRIMEPROC"_$YEAR.py --mode fTestParallel
         if $RUN; then
-            python3 make_config.py --inputWS $INPUTDIR/$TPRIMEPROC/ws/allData.root --year $YEAR --ext $TPRIMEPROC
-            python3 RunBackgroundScripts.py --inputConfig config/config_"$TPRIMEPROC"_$YEAR.py --mode fTestParallel
-            echo   # to add new line after output of above script
-        fi
-
-        if [ $PLOTDIR ]; then
-          mkdir -pv $PLOTDIR/bkgfTest-Data/$TPRIMEPROC
-          rsync -ah --quiet --stats outdir_$TPRIMEPROC/bkgfTest-Data/ $PLOTDIR/bkgfTest-Data/$TPRIMEPROC/
-          cp -v $PLOTDIR/bkgfTest-Data/index.php $PLOTDIR/bkgfTest-Data/$TPRIMEPROC
+            ./runBackground_.sh -y $YEAR -d $INPUTDIR -p $PLOTDIR -s $TPRIMEPROC
+        else
+            ./runBackground_.sh -y $YEAR -d $INPUTDIR -p $PLOTDIR -s $TPRIMEPROC -n
         fi
         [ $TEST = true ] && break
     done

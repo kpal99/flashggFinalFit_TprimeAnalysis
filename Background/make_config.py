@@ -21,9 +21,9 @@ def make_config():
 
     configText = jinja2.Template(configTemplate).render(inputWS=args.inputWS, year=args.year, ext=args.ext)
     # save configText to a file
-    with open(f"config/config_{args.ext}_{args.year}.py", "w") as f:
+    with open(f"config/config_{args.ext}.py", "w") as f:
         f.write(configText)
-        print(f"Config file saved to config/config_{args.ext}_{args.year}.py")
+        print(f"Config file saved to config/config_{args.ext}.py")
 
 
 if __name__ == '__main__':
