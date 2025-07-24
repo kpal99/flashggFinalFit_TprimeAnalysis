@@ -1,41 +1,36 @@
 #!/bin/bash
 
 RUN=true
-TEST=false
 # get the options passed to the script
-while getopts "nht" opt;
+while getopts "nhts:y:" opt;
 do
 case $opt in
     n) RUN=false;;
     t) TEST=true;;
-    h) echo "Usage: $0 [-n] [-h] [-t]"
+    y) YEAR=$OPTARG;;
+    s) TPRIMEPROC=$OPTARG;;
+    h) echo "Usage: $0 [-n] [-h] [-t] -y YEAR -s TPRIMEPROC"
        echo "  -n: dry run, just print the commands to be run for any given flag"
        echo "  -t: run test scripts"
+       echo "  -s: sample process to use, TPRIMEPROC"
+       echo "  -y: year"
        echo "  -h: print this help message"
        exit 0;;
     \?) exit ;;
 esac
 done
 
+cd $(dirname $0)
 FINALFITDIR=$CMSSW_BASE/src/flashggFinalFit/
-for m in  {7..12}00 {14,16,18,20,22,24,26}00
-do
-    for d in 5 10 20 30
-    do
-        TPRIMEPROC=TprimeM"$m"Decay"$d"pct
-        echo
-        echo python3 makeDatacard.py --ext $TPRIMEPROC --years 2017 --doTrueYield --skipCOWCorr --doMCStatUncertainty --saveDataFrame --output Datacard_$TPRIMEPROC
-        echo sed -i "s/Models/Models\/$TPRIMEPROC/g" Datacard_$TPRIMEPROC.txt
-        if $RUN; then
-            echo   # to add new line after output of above script
-            python3 makeDatacard.py --ext $TPRIMEPROC --years 2017 --doTrueYield --skipCOWCorr --doMCStatUncertainty --saveDataFrame --output Datacard_$TPRIMEPROC
-            sed -i "s/Models/Models\/$TPRIMEPROC/g" Datacard_$TPRIMEPROC.txt
-            mkdir -pv $FINALFITDIR/Combine/Models/$TPRIMEPROC/{signal,background}
-            cp -v $FINALFITDIR/Signal/outdir_packaged_$TPRIMEPROC/CMS-HGG_sigfit_packaged*.root $FINALFITDIR/Combine/Models/$TPRIMEPROC/signal/
-            cp -v $FINALFITDIR/Background/outdir_$TPRIMEPROC/CMS-HGG_multipdf*.root $FINALFITDIR/Combine/Models/$TPRIMEPROC/background/
-            cp -v $FINALFITDIR/Datacard/Datacard_$TPRIMEPROC.txt $FINALFITDIR/Combine/
-            fi
-        [ $TEST = true ] && break
-    done
-    [ $TEST = true ] && break
-done
+echo
+echo python3 makeDatacard.py --ext ${TPRIMEPROC}_${YEAR} --years $YEAR --doTrueYield --skipCOWCorr --doMCStatUncertainty --saveDataFrame --output Datacard_${TPRIMEPROC}_${YEAR}
+echo sed -i "s|Models|Models/$YEAR/$TPRIMEPROC|g" Datacard_${TPRIMEPROC}_${YEAR}.txt
+if $RUN; then
+    echo   # to add new line after output of above script
+    python3 makeDatacard.py --ext ${TPRIMEPROC}_${YEAR} --years $YEAR --doTrueYield --skipCOWCorr --doMCStatUncertainty --saveDataFrame --output Datacard_${TPRIMEPROC}_${YEAR}
+    sed -i "s|Models|Models/$YEAR/$TPRIMEPROC|g" Datacard_${TPRIMEPROC}_${YEAR}.txt
+    mkdir -pv $FINALFITDIR/Combine/Models/$YEAR/$TPRIMEPROC/{signal,background}
+    cp -v $FINALFITDIR/Signal/outdir_packaged_${TPRIMEPROC}_${YEAR}/CMS-HGG_sigfit_packaged*.root $FINALFITDIR/Combine/Models/$YEAR/$TPRIMEPROC/signal/
+    cp -v $FINALFITDIR/Background/outdir_${TPRIMEPROC}_${YEAR}/CMS-HGG_multipdf*.root $FINALFITDIR/Combine/Models/$YEAR/$TPRIMEPROC/background/
+    cp -v $FINALFITDIR/Datacard/Datacard_${TPRIMEPROC}_${YEAR}.txt $FINALFITDIR/Combine/
+fi
