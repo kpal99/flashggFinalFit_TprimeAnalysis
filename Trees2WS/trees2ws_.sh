@@ -11,11 +11,11 @@ case $opt in
     d) INPUTDIR=$OPTARG;;
     y) YEAR=$OPTARG;;
     p) TPRIMEPROC=$OPTARG;;
-    h) echo "trees2ws.sh [-n] [-d inputDir] [-y year] [-t] [-h]"
+    h) echo "trees2ws_.sh [-n] [-d inputDir] [-y year] [-t] [-h]"
        echo "  -n: dry run, do not run the script"
        echo "  -d: input directory"
        echo "  -y: year"
-       echo "  -p: production mode"
+       echo "  -p: Tprime process name"
        echo "  -h: print this message and exit"
        exit ;;
     \?) exit ;;
