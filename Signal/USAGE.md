@@ -13,9 +13,9 @@ Usage: ./runfTest_all.sh [-n] -d INPUTDIR -y YEAR [-t] [-h] -p PLOTDIR
   -h: print this help message
 ```
 
-2. signalFit, `./runSignalFit_.sh -h`
+2. signalFit, `./runSignalFit_all.sh -h`
 ```bash
-Usage: ./Signal/runSignalFit_all.sh [-n] -y YEAR [-t] [-h] -p PLOTDIR
+Usage: ./runSignalFit_all.sh [-n] -y YEAR [-t] [-h] -p PLOTDIR
   -n: dry run, just print the commands to be run for any given flag
   -y: year
   -t: test, run for single mass, decay width
@@ -23,16 +23,17 @@ Usage: ./Signal/runSignalFit_all.sh [-n] -y YEAR [-t] [-h] -p PLOTDIR
   -h: print this help message and exit
 ```
 
-3. Packaging, `./runPackager_.sh -h`
+3. Packaging, `./runPackager_all.sh -h`
 ```bash
-Usage: ./runPackager_.sh [-n] [-r] [-h]
+Usage: ./runPackager_all.sh [-n] [-r] [-h] -y YEAR
   -n: dry run, just print the commands to be run for any given flag
   -r: run final Scripts which are found in outdir_*
   -t: run test scripts
+  -y: year, can also take CSV i.e. '2016,2017,2018' 
   -h: print this help message
 ```
 
-4. Plotting, `./runPlotter_.sh -h`
+4. Plotting, this is not required for us `./runPlotter_.sh -h`
 ```bash
 Usage: ./runPlotter_.sh [-n] [-y YEAR] [-h]
   -n: dry run, just print the commands to be run for any given flag
