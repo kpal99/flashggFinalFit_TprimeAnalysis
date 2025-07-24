@@ -16,12 +16,12 @@ def make_config():
     args = parser.parse_args(None if sys.argv[1:] else ['--help'])
 
     # read templates/config.py
-    with open("template/config_Tprime.py") as f:
+    with open(f"template/config_Tprime_{args.year}.py") as f:
         configTemplate = f.read()
 
     configText = jinja2.Template(configTemplate).render(inputWSDir=args.inputWSDir, year=args.year, procs=args.procs)
     # save configText to a file
-    with open(f"config/{args.procs}.py", "w") as f:
+    with open(f"config/{args.procs}_{args.year}.py", "w") as f:
         f.write(configText)
 
 
