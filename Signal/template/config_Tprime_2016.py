@@ -13,7 +13,7 @@ signalScriptCfg = {
 #   'cats':'THQHadronicTag',
 #   'cats':'THQLeptonicTag',
 #  'ext':'Tprime%s_%s'%(_Tmass,_year),
-  'ext':'{{ procs }}',
+  'ext':'{{ procs }}_{{ year }}',
 #  'analysis':'Tprime_%s'%_Tmass, # To specify which replacement dataset mapping (defined in ./python/replacementMap.py)
   'analysis':'{{ procs }}',
   'year': '{{ year }}',
