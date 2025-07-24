@@ -21,8 +21,8 @@ esac
 done
 
 cd $(dirname $0)
-echo python3 RunPackager.py --cats THQLeptonicTag,THQHadronicTag --exts ${TPRIMEPROC} --batch local --queue espresso --massPoints 125 --outputExt packaged_${TPRIMEPROC}_${YEAR} --year $YEAR
+echo python3 RunPackager.py --cats THQLeptonicTag,THQHadronicTag --exts ${TPRIMEPROC}_${YEAR} --batch local --massPoints 125 --outputExt packaged_${TPRIMEPROC}_${YEAR} --year $YEAR
 if $RUN; then
-    python3 RunPackager.py --cats THQLeptonicTag,THQHadronicTag --exts ${TPRIMEPROC} --batch condor --queue espresso --massPoints 125 --outputExt packaged_${TPRIMEPROC}_${YEAR} --year $YEAR
+    python3 RunPackager.py --cats THQLeptonicTag,THQHadronicTag --exts ${TPRIMEPROC}_${YEAR} --batch local --massPoints 125 --outputExt packaged_${TPRIMEPROC}_${YEAR} --year $YEAR
     echo   # to add new line after output of above script
 fi
