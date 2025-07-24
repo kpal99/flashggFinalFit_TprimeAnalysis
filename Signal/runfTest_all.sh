@@ -11,7 +11,7 @@ case $opt in
     y) YEAR=$OPTARG;;
     t) TEST=true;;
     p) PLOTDIR=$OPTARG;;
-    h) echo "Usage: $0 [-n] [-d INPUTDIR] [-y YEAR] [-t] [-h] [-p PLOTDIR]"
+    h) echo "Usage: $0 [-n] -d INPUTDIR -y YEAR [-t] [-h] -p PLOTDIR"
        echo "  -d: input directory"
        echo "  -y: year"
        echo "  -n: dry run, just print the commands to be run for any given flag"
@@ -25,26 +25,17 @@ done
 
 # for --skipWV, see
 # https://github.com/cms-analysis/flashggFinalFit/blob/dev_fggfinalfits_lite/Signal/README.md?plain=1#L37
+cd $(dirname $0)
 for m in  {7..12}00 {14,16,18,20,22,24,26}00
 do
     for d in 5 10 20 30
     do
         TPRIMEPROC=TprimeM"$m"Decay"$d"pct
-        echo python3 make_config.py --inputWSDir $INPUTDIR/$TPRIMEPROC/ws --procs $TPRIMEPROC --year 2017
-        # by the nature of echo and shell, we are not seeing "" in shell, but it's being passed in python correctly, thus "" in '' for echo
-        echo python3 RunSignalScripts.py --inputConfig config/$TPRIMEPROC.py --mode fTest --modeOpts '"--doPlots --nProcsToFTest -1 --skipWV"'
         if $RUN; then
-            python3 make_config.py --inputWSDir $INPUTDIR/$TPRIMEPROC/ws --procs $TPRIMEPROC --year 2017
-            python3 RunSignalScripts.py --inputConfig config/$TPRIMEPROC.py --mode fTest --modeOpts "--doPlots --nProcsToFTest -1 --skipWV"
+            ./runfTest_.sh -d $INPUTDIR -y $YEAR -p $PLOTDIR -s $TPRIMEPROC
+        else
+            ./runfTest_.sh -d $INPUTDIR -y $YEAR -p $PLOTDIR -s $TPRIMEPROC -n
         fi
-        #
-        # if PLOTDIR is defined then copy plots to PLOTDIR
-        if [ $PLOTDIR ]; then
-          mkdir -pv $PLOTDIR/fTest/$TPRIMEPROC
-          rsync -ah --quiet --stats outdir_$TPRIMEPROC/fTest/Plots/ $PLOTDIR/fTest/$TPRIMEPROC/
-          cp -v $PLOTDIR/fTest/index.php $PLOTDIR/fTest/$TPRIMEPROC
-        fi
-        echo   # to add new line after output of above script
         [ $TEST = true ] && break
     done
     [ $TEST = true ] && break

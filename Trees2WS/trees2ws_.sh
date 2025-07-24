@@ -21,6 +21,7 @@ case $opt in
 esac
 done
 
+cd $(dirname $0)
 mkdir -pv $INPUTDIR/$TPRIMEPROC/ws
 # making Tprime workspaces
 for mode in Sch; # Tch Int;

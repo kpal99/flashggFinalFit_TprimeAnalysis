@@ -30,10 +30,8 @@ do
         TPRIMEPROC=TprimeM"$m"Decay"$d"pct
         if $RUN; then
             ./trees2ws_.sh -d $INPUTDIR -y $YEAR -s $TPRIMEPROC
-            echo
         else
             ./trees2ws_.sh -d $INPUTDIR -y $YEAR -s $TPRIMEPROC -n
-            echo
         fi
 
         [ $TEST = true ] && break

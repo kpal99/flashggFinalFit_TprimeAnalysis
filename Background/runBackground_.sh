@@ -22,8 +22,10 @@ case $opt in
 esac
 done
 
+cd $(dirname $0)
 echo python3 make_config.py --inputWS $INPUTDIR/$TPRIMEPROC/ws/allData.root --year $YEAR --ext ${TPRIMEPROC}_${YEAR}
 echo python3 RunBackgroundScripts.py --inputConfig config/config_"$TPRIMEPROC"_$YEAR.py --mode fTestParallel
+echo
 if $RUN; then
     python3 make_config.py --inputWS $INPUTDIR/$TPRIMEPROC/ws/allData.root --year $YEAR --ext ${TPRIMEPROC}_${YEAR}
     python3 RunBackgroundScripts.py --inputConfig config/config_"$TPRIMEPROC"_$YEAR.py --mode fTestParallel
