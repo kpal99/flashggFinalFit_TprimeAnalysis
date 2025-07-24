@@ -2,9 +2,9 @@
 
 - This is driven by config file, we will make config file on the fly using template and then run RunSignalSripts.py with printOnly
 - This will create scripts to be submitted to condor, we will write something to run those script interactively
-1. fTest, `./runfTest_.sh -h`
+1. fTest, `./runfTest_all.sh -h`
 ```bash
-Usage: ./runfTest_.sh [-n] [-d INPUTDIR] [-y YEAR] [-t] [-h] [-p PLOTDIR]
+Usage: ./runfTest_all.sh [-n] -d INPUTDIR -y YEAR [-t] [-h] -p PLOTDIR
   -d: input directory
   -y: year
   -n: dry run, just print the commands to be run for any given flag
