@@ -61,7 +61,7 @@ def condorSubmitFullFlow(args):
         sub.write(f"error = {jobFileBaseName}.$(ClusterId).$(ProcId).err\n")
         sub.write(f"log = {base_dir}/{jobFileBaseName}.$(ClusterId).$(ProcId).log\n")
         sub.write(f"output_destination = {base_dir}\n")
-        sub.write(f'+JobFlavour = "espresso"\n')
+        sub.write(f'+JobFlavour = "microcentury"\n')
         sub.write("on_exit_remove = (ExitBySignal == False) && (ExitCode == 0)\n")
         sub.write("on_exit_hold = (ExitBySignal == True) && (ExitCode != 0)\n")
         sub.write("periodic_release = (NumJobStarts < 3) && ((CurrentTime - EnteredCurrentStatus) > 600)\n")
