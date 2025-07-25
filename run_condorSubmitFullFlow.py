@@ -1,0 +1,1 @@
+python3 condorSubmitFullFlow.py --year 2016 --finalSelectionDir ~eos/tprime-hdna/output2.5-UL17 --plotsOutputDir ~b2g/plots/fgg-fits --tprimeMass 1600,1800 --tprimeDecayWidth 5,10,20,30 --noSubmission
