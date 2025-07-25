@@ -23,12 +23,18 @@ done
 
 cd $(dirname $0)
 mkdir -pv $INPUTDIR/$TPRIMEPROC/ws
+SYSTEMATICS=""
+if [ $YEAR = "2016" ]; then
+    SYSTEMATICS="--doSystematics"
+elif [ $YEAR = "2018" ]; then
+    SYSTEMATICS="--doSystematics"
+fi
 # making Tprime workspaces
 for mode in Sch; # Tch Int;
 do
-    echo python3 trees2ws.py --inputConfig config_${YEAR}.py --inputTreeFile $INPUTDIR/$TPRIMEPROC/output_M125_$TPRIMEPROC$mode.root --productionMode $TPRIMEPROC$mode --year $YEAR
+    echo python3 trees2ws.py --inputConfig config_${YEAR}.py --inputTreeFile $INPUTDIR/$TPRIMEPROC/output_M125_$TPRIMEPROC$mode.root --productionMode $TPRIMEPROC$mode --year $YEAR $SYSTEMATICS
     if $RUN; then
-        python3 trees2ws.py --inputConfig config_${YEAR}.py --inputTreeFile $INPUTDIR/$TPRIMEPROC/output_M125_$TPRIMEPROC$mode.root --productionMode $TPRIMEPROC$mode --year $YEAR
+        python3 trees2ws.py --inputConfig config_${YEAR}.py --inputTreeFile $INPUTDIR/$TPRIMEPROC/output_M125_$TPRIMEPROC$mode.root --productionMode $TPRIMEPROC$mode --year $YEAR $SYSTEMATICS
         ln -svf $INPUTDIR/$TPRIMEPROC/ws_$TPRIMEPROC$mode/output_M125_$TPRIMEPROC$mode.root $INPUTDIR/$TPRIMEPROC/ws
         echo
     fi
@@ -37,9 +43,9 @@ done
 # making higgs workspaces
 for higgsMode in GG2H THQ TTH VBF VH;
 do
-    echo python3 trees2ws.py --inputConfig config_${YEAR}.py --inputTreeFile $INPUTDIR/$TPRIMEPROC/output_M125_$higgsMode.root --productionMode $higgsMode --year $YEAR
+    echo python3 trees2ws.py --inputConfig config_${YEAR}.py --inputTreeFile $INPUTDIR/$TPRIMEPROC/output_M125_$higgsMode.root --productionMode $higgsMode --year $YEAR $SYSTEMATICS
     if $RUN; then
-        python3 trees2ws.py --inputConfig config_${YEAR}.py --inputTreeFile $INPUTDIR/$TPRIMEPROC/output_M125_$higgsMode.root --productionMode $higgsMode --year $YEAR
+        python3 trees2ws.py --inputConfig config_${YEAR}.py --inputTreeFile $INPUTDIR/$TPRIMEPROC/output_M125_$higgsMode.root --productionMode $higgsMode --year $YEAR $SYSTEMATICS
         ln -svf $INPUTDIR/$TPRIMEPROC/ws_$higgsMode/output_M125_$higgsMode.root $INPUTDIR/$TPRIMEPROC/ws
         echo
     fi
