@@ -21,11 +21,31 @@ case $opt in
 esac
 done
 
+SKIPSYSTEMATICS=""
+if [ $YEAR = "2016" ]; then
+    :
+elif [ $YEAR = "2017" ]; then
+    SKIPSYSTEMATICS="--skipSystematics"
+elif [ $YEAR = "2018" ]; then
+    :
+elif [ $YEAR = "2022" ]; then
+    SKIPSYSTEMATICS="--skipSystematics"
+fi
+
 cd $(dirname $0)
+
 # Uses configFile created by runfTest_.sh
-echo python3 RunSignalScripts.py --inputConfig config/${TPRIMEPROC}_${YEAR}.py --mode signalFit --modeOpts '"--doPlots --skipSystematics --skipVertexScenarioSplit"'
+# if SKIPSYSTEMATICS is empty, then do this
+if [ -z "$SKIPSYSTEMATICS" ]; then
+    echo python3 RunSignalScripts.py --inputConfig config/${TPRIMEPROC}_${YEAR}.py --mode calcPhotonSyst
+    if $RUN; then
+        python3 RunSignalScripts.py --inputConfig config/${TPRIMEPROC}_${YEAR}.py --mode calcPhotonSyst
+    fi
+fi
+
+echo python3 RunSignalScripts.py --inputConfig config/${TPRIMEPROC}_${YEAR}.py --mode signalFit --modeOpts "--doPlots ${SKIPSYSTEMATICS} --skipVertexScenarioSplit"
 if $RUN; then
-    python3 RunSignalScripts.py --inputConfig config/${TPRIMEPROC}_${YEAR}.py --mode signalFit --modeOpts "--doPlots --skipSystematics --skipVertexScenarioSplit"
+    python3 RunSignalScripts.py --inputConfig config/${TPRIMEPROC}_${YEAR}.py --mode signalFit --modeOpts "--doPlots ${SKIPSYSTEMATICS} --skipVertexScenarioSplit"
 fi
 # getting following error after plotting, will figure out later
 ## Traceback (most recent call last):
