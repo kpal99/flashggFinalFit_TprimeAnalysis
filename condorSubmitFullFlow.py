@@ -71,7 +71,7 @@ def condorSubmitFullFlow(args):
 
     print(f"Created: {sub_path}")
 
-    if not args.noSubmission:
+    if not args.printOnly:
         os.system(f"condor_submit {sub_path}")
 
 
@@ -82,7 +82,7 @@ def main():
     parser.add_argument('--plotsOutputDir', required=True, help="Output directory for plots")
     parser.add_argument('--tprimeMass', required=True, help="Tprime masses comma separated. Jobs for each mass,decay width combination")
     parser.add_argument('--tprimeDecayWidth', required=True, help="Tprime decay widths comma separated")
-    parser.add_argument('--noSubmission', action='store_true', help="Do not submit jobs, only create submission files")
+    parser.add_argument('--printOnly', action='store_true', help="Do not submit jobs, only create submission files")
 
     args = parser.parse_args(None if sys.argv[1:] else ['--help'])
     condorSubmitFullFlow(args)
