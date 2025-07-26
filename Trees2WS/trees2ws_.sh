@@ -23,12 +23,18 @@ done
 
 cd $(dirname $0)
 mkdir -pv $INPUTDIR/$TPRIMEPROC/ws
+
 SYSTEMATICS=""
 if [ $YEAR = "2016" ]; then
     SYSTEMATICS="--doSystematics"
+elif [ $YEAR = "2017" ]; then
+    :
 elif [ $YEAR = "2018" ]; then
     SYSTEMATICS="--doSystematics"
+elif [ $YEAR = "2022" ]; then
+    :
 fi
+
 # making Tprime workspaces
 for mode in Sch; # Tch Int;
 do
