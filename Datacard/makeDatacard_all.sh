@@ -26,9 +26,9 @@ do
     do
         TPRIMEPROC=TprimeM"$m"Decay"$d"pct
         if $RUN; then
-            ./makeDatacard_.sh -y $YEAR -s $TPRIMEPROC
+            ./makeDatacard_.sh -y $YEAR -s $TPRIMEPROC -e
         else
-            ./makeDatacard_.sh -y $YEAR -s $TPRIMEPROC -n
+            ./makeDatacard_.sh -y $YEAR -s $TPRIMEPROC -e -n
         fi
         [ $TEST = true ] && break
     done

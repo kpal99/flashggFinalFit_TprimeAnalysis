@@ -1,18 +1,21 @@
 #!/bin/bash
 
 RUN=true
+SYSTEMATICS=""
 # get the options passed to the script
-while getopts "nhts:y:" opt;
+while getopts "nhts:y:e" opt;
 do
 case $opt in
     n) RUN=false;;
     t) TEST=true;;
     y) YEAR=$OPTARG;;
     s) TPRIMEPROC=$OPTARG;;
+    e) SYSTEMATICS="--doSystematics";;
     h) echo "Usage: $0 [-n] [-h] [-t] -y YEAR -s TPRIMEPROC"
        echo "  -n: dry run, just print the commands to be run for any given flag"
        echo "  -t: run test scripts"
        echo "  -s: sample process to use, TPRIMEPROC"
+       echo "  -e: enable systematics, errors"
        echo "  -y: year"
        echo "  -h: print this help message"
        exit 0;;
@@ -22,12 +25,17 @@ done
 
 cd $(dirname $0)
 FINALFITDIR=$CMSSW_BASE/src/flashggFinalFit/
+
 echo
-echo python3 makeDatacard.py --ext ${TPRIMEPROC}_${YEAR} --years $YEAR --doTrueYield --skipCOWCorr --doMCStatUncertainty --saveDataFrame --output Datacard_${TPRIMEPROC}_${YEAR}
+echo ln -svf systematics_Tprime_$YEAR.py systematics.py
+echo python3 makeDatacard.py --ext ${TPRIMEPROC}_${YEAR} --years $YEAR --skipCOWCorr --doMCStatUncertainty --saveDataFrame --output Datacard_${TPRIMEPROC}_${YEAR} $SYSTEMATICS
+echo rm -v systematics.py
 echo sed -i "s|Models|Models/$YEAR/$TPRIMEPROC|g" Datacard_${TPRIMEPROC}_${YEAR}.txt
 if $RUN; then
     echo   # to add new line after output of above script
-    python3 makeDatacard.py --ext ${TPRIMEPROC}_${YEAR} --years $YEAR --doTrueYield --skipCOWCorr --doMCStatUncertainty --saveDataFrame --output Datacard_${TPRIMEPROC}_${YEAR}
+    ln -svf systematics_Tprime_$YEAR.py systematics.py
+    python3 makeDatacard.py --ext ${TPRIMEPROC}_${YEAR} --years $YEAR --skipCOWCorr --doMCStatUncertainty --saveDataFrame --output Datacard_${TPRIMEPROC}_${YEAR} $SYSTEMATICS
+    rm -v systematics.py
     sed -i "s|Models|Models/$YEAR/$TPRIMEPROC|g" Datacard_${TPRIMEPROC}_${YEAR}.txt
     mkdir -pv $FINALFITDIR/Combine/Models/$YEAR/$TPRIMEPROC/{signal,background}
     cp -v $FINALFITDIR/Signal/outdir_packaged_${TPRIMEPROC}_${YEAR}/CMS-HGG_sigfit_packaged*.root $FINALFITDIR/Combine/Models/$YEAR/$TPRIMEPROC/signal/
