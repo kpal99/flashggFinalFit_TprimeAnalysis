@@ -4,3 +4,7 @@
 - This script is steered by .jinja2 file
 - Optimized for Tprime analysis
 - Uses different set of script for running actual commands
+
+### Tip & trick
+
+- To see which script are being run, use `python3 condorSubmitFullFlow.py --printOnly` and inspect resulting script
