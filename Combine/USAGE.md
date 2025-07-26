@@ -1,10 +1,11 @@
 # Limit calculation and plotting
 
-1. Limit calculation using `./runCombine_.sh`
+1. Limit calculation using `./runCombine_all.sh`
 ```bash
-Usage: ./runCombine_.sh [-n] [-h] [-t]
+Usage: ./runCombine_all.sh [-n] [-h] [-t] -y YEAR
   -n: dry run, just print the commands to be run for any given flag
   -t: run test scripts
+  -y: year
   -h: print this help message
 ```
 
