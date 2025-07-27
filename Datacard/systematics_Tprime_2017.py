@@ -78,8 +78,8 @@ theory_systematics = [
 
 experimental_systematics = [
                 #{'name':'lumi_13p6TeV_2022','title':'lumi_13p6TeV_2022','type':'constant','prior':'lnN','correlateAcrossYears':1,'value':"1.014"},
-                {'name':'lumi_13TeV_2017','title':'lumi_13TeV_2017','type':'constant','prior':'lnN','correlateAcrossYears':1,'value':'1.023'},
-                #{'name':'lumi_13TeV_Correlated','title':'lumi_13TeV_Correlated','type':'constant','prior':'lnN','correlateAcrossYears':0,'value':{'2016':'1.012','2017':'1.023','2018':'1.025'}},
+                #{'name':'lumi_13TeV_2017','title':'lumi_13TeV_2017','type':'constant','prior':'lnN','correlateAcrossYears':1,'value':'1.023'},
+                {'name':'lumi_13TeV_Correlated','title':'lumi_13TeV_Correlated','type':'constant','prior':'lnN','correlateAcrossYears':0,'value':{'2016':'1.012','2017':'1.023','2018':'1.025'}},
                 #{'name':'weight_Pileup','title':'CMS_hgg_PileupWeight','type':'factory','prior':'lnN','correlateAcrossYears':1},
                 #{'name':'weight_TriggerSF','title':'CMS_hgg_TriggerWeight','type':'factory','prior':'lnN','correlateAcrossYears':1},
                 #{'name':'weight_ElectronVetoSF','title':'CMS_hgg_ElectronVetoSF','type':'factory','prior':'lnN','correlateAcrossYears':1},
