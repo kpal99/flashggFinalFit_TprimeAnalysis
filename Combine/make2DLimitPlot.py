@@ -8,6 +8,9 @@ ROOT.gStyle.SetOptStat(0)
 ROOT.gROOT.SetBatch(True)
 ROOT.gErrorIgnoreLevel = ROOT.kWarning
 
+lumiMap = {"2016": 36.3, "2017": 41.5, "2018": 59.8, "Run2": 138, "2022": 34.6, "2023": 27.2} # in fb
+energyMap = {"2016": 13, "2017": 13, "2018": 13, "Run2": 13, "2022": 13.6, "2023": 13.6}
+
 def getLimitFromFile(filename):
     try:
         file_ = ROOT.TFile.Open(filename, "READ")
@@ -26,10 +29,15 @@ def getLimitFromFile(filename):
     qlimit = np.zeros(1, dtype=np.float64)
     tree_.SetBranchAddress("limit", qlimit)
 
+    getEntryArray = []
     for ievent in range(tree_.GetEntries()):
         tree_.GetEntry(ievent)
-        if ievent == 2:  # Expected limit
-            return round(qlimit[0], 1)
+        getEntryArray.append(qlimit[0])
+
+    if len(getEntryArray) > 2:
+        return round(getEntryArray[2], 1)
+    else:
+        return round(getEntryArray[-1], 1)
 
     return None
 
@@ -40,7 +48,7 @@ def make2DLimitPlot(args):
     hist = ROOT.TH2F("limit2D", ";m_{T} [GeV]; \Gamma / m_{T} [%];", len(massList), 0, len(massList), len(decayWidthList), 0, len(decayWidthList))
 
     hist.GetZaxis().SetTitle("95% CL limit on #mu")
-    hist.GetZaxis().SetTitleOffset(1.2)
+    hist.GetZaxis().SetTitleOffset(1.25)
 
     # Label bins manually for aesthetics
     for ix, m in enumerate(massList):
@@ -51,7 +59,7 @@ def make2DLimitPlot(args):
     for ix, mass in enumerate(massList):
         for iy, decay in enumerate(decayWidthList):
             tprimeProc = f"TprimeM{mass}Decay{decay}pct"
-            file_name = f"higgsCombine_{tprimeProc}.AsymptoticLimits.mH{args.mH}.root"
+            file_name = f"higgsCombine_{tprimeProc}_{args.year}.AsymptoticLimits.mH{args.mH}.root"
             limit = getLimitFromFile(file_name)
             if limit is not None:
                 hist.SetBinContent(ix + 1, iy + 1, limit)
@@ -72,9 +80,16 @@ def make2DLimitPlot(args):
     tex2 = ROOT.TLatex()
     tex2.SetNDC()
     tex2.SetTextSize(0.04)
-    tex2.DrawLatex(0.66, 0.92, "#bf{41.5 fb^{-1} (13 TeV)}")
 
-    outputFile = f"{args.outDir}/limit_2D"
+    year = args.year
+    lumi = lumiMap[year]
+    energy = energyMap[year]
+    if energy == 13:
+        tex2.DrawLatex(0.66, 0.91, f"#bf{{{lumi} fb^{{-1}} ({energy} TeV)}}")
+    elif energy == 13.6:
+        tex2.DrawLatex(0.65, 0.91, f"#bf{{{lumi} fb^{{-1}} ({energy} TeV)}}")
+
+    outputFile = f"{args.outDir}/limit_2D_{args.year}"
     canvas.SaveAs(f"{outputFile}.png")
     canvas.SaveAs(f"{outputFile}.pdf")
     canvas.SaveAs(f"{outputFile}.root")
@@ -86,6 +101,7 @@ def make2DLimitPlot(args):
 def main():
     parser = argparse.ArgumentParser(description="Plot expected asymptotic limits in 1D or 2D")
     parser.add_argument("--outDir", required=True, help="Output directory")
+    parser.add_argument("--year", default="", help="Year that's written in higgAnalysis filename")
     parser.add_argument("--mH", default=125.38, type=float, help="Higgs mass used for limit extraction, default is 125.38")
 
     args = parser.parse_args(None if sys.argv[1:] else ['--help'])
