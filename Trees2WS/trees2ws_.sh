@@ -46,8 +46,18 @@ do
     fi
 done
 
+HIGGSMODES=("GG2H" "TTH" "VBF" "VH")
+if [ $YEAR = "2016" ]; then
+    HIGGSMODES+=("THQ")
+elif [ $YEAR = "2017" ]; then
+    HIGGSMODES+=("THQ")
+elif [ $YEAR = "2018" ]; then
+    :
+elif [ $YEAR = "2022" ]; then
+    :
+fi
 # making higgs workspaces
-for higgsMode in GG2H THQ TTH VBF VH;
+for higgsMode in ${HIGGSMODES[@]};
 do
     echo python3 trees2ws.py --inputConfig config_${YEAR}.py --inputTreeFile $INPUTDIR/$TPRIMEPROC/output_M125_$higgsMode.root --productionMode $higgsMode --year $YEAR $SYSTEMATICS
     if $RUN; then
