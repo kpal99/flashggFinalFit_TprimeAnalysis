@@ -12,7 +12,7 @@ signalScriptCfg = {
 #  'ext':'Tprime%s_%s'%(_Tmass,_year),
   'ext':'{{ procs }}_{{ year }}',
 #  'analysis':'Tprime_%s'%_Tmass, # To specify which replacement dataset mapping (defined in ./python/replacementMap.py)
-  'analysis':'{{ procs }}',
+  'analysis':'{{ procs }}-Run3',
   'year': '{{ year }}',
 #  'massPoints':'120,125,130',
   'massPoints':'125',
