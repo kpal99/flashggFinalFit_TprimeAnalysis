@@ -12,7 +12,11 @@ ROOT.gErrorIgnoreLevel = ROOT.kWarning
 
 def makeBrazilPlot(args):
     massList = [700, 800, 900, 1000, 1100, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600]
-    decayWidthList = [5]
+    try:
+        decayWidthList = args.decayWidth.split(",")
+    except AttributeError:
+        decayWidthList = [args.decayWidth]
+    decayWidthList = [int(d) for d in decayWidthList]
     massCount = len(massList)
 
     x = np.zeros(massCount)
@@ -29,10 +33,10 @@ def makeBrazilPlot(args):
     for mass in massList:
         i += 1
         tprimeProc = f"TprimeM{mass}Decay{decayWidthList[0]}pct"
+        file_name = f"higgsCombine_{tprimeProc}_{args.year}.AsymptoticLimits.mH{args.mH}.root"
         tprime_xs[i] = getCrossSection(f"{tprimeProc}Sch", args.csvFile)
 
         # Open ROOT file
-        file_name = f"higgsCombine_{tprimeProc}.AsymptoticLimits.mH{args.mH}.root"
         file_ = ROOT.TFile.Open(file_name, "READ")
         if not file_ or file_.IsZombie():
             print(f"Error: Could not open {file_name}")
