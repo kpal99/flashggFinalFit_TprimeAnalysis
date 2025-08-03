@@ -1,0 +1,3 @@
+[submodule "tHgg_utils"]
+	path = tHgg_utils
+	url = ssh://git@gitlab.cern.ch:7999/kpal/thgg_utils.git
