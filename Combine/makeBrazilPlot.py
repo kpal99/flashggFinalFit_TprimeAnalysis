@@ -3,23 +3,12 @@ import csv
 import ROOT
 import numpy as np
 import sys
+from tHgg_utils.utils import lumiMap, energyMap, getCrossSection
 
 ROOT.gStyle.SetOptStat(0)
 ROOT.gROOT.SetBatch(True)  # Disable graphical output for batch mode
 ROOT.gErrorIgnoreLevel = ROOT.kWarning
 
-def getCrossSection(coreName, csvFile):
-    with open(csvFile) as f:
-        csvReader = csv.reader(f)
-        for row in csvReader:
-            processName, xsStr, brStr = row
-            if processName == coreName:
-                xs_pb = float(xsStr)
-                br = float(brStr)
-                break
-    # convert to xs_fb times Br(H -> dipho)
-    xs = xs_pb * 1000 * br
-    return xs
 
 def makeBrazilPlot(args):
     massList = [700, 800, 900, 1000, 1100, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600]
