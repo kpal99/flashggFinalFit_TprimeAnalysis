@@ -717,7 +717,7 @@ int main(int argc, char* argv[]){
 			intL  = intLumi_;
 			sqrts = (RooRealVar*)inWS->var("SqrtS");
 			if (!sqrts){ sqrts = new RooRealVar("SqrtS","SqrtS",13); }
-		std::cout << "[INFO] got intL and sqrts " << intL << ", " << sqrts << std::endl;
+		std::cout << "[INFO] got intL and sqrts " << *intL << ", " << *sqrts << std::endl;
 
 
 		} else {
@@ -727,7 +727,7 @@ int main(int argc, char* argv[]){
 		}
 		outputws->import(*intL);
 		outputws->import(*sqrts);
-		std::cout << "[INFO] got intL and sqrts " << intL << ", " << sqrts << std::endl;
+		std::cout << "[INFO] got intL and sqrts " << *intL << ", " << *sqrts << std::endl;
 	}
 
 	vector<string> functionClasses;
@@ -752,7 +752,7 @@ int main(int argc, char* argv[]){
 
 	PdfModelBuilder pdfsModel;
 	RooRealVar *mass = (RooRealVar*)inWS->var("CMS_hgg_mass");
-	std:: cout << "[INFO] Got mass from ws " << mass << std::endl;
+	std:: cout << "[INFO] Got mass from ws " << *mass << std::endl;
 	pdfsModel.setObsVar(mass);
 	double upperEnvThreshold = 0.1; // upper threshold on delta(chi2) to include function in envelope (looser than truth function)
 
