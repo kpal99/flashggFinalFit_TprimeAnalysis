@@ -56,7 +56,7 @@ bool BLIND = true;
 bool runFtestCheckWithToys=false;
 int mgg_low =100;
 int mgg_high =180;
-int nBinsForMass = 4*(mgg_high-mgg_low);
+int nBinsForMass = 1*(mgg_high-mgg_low);
 
 RooRealVar *intLumi_ = new RooRealVar("IntLumi","hacked int lumi", 1000.);
 
