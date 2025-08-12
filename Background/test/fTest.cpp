@@ -377,7 +377,6 @@ void plot(RooRealVar *mass, RooMultiPdf *pdfs, RooCategory *catIndex, RooDataSet
   TCanvas *canv = new TCanvas();
   ///start extra bit for ratio plot///
   RooHist *plotdata = (RooHist*)plot->getObject(plot->numItems()-1);
-  bool doRatioPlot_=1;
   TPad *pad1 = new TPad("pad1","pad1",0,0.25,1,1);
   TPad *pad2 = new TPad("pad2","pad2",0,0,1,0.35);
   pad1->SetBottomMargin(0.18);
@@ -780,28 +779,16 @@ int main(int argc, char* argv[]){
 		} else {
 			catname = Form("cat%d",cat);
 		}
+
 		RooDataSet *dataFull;
-		RooDataSet *dataFull0;
-		if (isData_) {
-    dataFull = (RooDataSet*)inWS->data(Form("Data_13TeV_%s",catname.c_str()));
-    /*dataFull= (RooDataSet*) dataFull0->emptyClone();
-    for (int i =0 ; i < dataFull0->numEntries() ; i++){
-    double m = dataFull0->get(i)->getRealValue("CMS_hgg_mass");
-    //if (m <(mgg_low+0.01) or m > (mgg_high-0.01)) 
-
-    if (m==mgg_low){
-    std::cout << "dataset mass m="<< m << std::endl;
-    continue;
-    }
-    dataFull->add(*dataFull0->get(),1.0);
-    }*/
-		if (verbose) std::cout << "[INFO] opened data for  "  << Form("Data_%s",catname.c_str()) <<" - " << dataFull <<std::endl;
-    }
-		else 
-    {dataFull = (RooDataSet*)inWS->data(Form("data_mass_%s",catname.c_str()));
-		if (verbose) std::cout << "[INFO] opened data for  "  << Form("data_mass_%s",catname.c_str()) <<" - " << dataFull <<std::endl;
-    }
-
+        if (isData_) {
+        dataFull = (RooDataSet*)inWS->data(Form("Data_13TeV_%s",catname.c_str()));
+            if (verbose) std::cout << "[INFO] opened data for  "  << Form("Data_%s",catname.c_str()) <<" - " << dataFull <<std::endl;
+        }
+            else
+        {dataFull = (RooDataSet*)inWS->data(Form("data_mass_%s",catname.c_str()));
+            if (verbose) std::cout << "[INFO] opened data for  "  << Form("data_mass_%s",catname.c_str()) <<" - " << dataFull <<std::endl;
+        }
 
 		mass->setBins(nBinsForMass);
 		RooDataSet *data;
