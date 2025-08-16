@@ -1,10 +1,3 @@
-globalXSBRMap['{{ process }}-Run3'] = od()
-globalXSBRMap['{{ process }}-Run3']['decay'] = {'mode':'hgg'}
-globalXSBRMap['{{ process }}-Run3']['{{ process }}Sch'] = {'mode':'constant','factor': {{ xsSch }}}
-globalXSBRMap['{{ process }}-Run3']['{{ process }}Tch'] = {'mode':'constant','factor': {{ xsTch }}}
-globalXSBRMap['{{ process }}-Run3']['{{ process }}Int'] = {'mode':'constant','factor': {{ xsInt }}}
-globalXSBRMap['TprimeM2600Decay30pct']['GG2H'] = {'mode':'ggH'}
-globalXSBRMap['TprimeM2600Decay30pct']['THQ'] = {'mode':'tHq'}
-globalXSBRMap['TprimeM2600Decay30pct']['TTH'] = {'mode':'ttH'}
-globalXSBRMap['TprimeM2600Decay30pct']['VBF'] = {'mode':'qqH'}
-globalXSBRMap['TprimeM2600Decay30pct']['VH'] = {'mode':'constant','factor': {{xsVH}}}
+globalXSBRMap['TprimeRun{{ run }}']['{{ process }}Sch'] = {'mode':'constant','factor': {{ xsSch }}}
+globalXSBRMap['TprimeRun{{ run }}']['{{ process }}Tch'] = {'mode':'constant','factor': {{ xsTch }}}
+globalXSBRMap['TprimeRun{{ run }}']['{{ process }}Int'] = {'mode':'constant','factor': {{ xsInt }}}
