@@ -1,7 +1,7 @@
 # Python script to hold XS * BR for normalisation of signal models
 from collections import OrderedDict as od
 from commonObjects import *
-  
+
 # Add analyses to globalReplacementMap. See "STXS" as an example
 globalXSBRMap = od()
 
@@ -29,7 +29,7 @@ globalXSBRMap['example']['THW'] = {'mode':'tHW'}
 # ...
 
 # For tutorial analysis: use 13.6 TeV cross sections and branching fraction
-# These are not yet stored in Combine, so we will use the constant-factor approach 
+# These are not yet stored in Combine, so we will use the constant-factor approach
 # Setting the values at MH=125.38 GeV
 globalXSBRMap['tutorial'] = od()
 globalXSBRMap['tutorial']['decay'] = {'mode':'hgg'}
@@ -586,3 +586,50 @@ globalXSBRMap['TprimeRun3']['TprimeM2600Decay30pctSch'] = {'mode':'constant','fa
 globalXSBRMap['TprimeRun3']['TprimeM2600Decay30pctTch'] = {'mode':'constant','factor': 8.376754000000149e-06}
 globalXSBRMap['TprimeRun3']['TprimeM2600Decay30pctInt'] = {'mode':'constant','factor': -0.00118278507765}
 
+globalXSBRMap['TprimeRun2nwa'] = od()
+globalXSBRMap['TprimeRun2nwa']['decay'] = {'mode':'hgg'}
+globalXSBRMap['TprimeRun2nwa']['GG2H'] = {'mode':'ggH'}
+globalXSBRMap['TprimeRun2nwa']['THQ'] = {'mode':'tHq'}
+globalXSBRMap['TprimeRun2nwa']['TTH'] = {'mode':'ttH'}
+globalXSBRMap['TprimeRun2nwa']['VBF'] = {'mode':'qqH'}
+globalXSBRMap['TprimeRun2nwa']['VH'] = {'mode':'constant','factor': 2.257}
+
+globalXSBRMap['TprimeRun2nwa']['TprimeM700Decay5pctSch'] = {'mode':'constant','factor': 0.20112199999999997}
+globalXSBRMap['TprimeRun2nwa']['TprimeM700Decay5pctTch'] = {'mode':'constant','factor': 0}
+globalXSBRMap['TprimeRun2nwa']['TprimeM700Decay5pctInt'] = {'mode':'constant','factor': 0}
+
+globalXSBRMap['TprimeRun2nwa']['TprimeM800Decay5pctSch'] = {'mode':'constant','factor': 0.104193}
+globalXSBRMap['TprimeRun2nwa']['TprimeM800Decay5pctTch'] = {'mode':'constant','factor': 0}
+globalXSBRMap['TprimeRun2nwa']['TprimeM800Decay5pctInt'] = {'mode':'constant','factor': 0}
+
+globalXSBRMap['TprimeRun2nwa']['TprimeM900Decay5pctSch'] = {'mode':'constant','factor': 0.056977}
+globalXSBRMap['TprimeRun2nwa']['TprimeM900Decay5pctTch'] = {'mode':'constant','factor': 0}
+globalXSBRMap['TprimeRun2nwa']['TprimeM900Decay5pctInt'] = {'mode':'constant','factor': 0}
+
+globalXSBRMap['TprimeRun2nwa']['TprimeM1000Decay5pctSch'] = {'mode':'constant','factor': 0.032915}
+globalXSBRMap['TprimeRun2nwa']['TprimeM1000Decay5pctTch'] = {'mode':'constant','factor': 0}
+globalXSBRMap['TprimeRun2nwa']['TprimeM1000Decay5pctInt'] = {'mode':'constant','factor': 0}
+
+globalXSBRMap['TprimeRun2nwa']['TprimeM1100Decay5pctSch'] = {'mode':'constant','factor': 0.019680899999999998}
+globalXSBRMap['TprimeRun2nwa']['TprimeM1100Decay5pctTch'] = {'mode':'constant','factor': 0}
+globalXSBRMap['TprimeRun2nwa']['TprimeM1100Decay5pctInt'] = {'mode':'constant','factor': 0}
+
+globalXSBRMap['TprimeRun2nwa']['TprimeM1200Decay5pctSch'] = {'mode':'constant','factor': 0.0121672}
+globalXSBRMap['TprimeRun2nwa']['TprimeM1200Decay5pctTch'] = {'mode':'constant','factor': 0}
+globalXSBRMap['TprimeRun2nwa']['TprimeM1200Decay5pctInt'] = {'mode':'constant','factor': 0}
+
+globalXSBRMap['TprimeRun2nwa']['TprimeM1400Decay5pctSch'] = {'mode':'constant','factor': 0.0049881948097861475}
+globalXSBRMap['TprimeRun2nwa']['TprimeM1400Decay5pctTch'] = {'mode':'constant','factor': 0}
+globalXSBRMap['TprimeRun2nwa']['TprimeM1400Decay5pctInt'] = {'mode':'constant','factor': 0}
+
+globalXSBRMap['TprimeRun2nwa']['TprimeM1600Decay5pctSch'] = {'mode':'constant','factor': 0.002211555284472077}
+globalXSBRMap['TprimeRun2nwa']['TprimeM1600Decay5pctTch'] = {'mode':'constant','factor': 0}
+globalXSBRMap['TprimeRun2nwa']['TprimeM1600Decay5pctInt'] = {'mode':'constant','factor': 0}
+
+globalXSBRMap['TprimeRun2nwa']['TprimeM1800Decay5pctSch'] = {'mode':'constant','factor': 0.001041436809704427}
+globalXSBRMap['TprimeRun2nwa']['TprimeM1800Decay5pctTch'] = {'mode':'constant','factor': 0}
+globalXSBRMap['TprimeRun2nwa']['TprimeM1800Decay5pctInt'] = {'mode':'constant','factor': 0}
+
+globalXSBRMap['TprimeRun2nwa']['TprimeM2000Decay5pctSch'] = {'mode':'constant','factor': 0.0005120643048699948}
+globalXSBRMap['TprimeRun2nwa']['TprimeM2000Decay5pctTch'] = {'mode':'constant','factor': 0}
+globalXSBRMap['TprimeRun2nwa']['TprimeM2000Decay5pctInt'] = {'mode':'constant','factor': 0}
