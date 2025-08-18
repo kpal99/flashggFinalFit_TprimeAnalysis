@@ -22,9 +22,14 @@ def xsbr(xsJsonFile):
     for tprimeMass in tprimeMassList:
         for decayWidth in decayWidthList:
             process = f"TprimeM{tprimeMass}Decay{decayWidth}pct"
-            xsSch = eval(xsData[f"{process}Sch"])
-            xsTch = eval(xsData[f"{process}Tch"])
-            xsInt = eval(xsData[f"{process}Int"])
+            try: xsSch = eval(xsData[f"{process}Sch"])
+            except KeyError: continue
+
+            try: xsTch = eval(xsData[f"{process}Tch"])
+            except KeyError: xsTch = 0  # for NWA case
+
+            try: xsInt = eval(xsData[f"{process}Int"])
+            except KeyError: xsInt = 0  # for NWA case
             print(template.render(
                 run = run,
                 process = process,
