@@ -100,7 +100,10 @@ if cats == 'auto':
 f = ROOT.TFile(opt.inputTreeFile)
 for treeName in listOfTreeNames:
     tree = f.Get(treeName)
-    tree.SetAlias("CMS_hgg_mass","mass")
+    listOfBranches = [b.GetName() for b in tree.GetListOfBranches()]
+    # if CMS_hgg_mass not in tree, add it as an alias
+    if "CMS_hgg_mass" not in listOfBranches:
+        tree.SetAlias("CMS_hgg_mass","mass")
 
 # Open output ROOT file and initiate workspace to store RooDataSets
 if opt.outputWSDir is not None: outputWSDir = opt.outputWSDir+"/ws"
