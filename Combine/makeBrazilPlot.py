@@ -34,7 +34,7 @@ def makeBrazilPlot(args):
         i += 1
         tprimeProc = f"TprimeM{mass}Decay{decayWidthList[0]}pct"
         file_name = f"higgsCombine_{tprimeProc}_{args.year}.AsymptoticLimits.mH{args.mH}.root"
-        tprime_xs[i] = getCrossSection(f"{tprimeProc}Sch", args.csvFile)
+        #tprime_xs[i] = getCrossSection(f"{tprimeProc}Sch", args.jsonFile)
 
         # Open ROOT file
         file_ = ROOT.TFile.Open(file_name, "READ")
