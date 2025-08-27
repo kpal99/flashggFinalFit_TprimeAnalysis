@@ -14,7 +14,7 @@ case $opt in
     h) echo "Usage: $0 -y YEAR -d INPUTDIR -p PLOTDIR [-h] [-n] [-t]"
        echo "  -h: print this help"
        echo "  -n: dry run, just print the commands to be run for any given flag"
-       echo "  -y: year 2016,2017,2018,combined,2022,2023,22plus23"
+       echo "  -y: year 2016,2017,2018,Run2,2022,2023,22plus23"
        echo "  -d: input directory"
        echo "  -t: test, run for single mass, decay width"
        echo "  -p: plot directory to sync plots to"
