@@ -2,6 +2,7 @@
 
 RUN=true
 TEST=false
+LIST=false
 # get the options passed to the script
 # get inputDir as argument
 while getopts "nhtld:y:" opt

@@ -2,14 +2,16 @@
 
 RUN=true
 TEST=false
+LIST=false
 # get the options passed to the script
-while getopts "nhtd:y:p:" opt;
+while getopts "nhltd:y:p:" opt;
 do
 case $opt in
     n) RUN=false;;
+    l) LIST=true;;
+    t) TEST=true;;
     d) INPUTDIR=$OPTARG;;
     y) YEAR=$OPTARG;;
-    t) TEST=true;;
     p) PLOTDIR=$OPTARG;;
     h) echo "Usage: $0 [-n] -d INPUTDIR -y YEAR [-t] [-h] -p PLOTDIR"
        echo "  -d: input directory"
@@ -31,6 +33,12 @@ do
     for d in 5 10 20 30
     do
         TPRIMEPROC=TprimeM"$m"Decay"$d"pct
+        if $LIST; then
+            echo ./runfTest_.sh -d $INPUTDIR -y $YEAR -p $PLOTDIR -s $TPRIMEPROC
+            [ $TEST = true ] && break
+            continue
+        fi
+
         if $RUN; then
             ./runfTest_.sh -d $INPUTDIR -y $YEAR -p $PLOTDIR -s $TPRIMEPROC
         else

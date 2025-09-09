@@ -2,6 +2,7 @@
 
 RUN=true
 TEST=false
+LIST=false
 # get the options passed to the script
 while getopts "nhtly:d:p:" opt;
 do
