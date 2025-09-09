@@ -26,6 +26,7 @@ def get_options():
   parser = OptionParser()
   parser.add_option('--inputWSDirMap', dest='inputWSDirMap', default='2016:/vols/cms/jl2117/hgg/ws/UL/Sept20/MC_final/signal_2016', help="Map. Format: year=inputWSDir (separate years by comma)")
   parser.add_option('--cat', dest='cat', default='', help='Analysis category')
+  parser.add_option('--catExt', dest='catExt', default='', help='Analysis category extension')
   parser.add_option('--procs', dest='procs', default='auto', help='Comma separated list of signal processes. auto = automatically inferred from input workspaces')
   parser.add_option('--ext', dest='ext', default='', help='Extension for saving') 
   parser.add_option('--mass', dest='mass', default='125', help='Input workspace mass')
@@ -96,7 +97,7 @@ for year in years:
     _proc_s0 = procToData(proc.split("_")[0])
 
     # Define category: add year tag if not merging
-    if opt.mergeYears: _cat = opt.cat
+    if opt.mergeYears: _cat = "%s_%s"%(opt.cat,opt.catExt) if opt.catExt else opt.cat
     else: _cat = "%s_%s"%(opt.cat,year)
 
     # Input flashgg ws 
@@ -117,7 +118,7 @@ for year in years:
     # Input model ws 
     if opt.cat == "NOTAG": _modelWSFile, _model = '-', '-'
     else:
-      _modelWSFile = "%s/CMS-HGG_sigfit_%s_%s_%s.root"%(opt.sigModelWSDir,opt.sigModelExt,opt.ext,_cat)
+      _modelWSFile = "%s/CMS-HGG_sigfit_%s_%s_%s.root"%(opt.sigModelWSDir,opt.sigModelExt,opt.ext,opt.cat)
       _model = "%s_%s:%s_%s"%(outputWSName__,sqrts__,outputWSObjectTitle__,_id)
 
     # Extract rate from lumi
@@ -135,10 +136,10 @@ if( not opt.skipBkg)&( opt.cat != "NOTAG" ):
   _proc_bkg = "bkg_mass"
   _proc_data = "data_obs"
   if opt.mergeYears:
-    _cat = opt.cat
+    _cat = "%s_%s"%(opt.cat,opt.catExt) if opt.catExt else opt.cat
     _modelWSFile = "%s/CMS-HGG_%s_%s_%s.root"%(opt.bkgModelWSDir,opt.bkgModelExt,opt.ext,_cat)
     _model_bkg = "%s:CMS_%s_%s_%s_bkgshape"%(bkgWSName__,decayMode,_cat,sqrts__)
-    _model_data = "%s:roohist_data_mass_%s"%(bkgWSName__,_cat)
+    _model_data = "%s:roohist_data_mass_%s"%(bkgWSName__,opt.cat)
     _proc_s0 = '-' #not needed for data/bkg
     _inputWSFile = '-' #not needed for data/bkg
     _nominalDataName = '-' #not needed for data/bkg

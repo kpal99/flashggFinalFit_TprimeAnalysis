@@ -13,6 +13,7 @@ def get_options():
   parser = OptionParser()
   # Input details
   parser.add_option('--cats', dest='cats', default='auto', help="Comma separated list of categories. auto = automatically inferred from inputWSDirMap")
+  parser.add_option('--catExt', dest='catExt', default='', help='Analysis category extension')
   parser.add_option('--inputWSDirMap', dest='inputWSDirMap', default='2016=/vols/cms/jl2117/hgg/ws/UL/Sept20/MC_final/signal_2016', help="Map. Format: year=inputWSDir (separate years by comma)")
   parser.add_option('--procs', dest='procs', default='auto', help='Comma separated list of signal processes. auto = automatically inferred from input workspaces')
   parser.add_option('--ext', dest='ext', default='test', help='Extension for saving')
@@ -49,6 +50,7 @@ def leave():
 # Store all opts in orderedDict for submissionTools
 options = od()
 options['cats'] = opt.cats
+options['catExt'] = opt.catExt
 options['inputWSDirMap'] = opt.inputWSDirMap
 options['procs'] = opt.procs
 options['ext'] = opt.ext
