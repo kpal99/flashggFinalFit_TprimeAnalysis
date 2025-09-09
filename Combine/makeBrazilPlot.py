@@ -29,11 +29,12 @@ def makeBrazilPlot(args):
     tprime_xs = np.zeros(massCount)
     massLengthZeros = np.zeros(massCount)
 
+    year = args.year
     i = -1
     for mass in massList:
         i += 1
         tprimeProc = f"TprimeM{mass}Decay{decayWidthList[0]}pct"
-        file_name = f"higgsCombine_{tprimeProc}_{args.year}.AsymptoticLimits.mH{args.mH}.root"
+        file_name = f"higgsCombine_{tprimeProc}_{year}.AsymptoticLimits.mH{args.mH}.root"
         #tprime_xs[i] = getCrossSection(f"{tprimeProc}Sch", args.jsonFile)
 
         # Open ROOT file
@@ -152,7 +153,6 @@ def makeBrazilPlot(args):
     tex3 = ROOT.TLatex()
     tex3.SetNDC()
     tex3.SetTextSize(0.04)
-    year = args.year
     lumi = lumiMap[year]
     energy = energyMap[year]
     if energy == 13:
@@ -176,7 +176,10 @@ def makeBrazilPlot(args):
     canvas.Update()
 
     # Save outputs
-    fileName = f"{args.outDir}/limit_mu_decay{decayWidthList[0]}pct"
+    if args.outFile:
+        fileName = f"{args.outDir}/{args.outFile}"
+    else:
+        fileName = f"{args.outDir}/{year}_limit_mu_decay{decayWidthList[0]}pct"
     canvas.SaveAs(f"{fileName}.png")
     canvas.SaveAs(f"{fileName}.pdf")
     canvas.SaveAs(f"{fileName}.C")
@@ -275,6 +278,7 @@ def main():
 # Add the arguments
     parser.add_argument("--jsonFile", help="Name of the XS json file")
     parser.add_argument("--outDir", required=True, help="Name of the output directory")
+    parser.add_argument("--outFile", help="Name of the limit file")
     parser.add_argument("--year", required=True, default="", help="Year that's written in higgAnalysis filename")
     parser.add_argument("--decayWidth", default=5, help="Decay width of Higgs used for limit extraction, default is 5")
     parser.add_argument("--mH", default=125.38, type=float, help="Mass of Higgs using during asymptotic limit calculations, default is 125.38")
