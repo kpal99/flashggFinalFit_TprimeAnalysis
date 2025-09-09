@@ -2,12 +2,14 @@
 
 RUN=true
 TEST=false
+LIST=false
 # get the options passed to the script
-while getopts "nhty:p:" opt;
+while getopts "nhlty:p:" opt;
 do
 case $opt in
     n) RUN=false;;
     t) TEST=true;;
+    l) LIST=true;;
     y) YEAR=$OPTARG;;
     p) PLOTDIR=$OPTARG;;
     h) echo "Usage: $0 [-n] -y YEAR [-t] [-h] -p PLOTDIR"
@@ -27,6 +29,11 @@ do
     for d in 5 10 20 30
     do
         TPRIMEPROC=TprimeM"$m"Decay"$d"pct
+        if $LIST; then
+            echo ./runSignalFit_.sh -y $YEAR -p $PLOTDIR -s $TPRIMEPROC
+            [ $TEST = true ] && break
+        fi
+
         if $RUN; then
             ./runSignalFit_.sh -y $YEAR -p $PLOTDIR -s $TPRIMEPROC
         else
