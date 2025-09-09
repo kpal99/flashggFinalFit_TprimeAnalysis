@@ -3,19 +3,21 @@
 RUN=true
 TEST=false
 # get the options passed to the script
-while getopts "nhty:d:p:" opt;
+while getopts "nhtly:d:p:" opt;
 do
 case $opt in
     n) RUN=false;;
+    t) TEST=true;;
+    l) LIST=true;;
     y) YEAR=$OPTARG;;
     d) INPUTDIR=$OPTARG;;
-    t) TEST=true;;
     p) PLOTDIR=$OPTARG;;
     h) echo "Usage: $0 -y YEAR -d INPUTDIR -p PLOTDIR [-h] [-n] [-t]"
        echo "  -h: print this help"
        echo "  -n: dry run, just print the commands to be run for any given flag"
        echo "  -y: year 2016,2017,2018,Run2,2022,2023,22plus23"
        echo "  -d: input directory"
+       echo "  -l: list of processes to run"
        echo "  -t: test, run for single mass, decay width"
        echo "  -p: plot directory to sync plots to"
        exit 0;;
@@ -29,6 +31,11 @@ do
     for d in 5 10 20 30
     do
         TPRIMEPROC=TprimeM"$m"Decay"$d"pct
+        if [ $LIST = true ]; then
+            echo ./runBackground_.sh -y $YEAR -d $INPUTDIR -p $PLOTDIR -s $TPRIMEPROC
+            [ $TEST = true ] && break
+            continue
+        fi
         if $RUN; then
             ./runBackground_.sh -y $YEAR -d $INPUTDIR -p $PLOTDIR -s $TPRIMEPROC
         else
