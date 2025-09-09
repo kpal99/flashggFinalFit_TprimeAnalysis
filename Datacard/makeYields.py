@@ -118,7 +118,7 @@ for year in years:
     # Input model ws 
     if opt.cat == "NOTAG": _modelWSFile, _model = '-', '-'
     else:
-      _modelWSFile = "%s/CMS-HGG_sigfit_%s_%s_%s.root"%(opt.sigModelWSDir,opt.sigModelExt,opt.ext,opt.cat)
+      _modelWSFile = "%s/CMS-HGG_sigfit_%s_%s_%s.root"%(opt.sigModelWSDir,opt.sigModelExt,opt.ext,opt.cat if opt.catExt else _cat)
       _model = "%s_%s:%s_%s"%(outputWSName__,sqrts__,outputWSObjectTitle__,_id)
 
     # Extract rate from lumi
