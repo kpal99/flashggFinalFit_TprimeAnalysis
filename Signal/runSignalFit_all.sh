@@ -32,6 +32,7 @@ do
         if $LIST; then
             echo ./runSignalFit_.sh -y $YEAR -p $PLOTDIR -s $TPRIMEPROC
             [ $TEST = true ] && break
+            continue
         fi
 
         if $RUN; then
