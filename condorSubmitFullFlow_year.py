@@ -32,7 +32,7 @@ def condorSubmitFullFlow(args):
 
         for idx, (mass, width) in enumerate(combinations):
             sh.write(f"\nif [ $1 -eq {idx} ]; then\n")
-            with open("fullFlow.jinja2") as template:
+            with open("fullFlow_year.jinja2") as template:
                 jinjaOutput = jinja2.Template(template.read()).render(
                     pwd=current_working,
                     year=args.year,
