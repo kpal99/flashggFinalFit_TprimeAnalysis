@@ -2,6 +2,7 @@
 
 # Script for submitting signal fitting jobs for finalfitslite
 import os, sys
+import importlib.util
 from optparse import OptionParser
 from collections import OrderedDict as od
 
@@ -27,16 +28,23 @@ def leave():
   print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ RUNNING SIGNAL SCRIPTS (END) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
   exit(0)
 
+def load_config(path):
+  module_name = os.path.splitext(os.path.basename(path))[0]  # e.g., config_job1.py
+  spec = importlib.util.spec_from_file_location(module_name, path)
+  config_module = importlib.util.module_from_spec(spec)
+  sys.modules[module_name] = config_module
+  spec.loader.exec_module(config_module)
+  return config_module
+
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Extract options from config file:
 options = od()
 if opt.inputConfig != '':
   if os.path.exists( opt.inputConfig ):
 
-    #copy file to have common name and then import cfg options (dict)
-    os.system("cp %s config.py"%opt.inputConfig)
-    from config import signalScriptCfg
-    _cfg = signalScriptCfg
+    # Load the config dynamically
+    config_module = load_config(opt.inputConfig)  # e.g. 'config_job1.py'
+    _cfg = config_module.signalScriptCfg
 
     #Extract options
     options['inputWSDir']   = _cfg['inputWSDir']
@@ -58,9 +66,6 @@ if opt.inputConfig != '':
     options['jobOpts']                 = opt.jobOpts
     options['groupSignalFitJobsByCat'] = opt.groupSignalFitJobsByCat
     options['printOnly']               = opt.printOnly
-  
-    #Delete copy of file
-    os.system("rm config.py")
   
   else:
     print("[ERROR] %s config file does not exist. Leaving..."%opt.inputConfig)
