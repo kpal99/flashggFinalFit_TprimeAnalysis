@@ -29,12 +29,10 @@ FINALFITDIR=$CMSSW_BASE/src/flashggFinalFit/
 echo
 echo ln -svf systematics_Tprime_$YEAR.py systematics.py
 echo python3 makeDatacard.py --ext ${TPRIMEPROC}_${YEAR} --years $YEAR --skipCOWCorr --doMCStatUncertainty --saveDataFrame --output Datacard_${TPRIMEPROC}_${YEAR} $SYSTEMATICS
-echo sed -i "s|Models|Models/$YEAR/$TPRIMEPROC|g" Datacard_${TPRIMEPROC}_${YEAR}.txt
 if $RUN; then
     echo   # to add new line after output of above script
     ln -svf systematics_Tprime_$YEAR.py systematics.py
     python3 makeDatacard.py --ext ${TPRIMEPROC}_${YEAR} --years $YEAR --skipCOWCorr --doMCStatUncertainty --saveDataFrame --output Datacard_${TPRIMEPROC}_${YEAR} $SYSTEMATICS
-    sed -i "s|Models|Models/$YEAR/$TPRIMEPROC|g" Datacard_${TPRIMEPROC}_${YEAR}.txt
     mkdir -pv $FINALFITDIR/Combine/Models/$YEAR/$TPRIMEPROC/{signal,background}
     cp -v $FINALFITDIR/Signal/outdir_packaged_${TPRIMEPROC}_${YEAR}/CMS-HGG_sigfit_packaged*.root $FINALFITDIR/Combine/Models/$YEAR/$TPRIMEPROC/signal/
     cp -v $FINALFITDIR/Background/outdir_${TPRIMEPROC}_${YEAR}/CMS-HGG_multipdf*.root $FINALFITDIR/Combine/Models/$YEAR/$TPRIMEPROC/background/
