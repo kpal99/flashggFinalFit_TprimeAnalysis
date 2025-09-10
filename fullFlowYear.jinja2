@@ -34,6 +34,10 @@ echo ===========================================================================
 {{ pwd }}/Datacard/makeDatacard_.sh -y {{ year }} -s {{ TprimeProc }} -e
 
 echo ============================================================================
-echo ================================== runCombine =============================
+echo ================================== runCombine ==============================
 echo ============================================================================
 {{ pwd }}/Combine/runCombine_.sh -y {{ year }} -s {{ TprimeProc }}
+
+echo ================================ checkLimits ===============================
+python3 {{ pwd }}/Combine/checkLimitOutput.py {{ pwd }}/Combine/higgsCombine_{{ TprimeProc }}_{{ year }}.AsymptoticLimits.mH*.root
+exit $?

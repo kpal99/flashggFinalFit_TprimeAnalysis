@@ -44,7 +44,6 @@ def condorSubmitFullFlow(args):
                 jinjaOutput = "\n".join(jinjaOutput)
                 sh.write(jinjaOutput)
                 sh.write("\n")
-            sh.write("exit 0\n")
             sh.write("fi\n")
             sh.write("\n")
 
