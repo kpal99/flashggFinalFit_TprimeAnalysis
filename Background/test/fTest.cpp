@@ -844,8 +844,11 @@ int main(int argc, char* argv[]){
 					//thisNll = fitRes->minNll();
         bkgPdf->Print();
 					runFit(bkgPdf,data,&thisNll,&fitStatus,/*max iterations*/3);//bkgPdf->fitTo(*data,Save(true),RooFit::Minimizer("Minuit2","minimize"));
-					if (fitStatus!=0) std::cout << "[WARNING] Warning -- Fit status for " << bkgPdf->GetName() << " at " << fitStatus <<std::endl;
-       
+                    if (fitStatus!=0) {
+                      std::cout << "[WARNING] Fit FAILED for " << bkgPdf->GetName() << " (status=" << fitStatus << "). Stopping this function family." << std::endl;
+                      break; // Exit the loop for this function family
+                    }
+
 					chi2 = 2.*(prevNll-thisNll);
 					if (chi2<0. && order>1) chi2=0.;
 					if (prev_pdf!=NULL){
@@ -870,9 +873,26 @@ int main(int argc, char* argv[]){
 				counter++;
 			}
 
-			fprintf(resFile,"%15s & %d & %5.2f & %5.2f \\\\\n",funcType->c_str(),cache_order+1,chi2,prob);
-			choices.insert(pair<string,int>(*funcType,cache_order));
-			pdfs.insert(pair<string,RooAbsPdf*>(Form("%s%d",funcType->c_str(),cache_order),cache_pdf));
+            fprintf(resFile,"%15s & %d & %5.2f & %5.2f \\\\\n",funcType->c_str(),cache_order+1,chi2,prob);
+		choices.insert(pair<string,int>(*funcType,cache_order));
+
+            // --- Start of new robust logic ---
+            // The chosen PDF is from the step *before* the loop terminated.
+            RooAbsPdf *chosenPdf = cache_pdf;
+            int chosenOrder = cache_order;
+
+            // If cache_pdf is null, the loop ended after one (or zero) successes.
+            // The last successful PDF (if any) is stored in prev_pdf.
+            if (!chosenPdf && prev_pdf) {
+              chosenPdf = prev_pdf;
+              chosenOrder = prev_order;
+            }
+
+            // Only insert a valid, non-NULL PDF into the map.
+            if (chosenPdf) {
+              pdfs.insert(pair<string,RooAbsPdf*>(Form("%s%d",funcType->c_str(),chosenOrder),chosenPdf));
+            }
+            // --- End of new robust logic ---
 
 			int truthOrder = cache_order;
 
@@ -900,7 +920,11 @@ int main(int argc, char* argv[]){
 						int fitStatus=0;
 						runFit(bkgPdf,data,&thisNll,&fitStatus,/*max iterations*/3);//bkgPdf->fitTo(*data,Save(true),RooFit::Minimizer("Minuit2","minimize"));
 						//thisNll = fitRes->minNll();
-						if (fitStatus!=0) std::cout << "[WARNING] Warning -- Fit status for " << bkgPdf->GetName() << " at " << fitStatus <<std::endl;
+                        if (fitStatus!=0){
+                          std::cout << "[WARNING] Fit FAILED for " << bkgPdf->GetName() << " (status=" << fitStatus << "). Skipping for envelope." << std::endl;
+                          order++; // Increment order to avoid an infinite loop
+                          continue; // Skip to the next order
+                        }
 						double myNll = 2.*thisNll;
 						chi2 = 2.*(prevNll-thisNll);
 						if (chi2<0. && order>1) chi2=0.;
