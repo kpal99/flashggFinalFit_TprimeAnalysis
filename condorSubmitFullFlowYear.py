@@ -64,7 +64,7 @@ def condorSubmitFullFlow(args):
         sub.write("on_exit_remove = (ExitBySignal == False) && (ExitCode == 0)\n")
         sub.write("on_exit_hold = (ExitBySignal == True) && (ExitCode != 0)\n")
         sub.write("periodic_release = (NumJobStarts < 3) && ((CurrentTime - EnteredCurrentStatus) > 600)\n")
-        sub.write("max_retries = 1\n")
+        sub.write("max_retries = 3\n")
         sub.write("requirements = Machine =!= LastRemoteHost\n")
         sub.write(f"queue {len(combinations)}\n")
 
