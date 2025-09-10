@@ -77,9 +77,9 @@ def writeSubFiles(_opts):
       _f = open("%s/%s_%s.sh"%(_jobdir,_executable,c),"w")
       writePreamble(_f)
       if _opts["catExt"]:
-        _f.write("python3 %s/makeYields.py --cat %s --catExt %s --procs %s --ext %s --mass %s --inputWSDirMap %s --sigModelWSDir %s --sigModelExt %s --bkgModelWSDir %s --bkgModelExt %s %s\n"%(dwd__,c,_opts['catExt'],_opts['procs'],_opts['ext'],_opts['mass'],_opts['inputWSDirMap'],_opts['sigModelWSDir'],_opts['sigModelExt'],_opts['bkgModelWSDir'],_opts['bkgModelExt'],_opts['modeOpts']))
+        _f.write("python3 %s/makeYields.py --cat %s --catExt %s --procs %s --ext %s --mass %s --inputWSDirMap %s --sigModelWSDir %s --sigModelExt %s --bkgModelWSDir %s --bkgModelExt %s --systConfig %s %s\n"%(dwd__,c,_opts['catExt'],_opts['procs'],_opts['ext'],_opts['mass'],_opts['inputWSDirMap'],_opts['sigModelWSDir'],_opts['sigModelExt'],_opts['bkgModelWSDir'],_opts['bkgModelExt'],_opts['systConfig'],_opts['modeOpts']))
       else:
-        _f.write("python3 %s/makeYields.py --cat %s --procs %s --ext %s --mass %s --inputWSDirMap %s --sigModelWSDir %s --sigModelExt %s --bkgModelWSDir %s --bkgModelExt %s %s\n"%(dwd__,c,_opts['procs'],_opts['ext'],_opts['mass'],_opts['inputWSDirMap'],_opts['sigModelWSDir'],_opts['sigModelExt'],_opts['bkgModelWSDir'],_opts['bkgModelExt'],_opts['modeOpts']))
+        _f.write("python3 %s/makeYields.py --cat %s --procs %s --ext %s --mass %s --inputWSDirMap %s --sigModelWSDir %s --sigModelExt %s --bkgModelWSDir %s --bkgModelExt %s --systConfig %s %s\n"%(dwd__,c,_opts['procs'],_opts['ext'],_opts['mass'],_opts['inputWSDirMap'],_opts['sigModelWSDir'],_opts['sigModelExt'],_opts['bkgModelWSDir'],_opts['bkgModelExt'],_opts['systConfig'],_opts['modeOpts']))
       _f.close()
       os.system("chmod 775 %s/%s_%s.sh"%(_jobdir,_executable,c))
 

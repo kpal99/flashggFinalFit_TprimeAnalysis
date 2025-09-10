@@ -32,10 +32,8 @@ elif [ $YEAR = "2017" ]; then
     PROCS=$PROCS,THQ
 fi
 
-echo ln -svf systematics_Tprime_$YEAR.py systematics.py
-echo python3 RunYields.py --inputWSDirMap $YEAR=$INPUTDIR/$TPRIMEPROC/ws/ --cats auto --catExt $CATEXT --procs $PROCS --ext ${TPRIMEPROC}_${YEAR} --skipCOWCorr --batch local --sigModelWSDir ./Models/$YEAR/$TPRIMEPROC/signal --bkgModelWSDir ./Models/$YEAR/$TPRIMEPROC/background
+echo python3 RunYields.py --inputWSDirMap $YEAR=$INPUTDIR/$TPRIMEPROC/ws/ --cats auto --catExt $CATEXT --procs $PROCS --ext ${TPRIMEPROC}_${YEAR} --skipCOWCorr --batch local --sigModelWSDir ./Models/$YEAR/$TPRIMEPROC/signal --bkgModelWSDir ./Models/$YEAR/$TPRIMEPROC/background --systConfig systematics_Tprime_$YEAR.py
 if $RUN; then
     echo   # to add new line after output of above script
-    ln -svf systematics_Tprime_$YEAR.py systematics.py
-    python3 RunYields.py --inputWSDirMap $YEAR=$INPUTDIR/$TPRIMEPROC/ws/ --cats auto --catExt $CATEXT --procs $PROCS --ext ${TPRIMEPROC}_${YEAR} --skipCOWCorr --batch local --sigModelWSDir ./Models/$YEAR/$TPRIMEPROC/signal --bkgModelWSDir ./Models/$YEAR/$TPRIMEPROC/background
+    python3 RunYields.py --inputWSDirMap $YEAR=$INPUTDIR/$TPRIMEPROC/ws/ --cats auto --catExt $CATEXT --procs $PROCS --ext ${TPRIMEPROC}_${YEAR} --skipCOWCorr --batch local --sigModelWSDir ./Models/$YEAR/$TPRIMEPROC/signal --bkgModelWSDir ./Models/$YEAR/$TPRIMEPROC/background --systConfig systematics_Tprime_$YEAR.py
 fi

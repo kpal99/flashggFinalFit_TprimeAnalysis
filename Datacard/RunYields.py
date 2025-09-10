@@ -33,6 +33,7 @@ def get_options():
                     Defaults to accEff, meaning that all systematic weight branches include the genWeight and sum(weight_*)=acc x eff.""")
   # For systematics:
   parser.add_option('--doSystematics', dest='doSystematics', default=False, action="store_true", help="Include systematics calculations and add to datacard")
+  parser.add_option('--systConfig', dest='systConfig', default='systematics.py', help="Configuration file for systematics")
   parser.add_option('--ignore-warnings', dest='ignore_warnings', default=False, action="store_true", help="Skip errors for missing systematics. Instead output warning message")
   # For submission
   parser.add_option('--batch', dest='batch', default='IC', help='Batch')
@@ -68,6 +69,7 @@ if opt.skipCOWCorr: options['modeOpts'] += ' --skipCOWCorr'
 if opt.systWeightScheme: options['modeOpts'] += ' --systWeightScheme %s'%opt.systWeightScheme
 if opt.doSystematics: options['modeOpts'] += ' --doSystematics'
 if opt.ignore_warnings: options['modeOpts'] += ' --ignore-warnings'
+options['systConfig'] = os.path.abspath(opt.systConfig)
 options['batch'] = opt.batch
 options['queue'] = opt.queue
 options['jobOpts'] = opt.jobOpts
