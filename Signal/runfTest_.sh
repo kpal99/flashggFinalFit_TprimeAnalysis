@@ -31,7 +31,7 @@ if $RUN; then
     python3 RunSignalScripts.py --inputConfig config/${TPRIMEPROC}_${YEAR}.py --mode fTest --modeOpts "--doPlots --nProcsToFTest -1 --skipWV"
 fi
 #
-mkdir -pv $PLOTDIR/fTest/$TPRIMEPROC
+mkdir -pv $PLOTDIR/${YEAR}/fTest/$TPRIMEPROC
 rsync -ah --quiet --stats outdir_${TPRIMEPROC}_${YEAR}/fTest/Plots/ $PLOTDIR/${YEAR}/fTest/$TPRIMEPROC/
 cp -v $PLOTDIR/${YEAR}/fTest/index.php $PLOTDIR/${YEAR}/fTest/$TPRIMEPROC
 echo   # to add new line after output of above script
