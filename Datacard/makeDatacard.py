@@ -4,12 +4,12 @@ print(" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ HGG DATACARD MAKER RUN II ~~~~~~~~~~~~
 import os, sys
 import re
 from optparse import OptionParser
+import importlib.util
 import ROOT
 import pandas as pd
 import glob
 import pickle
 from collections import OrderedDict as od
-from systematics import theory_systematics, experimental_systematics, signal_shape_systematics
 
 def get_options():
   parser = OptionParser()
@@ -24,6 +24,7 @@ def get_options():
   # For yield/systematics:
   parser.add_option('--skipCOWCorr', dest='skipCOWCorr', default=False, action="store_true", help="Skip centralObjectWeight correction for events in acceptance")
   parser.add_option('--doSystematics', dest='doSystematics', default=False, action="store_true", help="Include systematics calculations and add to datacard")
+  parser.add_option('--systConfig', dest='systConfig', default='systematics.py', help="Configuration file for systematics")
   parser.add_option('--doMCStatUncertainty', dest='doMCStatUncertainty', default=False, action="store_true", help="Add uncertainty for MC stats")
   parser.add_option('--doSTXSMerging', dest='doSTXSMerging', default=False, action="store_true", help="Calculate additional migrations uncertainties for merged STXS bins (for 'mnorm' tier in systematics)")
   parser.add_option('--doSTXSScaleCorrelationScheme', dest='doSTXSScaleCorrelationScheme', default=False, action="store_true", help="Partially de-correlate scale uncertainties for different phase space regions")
@@ -56,6 +57,20 @@ for f_pkl_name in pkl_files:
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Systematics: use factory function to calculate yield variations
 if opt.doSystematics:
+  def load_config(path):
+    module_name = os.path.splitext(os.path.basename(path))[0]  # e.g., config_job1.py
+    spec = importlib.util.spec_from_file_location(module_name, path)
+    config_module = importlib.util.module_from_spec(spec)
+    sys.modules[module_name] = config_module
+    spec.loader.exec_module(config_module)
+    return config_module
+
+  #Load systematics config
+  _systConfig = load_config(opt.systConfig)
+  theory_systematics = _systConfig.theory_systematics
+  experimental_systematics = _systConfig.experimental_systematics
+  signal_shape_systematics = _systConfig.signal_shape_systematics
+
   from tools.calcSystematics import factoryType, addConstantSyst, experimentalSystFactory, theorySystFactory, groupSystematics, envelopeSystematics, renameSyst
 
   print(" ..........................................................................................")

@@ -25,12 +25,10 @@ cd $(dirname $0)
 FINALFITDIR=$CMSSW_BASE/src/flashggFinalFit/
 
 echo
-echo ln -svf systematics_Tprime_Run2.py systematics.py
-echo python3 makeDatacard.py --ext ${TPRIMEPROC}_Run2 --years 2016,2017,2018 --skipCOWCorr --doMCStatUncertainty --saveDataFrame --output Datacard_${TPRIMEPROC}_Run2 $SYSTEMATICS
+echo python3 makeDatacard.py --ext ${TPRIMEPROC}_Run2 --years 2016,2017,2018 --skipCOWCorr --doMCStatUncertainty --saveDataFrame --output Datacard_${TPRIMEPROC}_Run2 $SYSTEMATICS --systConfig systematics_Tprime_Run2.py
 if $RUN; then
     echo   # to add new line after output of above script
-    ln -svf systematics_Tprime_Run2.py systematics.py
-    python3 makeDatacard.py --ext ${TPRIMEPROC}_Run2 --years 2016,2017,2018 --skipCOWCorr --doMCStatUncertainty --saveDataFrame --output Datacard_${TPRIMEPROC}_Run2 $SYSTEMATICS
+    python3 makeDatacard.py --ext ${TPRIMEPROC}_Run2 --years 2016,2017,2018 --skipCOWCorr --doMCStatUncertainty --saveDataFrame --output Datacard_${TPRIMEPROC}_Run2 $SYSTEMATICS --systConfig systematics_Tprime_Run2.py
     mkdir -pv $FINALFITDIR/Combine/Models/Run2/$TPRIMEPROC/{signal,background}
     cp -v $FINALFITDIR/Signal/outdir_packaged_${TPRIMEPROC}_Run2/CMS-HGG_sigfit_packaged*.root $FINALFITDIR/Combine/Models/Run2/$TPRIMEPROC/signal/
     cp -v $FINALFITDIR/Background/outdir_${TPRIMEPROC}_Run2/CMS-HGG_multipdf*.root $FINALFITDIR/Combine/Models/Run2/$TPRIMEPROC/background/
