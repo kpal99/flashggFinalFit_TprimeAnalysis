@@ -26,13 +26,13 @@ FINALFITDIR=$CMSSW_BASE/src/flashggFinalFit/
 
 echo
 echo ln -svf systematics_Tprime_Run2.py systematics.py
-echo python3 makeDatacard.py --ext ${TPRIMEPROC}_${YEAR} --years 2016,2017,2018 --skipCOWCorr --doMCStatUncertainty --saveDataFrame --output Datacard_${TPRIMEPROC}_${YEAR} $SYSTEMATICS
+echo python3 makeDatacard.py --ext ${TPRIMEPROC}_Run2 --years 2016,2017,2018 --skipCOWCorr --doMCStatUncertainty --saveDataFrame --output Datacard_${TPRIMEPROC}_Run2 $SYSTEMATICS
 if $RUN; then
     echo   # to add new line after output of above script
     ln -svf systematics_Tprime_Run2.py systematics.py
-    python3 makeDatacard.py --ext ${TPRIMEPROC}_${YEAR} --years 2016,2017,2018 --skipCOWCorr --doMCStatUncertainty --saveDataFrame --output Datacard_${TPRIMEPROC}_${YEAR} $SYSTEMATICS
+    python3 makeDatacard.py --ext ${TPRIMEPROC}_Run2 --years 2016,2017,2018 --skipCOWCorr --doMCStatUncertainty --saveDataFrame --output Datacard_${TPRIMEPROC}_Run2 $SYSTEMATICS
     mkdir -pv $FINALFITDIR/Combine/Models/Run2/$TPRIMEPROC/{signal,background}
-    cp -v $FINALFITDIR/Signal/outdir_packaged_${TPRIMEPROC}_${YEAR}/CMS-HGG_sigfit_packaged*.root $FINALFITDIR/Combine/Models/Run2/$TPRIMEPROC/signal/
-    cp -v $FINALFITDIR/Background/outdir_${TPRIMEPROC}_${YEAR}/CMS-HGG_multipdf*.root $FINALFITDIR/Combine/Models/Run2/$TPRIMEPROC/background/
-    cp -v $FINALFITDIR/Datacard/Datacard_${TPRIMEPROC}_${YEAR}.txt $FINALFITDIR/Combine/
+    cp -v $FINALFITDIR/Signal/outdir_packaged_${TPRIMEPROC}_Run2/CMS-HGG_sigfit_packaged*.root $FINALFITDIR/Combine/Models/Run2/$TPRIMEPROC/signal/
+    cp -v $FINALFITDIR/Background/outdir_${TPRIMEPROC}_Run2/CMS-HGG_multipdf*.root $FINALFITDIR/Combine/Models/Run2/$TPRIMEPROC/background/
+    cp -v $FINALFITDIR/Datacard/Datacard_${TPRIMEPROC}_Run2.txt $FINALFITDIR/Combine/
 fi
