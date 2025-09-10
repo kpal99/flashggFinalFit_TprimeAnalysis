@@ -68,8 +68,10 @@ do
 done
 
 # making data workspaces
-echo python3 trees2ws_data.py --inputConfig config_${YEAR}.py --inputTreeFile $INPUTDIR/$TPRIMEPROC/allData.root
-if $RUN; then
-    python3 trees2ws_data.py --inputConfig config_${YEAR}.py --inputTreeFile $INPUTDIR/$TPRIMEPROC/allData.root
-    echo
+if [ -f $INPUTDIR/$TPRIMEPROC/allData.root ]; then
+    echo python3 trees2ws_data.py --inputConfig config_${YEAR}.py --inputTreeFile $INPUTDIR/$TPRIMEPROC/allData.root
+    if $RUN; then
+        python3 trees2ws_data.py --inputConfig config_${YEAR}.py --inputTreeFile $INPUTDIR/$TPRIMEPROC/allData.root
+        echo
+    fi
 fi
