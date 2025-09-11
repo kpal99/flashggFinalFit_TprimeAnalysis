@@ -62,7 +62,7 @@ def condorSubmitFullFlow(args):
         sub.write(f"error = {jobFileBaseName}.$(ClusterId).$(ProcId).err\n")
         sub.write(f"log = {base_dir}/{jobFileBaseName}.$(ClusterId).$(ProcId).log\n")
         sub.write(f"output_destination = {base_dir}\n")
-        sub.write(f'+JobFlavour = "longlunch"\n')
+        sub.write(f'+JobFlavour = "{args.jobFlavour}"\n')
         sub.write("on_exit_remove = (ExitBySignal == False) && (ExitCode == 0)\n")
         sub.write("on_exit_hold = (ExitBySignal == True) && (ExitCode != 0)\n")
         sub.write("periodic_release = (NumJobStarts < 3) && ((CurrentTime - EnteredCurrentStatus) > 600)\n")
@@ -86,6 +86,7 @@ def main():
     parser.add_argument('--tprimeMass', required=True, help="Tprime masses comma separated. Jobs for each mass,decay width combination")
     parser.add_argument('--tprimeDecayWidth', required=True, help="Tprime decay widths comma separated")
     parser.add_argument('--printOnly', action='store_true', help="Do not submit jobs, only create submission files")
+    parser.add_argument('--jobFlavour', default='longlunch', help="Condor job flavour")
 
     args = parser.parse_args(None if sys.argv[1:] else ['--help'])
     condorSubmitFullFlow(args)
