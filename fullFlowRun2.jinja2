@@ -1,0 +1,52 @@
+echo ============================================================================
+echo ================================= trees2ws =================================
+echo ============================================================================
+{{ pwd }}/Trees2WS/trees2ws_.sh -d {{ finalSelectionDir2016 }} -y 2016 -s {{ TprimeProc }}
+{{ pwd }}/Trees2WS/trees2ws_.sh -d {{ finalSelectionDir2017 }} -y 2017 -s {{ TprimeProc }}
+{{ pwd }}/Trees2WS/trees2ws_.sh -d {{ finalSelectionDir2018 }} -y 2018 -s {{ TprimeProc }}
+cd Trees2WS; python3 trees2ws_data.py --inputConfig config_2016.py --inputTreeFile {{ finalSelectionDirData }}/{{ TprimeProc }}/allData.root; cd ..
+
+echo ============================================================================
+echo ================================ runBackground =============================
+echo ============================================================================
+{{ pwd }}/Background/runBackground_.sh -d {{ finalSelectionDirData }} -y Run2 -p {{ plotsOutputDir }} -s {{ TprimeProc }}
+
+echo ============================================================================
+echo ================================== runfTest ================================
+echo ============================================================================
+{{ pwd }}/Signal/runfTest_.sh -d {{ finalSelectionDir2016 }} -y 2016 -p {{ plotsOutputDir }} -s {{ TprimeProc }}
+{{ pwd }}/Signal/runfTest_.sh -d {{ finalSelectionDir2017 }} -y 2017 -p {{ plotsOutputDir }} -s {{ TprimeProc }}
+{{ pwd }}/Signal/runfTest_.sh -d {{ finalSelectionDir2018 }} -y 2018 -p {{ plotsOutputDir }} -s {{ TprimeProc }}
+
+echo ============================================================================
+echo ================================ runSignalFit ==============================
+echo ============================================================================
+{{ pwd }}/Signal/runSignalFit_.sh -y 2016 -p {{ plotsOutputDir }} -s {{ TprimeProc }}
+{{ pwd }}/Signal/runSignalFit_.sh -y 2017 -p {{ plotsOutputDir }} -s {{ TprimeProc }}
+{{ pwd }}/Signal/runSignalFit_.sh -y 2018 -p {{ plotsOutputDir }} -s {{ TprimeProc }}
+
+echo ============================================================================
+echo ================================== runPackager =============================
+echo ============================================================================
+cd Signal; python3 RunPackager.py --cats THQLeptonicTag,THQHadronicTag --exts {{ TprimeProc }}_2016,{{ TprimeProc }}_2017,{{ TprimeProc }}_2018 --batch local --massPoints 125 --outputExt packaged_{{ TprimeProc }}_Run2 --year "2016,2017,2018" --mergeYears; cd ..
+
+echo ============================================================================
+echo ================================== makeYields ==============================
+echo ============================================================================
+cd Datacard
+python3 RunYields.py --inputWSDirMap 2016={{ finalSelectionDir2016 }}/{{ TprimeProc }}/ws/,2017={{ finalSelectionDir2017 }}/{{ TprimeProc }}/ws/,2018={{ finalSelectionDir2018 }}/{{ TprimeProc }}/ws/ --cats auto --procs {{ TprimeProc }}Sch,GG2H,TTH,VBF,VH --ext {{ TprimeProc }}_Run2 --skipCOWCorr --batch local --mergeYears --sigModelWSDir ./Models/Run2/{{ TprimeProc }}/signal --bkgModelWSDir ./Models/Run2/{{ TprimeProc }}/background --catExt Run2 --systConfig systematics_Tprime_Run2.py
+cd ..
+
+echo ============================================================================
+echo ================================== makeDatacard ============================
+echo ============================================================================
+{{ pwd }}/Datacard/makeDatacardRun2_.sh -s {{ TprimeProc }} -e
+
+echo ============================================================================
+echo ================================== runCombine ==============================
+echo ============================================================================
+{{ pwd }}/Combine/runCombine_.sh -y Run2 -s {{ TprimeProc }}
+
+echo ================================ checkLimits ===============================
+python3 {{ pwd }}/Combine/checkLimitOutput.py {{ pwd }}/Combine/higgsCombine_{{ TprimeProc }}_Run2.AsymptoticLimits.mH*.root
+exit $?
