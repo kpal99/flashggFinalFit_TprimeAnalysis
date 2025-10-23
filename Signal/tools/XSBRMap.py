@@ -170,421 +170,422 @@ globalXSBRMap['TprimeRun3']['TTH'] = {'mode':'ttH'}
 globalXSBRMap['TprimeRun3']['VBF'] = {'mode':'qqH'}
 globalXSBRMap['TprimeRun3']['VH'] = {'mode':'constant','factor': 2.401}
 
-globalXSBRMap['TprimeRun2']['TprimeM700Decay5pctSch'] = {'mode':'constant','factor': 0.016287445901}
-globalXSBRMap['TprimeRun2']['TprimeM700Decay5pctTch'] = {'mode':'constant','factor': 4.099393e-05}
-globalXSBRMap['TprimeRun2']['TprimeM700Decay5pctInt'] = {'mode':'constant','factor': -0.00059971551312}
-
-globalXSBRMap['TprimeRun2']['TprimeM700Decay10pctSch'] = {'mode':'constant','factor': 0.008132575321}
-globalXSBRMap['TprimeRun2']['TprimeM700Decay10pctTch'] = {'mode':'constant','factor': 4.1000740000000005e-05}
-globalXSBRMap['TprimeRun2']['TprimeM700Decay10pctInt'] = {'mode':'constant','factor': -0.002483079316254}
-
-globalXSBRMap['TprimeRun2']['TprimeM700Decay20pctSch'] = {'mode':'constant','factor': 0.0040273118739999995}
-globalXSBRMap['TprimeRun2']['TprimeM700Decay20pctTch'] = {'mode':'constant','factor': 4.0968960000000004e-05}
-globalXSBRMap['TprimeRun2']['TprimeM700Decay20pctInt'] = {'mode':'constant','factor': -0.00137474799312}
-
-globalXSBRMap['TprimeRun2']['TprimeM700Decay30pctSch'] = {'mode':'constant','factor': 0.0026683459560000004}
-globalXSBRMap['TprimeRun2']['TprimeM700Decay30pctTch'] = {'mode':'constant','factor': 4.0889509999999996e-05}
-globalXSBRMap['TprimeRun2']['TprimeM700Decay30pctInt'] = {'mode':'constant','factor': -0.00034924769015999996}
-
-globalXSBRMap['TprimeRun2']['TprimeM800Decay5pctSch'] = {'mode':'constant','factor': 0.011618786613999997}
-globalXSBRMap['TprimeRun2']['TprimeM800Decay5pctTch'] = {'mode':'constant','factor': 3.623374e-05}
-globalXSBRMap['TprimeRun2']['TprimeM800Decay5pctInt'] = {'mode':'constant','factor': -0.00299101645665}
-
-globalXSBRMap['TprimeRun2']['TprimeM800Decay10pctSch'] = {'mode':'constant','factor': 0.005818851489}
-globalXSBRMap['TprimeRun2']['TprimeM800Decay10pctTch'] = {'mode':'constant','factor': 3.6254169999999994e-05}
-globalXSBRMap['TprimeRun2']['TprimeM800Decay10pctInt'] = {'mode':'constant','factor': -0.002564109342944}
-
-globalXSBRMap['TprimeRun2']['TprimeM800Decay20pctSch'] = {'mode':'constant','factor': 0.002930518471}
-globalXSBRMap['TprimeRun2']['TprimeM800Decay20pctTch'] = {'mode':'constant','factor': 3.6133859999999994e-05}
-globalXSBRMap['TprimeRun2']['TprimeM800Decay20pctInt'] = {'mode':'constant','factor': -0.0021570497258999997}
-
-globalXSBRMap['TprimeRun2']['TprimeM800Decay30pctSch'] = {'mode':'constant','factor': 0.00198503101}
-globalXSBRMap['TprimeRun2']['TprimeM800Decay30pctTch'] = {'mode':'constant','factor': 3.605895e-05}
-globalXSBRMap['TprimeRun2']['TprimeM800Decay30pctInt'] = {'mode':'constant','factor': -0.00175400137864}
-
-globalXSBRMap['TprimeRun2']['TprimeM900Decay5pctSch'] = {'mode':'constant','factor': 0.008390941954}
-globalXSBRMap['TprimeRun2']['TprimeM900Decay5pctTch'] = {'mode':'constant','factor': 3.236793e-05}
-globalXSBRMap['TprimeRun2']['TprimeM900Decay5pctInt'] = {'mode':'constant','factor': -0.002467308337802}
-
-globalXSBRMap['TprimeRun2']['TprimeM900Decay10pctSch'] = {'mode':'constant','factor': 0.004224192605999999}
-globalXSBRMap['TprimeRun2']['TprimeM900Decay10pctTch'] = {'mode':'constant','factor': 3.236112e-05}
-globalXSBRMap['TprimeRun2']['TprimeM900Decay10pctInt'] = {'mode':'constant','factor': -0.0029145155339600002}
-
-globalXSBRMap['TprimeRun2']['TprimeM900Decay20pctSch'] = {'mode':'constant','factor': 0.0022103945897}
-globalXSBRMap['TprimeRun2']['TprimeM900Decay20pctTch'] = {'mode':'constant','factor': 3.229529e-05}
-globalXSBRMap['TprimeRun2']['TprimeM900Decay20pctInt'] = {'mode':'constant','factor': -0.00247042872838}
-
-globalXSBRMap['TprimeRun2']['TprimeM900Decay30pctSch'] = {'mode':'constant','factor': 0.0014951773361}
-globalXSBRMap['TprimeRun2']['TprimeM900Decay30pctTch'] = {'mode':'constant','factor': 3.2034239999999995e-05}
-globalXSBRMap['TprimeRun2']['TprimeM900Decay30pctInt'] = {'mode':'constant','factor': -0.0016255904137499999}
-
-globalXSBRMap['TprimeRun2']['TprimeM1000Decay5pctSch'] = {'mode':'constant','factor': 0.006044841338999999}
-globalXSBRMap['TprimeRun2']['TprimeM1000Decay5pctTch'] = {'mode':'constant','factor': 2.8840349999999996e-05}
-globalXSBRMap['TprimeRun2']['TprimeM1000Decay5pctInt'] = {'mode':'constant','factor': -0.003113783624052}
-
-globalXSBRMap['TprimeRun2']['TprimeM1000Decay10pctSch'] = {'mode':'constant','factor': 0.0031085273309999994}
-globalXSBRMap['TprimeRun2']['TprimeM1000Decay10pctTch'] = {'mode':'constant','factor': 2.8840349999999996e-05}
-globalXSBRMap['TprimeRun2']['TprimeM1000Decay10pctInt'] = {'mode':'constant','factor': -0.00286098380376}
-
-globalXSBRMap['TprimeRun2']['TprimeM1000Decay20pctSch'] = {'mode':'constant','factor': 0.0016588383886999999}
-globalXSBRMap['TprimeRun2']['TprimeM1000Decay20pctTch'] = {'mode':'constant','factor': 2.8708689999999994e-05}
-globalXSBRMap['TprimeRun2']['TprimeM1000Decay20pctInt'] = {'mode':'constant','factor': -0.002155664220504}
-
-globalXSBRMap['TprimeRun2']['TprimeM1000Decay30pctSch'] = {'mode':'constant','factor': 0.0011462280102}
-globalXSBRMap['TprimeRun2']['TprimeM1000Decay30pctTch'] = {'mode':'constant','factor': 2.8561140000000003e-05}
-globalXSBRMap['TprimeRun2']['TprimeM1000Decay30pctInt'] = {'mode':'constant','factor': -0.00255549126933}
-
-globalXSBRMap['TprimeRun2']['TprimeM1100Decay5pctSch'] = {'mode':'constant','factor': 0.004453623776}
-globalXSBRMap['TprimeRun2']['TprimeM1100Decay5pctTch'] = {'mode':'constant','factor': 2.590524e-05}
-globalXSBRMap['TprimeRun2']['TprimeM1100Decay5pctInt'] = {'mode':'constant','factor': -0.0030555408139400003}
-
-globalXSBRMap['TprimeRun2']['TprimeM1100Decay10pctSch'] = {'mode':'constant','factor': 0.002327320224}
-globalXSBRMap['TprimeRun2']['TprimeM1100Decay10pctTch'] = {'mode':'constant','factor': 2.584168e-05}
-globalXSBRMap['TprimeRun2']['TprimeM1100Decay10pctInt'] = {'mode':'constant','factor': -0.0026912315675439997}
-
-globalXSBRMap['TprimeRun2']['TprimeM1100Decay20pctSch'] = {'mode':'constant','factor': 0.0012904188188}
-globalXSBRMap['TprimeRun2']['TprimeM1100Decay20pctTch'] = {'mode':'constant','factor': 2.5748609999999997e-05}
-globalXSBRMap['TprimeRun2']['TprimeM1100Decay20pctInt'] = {'mode':'constant','factor': -0.0023400270384119994}
-
-globalXSBRMap['TprimeRun2']['TprimeM1100Decay30pctSch'] = {'mode':'constant','factor': 0.0008887572781}
-globalXSBRMap['TprimeRun2']['TprimeM1100Decay30pctTch'] = {'mode':'constant','factor': 2.5555659999999997e-05}
-globalXSBRMap['TprimeRun2']['TprimeM1100Decay30pctInt'] = {'mode':'constant','factor': -0.0018785313041}
-
-globalXSBRMap['TprimeRun2']['TprimeM1200Decay5pctSch'] = {'mode':'constant','factor': 0.0033687274429999997}
-globalXSBRMap['TprimeRun2']['TprimeM1200Decay5pctTch'] = {'mode':'constant','factor': 2.332198e-05}
-globalXSBRMap['TprimeRun2']['TprimeM1200Decay5pctInt'] = {'mode':'constant','factor': -0.0025432642561920003}
-
-globalXSBRMap['TprimeRun2']['TprimeM1200Decay10pctSch'] = {'mode':'constant','factor': 0.0018111459454999998}
-globalXSBRMap['TprimeRun2']['TprimeM1200Decay10pctTch'] = {'mode':'constant','factor': 2.328339e-05}
-globalXSBRMap['TprimeRun2']['TprimeM1200Decay10pctInt'] = {'mode':'constant','factor': -0.00288255866464}
-
-globalXSBRMap['TprimeRun2']['TprimeM1200Decay20pctSch'] = {'mode':'constant','factor': 0.0010047424968}
-globalXSBRMap['TprimeRun2']['TprimeM1200Decay20pctTch'] = {'mode':'constant','factor': 2.309725e-05}
-globalXSBRMap['TprimeRun2']['TprimeM1200Decay20pctInt'] = {'mode':'constant','factor': -0.00241470931065}
-
-globalXSBRMap['TprimeRun2']['TprimeM1200Decay30pctSch'] = {'mode':'constant','factor': 0.0007206837087}
-globalXSBRMap['TprimeRun2']['TprimeM1200Decay30pctTch'] = {'mode':'constant','factor': 2.2940619999999997e-05}
-globalXSBRMap['TprimeRun2']['TprimeM1200Decay30pctInt'] = {'mode':'constant','factor': -0.002187753631492}
-
-globalXSBRMap['TprimeRun2']['TprimeM1400Decay5pctSch'] = {'mode':'constant','factor': 0.0020026402626}
-globalXSBRMap['TprimeRun2']['TprimeM1400Decay5pctTch'] = {'mode':'constant','factor': 1.9018967999999998e-05}
-globalXSBRMap['TprimeRun2']['TprimeM1400Decay5pctInt'] = {'mode':'constant','factor': -0.00200320183336}
-
-globalXSBRMap['TprimeRun2']['TprimeM1400Decay10pctSch'] = {'mode':'constant','factor': 0.0010969913924}
-globalXSBRMap['TprimeRun2']['TprimeM1400Decay10pctTch'] = {'mode':'constant','factor': 1.8985372e-05}
-globalXSBRMap['TprimeRun2']['TprimeM1400Decay10pctInt'] = {'mode':'constant','factor': -0.002544650258718}
-
-globalXSBRMap['TprimeRun2']['TprimeM1400Decay20pctSch'] = {'mode':'constant','factor': 0.0006316850671999999}
-globalXSBRMap['TprimeRun2']['TprimeM1400Decay20pctTch'] = {'mode':'constant','factor': 1.8848491000000003e-05}
-globalXSBRMap['TprimeRun2']['TprimeM1400Decay20pctInt'] = {'mode':'constant','factor': -0.002052587822608}
-
-globalXSBRMap['TprimeRun2']['TprimeM1400Decay30pctSch'] = {'mode':'constant','factor': 0.00046587804739999997}
-globalXSBRMap['TprimeRun2']['TprimeM1400Decay30pctTch'] = {'mode':'constant','factor': 1.8627393e-05}
-globalXSBRMap['TprimeRun2']['TprimeM1400Decay30pctInt'] = {'mode':'constant','factor': -0.00217103107812}
-
-globalXSBRMap['TprimeRun2']['TprimeM1600Decay5pctSch'] = {'mode':'constant','factor': 0.0011852388909}
-globalXSBRMap['TprimeRun2']['TprimeM1600Decay5pctTch'] = {'mode':'constant','factor': 1.5801697e-05}
-globalXSBRMap['TprimeRun2']['TprimeM1600Decay5pctInt'] = {'mode':'constant','factor': -0.00181578854496}
-
-globalXSBRMap['TprimeRun2']['TprimeM1600Decay10pctSch'] = {'mode':'constant','factor': 0.0006886720325}
-globalXSBRMap['TprimeRun2']['TprimeM1600Decay10pctTch'] = {'mode':'constant','factor': 1.5771506e-05}
-globalXSBRMap['TprimeRun2']['TprimeM1600Decay10pctInt'] = {'mode':'constant','factor': -0.001565656592108}
-
-globalXSBRMap['TprimeRun2']['TprimeM1600Decay20pctSch'] = {'mode':'constant','factor': 0.00042045083009999997}
-globalXSBRMap['TprimeRun2']['TprimeM1600Decay20pctTch'] = {'mode':'constant','factor': 1.574018e-05}
-globalXSBRMap['TprimeRun2']['TprimeM1600Decay20pctInt'] = {'mode':'constant','factor': -0.0017723452177679999}
-
-globalXSBRMap['TprimeRun2']['TprimeM1600Decay30pctSch'] = {'mode':'constant','factor': 0.00032084976769999993}
-globalXSBRMap['TprimeRun2']['TprimeM1600Decay30pctTch'] = {'mode':'constant','factor': 1.5532702e-05}
-globalXSBRMap['TprimeRun2']['TprimeM1600Decay30pctInt'] = {'mode':'constant','factor': -0.001605222347976}
-
-globalXSBRMap['TprimeRun2']['TprimeM1800Decay5pctSch'] = {'mode':'constant','factor': 0.0007589569074999999}
-globalXSBRMap['TprimeRun2']['TprimeM1800Decay5pctTch'] = {'mode':'constant','factor': 1.3367348999999999e-05}
-globalXSBRMap['TprimeRun2']['TprimeM1800Decay5pctInt'] = {'mode':'constant','factor': -0.0014151303097559998}
-
-globalXSBRMap['TprimeRun2']['TprimeM1800Decay10pctSch'] = {'mode':'constant','factor': 0.0004457843705999999}
-globalXSBRMap['TprimeRun2']['TprimeM1800Decay10pctTch'] = {'mode':'constant','factor': 1.3347373e-05}
-globalXSBRMap['TprimeRun2']['TprimeM1800Decay10pctInt'] = {'mode':'constant','factor': -0.0013719694005279999}
-
-globalXSBRMap['TprimeRun2']['TprimeM1800Decay20pctSch'] = {'mode':'constant','factor': 0.0002860098758}
-globalXSBRMap['TprimeRun2']['TprimeM1800Decay20pctTch'] = {'mode':'constant','factor': 1.3117422e-05}
-globalXSBRMap['TprimeRun2']['TprimeM1800Decay20pctInt'] = {'mode':'constant','factor': -0.001609397632524}
-
-globalXSBRMap['TprimeRun2']['TprimeM1800Decay30pctSch'] = {'mode':'constant','factor': 0.00022272229396}
-globalXSBRMap['TprimeRun2']['TprimeM1800Decay30pctTch'] = {'mode':'constant','factor': 1.2931509e-05}
-globalXSBRMap['TprimeRun2']['TprimeM1800Decay30pctInt'] = {'mode':'constant','factor': -0.00157285060256}
-
-globalXSBRMap['TprimeRun2']['TprimeM2000Decay5pctSch'] = {'mode':'constant','factor': 0.0004976131467999999}
-globalXSBRMap['TprimeRun2']['TprimeM2000Decay5pctTch'] = {'mode':'constant','factor': 1.1313907e-05}
-globalXSBRMap['TprimeRun2']['TprimeM2000Decay5pctInt'] = {'mode':'constant','factor': -0.001656930021492}
-
-globalXSBRMap['TprimeRun2']['TprimeM2000Decay10pctSch'] = {'mode':'constant','factor': 0.0003037976412}
-globalXSBRMap['TprimeRun2']['TprimeM2000Decay10pctTch'] = {'mode':'constant','factor': 1.1312318e-05}
-globalXSBRMap['TprimeRun2']['TprimeM2000Decay10pctInt'] = {'mode':'constant','factor': -0.001401456040866}
-
-globalXSBRMap['TprimeRun2']['TprimeM2000Decay20pctSch'] = {'mode':'constant','factor': 0.00020540695415}
-globalXSBRMap['TprimeRun2']['TprimeM2000Decay20pctTch'] = {'mode':'constant','factor': 1.1281899999999998e-05}
-globalXSBRMap['TprimeRun2']['TprimeM2000Decay20pctInt'] = {'mode':'constant','factor': -0.0015433448574479999}
-
-globalXSBRMap['TprimeRun2']['TprimeM2000Decay30pctSch'] = {'mode':'constant','factor': 0.00016989604117}
-globalXSBRMap['TprimeRun2']['TprimeM2000Decay30pctTch'] = {'mode':'constant','factor': 1.106852e-05}
-globalXSBRMap['TprimeRun2']['TprimeM2000Decay30pctInt'] = {'mode':'constant','factor': -0.0012714907361520002}
-
-globalXSBRMap['TprimeRun2']['TprimeM2200Decay5pctSch'] = {'mode':'constant','factor': 0.0003321969756}
-globalXSBRMap['TprimeRun2']['TprimeM2200Decay5pctTch'] = {'mode':'constant','factor': 9.754189999999998e-06}
-globalXSBRMap['TprimeRun2']['TprimeM2200Decay5pctInt'] = {'mode':'constant','factor': -0.0011702527327139998}
-
-globalXSBRMap['TprimeRun2']['TprimeM2200Decay10pctSch'] = {'mode':'constant','factor': 0.00021219205224999997}
-globalXSBRMap['TprimeRun2']['TprimeM2200Decay10pctTch'] = {'mode':'constant','factor': 9.729673999999998e-06}
-globalXSBRMap['TprimeRun2']['TprimeM2200Decay10pctInt'] = {'mode':'constant','factor': -0.001326240657312}
-
-globalXSBRMap['TprimeRun2']['TprimeM2200Decay20pctSch'] = {'mode':'constant','factor': 0.00015091165661999998}
-globalXSBRMap['TprimeRun2']['TprimeM2200Decay20pctTch'] = {'mode':'constant','factor': 9.647046e-06}
-globalXSBRMap['TprimeRun2']['TprimeM2200Decay20pctInt'] = {'mode':'constant','factor': -0.00098259463571}
-
-globalXSBRMap['TprimeRun2']['TprimeM2200Decay30pctSch'] = {'mode':'constant','factor': 0.00012734228748}
-globalXSBRMap['TprimeRun2']['TprimeM2200Decay30pctTch'] = {'mode':'constant','factor': 9.479746999999999e-06}
-globalXSBRMap['TprimeRun2']['TprimeM2200Decay30pctInt'] = {'mode':'constant','factor': -0.001241483380514}
-
-globalXSBRMap['TprimeRun2']['TprimeM2400Decay5pctSch'] = {'mode':'constant','factor': 0.00022881411589999997}
-globalXSBRMap['TprimeRun2']['TprimeM2400Decay5pctTch'] = {'mode':'constant','factor': 8.483671e-06}
-globalXSBRMap['TprimeRun2']['TprimeM2400Decay5pctInt'] = {'mode':'constant','factor': -0.00111506736608}
-
-globalXSBRMap['TprimeRun2']['TprimeM2400Decay10pctSch'] = {'mode':'constant','factor': 0.00015471929105999996}
-globalXSBRMap['TprimeRun2']['TprimeM2400Decay10pctTch'] = {'mode':'constant','factor': 8.463014e-06}
-globalXSBRMap['TprimeRun2']['TprimeM2400Decay10pctInt'] = {'mode':'constant','factor': -0.0012310536425999999}
-
-globalXSBRMap['TprimeRun2']['TprimeM2400Decay20pctSch'] = {'mode':'constant','factor': 0.00011464589826999999}
-globalXSBRMap['TprimeRun2']['TprimeM2400Decay20pctTch'] = {'mode':'constant','factor': 8.381521e-06}
-globalXSBRMap['TprimeRun2']['TprimeM2400Decay20pctInt'] = {'mode':'constant','factor': -0.000996968415996}
-
-globalXSBRMap['TprimeRun2']['TprimeM2400Decay30pctSch'] = {'mode':'constant','factor': 9.793808083e-05}
-globalXSBRMap['TprimeRun2']['TprimeM2400Decay30pctTch'] = {'mode':'constant','factor': 8.233063e-06}
-globalXSBRMap['TprimeRun2']['TprimeM2400Decay30pctInt'] = {'mode':'constant','factor': -0.0010564176793519998}
-
-globalXSBRMap['TprimeRun2']['TprimeM2600Decay5pctSch'] = {'mode':'constant','factor': 0.00016111840063}
-globalXSBRMap['TprimeRun2']['TprimeM2600Decay5pctTch'] = {'mode':'constant','factor': 7.410188e-06}
-globalXSBRMap['TprimeRun2']['TprimeM2600Decay5pctInt'] = {'mode':'constant','factor': -0.000932089202772}
-
-globalXSBRMap['TprimeRun2']['TprimeM2600Decay10pctSch'] = {'mode':'constant','factor': 0.00011626905722999999}
-globalXSBRMap['TprimeRun2']['TprimeM2600Decay10pctTch'] = {'mode':'constant','factor': 7.3902119999999995e-06}
-globalXSBRMap['TprimeRun2']['TprimeM2600Decay10pctInt'] = {'mode':'constant','factor': -0.000925377295374}
-
-globalXSBRMap['TprimeRun2']['TprimeM2600Decay20pctSch'] = {'mode':'constant','factor': 8.954800192999999e-05}
-globalXSBRMap['TprimeRun2']['TprimeM2600Decay20pctTch'] = {'mode':'constant','factor': 7.321885e-06}
-globalXSBRMap['TprimeRun2']['TprimeM2600Decay20pctInt'] = {'mode':'constant','factor': -0.0011158807161599999}
-
-globalXSBRMap['TprimeRun2']['TprimeM2600Decay30pctSch'] = {'mode':'constant','factor': 7.829477883999999e-05}
-globalXSBRMap['TprimeRun2']['TprimeM2600Decay30pctTch'] = {'mode':'constant','factor': 7.192948999999999e-06}
-globalXSBRMap['TprimeRun2']['TprimeM2600Decay30pctInt'] = {'mode':'constant','factor': -0.000996044595912}
-
-globalXSBRMap['TprimeRun3']['TprimeM700Decay5pctSch'] = {'mode':'constant','factor': 0.0185406122619999}
-globalXSBRMap['TprimeRun3']['TprimeM700Decay5pctTch'] = {'mode':'constant','factor': 4.6364750000000004e-05}
-globalXSBRMap['TprimeRun3']['TprimeM700Decay5pctInt'] = {'mode':'constant','factor': -0.0027101894562000036}
-
-globalXSBRMap['TprimeRun3']['TprimeM700Decay10pctSch'] = {'mode':'constant','factor': 0.009213883918999926}
-globalXSBRMap['TprimeRun3']['TprimeM700Decay10pctTch'] = {'mode':'constant','factor': 4.6103700000000316e-05}
-globalXSBRMap['TprimeRun3']['TprimeM700Decay10pctInt'] = {'mode':'constant','factor': -0.0013106786232799992}
-
-globalXSBRMap['TprimeRun3']['TprimeM700Decay20pctSch'] = {'mode':'constant','factor': 0.004559243243999936}
-globalXSBRMap['TprimeRun3']['TprimeM700Decay20pctTch'] = {'mode':'constant','factor': 4.582449000000037e-05}
-globalXSBRMap['TprimeRun3']['TprimeM700Decay20pctInt'] = {'mode':'constant','factor': -0.0013128953277660004}
-
-globalXSBRMap['TprimeRun3']['TprimeM700Decay30pctSch'] = {'mode':'constant','factor': 0.0029635008899999682}
-globalXSBRMap['TprimeRun3']['TprimeM700Decay30pctTch'] = {'mode':'constant','factor': 4.6364750000000004e-05}
-globalXSBRMap['TprimeRun3']['TprimeM700Decay30pctInt'] = {'mode':'constant','factor': -0.0011599403810399987}
-
-globalXSBRMap['TprimeRun3']['TprimeM800Decay5pctSch'] = {'mode':'constant','factor': 0.01329801366599988}
-globalXSBRMap['TprimeRun3']['TprimeM800Decay5pctTch'] = {'mode':'constant','factor': 4.143204000000031e-05}
-globalXSBRMap['TprimeRun3']['TprimeM800Decay5pctInt'] = {'mode':'constant','factor': -0.004347794105999978}
-
-globalXSBRMap['TprimeRun3']['TprimeM800Decay10pctSch'] = {'mode':'constant','factor': 0.006641913536999927}
-globalXSBRMap['TprimeRun3']['TprimeM800Decay10pctTch'] = {'mode':'constant','factor': 4.1411610000000355e-05}
-globalXSBRMap['TprimeRun3']['TprimeM800Decay10pctInt'] = {'mode':'constant','factor': -0.0035803187633580047}
-
-globalXSBRMap['TprimeRun3']['TprimeM800Decay20pctSch'] = {'mode':'constant','factor': 0.0033483791630000443}
-globalXSBRMap['TprimeRun3']['TprimeM800Decay20pctTch'] = {'mode':'constant','factor': 4.180886000000007e-05}
-globalXSBRMap['TprimeRun3']['TprimeM800Decay20pctInt'] = {'mode':'constant','factor': -0.002130610504719995}
-
-globalXSBRMap['TprimeRun3']['TprimeM800Decay30pctSch'] = {'mode':'constant','factor': 0.002212808416899984}
-globalXSBRMap['TprimeRun3']['TprimeM800Decay30pctTch'] = {'mode':'constant','factor': 4.1767999999999455e-05}
-globalXSBRMap['TprimeRun3']['TprimeM800Decay30pctInt'] = {'mode':'constant','factor': -0.0016753551765600002}
-
-globalXSBRMap['TprimeRun3']['TprimeM900Decay5pctSch'] = {'mode':'constant','factor': 0.009650586972999793}
-globalXSBRMap['TprimeRun3']['TprimeM900Decay5pctTch'] = {'mode':'constant','factor': 3.6976029999999914e-05}
-globalXSBRMap['TprimeRun3']['TprimeM900Decay5pctInt'] = {'mode':'constant','factor': -0.0028125516503520035}
-
-globalXSBRMap['TprimeRun3']['TprimeM900Decay10pctSch'] = {'mode':'constant','factor': 0.004914987656000083}
-globalXSBRMap['TprimeRun3']['TprimeM900Decay10pctTch'] = {'mode':'constant','factor': 3.662417999999957e-05}
-globalXSBRMap['TprimeRun3']['TprimeM900Decay10pctInt'] = {'mode':'constant','factor': -0.0034876375267359956}
-
-globalXSBRMap['TprimeRun3']['TprimeM900Decay20pctSch'] = {'mode':'constant','factor': 0.0024897044470000252}
-globalXSBRMap['TprimeRun3']['TprimeM900Decay20pctTch'] = {'mode':'constant','factor': 3.6319999999999754e-05}
-globalXSBRMap['TprimeRun3']['TprimeM900Decay20pctInt'] = {'mode':'constant','factor': -0.0026105122216800074}
-
-globalXSBRMap['TprimeRun3']['TprimeM900Decay30pctSch'] = {'mode':'constant','factor': 0.0016999862246999723}
-globalXSBRMap['TprimeRun3']['TprimeM900Decay30pctTch'] = {'mode':'constant','factor': 3.6546999999999764e-05}
-globalXSBRMap['TprimeRun3']['TprimeM900Decay30pctInt'] = {'mode':'constant','factor': -0.002421710134567995}
-
-globalXSBRMap['TprimeRun3']['TprimeM1000Decay5pctSch'] = {'mode':'constant','factor': 0.007061841290999886}
-globalXSBRMap['TprimeRun3']['TprimeM1000Decay5pctTch'] = {'mode':'constant','factor': 3.292408000000047e-05}
-globalXSBRMap['TprimeRun3']['TprimeM1000Decay5pctInt'] = {'mode':'constant','factor': -0.0037256739448500074}
-
-globalXSBRMap['TprimeRun3']['TprimeM1000Decay10pctSch'] = {'mode':'constant','factor': 0.0036081164220000774}
-globalXSBRMap['TprimeRun3']['TprimeM1000Decay10pctTch'] = {'mode':'constant','factor': 3.282874000000058e-05}
-globalXSBRMap['TprimeRun3']['TprimeM1000Decay10pctInt'] = {'mode':'constant','factor': -0.0033665693204040187}
-
-globalXSBRMap['TprimeRun3']['TprimeM1000Decay20pctSch'] = {'mode':'constant','factor': 0.0018934104731000356}
-globalXSBRMap['TprimeRun3']['TprimeM1000Decay20pctTch'] = {'mode':'constant','factor': 3.3464339999999865e-05}
-globalXSBRMap['TprimeRun3']['TprimeM1000Decay20pctInt'] = {'mode':'constant','factor': -0.0026760821091899954}
-
-globalXSBRMap['TprimeRun3']['TprimeM1000Decay30pctSch'] = {'mode':'constant','factor': 0.0012897373420999757}
-globalXSBRMap['TprimeRun3']['TprimeM1000Decay30pctTch'] = {'mode':'constant','factor': 3.3166969999999825e-05}
-globalXSBRMap['TprimeRun3']['TprimeM1000Decay30pctInt'] = {'mode':'constant','factor': -0.002052124178286005}
-
-globalXSBRMap['TprimeRun3']['TprimeM1100Decay5pctSch'] = {'mode':'constant','factor': 0.005253661668000051}
-globalXSBRMap['TprimeRun3']['TprimeM1100Decay5pctTch'] = {'mode':'constant','factor': 3.000032000000043e-05}
-globalXSBRMap['TprimeRun3']['TprimeM1100Decay5pctInt'] = {'mode':'constant','factor': -0.003591429384140016}
-
-globalXSBRMap['TprimeRun3']['TprimeM1100Decay10pctSch'] = {'mode':'constant','factor': 0.002734780684000017}
-globalXSBRMap['TprimeRun3']['TprimeM1100Decay10pctTch'] = {'mode':'constant','factor': 2.9936760000000456e-05}
-globalXSBRMap['TprimeRun3']['TprimeM1100Decay10pctInt'] = {'mode':'constant','factor': -0.003535108809119989}
-
-globalXSBRMap['TprimeRun3']['TprimeM1100Decay20pctSch'] = {'mode':'constant','factor': 0.0014640793349000245}
-globalXSBRMap['TprimeRun3']['TprimeM1100Decay20pctTch'] = {'mode':'constant','factor': 2.9857309999999804e-05}
-globalXSBRMap['TprimeRun3']['TprimeM1100Decay20pctInt'] = {'mode':'constant','factor': -0.003213601878689979}
-
-globalXSBRMap['TprimeRun3']['TprimeM1100Decay30pctSch'] = {'mode':'constant','factor': 0.0010199659339999903}
-globalXSBRMap['TprimeRun3']['TprimeM1100Decay30pctTch'] = {'mode':'constant','factor': 2.9657549999999236e-05}
-globalXSBRMap['TprimeRun3']['TprimeM1100Decay30pctInt'] = {'mode':'constant','factor': -0.0023284918617999992}
-
-globalXSBRMap['TprimeRun3']['TprimeM1200Decay5pctSch'] = {'mode':'constant','factor': 0.003946195920999935}
-globalXSBRMap['TprimeRun3']['TprimeM1200Decay5pctTch'] = {'mode':'constant','factor': 2.698803000000034e-05}
-globalXSBRMap['TprimeRun3']['TprimeM1200Decay5pctInt'] = {'mode':'constant','factor': -0.0032699755512799774}
-
-globalXSBRMap['TprimeRun3']['TprimeM1200Decay10pctSch'] = {'mode':'constant','factor': 0.0020989281010999794}
-globalXSBRMap['TprimeRun3']['TprimeM1200Decay10pctTch'] = {'mode':'constant','factor': 2.6994840000000116e-05}
-globalXSBRMap['TprimeRun3']['TprimeM1200Decay10pctInt'] = {'mode':'constant','factor': -0.002843389644390004}
-
-globalXSBRMap['TprimeRun3']['TprimeM1200Decay20pctSch'] = {'mode':'constant','factor': 0.001138030654299988}
-globalXSBRMap['TprimeRun3']['TprimeM1200Decay20pctTch'] = {'mode':'constant','factor': 2.6919930000000344e-05}
-globalXSBRMap['TprimeRun3']['TprimeM1200Decay20pctInt'] = {'mode':'constant','factor': -0.0029317010919680084}
-
-globalXSBRMap['TprimeRun3']['TprimeM1200Decay30pctSch'] = {'mode':'constant','factor': 0.0008068840757999824}
-globalXSBRMap['TprimeRun3']['TprimeM1200Decay30pctTch'] = {'mode':'constant','factor': 2.6742870000000273e-05}
-globalXSBRMap['TprimeRun3']['TprimeM1200Decay30pctInt'] = {'mode':'constant','factor': -0.002711435694372007}
-
-globalXSBRMap['TprimeRun3']['TprimeM1400Decay5pctSch'] = {'mode':'constant','factor': 0.0023642860390000074}
-globalXSBRMap['TprimeRun3']['TprimeM1400Decay5pctTch'] = {'mode':'constant','factor': 2.2301160999999894e-05}
-globalXSBRMap['TprimeRun3']['TprimeM1400Decay5pctInt'] = {'mode':'constant','factor': -0.002915792837081993}
-
-globalXSBRMap['TprimeRun3']['TprimeM1400Decay10pctSch'] = {'mode':'constant','factor': 0.001270854074700005}
-globalXSBRMap['TprimeRun3']['TprimeM1400Decay10pctTch'] = {'mode':'constant','factor': 2.223896299999957e-05}
-globalXSBRMap['TprimeRun3']['TprimeM1400Decay10pctInt'] = {'mode':'constant','factor': -0.0024770904819440024}
-
-globalXSBRMap['TprimeRun3']['TprimeM1400Decay20pctSch'] = {'mode':'constant','factor': 0.0007259916951000125}
-globalXSBRMap['TprimeRun3']['TprimeM1400Decay20pctTch'] = {'mode':'constant','factor': 2.2049190999999533e-05}
-globalXSBRMap['TprimeRun3']['TprimeM1400Decay20pctInt'] = {'mode':'constant','factor': -0.0025990236018599996}
-
-globalXSBRMap['TprimeRun3']['TprimeM1400Decay30pctSch'] = {'mode':'constant','factor': 0.0005361656236999951}
-globalXSBRMap['TprimeRun3']['TprimeM1400Decay30pctTch'] = {'mode':'constant','factor': 2.1856922000000333e-05}
-globalXSBRMap['TprimeRun3']['TprimeM1400Decay30pctInt'] = {'mode':'constant','factor': -0.00215595422662399}
-
-globalXSBRMap['TprimeRun3']['TprimeM1600Decay5pctSch'] = {'mode':'constant','factor': 0.0014325738913999978}
-globalXSBRMap['TprimeRun3']['TprimeM1600Decay5pctTch'] = {'mode':'constant','factor': 1.8482793999999874e-05}
-globalXSBRMap['TprimeRun3']['TprimeM1600Decay5pctInt'] = {'mode':'constant','factor': -0.0022839159916559887}
-
-globalXSBRMap['TprimeRun3']['TprimeM1600Decay10pctSch'] = {'mode':'constant','factor': 0.0008062823669000083}
-globalXSBRMap['TprimeRun3']['TprimeM1600Decay10pctTch'] = {'mode':'constant','factor': 1.844647400000024e-05}
-globalXSBRMap['TprimeRun3']['TprimeM1600Decay10pctInt'] = {'mode':'constant','factor': -0.0023101128195119917}
-
-globalXSBRMap['TprimeRun3']['TprimeM1600Decay20pctSch'] = {'mode':'constant','factor': 0.00047933201959999243}
-globalXSBRMap['TprimeRun3']['TprimeM1600Decay20pctTch'] = {'mode':'constant','factor': 1.8106200999999796e-05}
-globalXSBRMap['TprimeRun3']['TprimeM1600Decay20pctInt'] = {'mode':'constant','factor': -0.0019785810742220136}
-
-globalXSBRMap['TprimeRun3']['TprimeM1600Decay30pctSch'] = {'mode':'constant','factor': 0.00036510900189999786}
-globalXSBRMap['TprimeRun3']['TprimeM1600Decay30pctTch'] = {'mode':'constant','factor': 1.7840610999999702e-05}
-globalXSBRMap['TprimeRun3']['TprimeM1600Decay30pctInt'] = {'mode':'constant','factor': -0.0016693274294560024}
-
-globalXSBRMap['TprimeRun3']['TprimeM1800Decay5pctSch'] = {'mode':'constant','factor': 0.0009125979758000121}
-globalXSBRMap['TprimeRun3']['TprimeM1800Decay5pctTch'] = {'mode':'constant','factor': 1.5663226999999722e-05}
-globalXSBRMap['TprimeRun3']['TprimeM1800Decay5pctInt'] = {'mode':'constant','factor': -0.001989516141376005}
-
-globalXSBRMap['TprimeRun3']['TprimeM1800Decay10pctSch'] = {'mode':'constant','factor': 0.0005314127658000058}
-globalXSBRMap['TprimeRun3']['TprimeM1800Decay10pctTch'] = {'mode':'constant','factor': 1.5544960000000215e-05}
-globalXSBRMap['TprimeRun3']['TprimeM1800Decay10pctInt'] = {'mode':'constant','factor': -0.001797865838048002}
-
-globalXSBRMap['TprimeRun3']['TprimeM1800Decay20pctSch'] = {'mode':'constant','factor': 0.00033568208389999623}
-globalXSBRMap['TprimeRun3']['TprimeM1800Decay20pctTch'] = {'mode':'constant','factor': 1.543690800000018e-05}
-globalXSBRMap['TprimeRun3']['TprimeM1800Decay20pctInt'] = {'mode':'constant','factor': -0.0020112682084439852}
-
-globalXSBRMap['TprimeRun3']['TprimeM1800Decay30pctSch'] = {'mode':'constant','factor': 0.0002600146076000044}
-globalXSBRMap['TprimeRun3']['TprimeM1800Decay30pctTch'] = {'mode':'constant','factor': 1.5250541000000282e-05}
-globalXSBRMap['TprimeRun3']['TprimeM1800Decay30pctInt'] = {'mode':'constant','factor': -0.0018433076913999926}
-
-globalXSBRMap['TprimeRun3']['TprimeM2000Decay5pctSch'] = {'mode':'constant','factor': 0.0005970984618999911}
-globalXSBRMap['TprimeRun3']['TprimeM2000Decay5pctTch'] = {'mode':'constant','factor': 1.3172356000000008e-05}
-globalXSBRMap['TprimeRun3']['TprimeM2000Decay5pctInt'] = {'mode':'constant','factor': -0.0018835370427239858}
-
-globalXSBRMap['TprimeRun3']['TprimeM2000Decay10pctSch'] = {'mode':'constant','factor': 0.00036365663320000725}
-globalXSBRMap['TprimeRun3']['TprimeM2000Decay10pctTch'] = {'mode':'constant','factor': 1.3132630999999776e-05}
-globalXSBRMap['TprimeRun3']['TprimeM2000Decay10pctInt'] = {'mode':'constant','factor': -0.0017236555782600077}
-
-globalXSBRMap['TprimeRun3']['TprimeM2000Decay20pctSch'] = {'mode':'constant','factor': 0.00023878509089999514}
-globalXSBRMap['TprimeRun3']['TprimeM2000Decay20pctTch'] = {'mode':'constant','factor': 1.2989847999999907e-05}
-globalXSBRMap['TprimeRun3']['TprimeM2000Decay20pctInt'] = {'mode':'constant','factor': -0.0018616353463360154}
-
-globalXSBRMap['TprimeRun3']['TprimeM2000Decay30pctSch'] = {'mode':'constant','factor': 0.0001918348942799982}
-globalXSBRMap['TprimeRun3']['TprimeM2000Decay30pctTch'] = {'mode':'constant','factor': 1.286182000000016e-05}
-globalXSBRMap['TprimeRun3']['TprimeM2000Decay30pctInt'] = {'mode':'constant','factor': -0.001760588049230005}
-
-globalXSBRMap['TprimeRun3']['TprimeM2200Decay5pctSch'] = {'mode':'constant','factor': 0.0004031378805999952}
-globalXSBRMap['TprimeRun3']['TprimeM2200Decay5pctTch'] = {'mode':'constant','factor': 1.1362258000000098e-05}
-globalXSBRMap['TprimeRun3']['TprimeM2200Decay5pctInt'] = {'mode':'constant','factor': -0.0015883832196620042}
-
-globalXSBRMap['TprimeRun3']['TprimeM2200Decay10pctSch'] = {'mode':'constant','factor': 0.00025310027840000506}
-globalXSBRMap['TprimeRun3']['TprimeM2200Decay10pctTch'] = {'mode':'constant','factor': 1.1362711999999893e-05}
-globalXSBRMap['TprimeRun3']['TprimeM2200Decay10pctInt'] = {'mode':'constant','factor': -0.001780820409864001}
-
-globalXSBRMap['TprimeRun3']['TprimeM2200Decay20pctSch'] = {'mode':'constant','factor': 0.000177400974430001}
-globalXSBRMap['TprimeRun3']['TprimeM2200Decay20pctTch'] = {'mode':'constant','factor': 1.1220836999999731e-05}
-globalXSBRMap['TprimeRun3']['TprimeM2200Decay20pctInt'] = {'mode':'constant','factor': -0.001634631696176008}
-
-globalXSBRMap['TprimeRun3']['TprimeM2200Decay30pctSch'] = {'mode':'constant','factor': 0.00014588899787}
-globalXSBRMap['TprimeRun3']['TprimeM2200Decay30pctTch'] = {'mode':'constant','factor': 1.1080551000000149e-05}
-globalXSBRMap['TprimeRun3']['TprimeM2200Decay30pctInt'] = {'mode':'constant','factor': -0.0015131659311239949}
-
-globalXSBRMap['TprimeRun3']['TprimeM2400Decay5pctSch'] = {'mode':'constant','factor': 0.00027898415770000694}
-globalXSBRMap['TprimeRun3']['TprimeM2400Decay5pctTch'] = {'mode':'constant','factor': 9.843401000000126e-06}
-globalXSBRMap['TprimeRun3']['TprimeM2400Decay5pctInt'] = {'mode':'constant','factor': -0.0012942635559360014}
-
-globalXSBRMap['TprimeRun3']['TprimeM2400Decay10pctSch'] = {'mode':'constant','factor': 0.00018312564202999817}
-globalXSBRMap['TprimeRun3']['TprimeM2400Decay10pctTch'] = {'mode':'constant','factor': 9.756687000000099e-06}
-globalXSBRMap['TprimeRun3']['TprimeM2400Decay10pctInt'] = {'mode':'constant','factor': -0.001486791931583996}
-
-globalXSBRMap['TprimeRun3']['TprimeM2400Decay20pctSch'] = {'mode':'constant','factor': 0.00013330399982999842}
-globalXSBRMap['TprimeRun3']['TprimeM2400Decay20pctTch'] = {'mode':'constant','factor': 9.738527000000238e-06}
-globalXSBRMap['TprimeRun3']['TprimeM2400Decay20pctInt'] = {'mode':'constant','factor': -0.0015274351992479993}
-
-globalXSBRMap['TprimeRun3']['TprimeM2400Decay30pctSch'] = {'mode':'constant','factor': 0.00011359386903999883}
-globalXSBRMap['TprimeRun3']['TprimeM2400Decay30pctTch'] = {'mode':'constant','factor': 9.594836000000019e-06}
-globalXSBRMap['TprimeRun3']['TprimeM2400Decay30pctInt'] = {'mode':'constant','factor': -0.001408139022108011}
-
-globalXSBRMap['TprimeRun3']['TprimeM2600Decay5pctSch'] = {'mode':'constant','factor': 0.00020143929605999621}
-globalXSBRMap['TprimeRun3']['TprimeM2600Decay5pctTch'] = {'mode':'constant','factor': 8.584685999999854e-06}
-globalXSBRMap['TprimeRun3']['TprimeM2600Decay5pctInt'] = {'mode':'constant','factor': -0.0011801875379880017}
-
-globalXSBRMap['TprimeRun3']['TprimeM2600Decay10pctSch'] = {'mode':'constant','factor': 0.00013847897785000283}
-globalXSBRMap['TprimeRun3']['TprimeM2600Decay10pctTch'] = {'mode':'constant','factor': 8.596490000000121e-06}
-globalXSBRMap['TprimeRun3']['TprimeM2600Decay10pctInt'] = {'mode':'constant','factor': -0.001399951232441993}
-
-globalXSBRMap['TprimeRun3']['TprimeM2600Decay20pctSch'] = {'mode':'constant','factor': 0.00010481250796999875}
-globalXSBRMap['TprimeRun3']['TprimeM2600Decay20pctTch'] = {'mode':'constant','factor': 8.53202200000006e-06}
-globalXSBRMap['TprimeRun3']['TprimeM2600Decay20pctInt'] = {'mode':'constant','factor': -0.0012555624158279968}
-
-globalXSBRMap['TprimeRun3']['TprimeM2600Decay30pctSch'] = {'mode':'constant','factor': 9.180542612999847e-05}
-globalXSBRMap['TprimeRun3']['TprimeM2600Decay30pctTch'] = {'mode':'constant','factor': 8.376754000000149e-06}
-globalXSBRMap['TprimeRun3']['TprimeM2600Decay30pctInt'] = {'mode':'constant','factor': -0.00118278507765}
+globalXSBRMap['TprimeRun2']['TprimeM700Decay5pctSch'] = {'mode':'constant','factor': 0.09325453362566727}
+globalXSBRMap['TprimeRun2']['TprimeM700Decay5pctTch'] = {'mode':'constant','factor': 0.00023466052486970654}
+globalXSBRMap['TprimeRun2']['TprimeM700Decay5pctInt'] = {'mode':'constant','factor': -0.009935129684782107}
+
+globalXSBRMap['TprimeRun2']['TprimeM700Decay10pctSch'] = {'mode':'constant','factor': 0.04656889354794067}
+globalXSBRMap['TprimeRun2']['TprimeM700Decay10pctTch'] = {'mode':'constant','factor': 0.00023466052486970654}
+globalXSBRMap['TprimeRun2']['TprimeM700Decay10pctInt'] = {'mode':'constant','factor': -0.006068225181539455}
+
+globalXSBRMap['TprimeRun2']['TprimeM700Decay20pctSch'] = {'mode':'constant','factor': 0.02279151698154088}
+globalXSBRMap['TprimeRun2']['TprimeM700Decay20pctTch'] = {'mode':'constant','factor': 0.0002367360187325674}
+globalXSBRMap['TprimeRun2']['TprimeM700Decay20pctInt'] = {'mode':'constant','factor': -0.004702290783044147}
+
+globalXSBRMap['TprimeRun2']['TprimeM700Decay30pctSch'] = {'mode':'constant','factor': 0.014787893772883667}
+globalXSBRMap['TprimeRun2']['TprimeM700Decay30pctTch'] = {'mode':'constant','factor': 0.00023466052486970654}
+globalXSBRMap['TprimeRun2']['TprimeM700Decay30pctInt'] = {'mode':'constant','factor': -0.003292252139963048}
+
+globalXSBRMap['TprimeRun2']['TprimeM800Decay5pctSch'] = {'mode':'constant','factor': 0.0660785358588328}
+globalXSBRMap['TprimeRun2']['TprimeM800Decay5pctTch'] = {'mode':'constant','factor': 0.00021157065564537944}
+globalXSBRMap['TprimeRun2']['TprimeM800Decay5pctInt'] = {'mode':'constant','factor': -0.013763118678096115}
+
+globalXSBRMap['TprimeRun2']['TprimeM800Decay10pctSch'] = {'mode':'constant','factor': 0.03332464833555978}
+globalXSBRMap['TprimeRun2']['TprimeM800Decay10pctTch'] = {'mode':'constant','factor': 0.00021157065564537944}
+globalXSBRMap['TprimeRun2']['TprimeM800Decay10pctInt'] = {'mode':'constant','factor': -0.014554400713311818}
+
+globalXSBRMap['TprimeRun2']['TprimeM800Decay20pctSch'] = {'mode':'constant','factor': 0.016681781922744207}
+globalXSBRMap['TprimeRun2']['TprimeM800Decay20pctTch'] = {'mode':'constant','factor': 0.00021131121891252184}
+globalXSBRMap['TprimeRun2']['TprimeM800Decay20pctInt'] = {'mode':'constant','factor': -0.009964964909060731}
+
+globalXSBRMap['TprimeRun2']['TprimeM800Decay30pctSch'] = {'mode':'constant','factor': 0.011146699227227136}
+globalXSBRMap['TprimeRun2']['TprimeM800Decay30pctTch'] = {'mode':'constant','factor': 0.00021079234544680661}
+globalXSBRMap['TprimeRun2']['TprimeM800Decay30pctInt'] = {'mode':'constant','factor': -0.009257999812023748}
+
+globalXSBRMap['TprimeRun2']['TprimeM900Decay5pctSch'] = {'mode':'constant','factor': 0.047593668642728224}
+globalXSBRMap['TprimeRun2']['TprimeM900Decay5pctTch'] = {'mode':'constant','factor': 0.0001883510680546234}
+globalXSBRMap['TprimeRun2']['TprimeM900Decay5pctInt'] = {'mode':'constant','factor': -0.01585158437759986}
+
+globalXSBRMap['TprimeRun2']['TprimeM900Decay10pctSch'] = {'mode':'constant','factor': 0.024244362685543485}
+globalXSBRMap['TprimeRun2']['TprimeM900Decay10pctTch'] = {'mode':'constant','factor': 0.00018809163132176582}
+globalXSBRMap['TprimeRun2']['TprimeM900Decay10pctInt'] = {'mode':'constant','factor': -0.014502513366740301}
+
+globalXSBRMap['TprimeRun2']['TprimeM900Decay20pctSch'] = {'mode':'constant','factor': 0.012578789992601135}
+globalXSBRMap['TprimeRun2']['TprimeM900Decay20pctTch'] = {'mode':'constant','factor': 0.0001878321945889082}
+globalXSBRMap['TprimeRun2']['TprimeM900Decay20pctInt'] = {'mode':'constant','factor': -0.012598247747565456}
+
+globalXSBRMap['TprimeRun2']['TprimeM900Decay30pctSch'] = {'mode':'constant','factor': 0.008447260021843723}
+globalXSBRMap['TprimeRun2']['TprimeM900Decay30pctTch'] = {'mode':'constant','factor': 0.0001867944476574778}
+globalXSBRMap['TprimeRun2']['TprimeM900Decay30pctInt'] = {'mode':'constant','factor': -0.011250473920370178}
+
+globalXSBRMap['TprimeRun2']['TprimeM1000Decay5pctSch'] = {'mode':'constant','factor': 0.034881268732705424}
+globalXSBRMap['TprimeRun2']['TprimeM1000Decay5pctTch'] = {'mode':'constant','factor': 0.00016902303145673164}
+globalXSBRMap['TprimeRun2']['TprimeM1000Decay5pctInt'] = {'mode':'constant','factor': -0.01577375335774258}
+
+globalXSBRMap['TprimeRun2']['TprimeM1000Decay10pctSch'] = {'mode':'constant','factor': 0.018082740280175293}
+globalXSBRMap['TprimeRun2']['TprimeM1000Decay10pctTch'] = {'mode':'constant','factor': 0.00016902303145673164}
+globalXSBRMap['TprimeRun2']['TprimeM1000Decay10pctInt'] = {'mode':'constant','factor': -0.014982471322526872}
+
+globalXSBRMap['TprimeRun2']['TprimeM1000Decay20pctSch'] = {'mode':'constant','factor': 0.009392906913109704}
+globalXSBRMap['TprimeRun2']['TprimeM1000Decay20pctTch'] = {'mode':'constant','factor': 0.00016824472125815884}
+globalXSBRMap['TprimeRun2']['TprimeM1000Decay20pctInt'] = {'mode':'constant','factor': -0.013412879088738346}
+
+globalXSBRMap['TprimeRun2']['TprimeM1000Decay30pctSch'] = {'mode':'constant','factor': 0.006530022566025998}
+globalXSBRMap['TprimeRun2']['TprimeM1000Decay30pctTch'] = {'mode':'constant','factor': 0.0001675961294260147}
+globalXSBRMap['TprimeRun2']['TprimeM1000Decay30pctInt'] = {'mode':'constant','factor': -0.011966519303057178}
+
+globalXSBRMap['TprimeRun2']['TprimeM1100Decay5pctSch'] = {'mode':'constant','factor': 0.025956645122403702}
+globalXSBRMap['TprimeRun2']['TprimeM1100Decay5pctTch'] = {'mode':'constant','factor': 0.00015215964382098697}
+globalXSBRMap['TprimeRun2']['TprimeM1100Decay5pctInt'] = {'mode':'constant','factor': -0.01581266886767122}
+
+globalXSBRMap['TprimeRun2']['TprimeM1100Decay10pctSch'] = {'mode':'constant','factor': 0.013542597455167149}
+globalXSBRMap['TprimeRun2']['TprimeM1100Decay10pctTch'] = {'mode':'constant','factor': 0.00015202992545455831}
+globalXSBRMap['TprimeRun2']['TprimeM1100Decay10pctInt'] = {'mode':'constant','factor': -0.014982471322526872}
+
+globalXSBRMap['TprimeRun2']['TprimeM1100Decay20pctSch'] = {'mode':'constant','factor': 0.007303144029941672}
+globalXSBRMap['TprimeRun2']['TprimeM1100Decay20pctTch'] = {'mode':'constant','factor': 0.0001512516152559855}
+globalXSBRMap['TprimeRun2']['TprimeM1100Decay20pctInt'] = {'mode':'constant','factor': -0.013205329702452256}
+
+globalXSBRMap['TprimeRun2']['TprimeM1100Decay30pctSch'] = {'mode':'constant','factor': 0.005094040249659137}
+globalXSBRMap['TprimeRun2']['TprimeM1100Decay30pctTch'] = {'mode':'constant','factor': 0.00015008414995812617}
+globalXSBRMap['TprimeRun2']['TprimeM1100Decay30pctInt'] = {'mode':'constant','factor': -0.012026189751614428}
+
+globalXSBRMap['TprimeRun2']['TprimeM1200Decay5pctSch'] = {'mode':'constant','factor': 0.01949667047424926}
+globalXSBRMap['TprimeRun2']['TprimeM1200Decay5pctTch'] = {'mode':'constant','factor': 0.0001369825949488171}
+globalXSBRMap['TprimeRun2']['TprimeM1200Decay5pctInt'] = {'mode':'constant','factor': -0.014761950099597906}
+
+globalXSBRMap['TprimeRun2']['TprimeM1200Decay10pctSch'] = {'mode':'constant','factor': 0.01030093547811133}
+globalXSBRMap['TprimeRun2']['TprimeM1200Decay10pctTch'] = {'mode':'constant','factor': 0.0001365934398495306}
+globalXSBRMap['TprimeRun2']['TprimeM1200Decay10pctInt'] = {'mode':'constant','factor': -0.014048499084239486}
+
+globalXSBRMap['TprimeRun2']['TprimeM1200Decay20pctSch'] = {'mode':'constant','factor': 0.0057011222045459395}
+globalXSBRMap['TprimeRun2']['TprimeM1200Decay20pctTch'] = {'mode':'constant','factor': 0.00013594484801738668}
+globalXSBRMap['TprimeRun2']['TprimeM1200Decay20pctInt'] = {'mode':'constant','factor': -0.01263327170650123}
+
+globalXSBRMap['TprimeRun2']['TprimeM1200Decay30pctSch'] = {'mode':'constant','factor': 0.004062779236550145}
+globalXSBRMap['TprimeRun2']['TprimeM1200Decay30pctTch'] = {'mode':'constant','factor': 0.00013490710108595628}
+globalXSBRMap['TprimeRun2']['TprimeM1200Decay30pctInt'] = {'mode':'constant','factor': -0.011858853058921271}
+
+globalXSBRMap['TprimeRun2']['TprimeM1400Decay5pctSch'] = {'mode':'constant','factor': 0.011266040124341637}
+globalXSBRMap['TprimeRun2']['TprimeM1400Decay5pctTch'] = {'mode':'constant','factor': 0.0001120247812479152}
+globalXSBRMap['TprimeRun2']['TprimeM1400Decay5pctInt'] = {'mode':'constant','factor': -0.012689050604065619}
+
+globalXSBRMap['TprimeRun2']['TprimeM1400Decay10pctSch'] = {'mode':'constant','factor': 0.006051361793903712}
+globalXSBRMap['TprimeRun2']['TprimeM1400Decay10pctTch'] = {'mode':'constant','factor': 0.00011185614737155771}
+globalXSBRMap['TprimeRun2']['TprimeM1400Decay10pctInt'] = {'mode':'constant','factor': -0.012343999749364998}
+
+globalXSBRMap['TprimeRun2']['TprimeM1400Decay20pctSch'] = {'mode':'constant','factor': 0.0035776325461064178}
+globalXSBRMap['TprimeRun2']['TprimeM1400Decay20pctTch'] = {'mode':'constant','factor': 0.00011093514696991322}
+globalXSBRMap['TprimeRun2']['TprimeM1400Decay20pctInt'] = {'mode':'constant','factor': -0.011416513429399049}
+
+globalXSBRMap['TprimeRun2']['TprimeM1400Decay30pctSch'] = {'mode':'constant','factor': 0.002643660307819027}
+globalXSBRMap['TprimeRun2']['TprimeM1400Decay30pctTch'] = {'mode':'constant','factor': 0.00010984551269191123}
+globalXSBRMap['TprimeRun2']['TprimeM1400Decay30pctInt'] = {'mode':'constant','factor': -0.010406007354918664}
+
+globalXSBRMap['TprimeRun2']['TprimeM1600Decay5pctSch'] = {'mode':'constant','factor': 0.006929555134626715}
+globalXSBRMap['TprimeRun2']['TprimeM1600Decay5pctTch'] = {'mode':'constant','factor': 9.333236464552454e-05}
+globalXSBRMap['TprimeRun2']['TprimeM1600Decay5pctInt'] = {'mode':'constant','factor': -0.010514970782718862}
+
+globalXSBRMap['TprimeRun2']['TprimeM1600Decay10pctSch'] = {'mode':'constant','factor': 0.003835772095299737}
+globalXSBRMap['TprimeRun2']['TprimeM1600Decay10pctTch'] = {'mode':'constant','factor': 9.264485730345186e-05}
+globalXSBRMap['TprimeRun2']['TprimeM1600Decay10pctInt'] = {'mode':'constant','factor': -0.010221807274589764}
+
+globalXSBRMap['TprimeRun2']['TprimeM1600Decay20pctSch'] = {'mode':'constant','factor': 0.002351793983354218}
+globalXSBRMap['TprimeRun2']['TprimeM1600Decay20pctTch'] = {'mode':'constant','factor': 9.108823690630624e-05}
+globalXSBRMap['TprimeRun2']['TprimeM1600Decay20pctInt'] = {'mode':'constant','factor': -0.00964715491131016}
+
+globalXSBRMap['TprimeRun2']['TprimeM1600Decay30pctSch'] = {'mode':'constant','factor': 0.0017862219057246324}
+globalXSBRMap['TprimeRun2']['TprimeM1600Decay30pctTch'] = {'mode':'constant','factor': 8.982996875194678e-05}
+globalXSBRMap['TprimeRun2']['TprimeM1600Decay30pctInt'] = {'mode':'constant','factor': -0.00907769128268771}
+
+globalXSBRMap['TprimeRun2']['TprimeM1800Decay5pctSch'] = {'mode':'constant','factor': 0.0044195047442293555}
+globalXSBRMap['TprimeRun2']['TprimeM1800Decay5pctTch'] = {'mode':'constant','factor': 7.748078026792453e-05}
+globalXSBRMap['TprimeRun2']['TprimeM1800Decay5pctInt'] = {'mode':'constant','factor': -0.009139956098573536}
+
+globalXSBRMap['TprimeRun2']['TprimeM1800Decay10pctSch'] = {'mode':'constant','factor': 0.002462054594818702}
+globalXSBRMap['TprimeRun2']['TprimeM1800Decay10pctTch'] = {'mode':'constant','factor': 7.700082231213812e-05}
+globalXSBRMap['TprimeRun2']['TprimeM1800Decay10pctInt'] = {'mode':'constant','factor': -0.008824740468151543}
+
+globalXSBRMap['TprimeRun2']['TprimeM1800Decay20pctSch'] = {'mode':'constant','factor': 0.0016085077437171709}
+globalXSBRMap['TprimeRun2']['TprimeM1800Decay20pctTch'] = {'mode':'constant','factor': 7.719539986178115e-05}
+globalXSBRMap['TprimeRun2']['TprimeM1800Decay20pctInt'] = {'mode':'constant','factor': -0.008492661450093805}
+
+globalXSBRMap['TprimeRun2']['TprimeM1800Decay30pctSch'] = {'mode':'constant','factor': 0.0012790230929880084}
+globalXSBRMap['TprimeRun2']['TprimeM1800Decay30pctTch'] = {'mode':'constant','factor': 7.605387823720782e-05}
+globalXSBRMap['TprimeRun2']['TprimeM1800Decay30pctInt'] = {'mode':'constant','factor': -0.00813723312607888}
+
+globalXSBRMap['TprimeRun2']['TprimeM2000Decay5pctSch'] = {'mode':'constant','factor': 0.002817482918833625}
+globalXSBRMap['TprimeRun2']['TprimeM2000Decay5pctTch'] = {'mode':'constant','factor': 6.570235259618925e-05}
+globalXSBRMap['TprimeRun2']['TprimeM2000Decay5pctInt'] = {'mode':'constant','factor': -0.007895956964521306}
+
+globalXSBRMap['TprimeRun2']['TprimeM2000Decay10pctSch'] = {'mode':'constant','factor': 0.0016487204373101}
+globalXSBRMap['TprimeRun2']['TprimeM2000Decay10pctTch'] = {'mode':'constant','factor': 6.565046524961769e-05}
+globalXSBRMap['TprimeRun2']['TprimeM2000Decay10pctInt'] = {'mode':'constant','factor': -0.0077338090064853}
+
+globalXSBRMap['TprimeRun2']['TprimeM2000Decay20pctSch'] = {'mode':'constant','factor': 0.0011685030447906677}
+globalXSBRMap['TprimeRun2']['TprimeM2000Decay20pctTch'] = {'mode':'constant','factor': 6.506673260068792e-05}
+globalXSBRMap['TprimeRun2']['TprimeM2000Decay20pctInt'] = {'mode':'constant','factor': -0.007404324355756139}
+
+globalXSBRMap['TprimeRun2']['TprimeM2000Decay30pctSch'] = {'mode':'constant','factor': 0.0009360477321502504}
+globalXSBRMap['TprimeRun2']['TprimeM2000Decay30pctTch'] = {'mode':'constant','factor': 6.361388689668544e-05}
+globalXSBRMap['TprimeRun2']['TprimeM2000Decay30pctInt'] = {'mode':'constant','factor': -0.007227907377412965}
+
+globalXSBRMap['TprimeRun2']['TprimeM2200Decay5pctSch'] = {'mode':'constant','factor': 0.0018912937825319638}
+globalXSBRMap['TprimeRun2']['TprimeM2200Decay5pctTch'] = {'mode':'constant','factor': 5.621994001024363e-05}
+globalXSBRMap['TprimeRun2']['TprimeM2200Decay5pctInt'] = {'mode':'constant','factor': -0.0068932339920266495}
+
+globalXSBRMap['TprimeRun2']['TprimeM2200Decay10pctSch'] = {'mode':'constant','factor': 0.0012031378486271579}
+globalXSBRMap['TprimeRun2']['TprimeM2200Decay10pctTch'] = {'mode':'constant','factor': 5.6051306133886154e-05}
+globalXSBRMap['TprimeRun2']['TprimeM2200Decay10pctInt'] = {'mode':'constant','factor': -0.006999603052498269}
+
+globalXSBRMap['TprimeRun2']['TprimeM2200Decay20pctSch'] = {'mode':'constant','factor': 0.0008536765694679597}
+globalXSBRMap['TprimeRun2']['TprimeM2200Decay20pctTch'] = {'mode':'constant','factor': 5.5532432668170954e-05}
+globalXSBRMap['TprimeRun2']['TprimeM2200Decay20pctInt'] = {'mode':'constant','factor': -0.006674009952761971}
+
+globalXSBRMap['TprimeRun2']['TprimeM2200Decay30pctSch'] = {'mode':'constant','factor': 0.0007095594643655585}
+globalXSBRMap['TprimeRun2']['TprimeM2200Decay30pctTch'] = {'mode':'constant','factor': 5.497464369252696e-05}
+globalXSBRMap['TprimeRun2']['TprimeM2200Decay30pctInt'] = {'mode':'constant','factor': -0.006470352117468748}
+
+globalXSBRMap['TprimeRun2']['TprimeM2400Decay5pctSch'] = {'mode':'constant','factor': 0.0013010752152809051}
+globalXSBRMap['TprimeRun2']['TprimeM2400Decay5pctTch'] = {'mode':'constant','factor': 4.916326087651656e-05}
+globalXSBRMap['TprimeRun2']['TprimeM2400Decay5pctInt'] = {'mode':'constant','factor': -0.006190160445982531}
+
+globalXSBRMap['TprimeRun2']['TprimeM2400Decay10pctSch'] = {'mode':'constant','factor': 0.0008807877080515798}
+globalXSBRMap['TprimeRun2']['TprimeM2400Decay10pctTch'] = {'mode':'constant','factor': 4.9046514346730644e-05}
+globalXSBRMap['TprimeRun2']['TprimeM2400Decay10pctInt'] = {'mode':'constant','factor': -0.0062044294662897004}
+
+globalXSBRMap['TprimeRun2']['TprimeM2400Decay20pctSch'] = {'mode':'constant','factor': 0.0006459974648154444}
+globalXSBRMap['TprimeRun2']['TprimeM2400Decay20pctTch'] = {'mode':'constant','factor': 4.850169720772966e-05}
+globalXSBRMap['TprimeRun2']['TprimeM2400Decay20pctInt'] = {'mode':'constant','factor': -0.006065630814210881}
+
+globalXSBRMap['TprimeRun2']['TprimeM2400Decay30pctSch'] = {'mode':'constant','factor': 0.0005559729185138543}
+globalXSBRMap['TprimeRun2']['TprimeM2400Decay30pctTch'] = {'mode':'constant','factor': 4.78012180290142e-05}
+globalXSBRMap['TprimeRun2']['TprimeM2400Decay30pctInt'] = {'mode':'constant','factor': -0.0057348489798174284}
+
+globalXSBRMap['TprimeRun2']['TprimeM2600Decay5pctSch'] = {'mode':'constant','factor': 0.0009226867404080836}
+globalXSBRMap['TprimeRun2']['TprimeM2600Decay5pctTch'] = {'mode':'constant','factor': 4.3170272347505904e-05}
+globalXSBRMap['TprimeRun2']['TprimeM2600Decay5pctInt'] = {'mode':'constant','factor': -0.005657017959960146}
+
+globalXSBRMap['TprimeRun2']['TprimeM2600Decay10pctSch'] = {'mode':'constant','factor': 0.0006581909912597519}
+globalXSBRMap['TprimeRun2']['TprimeM2600Decay10pctTch'] = {'mode':'constant','factor': 4.3053525817719995e-05}
+globalXSBRMap['TprimeRun2']['TprimeM2600Decay10pctInt'] = {'mode':'constant','factor': -0.005542865797502799}
+
+globalXSBRMap['TprimeRun2']['TprimeM2600Decay20pctSch'] = {'mode':'constant','factor': 0.0005040855719423326}
+globalXSBRMap['TprimeRun2']['TprimeM2600Decay20pctTch'] = {'mode':'constant','factor': 4.253465235200479e-05}
+globalXSBRMap['TprimeRun2']['TprimeM2600Decay20pctInt'] = {'mode':'constant','factor': -0.0055013559202455814}
+
+globalXSBRMap['TprimeRun2']['TprimeM2600Decay30pctSch'] = {'mode':'constant','factor': 0.0004433773764536524}
+globalXSBRMap['TprimeRun2']['TprimeM2600Decay30pctTch'] = {'mode':'constant','factor': 4.192497602978946e-05}
+globalXSBRMap['TprimeRun2']['TprimeM2600Decay30pctInt'] = {'mode':'constant','factor': -0.005369043186488202}
+
+globalXSBRMap['TprimeRun3']['TprimeM700Decay5pctSch'] = {'mode':'constant','factor': 0.10761435678933588}
+globalXSBRMap['TprimeRun3']['TprimeM700Decay5pctTch'] = {'mode':'constant','factor': 0.0002695547654390547}
+globalXSBRMap['TprimeRun3']['TprimeM700Decay5pctInt'] = {'mode':'constant','factor': -0.011661681141949489}
+
+globalXSBRMap['TprimeRun3']['TprimeM700Decay10pctSch'] = {'mode':'constant','factor': 0.05287320615638055}
+globalXSBRMap['TprimeRun3']['TprimeM700Decay10pctTch'] = {'mode':'constant','factor': 0.00026384715731618747}
+globalXSBRMap['TprimeRun3']['TprimeM700Decay10pctInt'] = {'mode':'constant','factor': -0.00896224193656608}
+
+globalXSBRMap['TprimeRun3']['TprimeM700Decay20pctSch'] = {'mode':'constant','factor': 0.026203110018618435}
+globalXSBRMap['TprimeRun3']['TprimeM700Decay20pctTch'] = {'mode':'constant','factor': 0.0002709816674697716}
+globalXSBRMap['TprimeRun3']['TprimeM700Decay20pctInt'] = {'mode':'constant','factor': -0.0077182428025138455}
+
+globalXSBRMap['TprimeRun3']['TprimeM700Decay30pctSch'] = {'mode':'constant','factor': 0.016928246818958936}
+globalXSBRMap['TprimeRun3']['TprimeM700Decay30pctTch'] = {'mode':'constant','factor': 0.0002563234920633167}
+globalXSBRMap['TprimeRun3']['TprimeM700Decay30pctInt'] = {'mode':'constant','factor': -0.006603962034890417}
+
+globalXSBRMap['TprimeRun3']['TprimeM800Decay5pctSch'] = {'mode':'constant','factor': 0.07510693416227758}
+globalXSBRMap['TprimeRun3']['TprimeM800Decay5pctTch'] = {'mode':'constant','factor': 0.0002371251738318539}
+globalXSBRMap['TprimeRun3']['TprimeM800Decay5pctInt'] = {'mode':'constant','factor': -0.01831623333974714}
+
+globalXSBRMap['TprimeRun3']['TprimeM800Decay10pctSch'] = {'mode':'constant','factor': 0.03825394625985432}
+globalXSBRMap['TprimeRun3']['TprimeM800Decay10pctTch'] = {'mode':'constant','factor': 0.00023608742690042325}
+globalXSBRMap['TprimeRun3']['TprimeM800Decay10pctInt'] = {'mode':'constant','factor': -0.016720697432672852}
+
+globalXSBRMap['TprimeRun3']['TprimeM800Decay20pctSch'] = {'mode':'constant','factor': 0.0190037406818198}
+globalXSBRMap['TprimeRun3']['TprimeM800Decay20pctTch'] = {'mode':'constant','factor': 0.00023491996160256417}
+globalXSBRMap['TprimeRun3']['TprimeM800Decay20pctInt'] = {'mode':'constant','factor': -0.014281992143811331}
+
+globalXSBRMap['TprimeRun3']['TprimeM800Decay30pctSch'] = {'mode':'constant','factor': 0.012818768970494426}
+globalXSBRMap['TprimeRun3']['TprimeM800Decay30pctTch'] = {'mode':'constant','factor': 0.0002229858718911142}
+globalXSBRMap['TprimeRun3']['TprimeM800Decay30pctInt'] = {'mode':'constant','factor': -0.011856258691592694}
+
+globalXSBRMap['TprimeRun3']['TprimeM900Decay5pctSch'] = {'mode':'constant','factor': 0.054455770226811966}
+globalXSBRMap['TprimeRun3']['TprimeM900Decay5pctTch'] = {'mode':'constant','factor': 0.0002022309332625055}
+globalXSBRMap['TprimeRun3']['TprimeM900Decay5pctInt'] = {'mode':'constant','factor': -0.02101437536146627}
+
+globalXSBRMap['TprimeRun3']['TprimeM900Decay10pctSch'] = {'mode':'constant','factor': 0.028317519391407933}
+globalXSBRMap['TprimeRun3']['TprimeM900Decay10pctTch'] = {'mode':'constant','factor': 0.00021792685560039082}
+globalXSBRMap['TprimeRun3']['TprimeM900Decay10pctInt'] = {'mode':'constant','factor': -0.01928912108796317}
+
+globalXSBRMap['TprimeRun3']['TprimeM900Decay20pctSch'] = {'mode':'constant','factor': 0.014152273777382528}
+globalXSBRMap['TprimeRun3']['TprimeM900Decay20pctTch'] = {'mode':'constant','factor': 0.00021805657396681952}
+globalXSBRMap['TprimeRun3']['TprimeM900Decay20pctInt'] = {'mode':'constant','factor': -0.016967162328887574}
+
+globalXSBRMap['TprimeRun3']['TprimeM900Decay30pctSch'] = {'mode':'constant','factor': 0.009737957767810324}
+globalXSBRMap['TprimeRun3']['TprimeM900Decay30pctTch'] = {'mode':'constant','factor': 0.00021559192500467242}
+globalXSBRMap['TprimeRun3']['TprimeM900Decay30pctInt'] = {'mode':'constant','factor': -0.01481383744616943}
+
+globalXSBRMap['TprimeRun3']['TprimeM1000Decay5pctSch'] = {'mode':'constant','factor': 0.03970679196385693}
+globalXSBRMap['TprimeRun3']['TprimeM1000Decay5pctTch'] = {'mode':'constant','factor': 0.00020586304752251194}
+globalXSBRMap['TprimeRun3']['TprimeM1000Decay5pctInt'] = {'mode':'constant','factor': -0.02154622066382436}
+
+globalXSBRMap['TprimeRun3']['TprimeM1000Decay10pctSch'] = {'mode':'constant','factor': 0.020780882301894413}
+globalXSBRMap['TprimeRun3']['TprimeM1000Decay10pctTch'] = {'mode':'constant','factor': 0.0002036578352932224}
+globalXSBRMap['TprimeRun3']['TprimeM1000Decay10pctInt'] = {'mode':'constant','factor': -0.02021012148960768}
+
+globalXSBRMap['TprimeRun3']['TprimeM1000Decay20pctSch'] = {'mode':'constant','factor': 0.011214152777770114}
+globalXSBRMap['TprimeRun3']['TprimeM1000Decay20pctTch'] = {'mode':'constant','factor': 0.00019185346394820117}
+globalXSBRMap['TprimeRun3']['TprimeM1000Decay20pctInt'] = {'mode':'constant','factor': -0.01778438803738904}
+
+globalXSBRMap['TprimeRun3']['TprimeM1000Decay30pctSch'] = {'mode':'constant','factor': 0.007466589171641965}
+globalXSBRMap['TprimeRun3']['TprimeM1000Decay30pctTch'] = {'mode':'constant','factor': 0.00018809163132176582}
+globalXSBRMap['TprimeRun3']['TprimeM1000Decay30pctInt'] = {'mode':'constant','factor': -0.015903471724171385}
+
+globalXSBRMap['TprimeRun3']['TprimeM1100Decay5pctSch'] = {'mode':'constant','factor': 0.029575787545767333}
+globalXSBRMap['TprimeRun3']['TprimeM1100Decay5pctTch'] = {'mode':'constant','factor': 0.00016863387635744533}
+globalXSBRMap['TprimeRun3']['TprimeM1100Decay5pctInt'] = {'mode':'constant','factor': -0.02039172720260801}
+
+globalXSBRMap['TprimeRun3']['TprimeM1100Decay10pctSch'] = {'mode':'constant','factor': 0.015644034991313775}
+globalXSBRMap['TprimeRun3']['TprimeM1100Decay10pctTch'] = {'mode':'constant','factor': 0.0001685041579910164}
+globalXSBRMap['TprimeRun3']['TprimeM1100Decay10pctInt'] = {'mode':'constant','factor': -0.019431811291034853}
+
+globalXSBRMap['TprimeRun3']['TprimeM1100Decay20pctSch'] = {'mode':'constant','factor': 0.008510822021393838}
+globalXSBRMap['TprimeRun3']['TprimeM1100Decay20pctTch'] = {'mode':'constant','factor': 0.00016824472125815884}
+globalXSBRMap['TprimeRun3']['TprimeM1100Decay20pctInt'] = {'mode':'constant','factor': -0.017524951304531432}
+
+globalXSBRMap['TprimeRun3']['TprimeM1100Decay30pctSch'] = {'mode':'constant','factor': 0.005859378611589082}
+globalXSBRMap['TprimeRun3']['TprimeM1100Decay30pctTch'] = {'mode':'constant','factor': 0.0001673366926931571}
+globalXSBRMap['TprimeRun3']['TprimeM1100Decay30pctInt'] = {'mode':'constant','factor': -0.015618091318028013}
+
+globalXSBRMap['TprimeRun3']['TprimeM1200Decay5pctSch'] = {'mode':'constant','factor': 0.022778545144898}
+globalXSBRMap['TprimeRun3']['TprimeM1200Decay5pctTch'] = {'mode':'constant','factor': 0.00015384598258456151}
+globalXSBRMap['TprimeRun3']['TprimeM1200Decay5pctInt'] = {'mode':'constant','factor': -0.019198318231463007}
+
+globalXSBRMap['TprimeRun3']['TprimeM1200Decay10pctSch'] = {'mode':'constant','factor': 0.011909443221828506}
+globalXSBRMap['TprimeRun3']['TprimeM1200Decay10pctTch'] = {'mode':'constant','factor': 0.0001524190805538448}
+globalXSBRMap['TprimeRun3']['TprimeM1200Decay10pctInt'] = {'mode':'constant','factor': -0.0184070361962473}
+
+globalXSBRMap['TprimeRun3']['TprimeM1200Decay20pctSch'] = {'mode':'constant','factor': 0.006632500075504755}
+globalXSBRMap['TprimeRun3']['TprimeM1200Decay20pctTch'] = {'mode':'constant','factor': 0.00015202992545455831}
+globalXSBRMap['TprimeRun3']['TprimeM1200Decay20pctInt'] = {'mode':'constant','factor': -0.016694753759387088}
+
+globalXSBRMap['TprimeRun3']['TprimeM1200Decay30pctSch'] = {'mode':'constant','factor': 0.004634837232501172}
+globalXSBRMap['TprimeRun3']['TprimeM1200Decay30pctTch'] = {'mode':'constant','factor': 0.00015202992545455831}
+globalXSBRMap['TprimeRun3']['TprimeM1200Decay30pctInt'] = {'mode':'constant','factor': -0.015306767238598884}
+
+globalXSBRMap['TprimeRun3']['TprimeM1400Decay5pctSch'] = {'mode':'constant','factor': 0.01356854112845291}
+globalXSBRMap['TprimeRun3']['TprimeM1400Decay5pctTch'] = {'mode':'constant','factor': 0.00012724074563001388}
+globalXSBRMap['TprimeRun3']['TprimeM1400Decay5pctInt'] = {'mode':'constant','factor': -0.016214795803600513}
+
+globalXSBRMap['TprimeRun3']['TprimeM1400Decay10pctSch'] = {'mode':'constant','factor': 0.007246067948712996}
+globalXSBRMap['TprimeRun3']['TprimeM1400Decay10pctTch'] = {'mode':'constant','factor': 0.00012676078767422723}
+globalXSBRMap['TprimeRun3']['TprimeM1400Decay10pctInt'] = {'mode':'constant','factor': -0.015942387234100026}
+
+globalXSBRMap['TprimeRun3']['TprimeM1400Decay20pctSch'] = {'mode':'constant','factor': 0.004313135683757737}
+globalXSBRMap['TprimeRun3']['TprimeM1400Decay20pctTch'] = {'mode':'constant','factor': 0.00012708508359029919}
+globalXSBRMap['TprimeRun3']['TprimeM1400Decay20pctInt'] = {'mode':'constant','factor': -0.014658175406454864}
+
+globalXSBRMap['TprimeRun3']['TprimeM1400Decay30pctSch'] = {'mode':'constant','factor': 0.0030756224680269454}
+globalXSBRMap['TprimeRun3']['TprimeM1400Decay30pctTch'] = {'mode':'constant','factor': 0.0001246723219747234}
+globalXSBRMap['TprimeRun3']['TprimeM1400Decay30pctInt'] = {'mode':'constant','factor': -0.013477738271952745}
+
+globalXSBRMap['TprimeRun3']['TprimeM1600Decay5pctSch'] = {'mode':'constant','factor': 0.008228035982579044}
+globalXSBRMap['TprimeRun3']['TprimeM1600Decay5pctTch'] = {'mode':'constant','factor': 0.00010448814415840171}
+globalXSBRMap['TprimeRun3']['TprimeM1600Decay5pctInt'] = {'mode':'constant','factor': -0.013840949697953396}
+
+globalXSBRMap['TprimeRun3']['TprimeM1600Decay10pctSch'] = {'mode':'constant','factor': 0.004621865395858291}
+globalXSBRMap['TprimeRun3']['TprimeM1600Decay10pctTch'] = {'mode':'constant','factor': 0.00010337256620711394}
+globalXSBRMap['TprimeRun3']['TprimeM1600Decay10pctInt'] = {'mode':'constant','factor': -0.013581512965095788}
+
+globalXSBRMap['TprimeRun3']['TprimeM1600Decay20pctSch'] = {'mode':'constant','factor': 0.0029108801426623644}
+globalXSBRMap['TprimeRun3']['TprimeM1600Decay20pctTch'] = {'mode':'constant','factor': 0.00010267208702839826}
+globalXSBRMap['TprimeRun3']['TprimeM1600Decay20pctInt'] = {'mode':'constant','factor': -0.012569709706951116}
+
+globalXSBRMap['TprimeRun3']['TprimeM1600Decay30pctSch'] = {'mode':'constant','factor': 0.002149433331725284}
+globalXSBRMap['TprimeRun3']['TprimeM1600Decay30pctTch'] = {'mode':'constant','factor': 0.00010176405846339676}
+globalXSBRMap['TprimeRun3']['TprimeM1600Decay30pctInt'] = {'mode':'constant','factor': -0.011927603793128535}
+
+globalXSBRMap['TprimeRun3']['TprimeM1800Decay5pctSch'] = {'mode':'constant','factor': 0.00517706000417357}
+globalXSBRMap['TprimeRun3']['TprimeM1800Decay5pctTch'] = {'mode':'constant','factor': 8.945378548930329e-05}
+globalXSBRMap['TprimeRun3']['TprimeM1800Decay5pctInt'] = {'mode':'constant','factor': -0.011909443221828506}
+
+globalXSBRMap['TprimeRun3']['TprimeM1800Decay10pctSch'] = {'mode':'constant','factor': 0.0030470844274126086}
+globalXSBRMap['TprimeRun3']['TprimeM1800Decay10pctTch'] = {'mode':'constant','factor': 8.980402507866101e-05}
+globalXSBRMap['TprimeRun3']['TprimeM1800Decay10pctInt'] = {'mode':'constant','factor': -0.01170708257019957}
+
+globalXSBRMap['TprimeRun3']['TprimeM1800Decay20pctSch'] = {'mode':'constant','factor': 0.0019237233741391648}
+globalXSBRMap['TprimeRun3']['TprimeM1800Decay20pctTch'] = {'mode':'constant','factor': 8.732640427987089e-05}
+globalXSBRMap['TprimeRun3']['TprimeM1800Decay20pctInt'] = {'mode':'constant','factor': -0.011074056942027006}
+
+globalXSBRMap['TprimeRun3']['TprimeM1800Decay30pctSch'] = {'mode':'constant','factor': 0.0015202992545455842}
+globalXSBRMap['TprimeRun3']['TprimeM1800Decay30pctTch'] = {'mode':'constant','factor': 8.525091041700983e-05}
+globalXSBRMap['TprimeRun3']['TprimeM1800Decay30pctInt'] = {'mode':'constant','factor': -0.010524051068368876}
+
+globalXSBRMap['TprimeRun3']['TprimeM2000Decay5pctSch'] = {'mode':'constant','factor': 0.00341029585341326}
+globalXSBRMap['TprimeRun3']['TprimeM2000Decay5pctTch'] = {'mode':'constant','factor': 7.478263824620536e-05}
+globalXSBRMap['TprimeRun3']['TprimeM2000Decay5pctInt'] = {'mode':'constant','factor': -0.01026980307016842}
+
+globalXSBRMap['TprimeRun3']['TprimeM2000Decay10pctSch'] = {'mode':'constant','factor': 0.0020638192098822727}
+globalXSBRMap['TprimeRun3']['TprimeM2000Decay10pctTch'] = {'mode':'constant','factor': 7.475669457291959e-05}
+globalXSBRMap['TprimeRun3']['TprimeM2000Decay10pctInt'] = {'mode':'constant','factor': -0.010206241070618308}
+
+globalXSBRMap['TprimeRun3']['TprimeM2000Decay20pctSch'] = {'mode':'constant','factor': 0.0013698259494881715}
+globalXSBRMap['TprimeRun3']['TprimeM2000Decay20pctTch'] = {'mode':'constant','factor': 7.426376478049016e-05}
+globalXSBRMap['TprimeRun3']['TprimeM2000Decay20pctInt'] = {'mode':'constant','factor': -0.009682178870245937}
+
+globalXSBRMap['TprimeRun3']['TprimeM2000Decay30pctSch'] = {'mode':'constant','factor': 0.001109740624798419}
+globalXSBRMap['TprimeRun3']['TprimeM2000Decay30pctTch'] = {'mode':'constant','factor': 7.31481868292024e-05}
+globalXSBRMap['TprimeRun3']['TprimeM2000Decay30pctInt'] = {'mode':'constant','factor': -0.00927745756698807}
+
+globalXSBRMap['TprimeRun3']['TprimeM2200Decay5pctSch'] = {'mode':'constant','factor': 0.0023115812897612892}
+globalXSBRMap['TprimeRun3']['TprimeM2200Decay5pctTch'] = {'mode':'constant','factor': 6.440516893190102e-05}
+globalXSBRMap['TprimeRun3']['TprimeM2200Decay5pctInt'] = {'mode':'constant','factor': -0.00930988715859527}
+
+globalXSBRMap['TprimeRun3']['TprimeM2200Decay10pctSch'] = {'mode':'constant','factor': 0.0014411710510240136}
+globalXSBRMap['TprimeRun3']['TprimeM2200Decay10pctTch'] = {'mode':'constant','factor': 6.441814076854403e-05}
+globalXSBRMap['TprimeRun3']['TprimeM2200Decay10pctInt'] = {'mode':'constant','factor': -0.009207409649116517}
+
+globalXSBRMap['TprimeRun3']['TprimeM2200Decay20pctSch'] = {'mode':'constant','factor': 0.0010539617272340332}
+globalXSBRMap['TprimeRun3']['TprimeM2200Decay20pctTch'] = {'mode':'constant','factor': 6.404195750590051e-05}
+globalXSBRMap['TprimeRun3']['TprimeM2200Decay20pctInt'] = {'mode':'constant','factor': -0.008809174264180085}
+
+globalXSBRMap['TprimeRun3']['TprimeM2200Decay30pctSch'] = {'mode':'constant','factor': 0.0008412236062907946}
+globalXSBRMap['TprimeRun3']['TprimeM2200Decay30pctTch'] = {'mode':'constant','factor': 6.280963302482684e-05}
+globalXSBRMap['TprimeRun3']['TprimeM2200Decay30pctInt'] = {'mode':'constant','factor': -0.00838369802229361}
+
+globalXSBRMap['TprimeRun3']['TprimeM2400Decay5pctSch'] = {'mode':'constant','factor': 0.0015968330907385787}
+globalXSBRMap['TprimeRun3']['TprimeM2400Decay5pctTch'] = {'mode':'constant','factor': 5.664801061945871e-05}
+globalXSBRMap['TprimeRun3']['TprimeM2400Decay5pctInt'] = {'mode':'constant','factor': -0.008036052800264414}
+
+globalXSBRMap['TprimeRun3']['TprimeM2400Decay10pctSch'] = {'mode':'constant','factor': 0.0010552589108983213}
+globalXSBRMap['TprimeRun3']['TprimeM2400Decay10pctTch'] = {'mode':'constant','factor': 5.636263021331533e-05}
+globalXSBRMap['TprimeRun3']['TprimeM2400Decay10pctInt'] = {'mode':'constant','factor': -0.008113883820121697}
+
+globalXSBRMap['TprimeRun3']['TprimeM2400Decay20pctSch'] = {'mode':'constant','factor': 0.000765338361929944}
+globalXSBRMap['TprimeRun3']['TprimeM2400Decay20pctTch'] = {'mode':'constant','factor': 5.57140383811712e-05}
+globalXSBRMap['TprimeRun3']['TprimeM2400Decay20pctInt'] = {'mode':'constant','factor': -0.0077039737822066755}
+
+globalXSBRMap['TprimeRun3']['TprimeM2400Decay30pctSch'] = {'mode':'constant','factor': 0.0006596178932904689}
+globalXSBRMap['TprimeRun3']['TprimeM2400Decay30pctTch'] = {'mode':'constant','factor': 5.4572516756597886e-05}
+globalXSBRMap['TprimeRun3']['TprimeM2400Decay30pctInt'] = {'mode':'constant','factor': -0.007360220111170345}
+
+globalXSBRMap['TprimeRun3']['TprimeM2600Decay5pctSch'] = {'mode':'constant','factor': 0.0011293280981291686}
+globalXSBRMap['TprimeRun3']['TprimeM2600Decay5pctTch'] = {'mode':'constant','factor': 4.9046514346730644e-05}
+globalXSBRMap['TprimeRun3']['TprimeM2600Decay5pctInt'] = {'mode':'constant','factor': -0.007441942682020491}
+
+globalXSBRMap['TprimeRun3']['TprimeM2600Decay10pctSch'] = {'mode':'constant','factor': 0.0007863527372914105}
+globalXSBRMap['TprimeRun3']['TprimeM2600Decay10pctTch'] = {'mode':'constant','factor': 4.9007598836802086e-05}
+globalXSBRMap['TprimeRun3']['TprimeM2600Decay10pctInt'] = {'mode':'constant','factor': -0.007173425663512867}
+
+globalXSBRMap['TprimeRun3']['TprimeM2600Decay20pctSch'] = {'mode':'constant','factor': 0.000592553497846777}
+globalXSBRMap['TprimeRun3']['TprimeM2600Decay20pctTch'] = {'mode':'constant','factor': 4.851466904437267e-05}
+globalXSBRMap['TprimeRun3']['TprimeM2600Decay20pctInt'] = {'mode':'constant','factor': -0.007077434072355552}
+
+globalXSBRMap['TprimeRun3']['TprimeM2600Decay30pctSch'] = {'mode':'constant','factor': 0.0005138144494244931}
+globalXSBRMap['TprimeRun3']['TprimeM2600Decay30pctTch'] = {'mode':'constant','factor': 4.777527435572842e-05}
+globalXSBRMap['TprimeRun3']['TprimeM2600Decay30pctInt'] = {'mode':'constant','factor': -0.006781676196897879}
+
 
 globalXSBRMap['TprimeRun2nwa'] = od()
 globalXSBRMap['TprimeRun2nwa']['decay'] = {'mode':'hgg'}
