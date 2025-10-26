@@ -153,12 +153,15 @@ def makeBrazilPlot(args):
     tex3 = ROOT.TLatex()
     tex3.SetNDC()
     tex3.SetTextSize(0.04)
-    lumi = lumiMap[year]
-    energy = energyMap[year]
-    if energy == 13:
-        tex3.DrawLatex(0.67, 0.91, f"#bf{{{lumi} fb^{{-1}} ({energy} TeV)}}")
-    elif energy == 13.6:
-        tex3.DrawLatex(0.66, 0.91, f"#bf{{{lumi} fb^{{-1}} ({energy} TeV)}}")
+    if year == "full":
+        tex3.DrawLatex(0.385, 0.91, f"#bf{{138 fb^{{-1}} (13 TeV) + 34.6 fb^{{-1}} (13.6 TeV)}}")
+    else:
+        lumi = lumiMap[year]
+        energy = energyMap[year]
+        if energy == 13:
+            tex3.DrawLatex(0.67, 0.91, f"#bf{{{lumi} fb^{{-1}} ({energy} TeV)}}")
+        elif energy == 13.6:
+            tex3.DrawLatex(0.66, 0.91, f"#bf{{{lumi} fb^{{-1}} ({energy} TeV)}}")
 
     legend = ROOT.TLegend(0.15, 0.71, 0.88, 0.84)
     legend.SetNColumns(2)
