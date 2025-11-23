@@ -8,7 +8,7 @@ signalScriptCfg = {
   'inputWSDir':'{{ inputWSDir }}',
   'procs':'{{ procs }}Sch,GG2H,THQ,TTH,VBF,VH',
 # 'procs':'{{ procs }}Sch,{{ procs }}Tch,{{ procs }}Int,GG2H,THQ,TTH,VBF,VH',
-  'cats':'THQLeptonicTag,THQHadronicTag', # if auto: inferred automatically from (0) workspace
+  'cats':'Leptonic,Hadronic', # if auto: inferred automatically from (0) workspace
 #  'ext':'Tprime%s_%s'%(_Tmass,_year),
   'ext':'{{ procs }}_{{ year }}',
 #  'analysis':'Tprime_%s'%_Tmass, # To specify which replacement dataset mapping (defined in ./python/replacementMap.py)

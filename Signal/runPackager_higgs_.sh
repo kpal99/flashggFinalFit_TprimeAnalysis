@@ -25,9 +25,9 @@ export PYTHONPATH=$PYTHONPATH:$CMSSW_BASE/src/flashggFinalFit/tools:$CMSSW_BASE/
 for i in GG2H THQ TTH VBF VH
 do
     if $MKDIR; then
-        echo python3 RunPackager.py --cats THQLeptonicTag,THQHadronicTag --exts $i --mergeYears --batch condor --queue espresso --massPoints 125 --outputExt packaged_$i --printOnly
+        echo python3 RunPackager.py --cats Leptonic,Hadronic --exts $i --mergeYears --batch condor --queue espresso --massPoints 125 --outputExt packaged_$i --printOnly
         if $RUN; then
-            python3 RunPackager.py --cats THQLeptonicTag,THQHadronicTag --exts $i --mergeYears --batch condor --queue espresso --massPoints 125 --outputExt packaged_$i --printOnly
+            python3 RunPackager.py --cats Leptonic,Hadronic --exts $i --mergeYears --batch condor --queue espresso --massPoints 125 --outputExt packaged_$i --printOnly
             echo   # to add new line after output of above script
         fi
     fi
