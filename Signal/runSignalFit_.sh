@@ -29,7 +29,7 @@ elif [ $YEAR = "2017" ]; then
 elif [ $YEAR = "2018" ]; then
     :
 elif [ $YEAR = "2022" ]; then
-    SKIPSYSTEMATICS="--skipSystematics"
+    :
 fi
 
 cd $(dirname $0)
