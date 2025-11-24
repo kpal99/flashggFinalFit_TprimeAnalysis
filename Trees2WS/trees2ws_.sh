@@ -32,7 +32,7 @@ elif [ $YEAR = "2017" ]; then
 elif [ $YEAR = "2018" ]; then
     SYSTEMATICS="--doSystematics"
 elif [ $YEAR = "2022" ]; then
-    :
+    SYSTEMATICS="--doSystematics"
 fi
 
 # making Tprime workspaces
