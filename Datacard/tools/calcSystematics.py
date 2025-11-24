@@ -69,8 +69,17 @@ def factoryType(d,s):
     dataHistUp = "%s_%sUp01sigma"%(r.nominalDataName,s['name'])
     dataHistDown = "%s_%sDown01sigma"%(r.nominalDataName,s['name'])
 
+    # ---- minimal fix added here ----
+    if s['name'] in ["weight_bTagSF_sys_hf", "weight_bTagSF_sys_lf"]:
+      upVar   = ws.var("%sUp"   % s['name'])
+      downVar = ws.var("%sDown" % s['name'])
+      nWeights = len([v for v in [upVar, downVar] if v])
+      ws.Delete(); f.Close()
+      if nWeights == 2: return "a_w"
+      if nWeights == 1: return "s_w"
+    # --------------------------------
     # Check if syst is var (i.e. weight) in workspace
-    if ws.allVars().selectByName("%s*"%(s['name'])).getSize():
+    elif ws.allVars().selectByName("%s*"%(s['name'])).getSize():
       nWeights = ws.allVars().selectByName("%s*"%(s['name'])).getSize()
       ws.Delete()
       f.Close()
