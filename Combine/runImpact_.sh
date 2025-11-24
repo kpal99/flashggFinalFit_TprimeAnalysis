@@ -9,12 +9,12 @@ case $opt in
     y) YEAR=$OPTARG;;
     s) TPRIMEPROC=$OPTARG;;
     p) PLOTDIR=$OPTARG;;
-    h) "Usage: $0 [-n] [-h] -y YEAR -s TPRIMEPROC"
-       "  -n: dry run, just print the commands to be run for any given flag"
-       "  -y: year"
-       "  -s: signal process to use, TPRIMEPROC"
-       "  -p: plot directory"
-       "  -h: print this help message"
+    h) echo "Usage: $0 [-n] [-h] -y YEAR -s TPRIMEPROC"
+       echo "  -n: dry run, just print the commands to be run for any given flag"
+       echo "  -y: year"
+       echo "  -s: signal process to use, TPRIMEPROC"
+       echo "  -p: plot directory"
+       echo "  -h: print this help message"
        exit 0;;
     \?) exit ;;
 esac
