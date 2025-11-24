@@ -4,4 +4,4 @@ echo python3 condorSubmitFullFlowYear.py --plotsOutputDir ~b2g/plots/fgg-fits --
 
 echo python3 condorSubmitFullFlowYear.py --plotsOutputDir ~b2g/plots/fgg-fits --finalSelectionDir ~eos/tprime-hdna/output5.5-UL18 --year 2018 --tprimeMass 700,800,900,1000,1100,1200,1400,1600,1800,2000,2200,2400,2600 --tprimeDecayWidth 5,10,20,30
 
-echo python3 condorSubmitFullFlowYear.py --plotsOutputDir ~b2g/plots/fgg-fits --finalSelectionDir ~eos/tprime-hdna/output4.5-22 --year 2022 --tprimeMass 700,800,900,1000,1100,1200,1400,1600,1800,2000,2200,2400,2600 --tprimeDecayWidth 5,10,20,30
+echo python3 condorSubmitFullFlowYear.py --plotsOutputDir ~b2g/plots/fgg-fits --finalSelectionDir ~eos/tprime-hdna/output6.5-22 --year 2022 --tprimeMass 700,800,900,1000,1100,1200,1400,1600,1800,2000,2200,2400,2600 --tprimeDecayWidth 5,10,20,30
