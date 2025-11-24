@@ -24,7 +24,7 @@ esac
 done
 
 cd $(dirname $0)
-PROCS="$TPRIMEPROC"Sch,"$TPRIMEPROC"Tch,GG2H,TTH,VBF,VH
+PROCS="$TPRIMEPROC"Sch,"$TPRIMEPROC"Tch,"$TPRIMEPROC"Int,GG2H,TTH,VBF,VH
 # if year is 2016 or 2017 change PROCS
 if [ $YEAR = "2016" ]; then
     PROCS=$PROCS,THQ
