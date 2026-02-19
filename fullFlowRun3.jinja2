@@ -1,0 +1,49 @@
+echo ============================================================================
+echo ================================= trees2ws =================================
+echo ============================================================================
+{{ pwd }}/Trees2WS/trees2ws_.sh -d {{ finalSelectionDir2022 }} -y 2022 -s {{ TprimeProc }}
+{{ pwd }}/Trees2WS/trees2ws_.sh -d {{ finalSelectionDir2023 }} -y 2023 -s {{ TprimeProc }}
+cd Trees2WS; python3 trees2ws_data.py --inputConfig config_2022.py --inputTreeFile {{ finalSelectionDirData }}/{{ TprimeProc }}/allData.root; cd ..
+
+echo ============================================================================
+echo ================================ runBackground =============================
+echo ============================================================================
+{{ pwd }}/Background/runBackground_.sh -d {{ finalSelectionDirData }} -y 22plus23 -p {{ plotsOutputDir }} -s {{ TprimeProc }}
+
+echo ============================================================================
+echo ================================== runfTest ================================
+echo ============================================================================
+{{ pwd }}/Signal/runfTest_.sh -d {{ finalSelectionDir2022 }} -y 2022 -p {{ plotsOutputDir }} -s {{ TprimeProc }}
+{{ pwd }}/Signal/runfTest_.sh -d {{ finalSelectionDir2023 }} -y 2023 -p {{ plotsOutputDir }} -s {{ TprimeProc }}
+
+echo ============================================================================
+echo ================================ runSignalFit ==============================
+echo ============================================================================
+{{ pwd }}/Signal/runSignalFit_.sh -y 2022 -p {{ plotsOutputDir }} -s {{ TprimeProc }}
+{{ pwd }}/Signal/runSignalFit_.sh -y 2023 -p {{ plotsOutputDir }} -s {{ TprimeProc }}
+
+echo ============================================================================
+echo ================================== runPackager =============================
+echo ============================================================================
+cd Signal; python3 RunPackager.py --cats Leptonic,Hadronic --exts {{ TprimeProc }}_2022,{{ TprimeProc }}_2023 --batch local --massPoints 125 --outputExt packaged_{{ TprimeProc }}_22plus23 --year "2022,2023" --mergeYears; cd ..
+
+echo ============================================================================
+echo ================================== makeYields ==============================
+echo ============================================================================
+cd Datacard
+python3 RunYields.py --inputWSDirMap 2022={{ finalSelectionDir2022 }}/{{ TprimeProc }}/ws/,2023={{ finalSelectionDir2023 }}/{{ TprimeProc }}/ws/ --cats auto --procs {{ TprimeProc }}Sch,GG2H,TTH,VBF,VH --ext {{ TprimeProc }}_22plus23 --skipCOWCorr --batch local --mergeYears --sigModelWSDir ./Models/22plus23/{{ TprimeProc }}/signal --bkgModelWSDir ./Models/22plus23/{{ TprimeProc }}/background --catExt 22plus23 --systConfig systematics_Tprime_22plus23.py
+cd ..
+
+echo ============================================================================
+echo ================================== makeDatacard ============================
+echo ============================================================================
+{{ pwd }}/Datacard/makeDatacard22plus23_.sh -s {{ TprimeProc }} -e
+
+echo ============================================================================
+echo ================================== runCombine ==============================
+echo ============================================================================
+{{ pwd }}/Combine/runCombine_.sh -y 22plus23 -s {{ TprimeProc }}
+
+echo ================================ checkLimits ===============================
+python3 {{ pwd }}/Combine/checkLimitOutput.py {{ pwd }}/Combine/higgsCombine_{{ TprimeProc }}_22plus23.AsymptoticLimits.mH*.root
+exit $?
