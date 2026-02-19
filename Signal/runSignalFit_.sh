@@ -30,6 +30,8 @@ elif [ $YEAR = "2018" ]; then
     :
 elif [ $YEAR = "2022" ]; then
     :
+elif [ $YEAR = "2023" ]; then
+    :
 fi
 
 cd $(dirname $0)
