@@ -28,7 +28,7 @@ done
 export PYTHONPATH=$PYTHONPATH:$CMSSW_BASE/src/flashggFinalFit/tools:$CMSSW_BASE/src/flashggFinalFit/Signal/tools
 for i in GG2H THQ TTH VBF VH
 do
-    for cat in THQLeptonicTag THQHadronicTag
+    for cat in Leptonic Hadronic
     do
         if $RUNCREATEDSCRIPTS; then
             echo python3 RunPlotter.py --procs all --cats $cat --ext packaged_$i --years $YEAR

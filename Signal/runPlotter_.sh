@@ -20,25 +20,23 @@ case $opt in
 esac
 done
 
-for m in  {7..12}00 {14,16,18,20,22,24,26}00
+for m in  1000 #{7..12}00 {14,16,18,20,22,24,26}00
 do
-    for d in 5 10 20 30
+    for d in 5 #10 20 30
     do
         TPRIMEPROC=TprimeM"$m"Decay"$d"pct
-        for cat in THQLeptonicTag THQHadronicTag
-        do
-            echo python3 RunPlotter.py --procs all --cats $cat --ext packaged_$TPRIMEPROC --years $YEAR
-            if $RUN; then
-                python3 RunPlotter.py --procs all --cats $cat --ext packaged_$TPRIMEPROC --years $YEAR
-                echo   # to add new line after output of above script
-            fi
-            if [ $PLOTDIR ] && $RUN ; then
-                for extension in pdf png C root
-                do
-                    cp -v outdir_packaged_$TPRIMEPROC/Plots/smodel_"$cat"_$YEAR."$extension" $PLOTDIR/finalFit/"$TPRIMEPROC"_"$cat"_$YEAR."$extension"
-                done
-            fi
-        done
+        echo python3 RunPlotter.py --procs all --cats "Leptonic,Hadronic" --ext packaged_"$TPRIMEPROC"_Run2 --years $YEAR
+        if $RUN; then
+            python3 RunPlotter.py --procs all --cats "Leptonic,Hadronic" --ext packaged_"$TPRIMEPROC"_Run2 --years $YEAR
+            echo   # to add new line after output of above script
+        fi
+        if [ $PLOTDIR ] && $RUN ; then
+            mkdir -pv $PLOTDIR/plotter/$TPRIMEPROC
+            for extension in pdf png C root
+            do
+                cp -v outdir_packaged_$TPRIMEPROC/Plots/smodel_"$cat"_$YEAR."$extension" $PLOTDIR/plotter/$TPRIMEPROC/"$TPRIMEPROC"_"$cat"_Run2."$extension"
+            done
+        fi
         [ $TEST = true ] && break
     done
     [ $TEST = true ] && break
