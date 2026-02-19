@@ -28,7 +28,7 @@ echo ===========================================================================
 echo ============================================================================
 echo ================================== runPackager =============================
 echo ============================================================================
-cd Signal; python3 RunPackager.py --cats THQLeptonicTag,THQHadronicTag --exts {{ TprimeProc }}_2016,{{ TprimeProc }}_2017,{{ TprimeProc }}_2018 --batch local --massPoints 125 --outputExt packaged_{{ TprimeProc }}_Run2 --year "2016,2017,2018" --mergeYears; cd ..
+cd Signal; python3 RunPackager.py --cats Leptonic,Hadronic --exts {{ TprimeProc }}_2016,{{ TprimeProc }}_2017,{{ TprimeProc }}_2018 --batch local --massPoints 125 --outputExt packaged_{{ TprimeProc }}_Run2 --year "2016,2017,2018" --mergeYears; cd ..
 
 echo ============================================================================
 echo ================================== makeYields ==============================
