@@ -82,14 +82,16 @@ plotImpacts.py \
     -o impacts_corrected_dropBkgModelParams
 
 # copy to plot dir
-mkdir -pv $PLOTDIR/$TPRIMEPROC
-cp -v $PLOTDIR/index.php $PLOTDIR/$TPRIMEPROC
-cp -v impacts_allParams.pdf $PLOTDIR/$TPRIMEPROC/
+mkdir -pv $PLOTDIR/$YEAR/$TPRIMEPROC
+cp -v $PLOTDIR/index.php $PLOTDIR/$YEAR/
+cp -v $PLOTDIR/index.php $PLOTDIR/$YEAR/$TPRIMEPROC
+
+cp -v impacts_allParams.pdf $PLOTDIR/$YEAR/$TPRIMEPROC/
 convert -density 300 impacts_allParams.pdf -quality 90 -background white -alpha remove -trim +repage impacts_allParams-%02d.png
 convert impacts_allParams-*.png -append impacts_allParams.png
-cp -v impacts_allParams.png $PLOTDIR/$TPRIMEPROC/
+cp -v impacts_allParams.png $PLOTDIR/$YEAR/$TPRIMEPROC/
 
-cp -v impacts_corrected_dropBkgModelParams.pdf $PLOTDIR/$TPRIMEPROC/
+cp -v impacts_corrected_dropBkgModelParams.pdf $PLOTDIR/$YEAR/$TPRIMEPROC/
 convert -density 300 impacts_corrected_dropBkgModelParams.pdf -quality 90 -background white -alpha remove -trim +repage impacts_corrected_dropBkgModelParams-%02d.png
 convert impacts_corrected_dropBkgModelParams-*.png -append impacts_corrected_dropBkgModelParams.png
-cp -v impacts_corrected_dropBkgModelParams.png $PLOTDIR/$TPRIMEPROC/
+cp -v impacts_corrected_dropBkgModelParams.png $PLOTDIR/$YEAR/$TPRIMEPROC/
