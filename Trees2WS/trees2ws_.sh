@@ -33,15 +33,17 @@ elif [ $YEAR = "2018" ]; then
     SYSTEMATICS="--doSystematics"
 elif [ $YEAR = "2022" ]; then
     SYSTEMATICS="--doSystematics"
+elif [ $YEAR = "2023" ]; then
+    SYSTEMATICS="--doSystematics"
 fi
 
 # making Tprime workspaces
 for mode in Sch Tch Int
 do
-    echo python3 trees2ws.py --inputConfig config_${YEAR}.py --inputTreeFile $INPUTDIR/$TPRIMEPROC/output_M125_$TPRIMEPROC$mode.root --productionMode $TPRIMEPROC$mode --year $YEAR $SYSTEMATICS
+    echo python3 trees2ws.py --inputConfig config_${YEAR}.py --inputTreeFile $INPUTDIR/$TPRIMEPROC/root/$TPRIMEPROC$mode/output_M125_$TPRIMEPROC$mode.root --productionMode $TPRIMEPROC$mode --year $YEAR $SYSTEMATICS
     if $RUN; then
-        python3 trees2ws.py --inputConfig config_${YEAR}.py --inputTreeFile $INPUTDIR/$TPRIMEPROC/output_M125_$TPRIMEPROC$mode.root --productionMode $TPRIMEPROC$mode --year $YEAR $SYSTEMATICS
-        ln -svf $INPUTDIR/$TPRIMEPROC/ws_$TPRIMEPROC$mode/output_M125_$TPRIMEPROC$mode.root $INPUTDIR/$TPRIMEPROC/ws
+        python3 trees2ws.py --inputConfig config_${YEAR}.py --inputTreeFile $INPUTDIR/$TPRIMEPROC/root/$TPRIMEPROC$mode/output_M125_$TPRIMEPROC$mode.root --productionMode $TPRIMEPROC$mode --year $YEAR $SYSTEMATICS
+        ln -svrf $INPUTDIR/$TPRIMEPROC/root/$TPRIMEPROC$mode/ws_$TPRIMEPROC$mode/output_M125_$TPRIMEPROC$mode.root $INPUTDIR/$TPRIMEPROC/ws
         echo
     fi
 done
@@ -55,23 +57,26 @@ elif [ $YEAR = "2018" ]; then
     :
 elif [ $YEAR = "2022" ]; then
     HIGGSMODES+=("THQ")
+elif [ $YEAR = "2023" ]; then
+    HIGGSMODES+=("THQ")
 fi
 # making higgs workspaces
 for higgsMode in ${HIGGSMODES[@]};
 do
-    echo python3 trees2ws.py --inputConfig config_${YEAR}.py --inputTreeFile $INPUTDIR/$TPRIMEPROC/output_M125_$higgsMode.root --productionMode $higgsMode --year $YEAR $SYSTEMATICS
+    echo python3 trees2ws.py --inputConfig config_${YEAR}.py --inputTreeFile $INPUTDIR/$TPRIMEPROC/root/$higgsMode/output_M125_$higgsMode.root --productionMode $higgsMode --year $YEAR $SYSTEMATICS
     if $RUN; then
-        python3 trees2ws.py --inputConfig config_${YEAR}.py --inputTreeFile $INPUTDIR/$TPRIMEPROC/output_M125_$higgsMode.root --productionMode $higgsMode --year $YEAR $SYSTEMATICS
-        ln -svf $INPUTDIR/$TPRIMEPROC/ws_$higgsMode/output_M125_$higgsMode.root $INPUTDIR/$TPRIMEPROC/ws
+        python3 trees2ws.py --inputConfig config_${YEAR}.py --inputTreeFile $INPUTDIR/$TPRIMEPROC/root/$higgsMode/output_M125_$higgsMode.root --productionMode $higgsMode --year $YEAR $SYSTEMATICS
+        ln -svrf $INPUTDIR/$TPRIMEPROC/root/$higgsMode/ws_$higgsMode/output_M125_$higgsMode.root $INPUTDIR/$TPRIMEPROC/ws
         echo
     fi
 done
 
 # making data workspaces
-if [ -f $INPUTDIR/$TPRIMEPROC/allData.root ]; then
-    echo python3 trees2ws_data.py --inputConfig config_${YEAR}.py --inputTreeFile $INPUTDIR/$TPRIMEPROC/allData.root
+if [ -f $INPUTDIR/$TPRIMEPROC/root/Data/allData.root ]; then
+    echo python3 trees2ws_data.py --inputConfig config_${YEAR}.py --inputTreeFile $INPUTDIR/$TPRIMEPROC/root/Data/allData.root
     if $RUN; then
-        python3 trees2ws_data.py --inputConfig config_${YEAR}.py --inputTreeFile $INPUTDIR/$TPRIMEPROC/allData.root
+        python3 trees2ws_data.py --inputConfig config_${YEAR}.py --inputTreeFile $INPUTDIR/$TPRIMEPROC/root/Data/allData.root
+        ln -svrf $INPUTDIR/$TPRIMEPROC/root/Data/ws/allData.root $INPUTDIR/$TPRIMEPROC/ws
         echo
     fi
 fi
