@@ -1,3 +1,6 @@
 [submodule "tHgg_utils"]
 	path = tHgg_utils
 	url = https://gitlab.cern.ch/kpal/thgg_utils.git
+[submodule "Datacard/Datacard_Viewer"]
+	path = Datacard/Datacard_Viewer
+	url = ssh://git@gitlab.cern.ch:7999/kpal/datacard_viewer.git
