@@ -7,12 +7,12 @@ trees2wsCfg = {
 
   # Variables to be added to dataframe: use wildcard * for common strings
   #'mainVars':["mass","weight","centralObjectWeight","dZ","*sigma"], # Vars to add to nominal RooDatasets
-  'mainVars':["mass","weight","dZ","*sigma"], # Vars to add to nominal RooDatasets
+  'mainVars':["CMS_hgg_mass","weight","dZ","*sigma"], # Vars to add to nominal RooDatasets
   'dataVars':["CMS_hgg_mass","weight"], # Vars for data workspace (trees2ws_data.py script)
   'stxsVar':'stage1p2bin', # Var for STXS splitting: if using option doSTXSSplitting
   'notagVars':["weight","*sigma"], # Vars to add to NOTAG RooDataset
   'systematicsVars':["CMS_hgg_mass","weight"], # Variables to add to sytematic RooDataHists
-  'theoryWeightContainers':{}, # Theory weights to add to nominal + NOTAG RooDatasets, value corresponds to number of weights (0-N)
+  'theoryWeightContainers':{'weight_LHEScale':9},
   #'theoryWeightContainers':{'alphaSWeights':2,'scaleWeights':9,'pdfWeights':60}, # Theory weights to add to nominal + NOTAG RooDatasets, value corresponds to number of weights (0-N)
 
   # List of systematics: use string YEAR for year-dependent systematics
