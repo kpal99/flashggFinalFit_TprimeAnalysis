@@ -32,6 +32,7 @@ echo python3 makeDatacard.py --ext ${TPRIMEPROC}_Run2 --years 2016,2017,2018 --s
 if $RUN; then
     echo   # to add new line after output of above script
     python3 makeDatacard.py --ext ${TPRIMEPROC}_Run2 --years 2016,2017,2018 --skipCOWCorr --doMCStatUncertainty --saveDataFrame --output Datacard_${TPRIMEPROC}_Run2 $SYSTEMATICS --systConfig systematics_Tprime_Run2.py
+    cp -v Datacard_${TPRIMEPROC}_Run2.txt $PLOTDIR/Datacard/
     python3 Datacard_Viewer/datacard_txt_to_html.py --output-dir $PLOTDIR/Datacard/ --datacard Datacard_${TPRIMEPROC}_Run2.txt
     mkdir -pv $FINALFITDIR/Combine/Models/Run2/$TPRIMEPROC/{signal,background}
     cp -v $FINALFITDIR/Signal/outdir_packaged_${TPRIMEPROC}_Run2/CMS-HGG_sigfit_packaged*.root $FINALFITDIR/Combine/Models/Run2/$TPRIMEPROC/signal/

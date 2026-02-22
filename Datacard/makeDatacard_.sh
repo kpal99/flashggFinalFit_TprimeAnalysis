@@ -34,6 +34,7 @@ echo python3 makeDatacard.py --ext ${TPRIMEPROC}_${YEAR} --years $YEAR --skipCOW
 if $RUN; then
     echo   # to add new line after output of above script
     python3 makeDatacard.py --ext ${TPRIMEPROC}_${YEAR} --years $YEAR --skipCOWCorr --doMCStatUncertainty --saveDataFrame --output Datacard_${TPRIMEPROC}_${YEAR} $SYSTEMATICS --systConfig systematics_Tprime_$YEAR.py
+    cp -v Datacard_${TPRIMEPROC}_${YEAR}.txt $PLOTDIR/Datacard/
     python3 Datacard_Viewer/datacard_txt_to_html.py --output-dir $PLOTDIR/Datacard/ --datacard Datacard_${TPRIMEPROC}_${YEAR}.txt
     mkdir -pv $FINALFITDIR/Combine/Models/$YEAR/$TPRIMEPROC/{signal,background}
     cp -v $FINALFITDIR/Signal/outdir_packaged_${TPRIMEPROC}_${YEAR}/CMS-HGG_sigfit_packaged*.root $FINALFITDIR/Combine/Models/$YEAR/$TPRIMEPROC/signal/

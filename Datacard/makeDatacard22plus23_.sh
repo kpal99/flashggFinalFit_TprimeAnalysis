@@ -32,6 +32,7 @@ echo python3 makeDatacard.py --ext ${TPRIMEPROC}_22plus23 --years 2022,2023 --sk
 if $RUN; then
     echo   # to add new line after output of above script
     python3 makeDatacard.py --ext ${TPRIMEPROC}_22plus23 --years 2022,2023 --skipCOWCorr --doMCStatUncertainty --saveDataFrame --output Datacard_${TPRIMEPROC}_22plus23 $SYSTEMATICS --systConfig systematics_Tprime_22plus23.py
+    cp -v Datacard_${TPRIMEPROC}_22plus23.txt $PLOTDIR/Datacard/
     python3 Datacard_Viewer/datacard_txt_to_html.py --output-dir $PLOTDIR/Datacard/ --datacard Datacard_${TPRIMEPROC}_22plus23.txt
     mkdir -pv $FINALFITDIR/Combine/Models/22plus23/$TPRIMEPROC/{signal,background}
     cp -v $FINALFITDIR/Signal/outdir_packaged_${TPRIMEPROC}_22plus23/CMS-HGG_sigfit_packaged*.root $FINALFITDIR/Combine/Models/22plus23/$TPRIMEPROC/signal/
