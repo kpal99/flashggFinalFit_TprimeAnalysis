@@ -4,7 +4,11 @@ echo ===========================================================================
 {{ pwd }}/Trees2WS/trees2ws_.sh -d {{ finalSelectionDir2016 }} -y 2016 -s {{ TprimeProc }}
 {{ pwd }}/Trees2WS/trees2ws_.sh -d {{ finalSelectionDir2017 }} -y 2017 -s {{ TprimeProc }}
 {{ pwd }}/Trees2WS/trees2ws_.sh -d {{ finalSelectionDir2018 }} -y 2018 -s {{ TprimeProc }}
-cd Trees2WS; python3 trees2ws_data.py --inputConfig config_2016.py --inputTreeFile {{ finalSelectionDirData }}/{{ TprimeProc }}/allData.root; cd ..
+cd Trees2WS && \
+    python3 trees2ws_data.py --inputConfig config_2016.py --inputTreeFile {{ finalSelectionDirData }}/{{ TprimeProc }}/root/Data/allData.root && \
+    mkdir -pv {{ finalSelectionDirData }}/{{ TprimeProc }}/ws && \
+    ln -svrf {{ finalSelectionDirData }}/{{ TprimeProc }}/root/Data/ws/allData.root {{ finalSelectionDirData }}/{{ TprimeProc }}/ws/ && \
+    cd ..
 
 echo ============================================================================
 echo ================================ runBackground =============================
