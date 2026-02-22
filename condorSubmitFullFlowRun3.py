@@ -6,7 +6,7 @@ import sys
 
 
 def condorSubmitFullFlow(args):
-    timestamp = datetime.datetime.now().strftime('%Y%m%d_%H%M%S')
+    timestamp = datetime.datetime.now().strftime('%Y%m%d_%H%M%S.%f')
     base_dir = os.path.join(".condor_request", timestamp)
     os.makedirs(base_dir, exist_ok=True)
 
