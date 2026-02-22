@@ -3,16 +3,18 @@
 RUN=true
 TEST=false
 # get the options passed to the script
-while getopts "nhty:" opt;
+while getopts "nhty:p:" opt;
 do
 case $opt in
     n) RUN=false;;
     t) TEST=true;;
     y) YEAR=$OPTARG;;
-    h) echo "Usage: $0 [-n] [-h] [-t] -y YEAR"
+    p) PLOTDIR=$OPTARG;;
+    h) echo "Usage: $0 [-n] [-h] [-t] -y YEAR -p PLOTDIR"
        echo "  -n: dry run, just print the commands to be run for any given flag"
        echo "  -t: run test scripts"
        echo "  -y: year"
+       echo "  -p: plot directory"
        echo "  -h: print this help message"
        exit 0;;
     \?) exit ;;
@@ -26,9 +28,9 @@ do
     do
         TPRIMEPROC=TprimeM"$m"Decay"$d"pct
         if $RUN; then
-            ./makeDatacard_.sh -y $YEAR -s $TPRIMEPROC -e
+            ./makeDatacard_.sh -y $YEAR -s $TPRIMEPROC -e -p $PLOTDIR
         else
-            ./makeDatacard_.sh -y $YEAR -s $TPRIMEPROC -e -n
+            ./makeDatacard_.sh -y $YEAR -s $TPRIMEPROC -e -p $PLOTDIR -n
         fi
         [ $TEST = true ] && break
     done
