@@ -2,6 +2,7 @@
 
 RUN=true
 SYSTEMATICS=""
+PLOTDIR="./"
 # get the options passed to the script
 while getopts "nhts:ep:" opt;
 do
