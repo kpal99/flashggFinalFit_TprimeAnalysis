@@ -28,7 +28,7 @@ SYSTEMATICS=""
 if [ $YEAR = "2016" ]; then
     SYSTEMATICS="--doSystematics"
 elif [ $YEAR = "2017" ]; then
-    :
+    SYSTEMATICS="--doSystematics"
 elif [ $YEAR = "2018" ]; then
     SYSTEMATICS="--doSystematics"
 elif [ $YEAR = "2022" ]; then

@@ -6,8 +6,7 @@ signalScriptCfg = {
 
   # Setup
   'inputWSDir':'{{ inputWSDir }}',
-  'procs':'{{ procs }}Sch,GG2H,THQ,TTH,VBF,VH',
-# 'procs':'{{ procs }}Sch,{{ procs }}Tch,{{ procs }}Int,GG2H,THQ,TTH,VBF,VH',
+ 'procs':'{{ procs }}Sch,{{ procs }}Tch,{{ procs }}Int,GG2H,THQ,TTH,VBF,VH',
   'cats':'Leptonic,Hadronic', # if auto: inferred automatically from (0) workspace
 #  'ext':'Tprime%s_%s'%(_Tmass,_year),
   'ext':'{{ procs }}_{{ year }}',
@@ -18,11 +17,11 @@ signalScriptCfg = {
   'massPoints':'125',
 
   #Photon shape systematics
+  'scales':'ElectonScale,Scale',
+  'scalesCorr':'Material,FNUF,ShowerShape,MET', # correlated across years
+  'scalesGlobal':'JecSystTotal,JerSyst', # affect all processes equally, correlated across years
+  'smears':'ElectronSmearing,Smearing',
 #  'scales':'HighR9EB,HighR9EE,LowR9EB,LowR9EE,Gain1EB,Gain6EB', # separate nuisance per year
-  'scales':'',
-  'scalesCorr':'Material,FNUF,ShowerShape', # correlated across years
-  'scalesGlobal':'', # affect all processes equally, correlated across years
-  'smears':'',
 #  'scalesCorr':'MaterialCentralBarrel,MaterialOuterBarrel,MaterialForward,FNUFEE,FNUFEB,ShowerShapeHighR9EE,ShowerShapeHighR9EB,ShowerShapeLowR9EE,ShowerShapeLowR9EB', # correlated across years
 #  'scalesGlobal':'NonLinearity,Geant4', # affect all processes equally, correlated across years
 #  'smears':'HighR9EBPhi,HighR9EBRho,HighR9EEPhi,HighR9EERho,LowR9EBPhi,LowR9EBRho,LowR9EEPhi,LowR9EERho', # separate nuisance per year
