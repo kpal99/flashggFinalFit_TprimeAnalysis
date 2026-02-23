@@ -6,7 +6,7 @@ signalScriptCfg = {
 
   # Setup
   'inputWSDir':'{{ inputWSDir }}',
- 'procs':'{{ procs }}Sch,{{ procs }}Tch,{{ procs }}Int,GG2H,THQ,TTH,VBF,VH',
+ 'procs':'{{ procs }}Sch,{{ procs }}Tch,{{ procs }}Int,GG2H,TTH,VBF,VH',
   'cats':'Leptonic,Hadronic', # if auto: inferred automatically from (0) workspace
 #  'ext':'Tprime%s_%s'%(_Tmass,_year),
   'ext':'{{ procs }}_{{ year }}',
