@@ -47,8 +47,8 @@ xvar.setUnit(opt.xvar.split(",")[2])
 xvar_arglist, xvar_argset = ROOT.RooArgList(xvar), ROOT.RooArgSet(xvar)
 
 # Exact multipdf object and pdfindex
-multipdf = w.pdf("CMS_hgg_%s_13TeV_bkgshape"%opt.cat)
-pdfindex_bf = w.cat("pdfindex_%s_13TeV"%opt.cat).getIndex()
+multipdf = w.pdf("CMS_hgg_%s_%s_13TeV_bkgshape"%(opt.cat,opt.ext))
+pdfindex_bf = w.cat("pdfindex_%s_%s_13TeV"%(opt.cat, opt.ext)).getIndex()
 bpdf_bf_name = None
 bpdfs = od()
 for ipdf in range(multipdf.getNumPdfs()): 
@@ -56,7 +56,7 @@ for ipdf in range(multipdf.getNumPdfs()):
   if ipdf == pdfindex_bf: bpdf_bf_name = multipdf.getPdf(ipdf).GetName()
 
 # Make histograms from bpdfs and scale by norm
-norm = w.var("CMS_hgg_%s_13TeV_bkgshape_norm"%opt.cat).getVal()
+norm = w.var("CMS_hgg_%s_%s_13TeV_bkgshape_norm"%(opt.cat,opt.ext)).getVal()
 
 hists = od()
 for bname, bpdf in list(bpdfs.items()):
