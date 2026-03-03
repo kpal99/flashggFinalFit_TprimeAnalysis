@@ -154,7 +154,7 @@ def makeBrazilPlot(args):
     tex3.SetNDC()
     tex3.SetTextSize(0.04)
     if year == "full":
-        tex3.DrawLatex(0.385, 0.91, f"#bf{{138 fb^{{-1}} (13 TeV) + 34.6 fb^{{-1}} (13.6 TeV)}}")
+        tex3.DrawLatex(0.385, 0.91, f"#bf{{138 fb^{{-1}} (13 TeV) + 61.8 fb^{{-1}} (13.6 TeV)}}")
     else:
         lumi = lumiMap[year]
         energy = energyMap[year]
