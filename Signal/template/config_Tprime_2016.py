@@ -17,7 +17,7 @@ signalScriptCfg = {
   'massPoints':'125',
 
   #Photon shape systematics
-  'scales':'ElectonScale,Scale',
+  'scales':'ElectonScale',
   'scalesCorr':'Material,FNUF,ShowerShape,MET', # correlated across years
   'scalesGlobal':'JecSystTotal,JerSyst', # affect all processes equally, correlated across years
   'smears':'ElectronSmearing,Smearing',
