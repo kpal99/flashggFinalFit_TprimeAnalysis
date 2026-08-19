@@ -78,6 +78,18 @@ def extractBandProperties(data,category,bidx):
   props['down2sigma'] = np.percentile(data['%s_%g'%(c,bidx)].values,50*(1+math.erf(-2./math.sqrt(2))))
   return props
 
+def getScaleFactor(hist):
+  sf = 1
+  # histogram integral
+  intHist = hist.Integral()
+  # we want to multiply by sf such that integral is becomes > 1
+  n = math.ceil(-1 * math.log10(intHist))
+  n += 1
+  if n < 0: n = 0
+  print(f"--> Scaling histogram {hist.GetName()} with integral {intHist} by {10**n}")
+  return 10**n
+
+
 def makeSplusBPlot(workspace,hD,hSB,hB,hS,hDr,hBr,hSr,cat,options,dB=None,reduceRange=None):
   translateCats = {} if options.translateCats is None else LoadTranslations(options.translateCats)
   translatePOIs = {} if options.translatePOIs is None else LoadTranslations(options.translatePOIs)
@@ -126,6 +138,7 @@ def makeSplusBPlot(workspace,hD,hSB,hB,hS,hDr,hBr,hSr,cat,options,dB=None,reduce
   if cat == "wall": h_axes.GetYaxis().SetTitle("S/(S+B) Weighted Events / GeV")
   h_axes.Draw()
   # Add bands
+  hS_scale_factor = 1
   if options.doBands:
     gr_1sig, gr_1sig_r = ROOT.TGraphAsymmErrors(), ROOT.TGraphAsymmErrors()
     gr_2sig, gr_2sig_r = ROOT.TGraphAsymmErrors(), ROOT.TGraphAsymmErrors()
@@ -165,6 +178,8 @@ def makeSplusBPlot(workspace,hD,hSB,hB,hS,hDr,hBr,hSr,cat,options,dB=None,reduce
     hB['pdfNBins'].SetLineStyle(2)
     hB['pdfNBins'].Draw("Hist same c")
   else:
+    hS_scale_factor = getScaleFactor(hS['pdfNBins'])
+    hS['pdfNBins'].Scale(hS_scale_factor)
     hS['pdfNBins'].SetLineWidth(3)
     hS['pdfNBins'].SetLineColor(9)
     hS['pdfNBins'].SetFillColor(38)
@@ -201,7 +216,10 @@ def makeSplusBPlot(workspace,hD,hSB,hB,hS,hDr,hBr,hSr,cat,options,dB=None,reduce
     leg.AddEntry(hB['pdfNBins'],"B component","l")
   else:
     leg.AddEntry(hB['pdfNBins'],"B fit","l")
-    leg.AddEntry(hS['pdfNBins'],"S model","fl")
+    if hS_scale_factor > 1:
+        leg.AddEntry(hS['pdfNBins'],"S model #times %d"%hS_scale_factor,"fl")
+    else:
+        leg.AddEntry(hS['pdfNBins'],"S model","fl")
   if options.doBands:
     leg.AddEntry(gr_1sig,"#pm1 #sigma","F")
     leg.AddEntry(gr_2sig,"#pm2 #sigma","F")
