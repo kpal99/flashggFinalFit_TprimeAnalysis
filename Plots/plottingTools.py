@@ -303,6 +303,8 @@ def makeSplusBPlot(workspace,hD,hSB,hB,hS,hDr,hBr,hSr,cat,options,dB=None,reduce
 
   # Save canvas
   canv.Update()
-  canv.SaveAs("./SplusBModels%s/%s_%s_%s.png"%(options.ext,options.ext,cat,options.xvar.split(",")[0]))
-  canv.SaveAs("./SplusBModels%s/%s_%s_%s.pdf"%(options.ext,options.ext,cat,options.xvar.split(",")[0]))
+  canv.SaveAs("./SplusBModels/%s/%s_%s.png"%(options.ext,cat,options.xvar.split(",")[0]))
+  canv.SaveAs("./SplusBModels/%s/%s_%s.pdf"%(options.ext,cat,options.xvar.split(",")[0]))
+  canv.SaveAs("./SplusBModels/%s/%s_%s.root"%(options.ext,cat,options.xvar.split(",")[0]))
+  canv.SaveAs("./SplusBModels/%s/%s_%s.C"%(options.ext,cat,options.xvar.split(",")[0]))
   #raw_input("Press any key to continue...")
