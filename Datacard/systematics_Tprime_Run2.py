@@ -94,9 +94,9 @@ experimental_systematics = [
 # mode = (other,scalesGlobal,scales,scalesCorr,smears): match the definition in the signal models
 
 signal_shape_systematics = [
-                #{'name':'Material','title':'Material','type':'signal_shape','mode':'scalesCorr','mean':'0.0','sigma':'1.0'},
-                #{'name':'FNUF','title':'FNUF','type':'signal_shape','mode':'scalesCorr','mean':'0.0','sigma':'1.0'},
-                #{'name':'ShowerShape','title':'ShowerShape','type':'signal_shape','mode':'scalesCorr','mean':'0.0','sigma':'1.0'},
+                {'name':'Material','title':'Material','type':'signal_shape','mode':'scalesCorr','mean':'0.0','sigma':'1.0'},
+                {'name':'FNUF','title':'FNUF','type':'signal_shape','mode':'scalesCorr','mean':'0.0','sigma':'1.0'},
+                {'name':'ShowerShape','title':'ShowerShape','type':'signal_shape','mode':'scalesCorr','mean':'0.0','sigma':'1.0'},
                 #{'name':'deltafracright','title':'deltafracright','type':'signal_shape','mode':'other','mean':'0.0','sigma':'0.02'},
                 #{'name':'Scale','title':'Scale','type':'signal_shape','mode':'scales','mean':'0.0','sigma':'1.0'},
                 #{'name':'Smearing','title':'Smearing','type':'signal_shape','mode':'smears','mean':'0.0','sigma':'1.0'},
