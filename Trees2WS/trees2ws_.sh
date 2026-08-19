@@ -48,18 +48,8 @@ do
     fi
 done
 
-HIGGSMODES=("GG2H" "TTH" "VBF" "VH")
-if [ $YEAR = "2016" ]; then
-    HIGGSMODES+=("THQ")
-elif [ $YEAR = "2017" ]; then
-    HIGGSMODES+=("THQ")
-elif [ $YEAR = "2018" ]; then
-    :
-elif [ $YEAR = "2022" ]; then
-    HIGGSMODES+=("THQ")
-elif [ $YEAR = "2023" ]; then
-    HIGGSMODES+=("THQ")
-fi
+HIGGSMODES=("GG2H" "THQ" "TTH" "VBF" "VH")
+
 # making higgs workspaces
 for higgsMode in ${HIGGSMODES[@]};
 do
