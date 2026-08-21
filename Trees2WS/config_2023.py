@@ -12,7 +12,7 @@ trees2wsCfg = {
   'stxsVar':'stage1p2bin', # Var for STXS splitting: if using option doSTXSSplitting
   'notagVars':["weight","*sigma"], # Vars to add to NOTAG RooDataset
   'systematicsVars':["CMS_hgg_mass","weight"], # Variables to add to sytematic RooDataHists
-  'theoryWeightContainers':{'alphaSWeights':2},
+  'theoryWeightContainers':{},
   #'theoryWeightContainers':{'alphaSWeights':2,'scaleWeights':9,'pdfWeights':60}, # Theory weights to add to nominal + NOTAG RooDatasets, value corresponds to number of weights (0-N)
 
   # List of systematics: use string YEAR for year-dependent systematics
