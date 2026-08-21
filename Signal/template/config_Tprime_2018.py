@@ -17,10 +17,11 @@ signalScriptCfg = {
   'massPoints':'125',
 
   #Photon shape systematics
-  'scales':'ElectonScale',
-  'scalesCorr':'Material,FNUF,ShowerShape,MET', # correlated across years
-  'scalesGlobal':'JecSystTotal,JerSyst', # affect all processes equally, correlated across years
-  'smears':'ElectronSmearing,Smearing',
+  'scales':'',
+  'scalesCorr':'Material,FNUF,ShowerShape', # correlated across years
+  'scalesGlobal':'', # affect all processes equally, correlated across years
+  'smears':'',
+  'smearsCorr':'ElectronSmearing,Smearing',
 #  'scales':'HighR9EB,HighR9EE,LowR9EB,LowR9EE,Gain1EB,Gain6EB', # separate nuisance per year
 #  'scalesCorr':'MaterialCentralBarrel,MaterialOuterBarrel,MaterialForward,FNUFEE,FNUFEB,ShowerShapeHighR9EE,ShowerShapeHighR9EB,ShowerShapeLowR9EE,ShowerShapeLowR9EB', # correlated across years
 #  'scalesGlobal':'NonLinearity,Geant4', # affect all processes equally, correlated across years
