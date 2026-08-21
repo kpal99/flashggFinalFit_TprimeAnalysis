@@ -1,5 +1,4 @@
 echo python3 condorSubmitFullFlowRun3.py \
-    --printOnly \
     --plotsOutputDir ~b2g/plots/fgg-fits_Run3 \
     --finalSelectionDir2022 ~eos/tprime-hdna/finalSelection18p6-22 \
     --finalSelectionDir2023 ~eos/tprime-hdna/finalSelection18p6-23 \
