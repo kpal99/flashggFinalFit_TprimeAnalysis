@@ -22,17 +22,6 @@ esac
 done
 
 SKIPSYSTEMATICS=""
-if [ $YEAR = "2016" ]; then
-    :
-elif [ $YEAR = "2017" ]; then
-    SKIPSYSTEMATICS="--skipSystematics"
-elif [ $YEAR = "2018" ]; then
-    :
-elif [ $YEAR = "2022" ]; then
-    :
-elif [ $YEAR = "2023" ]; then
-    :
-fi
 
 cd $(dirname $0)
 
