@@ -35,7 +35,7 @@ echo ===========================================================================
 echo ================================== makeYields ==============================
 echo ============================================================================
 cd Datacard
-python3 RunYields.py --inputWSDirMap 2022={{ finalSelectionDir2022 }}/{{ TprimeProc }}/ws/,2023={{ finalSelectionDir2023 }}/{{ TprimeProc }}/ws/ --cats auto --procs {{ TprimeProc }}Sch,{{ TprimeProc }}Tch,{{ TprimeProc }}Int,GG2H,THQ,TTH,VBF,VH --ext {{ TprimeProc }}_22plus23 --skipCOWCorr --batch local --mergeYears --sigModelWSDir ./Models/22plus23/{{ TprimeProc }}/signal --bkgModelWSDir ./Models/22plus23/{{ TprimeProc }}/background --catExt 22plus23 --systConfig systematics_Tprime_22plus23.py
+python3 RunYields.py --inputWSDirMap 2022={{ finalSelectionDir2022 }}/{{ TprimeProc }}/ws/,2023={{ finalSelectionDir2023 }}/{{ TprimeProc }}/ws/ --cats auto --procs {{ TprimeProc }}Sch,{{ TprimeProc }}Tch,{{ TprimeProc }}Int,GG2H,THQ,TTH,VBF,VH --ext {{ TprimeProc }}_22plus23 --skipCOWCorr --batch local --mergeYears --sigModelWSDir ./Models/22plus23/{{ TprimeProc }}/signal --bkgModelWSDir ./Models/22plus23/{{ TprimeProc }}/background --catExt 22plus23 --doSystematics --systConfig systematics_Tprime_22plus23.py
 cd ..
 
 echo ============================================================================
