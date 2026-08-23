@@ -1,16 +1,15 @@
 #!/bin/bash
 
 RUN=true
+systExt="withSyst"
 # get the options passed to the script
-while getopts "nhy:s:p:" opt;
+while getopts "hy:s:p:" opt;
 do
 case $opt in
-    n) RUN=false;;
     y) YEAR=$OPTARG;;
     s) TPRIMEPROC=$OPTARG;;
     p) PLOTDIR=$OPTARG;;
     h) echo "Usage: $0 [-n] [-h] -y YEAR -s TPRIMEPROC"
-       echo "  -n: dry run, just print the commands to be run for any given flag"
        echo "  -y: year"
        echo "  -s: signal process to use, TPRIMEPROC"
        echo "  -p: plot directory"
@@ -22,7 +21,7 @@ done
 
 cd $(dirname $0)
 FINALFITDIR=$CMSSW_BASE/src/flashggFinalFit/
-DATACARD=Datacard_${TPRIMEPROC}_${YEAR}_mu_inclusive.root
+DATACARD=Datacard_${TPRIMEPROC}_${YEAR}_${systExt}_mu_inclusive.root
 
 mkdir -pv Impact/${TPRIMEPROC}_${YEAR}
 cp -v $DATACARD Impact/${TPRIMEPROC}_${YEAR}/
