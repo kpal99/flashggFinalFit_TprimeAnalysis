@@ -2,6 +2,7 @@
 
 RUN=true
 SYSTEMATICS=""
+systExt="woSyst"
 PLOTDIR="./"
 # get the options passed to the script
 while getopts "nhts:y:ep:" opt;
@@ -11,7 +12,8 @@ case $opt in
     t) TEST=true;;
     y) YEAR=$OPTARG;;
     s) TPRIMEPROC=$OPTARG;;
-    e) SYSTEMATICS="--doSystematics";;
+    e) SYSTEMATICS="--doSystematics"
+       systExt="withSyst" ;;
     p) PLOTDIR=$OPTARG;;
     h) echo "Usage: $0 [-n] [-h] [-t] -y YEAR -s TPRIMEPROC [-e] [-p PLOTDIR]"
        echo "  -n: dry run, just print the commands to be run for any given flag"
@@ -30,14 +32,14 @@ cd $(dirname $0)
 FINALFITDIR=$CMSSW_BASE/src/flashggFinalFit/
 
 echo
-echo python3 makeDatacard.py --ext ${TPRIMEPROC}_${YEAR} --years $YEAR --skipCOWCorr --doMCStatUncertainty --saveDataFrame --output Datacard_${TPRIMEPROC}_${YEAR} $SYSTEMATICS --systConfig systematics_Tprime_$YEAR.py
+echo python3 makeDatacard.py --ext ${TPRIMEPROC}_${YEAR} --years 2016,2017,2018 --skipCOWCorr --doMCStatUncertainty --saveDataFrame --output Datacard_${TPRIMEPROC}_${YEAR}_${systExt} $SYSTEMATICS --systConfig systematics_Tprime_${YEAR}.py
 if $RUN; then
     echo   # to add new line after output of above script
-    python3 makeDatacard.py --ext ${TPRIMEPROC}_${YEAR} --years $YEAR --skipCOWCorr --doMCStatUncertainty --saveDataFrame --output Datacard_${TPRIMEPROC}_${YEAR} $SYSTEMATICS --systConfig systematics_Tprime_$YEAR.py
-    cp -v Datacard_${TPRIMEPROC}_${YEAR}.txt $PLOTDIR/Datacard/
-    python3 Datacard_Viewer/datacard_txt_to_html.py --output-dir $PLOTDIR/Datacard/ --datacard Datacard_${TPRIMEPROC}_${YEAR}.txt
-    mkdir -pv $FINALFITDIR/Combine/Models/$YEAR/$TPRIMEPROC/{signal,background}
-    cp -v $FINALFITDIR/Signal/outdir_packaged_${TPRIMEPROC}_${YEAR}/CMS-HGG_sigfit_packaged*.root $FINALFITDIR/Combine/Models/$YEAR/$TPRIMEPROC/signal/
-    cp -v $FINALFITDIR/Background/outdir_${TPRIMEPROC}_${YEAR}/CMS-HGG_multipdf*.root $FINALFITDIR/Combine/Models/$YEAR/$TPRIMEPROC/background/
-    cp -v $FINALFITDIR/Datacard/Datacard_${TPRIMEPROC}_${YEAR}.txt $FINALFITDIR/Combine/
+    python3 makeDatacard.py --ext ${TPRIMEPROC}_${YEAR} --years 2016,2017,2018 --skipCOWCorr --doMCStatUncertainty --saveDataFrame --output Datacard_${TPRIMEPROC}_${YEAR}_${systExt} $SYSTEMATICS --systConfig systematics_Tprime_${YEAR}.py
+    cp -v Datacard_${TPRIMEPROC}_${YEAR}_${systExt}.txt $PLOTDIR/Datacard/
+    python3 Datacard_Viewer/datacard_txt_to_html.py --output-dir $PLOTDIR/Datacard/ --datacard Datacard_${TPRIMEPROC}_${YEAR}_${systExt}.txt
+    mkdir -pv $FINALFITDIR/Combine/Models/${YEAR}/$TPRIMEPROC/{signal,background}
+    cp -v $FINALFITDIR/Signal/outdir_packaged_${TPRIMEPROC}_${YEAR}/CMS-HGG_sigfit_packaged*.root $FINALFITDIR/Combine/Models/${YEAR}/$TPRIMEPROC/signal/
+    cp -v $FINALFITDIR/Background/outdir_${TPRIMEPROC}_${YEAR}/CMS-HGG_multipdf*.root $FINALFITDIR/Combine/Models/${YEAR}/$TPRIMEPROC/background/
+    cp -v $FINALFITDIR/Datacard/Datacard_${TPRIMEPROC}_${YEAR}_${systExt}.txt $FINALFITDIR/Combine/
 fi
