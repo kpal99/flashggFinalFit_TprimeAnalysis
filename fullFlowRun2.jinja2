@@ -53,6 +53,13 @@ echo ===========================================================================
 {{ pwd }}/Combine/runCombine_.sh -y Run2 -s {{ TprimeProc }}
 {{ pwd }}/Combine/runCombine_.sh -y Run2 -s {{ TprimeProc }} -e
 
+echo ============================================================================
+echo ================================== runImpact ===============================
+echo ============================================================================
+{{pwd}}/Combine/runImpact_.sh -y Run2 -s TprimeM700Decay5pct -p {{ plotsOutputDir }}/../limits/Impacts
+
+echo ============================================================================
 echo ================================ checkLimits ===============================
+echo ============================================================================
 python3 {{ pwd }}/Combine/checkLimitOutput.py {{ pwd }}/Combine/higgsCombine_{{ TprimeProc }}_Run2_withSyst.AsymptoticLimits.mH*.root
 exit $?
