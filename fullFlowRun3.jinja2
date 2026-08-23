@@ -41,12 +41,14 @@ cd ..
 echo ============================================================================
 echo ================================== makeDatacard ============================
 echo ============================================================================
+{{ pwd }}/Datacard/makeDatacard22plus23_.sh -s {{ TprimeProc }} -p {{ plotsOutputDir }}
 {{ pwd }}/Datacard/makeDatacard22plus23_.sh -s {{ TprimeProc }} -e -p {{ plotsOutputDir }}
 
 echo ============================================================================
 echo ================================== runCombine ==============================
 echo ============================================================================
 {{ pwd }}/Combine/runCombine_.sh -y 22plus23 -s {{ TprimeProc }}
+{{ pwd }}/Combine/runCombine_.sh -y 22plus23 -s {{ TprimeProc }} -e
 
 echo ============================================================================
 echo ================================== runImpact ==============================
@@ -56,5 +58,5 @@ echo ===========================================================================
 echo ============================================================================
 echo ================================ checkLimits ===============================
 echo ============================================================================
-python3 {{ pwd }}/Combine/checkLimitOutput.py {{ pwd }}/Combine/higgsCombine_{{ TprimeProc }}_22plus23.AsymptoticLimits.mH*.root
+python3 {{ pwd }}/Combine/checkLimitOutput.py {{ pwd }}/Combine/higgsCombine_{{ TprimeProc }}_22plus23_withSyst.AsymptoticLimits.mH*.root
 exit $?
