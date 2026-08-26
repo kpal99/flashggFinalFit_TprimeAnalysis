@@ -24,15 +24,7 @@ esac
 done
 
 cd $(dirname $0)
-PROCS="$TPRIMEPROC"Sch,"$TPRIMEPROC"Tch,"$TPRIMEPROC"Int,GG2H,TTH,VBF,VH
-# if year is 2016 or 2017 change PROCS
-if [ $YEAR = "2016" ]; then
-    PROCS=$PROCS,THQ
-elif [ $YEAR = "2017" ]; then
-    PROCS=$PROCS,THQ
-elif [ $YEAR = "2022" ]; then
-    PROCS=$PROCS,THQ
-fi
+PROCS="$TPRIMEPROC"Sch,"$TPRIMEPROC"Tch,"$TPRIMEPROC"Int,THQ,GG2H,TTH,VBF,VH
 
 echo python3 RunYields.py --inputWSDirMap $YEAR=$INPUTDIR/$TPRIMEPROC/ws/ --cats auto --catExt $CATEXT --procs $PROCS --ext ${TPRIMEPROC}_${YEAR} --skipCOWCorr --batch local --sigModelWSDir ./Models/$YEAR/$TPRIMEPROC/signal --bkgModelWSDir ./Models/$YEAR/$TPRIMEPROC/background --systConfig systematics_Tprime_$YEAR.py --doSystematics
 if $RUN; then
