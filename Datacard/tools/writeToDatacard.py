@@ -46,7 +46,7 @@ def writeProcesses(f,d,options):
       if r['proc'] == "data_obs": continue
       lbin_procXcat += "%-45s "%cat
       lproc += "%-45s "%r['proc']
-      keywords = ["tprime", "qqh", "ggh", "vh", "thq", "tth"]
+      keywords = ["tprime", "qqh", "ggh", "vh", "thq", "tth", "gg2h", "vbf"]
       if any(kw in r['proc'].lower() for kw in keywords):
         lprocid += "%-45s "%sigID
         sigID -= 1
@@ -165,6 +165,7 @@ def writeSystematic(f,d,s,options,stxsMergeScheme=None,scaleCorrScheme=None):
 
 def addSyst(l,v,s,p,c):
   #l-systematic line, v-value, s-systematic title, p-proc, c-cat
+  #print(" [DEBUG addSyst] syst=%-20s proc=%-30s cat=%-15s type=%-10s value=%r" % (s,p,c,type(v).__name__,v))
   if type(v) is str: 
     l += "%-45s "%v
     return l
