@@ -141,10 +141,11 @@ for year in years:
 
     # Add signal process to dataFrame:
     print(" --> Adding to dataFrame: (proc,cat) = (%s,%s)"%(_proc,_cat))
-    if "tprime" in proc.lower():
+    keywords = ["tprime", "qqh", "ggh", "vh", "thq", "tth"]
+    if any(kw in proc.lower() for kw in keywords):
         data.loc[len(data)] = [year,'sig',_procOriginal,_proc,_proc_s0,_cat,_inputWSFile,_nominalDataName,_modelWSFile,_model,_rate]
-    else:
-        data.loc[len(data)] = [year,'bkg',_procOriginal,_proc,_proc_s0,_cat,_inputWSFile,_nominalDataName,_modelWSFile,_model,_rate]
+    #else:
+    #    data.loc[len(data)] = [year,'bkg',_procOriginal,_proc,_proc_s0,_cat,_inputWSFile,_nominalDataName,_modelWSFile,_model,_rate]
 
 # Background and data processes
 if( not opt.skipBkg)&( opt.cat != "NOTAG" ):
