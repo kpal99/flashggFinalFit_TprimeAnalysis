@@ -16,6 +16,7 @@ parser.add_option("-c","--combineOptions",default="")
 parser.add_option("-s","--seed",default=-1,type="int")
 parser.add_option("--dryRun",action="store_true", default=False)
 parser.add_option("--poi",default="r")
+parser.add_option("--subDir", default="")
 parser.add_option("--split",default=500,type="int")
 parser.add_option("--selectFunction",default=None)
 parser.add_option("--gaussianFit",action="store_true", default=False)
@@ -56,7 +57,7 @@ for ipdf in range(multipdf.getNumPdfs()):
     indexNameMap[ipdf] = multipdf.getPdf(ipdf).GetName()
 
 if opts.toys:
-    if not path.isdir('BiasToysn'): system('mkdir -p BiasToys')
+    if not path.isdir(f'BiasToysn/{opts.subDir}'): system(f'mkdir -p BiasToys/{opts.subDir}')
     toyCmdBase = 'combine -m %.4f -d %s -M GenerateOnly --expectSignal %.4f -s %g --saveToys %s '%(opts.mH, opts.datacard, opts.expectSignal, opts.seed, opts.combineOptions)
     for ipdf,pdfName in indexNameMap.items():
         name = shortName(pdfName)
@@ -72,7 +73,7 @@ if opts.toys:
 print()
 
 if opts.fits:
-    if not path.isdir('BiasFits'): system('mkdir -p BiasFits')
+    if not path.isdir(f'BiasFits/{opts.subDir}'): system(f'mkdir -p BiasFits/{opts.subDir}')
     fitCmdBase = 'combine -m %.4f -d %s -M MultiDimFit -P %s --algo singles %s '%(opts.mH, opts.datacard, opts.poi, opts.combineOptions)
     for ipdf,pdfName in indexNameMap.items():
         name = shortName(pdfName)
@@ -88,7 +89,7 @@ if opts.fits:
             system('mv higgsCombine_%s* %s'%(name, fitName(name)))
 
 if opts.plots:
-    if not path.isdir('BiasPlots'): system('mkdir -p BiasPlots')
+    if not path.isdir(f'BiasPlots/{opts.subDir}'): system(f'mkdir -p BiasPlots/{opts.subDir}')
     for ipdf,pdfName in indexNameMap.items():
         name = shortName(pdfName)
         tfile = r.TFile(fitName(name))
