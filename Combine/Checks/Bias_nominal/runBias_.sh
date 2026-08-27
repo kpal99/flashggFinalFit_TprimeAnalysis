@@ -16,6 +16,8 @@ done
 
 cd $(dirname "$0")
 
+source ../../../setup.sh
+
 echo "==> Running combineCards..."
 combineCards.py \
     ../../Datacard_"$TPRIMEPROC"_"$YEAR"_withSyst.txt \
