@@ -29,22 +29,23 @@ def raiseFailError(itoy, lax=False):
 def shortName(name):
     return name.split('_')[-1]
 
-def toyName(name, split=None):
-    retval = 'BiasToys/biasStudy_%s_toys.root'%name
+def toyName(name, split=None, subDir=""):
+    retval = 'BiasToys/%s/biasStudy_%s_toys.root' % (subDir, name)
     if split is not None: 
         split = int(split)
         retval = retval.replace(name,'%s_split%g'%(name,split))
     return retval
 
-def fitName(name, split=None):
-    retval = 'BiasFits/biasStudy_%s_fits.root'%name
+def fitName(name, split=None, subDir=""):
+    retval = 'BiasFits/%s/biasStudy_%s_fits.root' % (subDir, name)
     if split is not None: 
         split = int(split)
         retval = retval.replace(name,'%s_split%g'%(name,split))
     return retval
 
-def plotName(name):
-    return 'BiasPlots/biasStudy_%s_pulls'%name
+def plotName(name, subDir=""):
+    return 'BiasPlots/%s/biasStudy_%s_pulls' % (subDir, name)
+
 
 def run(cmd, dry=False):
    print(cmd)

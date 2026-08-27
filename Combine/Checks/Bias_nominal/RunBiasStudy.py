@@ -65,11 +65,11 @@ if opts.toys:
             for isplit in range(opts.nToys//opts.split):
                 toyCmd = toyCmdBase + ' -t %g -n _%s_split%g --setParameters %s=%g --freezeParameters %s'%(opts.split, name, isplit, indexName, ipdf, indexName)
                 run(toyCmd, dry=opts.dryRun)
-                system('mv higgsCombine_%s* %s'%(name, toyName(name,split=isplit)))
+                system('mv higgsCombine_%s* %s'%(name, toyName(name,split=isplit,subDir=opts.subDir)))
         else: 
             toyCmd = toyCmdBase + ' -t %g -n _%s --setParameters %s=%g --freezeParameters %s'%(opts.nToys, name, indexName, ipdf, indexName)
             run(toyCmd, dry=opts.dryRun)
-            system('mv higgsCombine_%s* %s'%(name, toyName(name)))
+            system('mv higgsCombine_%s* %s'%(name, toyName(name,subDir=opts.subDir)))
 print()
 
 if opts.fits:
@@ -79,20 +79,20 @@ if opts.fits:
         name = shortName(pdfName)
         if opts.nToys > opts.split:
             for isplit in range(opts.nToys//opts.split):
-                fitCmd = fitCmdBase + ' -t %g -n _%s_split%g --toysFile=%s'%(opts.split, name, isplit, toyName(name,split=isplit))
+                fitCmd = fitCmdBase + ' -t %g -n _%s_split%g --toysFile=%s'%(opts.split, name, isplit, toyName(name,split=isplit,subDir=opts.subDir))
                 run(fitCmd, dry=opts.dryRun)
-                system('mv higgsCombine_%s* %s'%(name, fitName(name,split=isplit)))
-            run('hadd %s BiasFits/*%s*split*.root'%(fitName(name),name), dry=opts.dryRun)
+                system('mv higgsCombine_%s* %s'%(name, fitName(name,split=isplit,subDir=opts.subDir)))
+            run('hadd %s BiasFits/*%s*split*.root'%(fitName(name,subDir=opts.subDir),name), dry=opts.dryRun)
         else:
-            fitCmd = fitCmdBase + ' -t %g -n _%s --toysFile=%s'%(opts.nToys, name, toyName(name))
+            fitCmd = fitCmdBase + ' -t %g -n _%s --toysFile=%s'%(opts.nToys, name, toyName(name,subDir=opts.subDir))
             run(fitCmd, dry=opts.dryRun)
-            system('mv higgsCombine_%s* %s'%(name, fitName(name)))
+            system('mv higgsCombine_%s* %s'%(name, fitName(name,subDir=opts.subDir)))
 
 if opts.plots:
     if not path.isdir(f'BiasPlots/{opts.subDir}'): system(f'mkdir -p BiasPlots/{opts.subDir}')
     for ipdf,pdfName in indexNameMap.items():
         name = shortName(pdfName)
-        tfile = r.TFile(fitName(name))
+        tfile = r.TFile(fitName(name,subDir=opts.subDir))
         tree = tfile.Get('limit')
         pullHist = r.TH1F('pullsForTruth_%s'%name, 'Pull distribution using the envelope to fit %s'%name, 80, -4., 4.)
         pullHist.GetXaxis().SetTitle('Pull')
@@ -122,5 +122,5 @@ if opts.plots:
         if opts.gaussianFit:
            r.gStyle.SetOptFit(111)
            pullHist.Fit('gaus')
-        canv.SaveAs('%s.pdf'%plotName(name))
-        canv.SaveAs('%s.png'%plotName(name))
+        canv.SaveAs('%s.pdf'%plotName(name,subDir=opts.subDir))
+        canv.SaveAs('%s.png'%plotName(name,subDir=opts.subDir))
