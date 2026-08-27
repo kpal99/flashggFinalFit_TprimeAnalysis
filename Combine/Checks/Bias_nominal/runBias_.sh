@@ -37,6 +37,18 @@ mkdir -pv Datacard/"$TPRIMEPROC"_"$YEAR"_Hadronic/
 mkdir -pv Datacard/"$TPRIMEPROC"_"$YEAR"_Leptonic/
 
 echo -e "\n==> Converting text datacard to workspace..."
+echo text2workspace.py \
+    ../../Datacard_"$TPRIMEPROC"_"$YEAR"_withSyst_Hadronic.txt \
+    --out Datacard/"$TPRIMEPROC"_"$YEAR"_Hadronic/Datacard_"$TPRIMEPROC"_"$YEAR"_withSyst_Hadronic.root \
+    --mass 125 \
+    higgsMassRange=122,128 \
+    --physics-model HiggsAnalysis.CombinedLimit.PhysicsModel:multiSignalModel \
+    --physics-option map=".*/Tprime.*:r[1,-1,1000]" \
+    --physics-option map=".*/ggh.*:1" \
+    --physics-option map=".*/VH.*:1" \
+    --physics-option map=".*/tHq.*:1" \
+    --physics-option map=".*/ttH.*:1" \
+    --physics-option map=".*/qqH.*:1"
 text2workspace.py \
     ../../Datacard_"$TPRIMEPROC"_"$YEAR"_withSyst_Hadronic.txt \
     --out Datacard/"$TPRIMEPROC"_"$YEAR"_Hadronic/Datacard_"$TPRIMEPROC"_"$YEAR"_withSyst_Hadronic.root \
@@ -50,6 +62,18 @@ text2workspace.py \
     --physics-option map=".*/ttH.*:1" \
     --physics-option map=".*/qqH.*:1"
 
+echo text2workspace.py \
+    ../../Datacard_"$TPRIMEPROC"_"$YEAR"_withSyst_Leptonic.txt \
+    --out Datacard/"$TPRIMEPROC"_"$YEAR"_Leptonic/Datacard_"$TPRIMEPROC"_"$YEAR"_withSyst_Leptonic.root \
+    --mass 125 \
+    higgsMassRange=122,128 \
+    --physics-model HiggsAnalysis.CombinedLimit.PhysicsModel:multiSignalModel \
+    --physics-option map=".*/Tprime.*:r[1,-1,1000]" \
+    --physics-option map=".*/ggh.*:1" \
+    --physics-option map=".*/VH.*:1" \
+    --physics-option map=".*/tHq.*:1" \
+    --physics-option map=".*/ttH.*:1" \
+    --physics-option map=".*/qqH.*:1"
 text2workspace.py \
     ../../Datacard_"$TPRIMEPROC"_"$YEAR"_withSyst_Leptonic.txt \
     --out Datacard/"$TPRIMEPROC"_"$YEAR"_Leptonic/Datacard_"$TPRIMEPROC"_"$YEAR"_withSyst_Leptonic.root \
