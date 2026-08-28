@@ -3,7 +3,7 @@ do
     for d in 5 10 20 30
     do
         TPRIMEPROC=TprimeM"$M"Decay"$d"pct
-        condor_wrap.py --jobFlavour microcentury --cmsenv -- ./runBias_.sh -y Run2 -s $TPRIMEPROC
+        condor_wrap.py --jobFlavour workday --cmsenv -- ./runBias_.sh -y Run2 -s $TPRIMEPROC
     done
 done
 
@@ -12,6 +12,6 @@ do
     for d in 5 10 20 30
     do
         TPRIMEPROC=TprimeM"$M"Decay"$d"pct
-        condor_wrap.py --jobFlavour microcentury --cmsenv -- ./runBias_.sh -y 22plus23 -s $TPRIMEPROC
+        condor_wrap.py --jobFlavour workday --cmsenv -- ./runBias_.sh -y 22plus23 -s $TPRIMEPROC
     done
 done
