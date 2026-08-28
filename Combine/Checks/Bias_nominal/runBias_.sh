@@ -87,7 +87,7 @@ text2workspace.py \
     --physics-option map=".*/ttH.*:1" \
     --physics-option map=".*/qqH.*:1"
 
-for mu in 1
+for mu in {1..10}
 do
 echo -e "\n==> Running bias study (toys)..."
 python3 RunBiasStudy.py \
@@ -95,13 +95,13 @@ python3 RunBiasStudy.py \
     --datacard Datacard/"$TPRIMEPROC"_"$YEAR"_Hadronic/Datacard_"$TPRIMEPROC"_"$YEAR"_withSyst_Hadronic.root \
     --toys \
     --expectSignal 1 \
-    --subDir "$TPRIMEPROC""$YEAR"_Hadronic_mu"$mu"
+    --subDir "$TPRIMEPROC"_"$YEAR"_Hadronic_mu"$mu"
 python3 RunBiasStudy.py \
     --split 1000 \
     --datacard Datacard/"$TPRIMEPROC"_"$YEAR"_Leptonic/Datacard_"$TPRIMEPROC"_"$YEAR"_withSyst_Leptonic.root \
     --toys \
     --expectSignal 1 \
-    --subDir "$TPRIMEPROC""$YEAR"_Leptonic_mu"$mu"
+    --subDir "$TPRIMEPROC"_"$YEAR"_Leptonic_mu"$mu"
 
 echo -e "\n==> Running bias study (fits)..."
 python3 RunBiasStudy.py \
