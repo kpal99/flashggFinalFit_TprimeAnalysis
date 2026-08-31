@@ -52,11 +52,24 @@ if opt.doPlots:
 
 # Load xvar to fit
 nominalWSFileName = glob.glob("%s/output*"%(opt.inputWSDir))[0]
+print(" --> [INFO] Loading nominal WS file: %s"%nominalWSFileName)
 f0 = ROOT.TFile(nominalWSFileName,"read")
 inputWS0 = f0.Get(inputWSName__)
+print(" --> [INFO] Looking for workspace '%s' in %s -> got type: %s"%(inputWSName__,nominalWSFileName,type(inputWS0)))
+if not inputWS0 or not isinstance(inputWS0, ROOT.RooWorkspace):
+  print(" --> [ERROR] Failed to load RooWorkspace '%s' from %s"%(inputWSName__,nominalWSFileName))
+  print(" --> [ERROR] Available keys in file:")
+  for k in f0.GetListOfKeys(): print("       %s (class: %s)"%(k.GetName(),k.GetClassName()))
+  sys.exit(1)
 xvar = inputWS0.var(opt.xvar)
+if not xvar:
+  print(" --> [ERROR] Variable '%s' not found in workspace '%s' of %s"%(opt.xvar,inputWSName__,nominalWSFileName))
+  sys.exit(1)
 xvarFit = xvar.Clone()
 dZ = inputWS0.var("dZ")
+if not dZ:
+  print(" --> [ERROR] Variable 'dZ' not found in workspace '%s' of %s"%(inputWSName__,nominalWSFileName))
+  sys.exit(1)
 aset = ROOT.RooArgSet(xvar,dZ)
 f0.Close()
 
@@ -69,10 +82,32 @@ MH.setConstant(True)
 df = pd.DataFrame(columns=['proc','sumEntries','nRV','nWV'])
 procYields = od()
 for proc in opt.procs.split(","):
-  WSFileName = glob.glob("%s/output*M%s*%s.root"%(opt.inputWSDir,opt.mass,proc))[0]
+  matches = glob.glob("%s/output*M%s*%s.root"%(opt.inputWSDir,opt.mass,proc))
+  print(" --> [INFO] Searching for proc='%s', mass='%s' with pattern: %s/output*M%s*%s.root"%(proc,opt.mass,opt.inputWSDir,opt.mass,proc))
+  if len(matches) == 0:
+    print(" --> [ERROR] No files found for proc='%s', mass='%s' in %s"%(proc,opt.mass,opt.inputWSDir))
+    sys.exit(1)
+  if len(matches) > 1:
+    print(" --> [WARNING] Multiple files matched for proc='%s': %s (using first)"%(proc,matches))
+  WSFileName = matches[0]
+  print(" --> [INFO] Loading file: %s"%WSFileName)
   f = ROOT.TFile(WSFileName,"read")
   inputWS = f.Get(inputWSName__)
-  d = reduceDataset(inputWS.data("%s_%s_%s_%s"%(procToData(proc.split("_")[0]),opt.mass,sqrts__,opt.cat)),aset)
+  print(" --> [INFO] Looking for workspace '%s' in %s -> got type: %s"%(inputWSName__,WSFileName,type(inputWS)))
+  if not inputWS or not isinstance(inputWS, ROOT.RooWorkspace):
+    print(" --> [ERROR] Failed to load RooWorkspace '%s' from %s"%(inputWSName__,WSFileName))
+    print(" --> [ERROR] Available keys in file:")
+    for k in f.GetListOfKeys(): print("       %s (class: %s)"%(k.GetName(),k.GetClassName()))
+    sys.exit(1)
+  dataName = "%s_%s_%s_%s"%(procToData(proc.split("_")[0]),opt.mass,sqrts__,opt.cat)
+  print(" --> [INFO] Loading dataset '%s' from workspace '%s' in %s"%(dataName,inputWSName__,WSFileName))
+  rawData = inputWS.data(dataName)
+  if not rawData:
+    print(" --> [ERROR] Dataset '%s' not found in workspace '%s' of %s"%(dataName,inputWSName__,WSFileName))
+    print(" --> [ERROR] Available datasets in workspace:")
+    for d in rooiter(inputWS.allData()) if 'rooiter' in dir() else []: print("       %s"%d.GetName())
+    sys.exit(1)
+  d = reduceDataset(rawData,aset)
   df.loc[len(df)] = [proc,d.sumEntries(),1,1]
   inputWS.Delete()
   f.Close()
