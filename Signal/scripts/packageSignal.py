@@ -24,9 +24,18 @@ def rooiter(x):
     yield ret
     ret = iter.Next()
 
-# Extract all files to be merged
+  
+  # Extract all files to be merged
 fNames = {}
-for ext in opt.exts.split(","): fNames[ext] = glob.glob("outdir_%s/signalFit/output/CMS-HGG_sigfit_%s_*_%s.root"%(ext,ext,opt.cat))
+for ext in opt.exts.split(","):
+  pattern = "outdir_%s/signalFit/output/CMS-HGG_sigfit_%s_*_%s.root"%(ext,ext,opt.cat)
+  fNames[ext] = glob.glob(pattern)
+  print(" --> [INFO] Searching for files with pattern: %s"%pattern)
+  if len(fNames[ext]) == 0:
+    print(" --> [WARNING] No files found for ext='%s', cat='%s'"%(ext,opt.cat))
+  else:
+    print(" --> [INFO] Found %d file(s) for ext='%s':"%(len(fNames[ext]),ext))
+    for fn in fNames[ext]: print("       %s"%fn)
 
 # Define ouput packaged workspace
 print(" --> Packaging output workspaces")
@@ -36,19 +45,48 @@ packagedWS.imp = getattr(packagedWS,"import")
 # Extract merged datasets
 data_merged = {}
 data_merged_names = []
-for mp in opt.massPoints.split(","): 
-  data_merged["m%s"%mp] = ROOT.TFile(fNames[opt.exts.split(",")[0]][0]).Get("wsig_13TeV").data("sig_mass_m%s_%s"%(mp,opt.cat)).emptyClone("sig_mass_m%s_%s"%(mp,opt.cat))
+firstExt = opt.exts.split(",")[0]
+if len(fNames[firstExt]) == 0:
+  print(" --> [ERROR] Cannot build merged datasets: no input files found for ext='%s', cat='%s'."%(firstExt,opt.cat))
+  print(" --> [ERROR] Check that outdir_%s/signalFit/output/ exists and contains files matching CMS-HGG_sigfit_%s_*_%s.root"%(firstExt,firstExt,opt.cat))
+  sys.exit(1)
+
+refFile = fNames[firstExt][0]
+print(" --> [INFO] Using reference file for dataset templates: %s"%refFile)
+refWS = ROOT.TFile(refFile).Get("wsig_13TeV")
+if not refWS:
+  print(" --> [ERROR] Could not load workspace 'wsig_13TeV' from file: %s"%refFile)
+  sys.exit(1)
+
+for mp in opt.massPoints.split(","):
+  dataName = "sig_mass_m%s_%s"%(mp,opt.cat)
+  print(" --> [INFO] Loading model/dataset '%s' from %s"%(dataName,refFile))
+  d = refWS.data(dataName)
+  if not d:
+    print(" --> [ERROR] Dataset '%s' not found in workspace 'wsig_13TeV' of file %s"%(dataName,refFile))
+    sys.exit(1)
+  data_merged["m%s"%mp] = d.emptyClone(dataName)
   data_merged_names.append( data_merged["m%s"%mp].GetName() )
 
 for ext, fNames_by_ext in fNames.items():
   for fName in fNames_by_ext:
+    fin = ROOT.TFile(fName)
+    wsin = fin.Get("wsig_13TeV")
+    if not wsin:
+      print(" --> [ERROR] Could not load workspace 'wsig_13TeV' from file: %s"%fName)
+      continue
     for mp in opt.massPoints.split(","):
-      d = ROOT.TFile(fName).Get("wsig_13TeV").data("sig_mass_m%s_%s"%(mp,opt.cat))
+      dataName = "sig_mass_m%s_%s"%(mp,opt.cat)
+      print(" --> [INFO] Merging dataset '%s' from %s"%(dataName,fName))
+      d = wsin.data(dataName)
+      if not d:
+        print(" --> [ERROR] Dataset '%s' not found in %s, skipping"%(dataName,fName))
+        continue
       for i in range(d.numEntries()):
         p = d.get(i)
         w = d.weight()
         data_merged["m%s"%mp].add(p,w)
-  
+
 for _data in data_merged.values(): packagedWS.imp(_data)
         
 # Loop over input signal fit workspaces
