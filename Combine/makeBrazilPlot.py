@@ -12,56 +12,81 @@ ROOT.gErrorIgnoreLevel = ROOT.kWarning
 
 def makeBrazilPlot(args):
     massList = [700, 800, 900, 1000, 1100, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600]
+
     try:
         decayWidthList = args.decayWidth.split(",")
     except AttributeError:
         decayWidthList = [args.decayWidth]
     decayWidthList = [int(d) for d in decayWidthList]
-    massCount = len(massList)
-
-    x = np.zeros(massCount)
-    y = np.zeros(massCount)
-    y_stat = np.zeros(massCount)
-    y1SigmaLower = np.zeros(massCount)
-    y1SigmaHigher = np.zeros(massCount)
-    y2SigmaLower = np.zeros(massCount)
-    y2SigmaHigher = np.zeros(massCount)
-    tprime_xs = np.ones(massCount)
-    massLengthZeros = np.zeros(massCount)
 
     year = args.year
-    i = -1
+
+    # Use lists instead of pre-sized numpy arrays, so we can skip
+    # any mass point whose file/tree is missing or incomplete.
+    x_list = []
+    y_list = []
+    y1SigmaLower_list = []
+    y1SigmaHigher_list = []
+    y2SigmaLower_list = []
+    y2SigmaHigher_list = []
+
     for mass in massList:
-        i += 1
         tprimeProc = f"TprimeM{mass}Decay{decayWidthList[0]}pct"
         file_name = f"higgsCombine_{tprimeProc}_{year}_withSyst.AsymptoticLimits.mH{args.mH}.root"
-        #tprime_xs[i] = getCrossSection(f"{tprimeProc}Sch", args.jsonFile)
 
-        # Open ROOT file
         file_ = ROOT.TFile.Open(file_name, "READ")
         if not file_ or file_.IsZombie():
-            print(f"Error: Could not open {file_name}")
+            print(f"Error: Could not open {file_name}, skipping mass {mass}")
             continue
 
         tree_ = file_.Get("limit")
         if not tree_:
-            print(f"Error: Could not find 'limit' tree in {file_name}")
-        else:
-            tree_.SetBranchStatus("*", 1)
-            qlimit = np.zeros(1, dtype=np.float64)
-            tree_.SetBranchAddress("limit", qlimit)
-
-            x[i] = mass
-            for ievent in range(tree_.GetEntries()):
-                tree_.GetEntry(ievent)
-                # switch statement in python
-                if   ievent == 0: y2SigmaLower[i]  = qlimit[0]
-                elif ievent == 1: y1SigmaLower[i]  = qlimit[0]
-                elif ievent == 2: y[i]             = qlimit[0]
-                elif ievent == 3: y1SigmaHigher[i] = qlimit[0]
-                elif ievent == 4: y2SigmaHigher[i] = qlimit[0]
+            print(f"Error: Could not find 'limit' tree in {file_name}, skipping mass {mass}")
             file_.Close()
-            print(f"{tprimeProc}: {round(y2SigmaLower[i], 2)}, {round(y1SigmaLower[i], 2)}, {round(y[i], 2)}, {round(y1SigmaHigher[i], 2)}, {round(y2SigmaHigher[i], 2)}")
+            continue
+
+        if tree_.GetEntries() < 5:
+            print(f"Error: {file_name} has only {tree_.GetEntries()} entries (need 5), skipping mass {mass}")
+            file_.Close()
+            continue
+
+        tree_.SetBranchStatus("*", 1)
+        qlimit = np.zeros(1, dtype=np.float64)
+        tree_.SetBranchAddress("limit", qlimit)
+
+        vals = [None] * 5
+        for ievent in range(5):
+            tree_.GetEntry(ievent)
+            vals[ievent] = qlimit[0]
+        file_.Close()
+
+        y2SigmaLower_val, y1SigmaLower_val, y_val, y1SigmaHigher_val, y2SigmaHigher_val = vals
+
+        # Only now, having successfully read all five values, commit this mass point
+        x_list.append(mass)
+        y2SigmaLower_list.append(y2SigmaLower_val)
+        y1SigmaLower_list.append(y1SigmaLower_val)
+        y_list.append(y_val)
+        y1SigmaHigher_list.append(y1SigmaHigher_val)
+        y2SigmaHigher_list.append(y2SigmaHigher_val)
+
+        print(f"{tprimeProc}: {round(y2SigmaLower_val, 2)}, {round(y1SigmaLower_val, 2)}, "
+              f"{round(y_val, 2)}, {round(y1SigmaHigher_val, 2)}, {round(y2SigmaHigher_val, 2)}")
+
+    if not x_list:
+        print("Error: No valid mass points found, nothing to plot.")
+        return
+
+    # Convert to numpy arrays now that we know which masses actually succeeded
+    massCount = len(x_list)
+    x = np.array(x_list, dtype=np.float64)
+    y = np.array(y_list, dtype=np.float64)
+    y1SigmaLower = np.array(y1SigmaLower_list, dtype=np.float64)
+    y1SigmaHigher = np.array(y1SigmaHigher_list, dtype=np.float64)
+    y2SigmaLower = np.array(y2SigmaLower_list, dtype=np.float64)
+    y2SigmaHigher = np.array(y2SigmaHigher_list, dtype=np.float64)
+    massLengthZeros = np.zeros(massCount)
+    tprime_xs = np.ones(massCount)
 
 #    # Read data without systematics
 #    print("\nLimit without Systematics")
@@ -103,9 +128,8 @@ def makeBrazilPlot(args):
     canvas.SetGridy()
     canvas.SetLogy()
 
-    statOnlyLine = ROOT.TGraph(massCount, x, y_stat)
-    statOnlyLine.SetLineColor(ROOT.kRed)
-
+    #statOnlyLine = ROOT.TGraph(massCount, x, y_stat)
+    #statOnlyLine.SetLineColor(ROOT.kRed)
 
     y1SigmaLowerError = abs(y - y1SigmaLower)
     y1SigmaHigherError = abs(y - y1SigmaHigher)
