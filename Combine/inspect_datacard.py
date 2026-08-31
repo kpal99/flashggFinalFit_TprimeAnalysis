@@ -1,1 +1,1 @@
-Datacard/inspect_datacard.py
+../Datacard/inspect_datacard.py
