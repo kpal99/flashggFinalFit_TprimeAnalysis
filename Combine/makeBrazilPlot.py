@@ -26,7 +26,7 @@ def makeBrazilPlot(args):
     y1SigmaHigher = np.zeros(massCount)
     y2SigmaLower = np.zeros(massCount)
     y2SigmaHigher = np.zeros(massCount)
-    tprime_xs = np.zeros(massCount)
+    tprime_xs = np.ones(massCount)
     massLengthZeros = np.zeros(massCount)
 
     year = args.year
@@ -34,7 +34,7 @@ def makeBrazilPlot(args):
     for mass in massList:
         i += 1
         tprimeProc = f"TprimeM{mass}Decay{decayWidthList[0]}pct"
-        file_name = f"higgsCombine_{tprimeProc}_{year}.AsymptoticLimits.mH{args.mH}.root"
+        file_name = f"higgsCombine_{tprimeProc}_{year}_withSyst.AsymptoticLimits.mH{args.mH}.root"
         #tprime_xs[i] = getCrossSection(f"{tprimeProc}Sch", args.jsonFile)
 
         # Open ROOT file
