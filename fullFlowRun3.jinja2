@@ -49,6 +49,13 @@ echo ================================== runCombine =============================
 echo ============================================================================
 {{ pwd }}/Combine/runCombine_.sh -y 22plus23 -s {{ TprimeProc }}
 {{ pwd }}/Combine/runCombine_.sh -y 22plus23 -s {{ TprimeProc }} -e
+{{ pwd }}/Combine/SMH2bkg.py Datacard_{{ TprimeProc }}_22plus23_woSyst.txt Datacard_{{ TprimeProc }}_22plus23_woSystB.txt
+{{ pwd }}/Combine/runCombine_.sh -y 22plus23 -s {{ TprimeProc }} -b
+
+echo ============================================================================
+echo ===================================== S+B ==================================
+echo ============================================================================
+{{ pwd }}/Plots/makePlots_.sh -s {{ TprimeProc }} -y 22plus23 -p {{ plotsOutputDir }}
 
 echo ============================================================================
 echo ================================== runImpact ==============================

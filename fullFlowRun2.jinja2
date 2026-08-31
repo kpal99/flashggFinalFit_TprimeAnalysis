@@ -52,11 +52,18 @@ echo ================================== runCombine =============================
 echo ============================================================================
 {{ pwd }}/Combine/runCombine_.sh -y Run2 -s {{ TprimeProc }}
 {{ pwd }}/Combine/runCombine_.sh -y Run2 -s {{ TprimeProc }} -e
+{{ pwd }}/Combine/SMH2bkg.py Datacard_{{ TprimeProc }}_Run2_woSyst.txt Datacard_{{ TprimeProc }}_Run2_woSystB.txt
+{{ pwd }}/Combine/runCombine_.sh -y Run2 -s {{ TprimeProc }} -b
+
+echo ============================================================================
+echo ===================================== S+B ==================================
+echo ============================================================================
+{{ pwd }}/Plots/makePlots_.sh -s {{ TprimeProc }} -y Run2 -p {{ plotsOutputDir }}
 
 echo ============================================================================
 echo ================================== runImpact ===============================
 echo ============================================================================
-{{pwd}}/Combine/runImpact_.sh -y Run2 -s TprimeM700Decay5pct -p {{ plotsOutputDir }}/../limits/Impacts
+{{pwd}}/Combine/runImpact_.sh -y Run2 -s {{ TprimeProc }} -p {{ plotsOutputDir }}/../limits/Impacts
 
 echo ============================================================================
 echo ================================ checkLimits ===============================
