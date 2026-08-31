@@ -60,7 +60,7 @@ text2workspace.py \
     --physics-option map=".*/VH.*:1" \
     --physics-option map=".*/tHq.*:1" \
     --physics-option map=".*/ttH.*:1" \
-    --physics-option map=".*/qqH.*:1"
+    --physics-option map=".*/qqH.*:1" > /dev/null
 
 echo text2workspace.py \
     ../../Datacard_"$TPRIMEPROC"_"$YEAR"_withSyst_Leptonic.txt \
@@ -85,7 +85,7 @@ text2workspace.py \
     --physics-option map=".*/VH.*:1" \
     --physics-option map=".*/tHq.*:1" \
     --physics-option map=".*/ttH.*:1" \
-    --physics-option map=".*/qqH.*:1"
+    --physics-option map=".*/qqH.*:1" > /dev/null
 
 for mu in {1..10}
 do
@@ -95,13 +95,13 @@ python3 RunBiasStudy.py \
     --datacard Datacard/"$TPRIMEPROC"_"$YEAR"_Hadronic/Datacard_"$TPRIMEPROC"_"$YEAR"_withSyst_Hadronic.root \
     --toys \
     --expectSignal 1 \
-    --subDir "$TPRIMEPROC"_"$YEAR"_Hadronic_mu"$mu"
+    --subDir "$TPRIMEPROC"_"$YEAR"_Hadronic_mu"$mu" > /dev/null
 python3 RunBiasStudy.py \
     --split 1000 \
     --datacard Datacard/"$TPRIMEPROC"_"$YEAR"_Leptonic/Datacard_"$TPRIMEPROC"_"$YEAR"_withSyst_Leptonic.root \
     --toys \
     --expectSignal 1 \
-    --subDir "$TPRIMEPROC"_"$YEAR"_Leptonic_mu"$mu"
+    --subDir "$TPRIMEPROC"_"$YEAR"_Leptonic_mu"$mu" > /dev/null
 
 echo -e "\n==> Running bias study (fits)..."
 python3 RunBiasStudy.py \
@@ -110,7 +110,7 @@ python3 RunBiasStudy.py \
     --fits \
     --expectSignal 1 \
     --subDir "$TPRIMEPROC"_"$YEAR"_Hadronic_mu"$mu" \
-    --combineOptions "--cminDefaultMinimizerStrategy 0 --X-rtd MINIMIZER_freezeDisassociatedParams --X-rtd MINIMIZER_multiMin_hideConstants --X-rtd MINIMIZER_multiMin_maskConstraints --X-rtd MINIMIZER_multiMin_maskChannels=2 --freezeParameters MH"
+    --combineOptions "--cminDefaultMinimizerStrategy 0 --X-rtd MINIMIZER_freezeDisassociatedParams --X-rtd MINIMIZER_multiMin_hideConstants --X-rtd MINIMIZER_multiMin_maskConstraints --X-rtd MINIMIZER_multiMin_maskChannels=2 --freezeParameters MH" > /dev/null
 
 python3 RunBiasStudy.py \
     --split 1000 \
@@ -118,7 +118,7 @@ python3 RunBiasStudy.py \
     --fits \
     --expectSignal 1 \
     --subDir "$TPRIMEPROC"_"$YEAR"_Leptonic_mu"$mu" \
-    --combineOptions "--cminDefaultMinimizerStrategy 0 --X-rtd MINIMIZER_freezeDisassociatedParams --X-rtd MINIMIZER_multiMin_hideConstants --X-rtd MINIMIZER_multiMin_maskConstraints --X-rtd MINIMIZER_multiMin_maskChannels=2 --freezeParameters MH"
+    --combineOptions "--cminDefaultMinimizerStrategy 0 --X-rtd MINIMIZER_freezeDisassociatedParams --X-rtd MINIMIZER_multiMin_hideConstants --X-rtd MINIMIZER_multiMin_maskConstraints --X-rtd MINIMIZER_multiMin_maskChannels=2 --freezeParameters MH" > /dev/null
 
 echo -e "\n==> Running bias study (plots)..."
 python3 RunBiasStudy.py \
@@ -128,7 +128,7 @@ python3 RunBiasStudy.py \
     --gaussianFit \
     --expectSignal 1 \
     --subDir "$TPRIMEPROC"_"$YEAR"_Hadronic_mu"$mu" \
-    2>&1 | tee BiasPlots/output_"$TPRIMEPROC"_"$YEAR"_Hadronic_mu"$mu".log
+    2>&1 > BiasPlots/output_"$TPRIMEPROC"_"$YEAR"_Hadronic_mu"$mu".log
 
 python3 RunBiasStudy.py \
     --split 1000 \
@@ -137,5 +137,5 @@ python3 RunBiasStudy.py \
     --gaussianFit \
     --expectSignal 1 \
     --subDir "$TPRIMEPROC"_"$YEAR"_Leptonic_mu"$mu" \
-    2>&1 | tee BiasPlots/output_"$TPRIMEPROC"_"$YEAR"_Leptonic_mu"$mu".log
+    2>&1 > BiasPlots/output_"$TPRIMEPROC"_"$YEAR"_Leptonic_mu"$mu".log
 done
