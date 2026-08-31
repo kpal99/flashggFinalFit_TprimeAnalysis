@@ -3,16 +3,18 @@
 RUN=true
 systExt="woSyst"
 # get the options passed to the script
-while getopts "nehy:s:" opt;
+while getopts "nehby:s:" opt;
 do
 case $opt in
     n) RUN=false;;
     y) YEAR=$OPTARG;;
     s) TPRIMEPROC=$OPTARG;;
     e) systExt="withSyst";;
-    h) echo "Usage: $0 [-n] [-h] -y YEAR -s TPRIMEPROC"
+    b) systExt="$systExt"B;;
+    h) echo "Usage: $0 [-h] [-n] [-e] [-b] -y Run2 -s TPRIMEPROC"
        echo "  -n: dry run, just print the commands to be run for any given flag"
        echo "  -e: enable systematics, errors"
+       echo "  -b: use SMH as bkg"
        echo "  -y: year"
        echo "  -s: signal process to use, TPRIMEPROC"
        echo "  -h: print this help message"
