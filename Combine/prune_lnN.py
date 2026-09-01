@@ -2,7 +2,7 @@
 import sys
 import os
 
-def cap_value(val_str, min_val=0.5, max_val=2.0):
+def cap_value(val_str, min_val=0.3, max_val=2.0):
     """
     Caps symmetric and asymmetric lnN values.
     Returns a tuple: (new_string, is_capped_boolean)
