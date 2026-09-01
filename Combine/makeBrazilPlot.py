@@ -87,10 +87,60 @@ def makeBrazilPlot(args):
     massLengthZeros = np.zeros(massCount)
     tprime_xs = np.ones(massCount)
 
+    # --- Stat-only (woSyst) overlay: fully independent pass, so a bad/missing
+    # woSyst file for a given mass doesn't remove that mass from the withSyst
+    # curves above, and vice versa.
+    x_wo_list = []
+    y_wo_list = []
+    if args.woSyst:
+        for mass in massList:
+            tprimeProc = f"TprimeM{mass}Decay{decayWidthList[0]}pct"
+            file_name_wo = f"higgsCombine_{tprimeProc}_{year}_woSyst.AsymptoticLimits.mH{args.mH}.root"
+
+            file_wo = ROOT.TFile.Open(file_name_wo, "READ")
+            if not file_wo or file_wo.IsZombie():
+                print(f"Error: Could not open {file_name_wo}, skipping mass {mass} for Stat-only")
+                continue
+
+            tree_wo = file_wo.Get("limit")
+            if not tree_wo:
+                print(f"Error: Could not find 'limit' tree in {file_name_wo}, skipping mass {mass} for Stat-only")
+                file_wo.Close()
+                continue
+
+            if tree_wo.GetEntries() < 5:
+                print(f"Error: {file_name_wo} has only {tree_wo.GetEntries()} entries (need 5), "
+                      f"skipping mass {mass} for Stat-only")
+                file_wo.Close()
+                continue
+
+            tree_wo.SetBranchStatus("*", 1)
+            qlimit_wo = np.zeros(1, dtype=np.float64)
+            tree_wo.SetBranchAddress("limit", qlimit_wo)
+
+            vals_wo = [None] * 5
+            for ievent in range(5):
+                tree_wo.GetEntry(ievent)
+                vals_wo[ievent] = qlimit_wo[0]
+            file_wo.Close()
+
+            # Order is: -2sigma, -1sigma, central (0.5 quantile), +1sigma, +2sigma
+            y_wo_val = vals_wo[2]
+
+            x_wo_list.append(mass)
+            y_wo_list.append(y_wo_val)
+
+            print(f"{tprimeProc} (Stat-only): {round(y_wo_val, 2)}")
+
+        if not x_wo_list:
+            print("Warning: --woSyst was set but no valid Stat-only mass points were found; "
+                  "skipping Stat-only overlay.")
+
     # got from CAT tutorial
     # https://gitlab.cern.ch/cms-analysis/analysisexamples/plotting-demo/-/blob/master/3-tutorial_CAT_limitplot.ipynb
     oneStdDevColor = ROOT.TColor.GetColor("#FFDF7Fff")
     twoStdDevColor = ROOT.TColor.GetColor("#85D1FBff")
+    statOnlyColor = ROOT.TColor.GetColor("#00008B")  # dark blue
 
     # Create graphs
     canvas = ROOT.TCanvas("", "", 0, 0, 600, 500)
@@ -133,6 +183,17 @@ def makeBrazilPlot(args):
     centralLine.Draw("SAME")
     theoryXsLine.Draw("SAME")
 
+    # Optional overlay: Stat-only (woSyst) central limit curve
+    statOnlyLine = None
+    if args.woSyst and x_wo_list:
+        x_wo = np.array(x_wo_list, dtype=np.float64)
+        y_wo = np.array(y_wo_list, dtype=np.float64)
+        statOnlyLine = ROOT.TGraph(len(x_wo_list), x_wo, y_wo)
+        statOnlyLine.SetLineWidth(2)
+        statOnlyLine.SetLineStyle(1)
+        statOnlyLine.SetLineColor(statOnlyColor)
+        statOnlyLine.Draw("SAME")
+
     # Optional overlay: comparison limit curve from B2G-21-007
     compareLine = None
     if args.compare:
@@ -166,7 +227,7 @@ def makeBrazilPlot(args):
         elif energy == 13.6:
             tex3.DrawLatex(0.66, 0.91, f"#bf{{{lumi} fb^{{-1}} ({energy} TeV)}}")
 
-    legend = ROOT.TLegend(0.15, 0.71, 0.88, 0.84)
+    legend = ROOT.TLegend(0.15, 0.63, 0.88, 0.84)
     legend.SetNColumns(2)
     legend.SetBorderSize(0)
     legend.SetTextSize(0.03)
@@ -175,6 +236,8 @@ def makeBrazilPlot(args):
     legend.AddEntry(theoryXsLine, "Theoretical (#mu)", "l")
     legend.AddEntry(oneStdDevLine, "#pm 1 std. deviation", "f")
     legend.AddEntry(twoStdDevLine, "#pm 2 std. deviation", "f")
+    if args.woSyst and statOnlyLine is not None:
+        legend.AddEntry(statOnlyLine, "Stat-only", "l")
     if args.compare and compareLine is not None:
         legend.AddEntry(compareLine, "B2G-21-007", "l")
 
@@ -204,6 +267,7 @@ def main():
     parser.add_argument("--decayWidth", default=5, help="Decay width of Higgs used for limit extraction, default is 5")
     parser.add_argument("--mH", default=125.38, type=float, help="Mass of Higgs using during asymptotic limit calculations, default is 125.38")
     parser.add_argument("--compare", action="store_true", help="If set, overlay the B2G-21-007 comparison limit curve")
+    parser.add_argument("--woSyst", action="store_true", help="If set, overlay the Stat-only (woSyst) central limit curve, read from separate woSyst files")
 
 # Parse the arguments
     args = parser.parse_args(None if sys.argv[1:] else ['--help'])
