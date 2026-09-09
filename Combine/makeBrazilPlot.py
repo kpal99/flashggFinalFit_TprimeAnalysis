@@ -3,6 +3,7 @@ import csv
 import ROOT
 import numpy as np
 import sys
+import os
 from tHgg_utils.utils import lumiMap, energyMap, getCrossSection
 
 ROOT.gStyle.SetOptStat(0)
@@ -243,6 +244,9 @@ def makeBrazilPlot(args):
 
     legend.Draw()
     canvas.Update()
+
+    # If outDir doesn't exist, create it
+    os.makedirs(args.outDir, exist_ok=True)
 
     # Save outputs
     if args.outFile:
