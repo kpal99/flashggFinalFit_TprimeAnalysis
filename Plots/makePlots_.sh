@@ -35,12 +35,14 @@ EXT="${TPRIMEPROC}_${YEAR}"
 echo python3 makeSplusBModelPlot.py \
     --inputWSFile "$INPUT_WS_FILE" \
     --cats all \
+    --year "$YEAR" \
     --ext "$EXT"
 
 if $RUN; then
     python3 makeSplusBModelPlot.py \
         --inputWSFile "$INPUT_WS_FILE" \
         --cats all \
+        --year "$YEAR" \
         --ext "$EXT"
 fi
 

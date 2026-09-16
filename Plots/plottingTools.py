@@ -5,6 +5,7 @@ import pandas
 import numpy as np
 import re
 import scipy.stats
+from commonTools import energyMap, lumiMap
 
 def Translate(name, ndict):
     return ndict[name] if name in ndict else name
@@ -90,7 +91,7 @@ def getScaleFactor(hist):
   return 10**n
 
 
-def makeSplusBPlot(workspace,hD,hSB,hB,hS,hDr,hBr,hSr,cat,options,dB=None,reduceRange=None):
+def makeSplusBPlot(workspace,hD,hSB,hB,hS,hDr,hBr,hSr,cat,options,dB=None,reduceRange=None,year=None):
   translateCats = {} if options.translateCats is None else LoadTranslations(options.translateCats)
   translatePOIs = {} if options.translatePOIs is None else LoadTranslations(options.translatePOIs)
   blindingRegion = [float(options.blindingRegion.split(",")[0]),float(options.blindingRegion.split(",")[1])]
@@ -237,9 +238,15 @@ def makeSplusBPlot(workspace,hD,hSB,hB,hS,hDr,hBr,hSr,cat,options,dB=None,reduce
   lat0.SetTextAlign(11)
   lat0.SetNDC()
   lat0.SetTextSize(0.06)
-  #lat0.DrawLatex(0.12,0.92,"#bf{CMS} #it{Preliminary}")
-  lat0.DrawLatex(0.12,0.92,"#bf{CMS}")
-  lat0.DrawLatex(0.56,0.92,"61.8 fb^{-1} (13.6 TeV)")
+  lumi = lumiMap[year]
+  energy = energyMap[year]
+  lat0.DrawLatex(0.12,0.92,"#bf{CMS} #it{Preliminary}")
+  #lat0.DrawLatex(0.12,0.92,"#bf{CMS}")
+
+  if energy == 13:
+      lat0.DrawLatex(0.605,0.92,f"{lumi} fb^{{-1}} ({energy} TeV)")
+  else:
+      lat0.DrawLatex(0.56,0.92,f"{lumi} fb^{{-1}} ({energy} TeV)")
   lat0.DrawLatex(0.6,0.8,"#scale[0.6]{%s}"%Translate(cat,translateCats))
   #lat0.DrawLatex(0.15,0.83,"#scale[0.75]{H#rightarrow#gamma#gamma}")
   lat0.DrawLatex(0.15,0.83,"#scale[0.75]{H #rightarrow #gamma#gamma, m_{H} = 125.38 GeV}")
