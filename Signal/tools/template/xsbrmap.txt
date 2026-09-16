@@ -1,3 +1,4 @@
 globalXSBRMap['TprimeRun{{ run }}']['{{ process }}Sch'] = {'mode':'constant','factor': {{ xsSch }}}
 globalXSBRMap['TprimeRun{{ run }}']['{{ process }}Tch'] = {'mode':'constant','factor': {{ xsTch }}}
 globalXSBRMap['TprimeRun{{ run }}']['{{ process }}Int'] = {'mode':'constant','factor': {{ xsInt }}}
+globalXSBRMap['TprimeRun{{ run }}']['{{ process }}Incl'] = {'mode':'constant','factor': 1.0}
