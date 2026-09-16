@@ -24,7 +24,7 @@ esac
 done
 
 cd $(dirname $0)
-PROCS="$TPRIMEPROC"Sch,"$TPRIMEPROC"Tch,"$TPRIMEPROC"Int,THQ,GG2H,TTH,VBF,VH
+PROCS="$TPRIMEPROC"Incl,THQ,GG2H,TTH,VBF,VH
 
 echo python3 RunYields.py --inputWSDirMap $YEAR=$INPUTDIR/$TPRIMEPROC/ws/ --cats auto --catExt $CATEXT --procs $PROCS --ext ${TPRIMEPROC}_${YEAR} --skipCOWCorr --batch local --sigModelWSDir ./Models/$YEAR/$TPRIMEPROC/signal --bkgModelWSDir ./Models/$YEAR/$TPRIMEPROC/background --systConfig systematics_Tprime_$YEAR.py --doSystematics
 if $RUN; then

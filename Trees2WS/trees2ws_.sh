@@ -38,7 +38,7 @@ elif [ $YEAR = "2023" ]; then
 fi
 
 # making Tprime workspaces
-for mode in Sch Tch Int
+for mode in Incl
 do
     echo python3 trees2ws.py --inputConfig config_${YEAR}.py --inputTreeFile $INPUTDIR/$TPRIMEPROC/root/$TPRIMEPROC$mode/output_M125_$TPRIMEPROC$mode.root --productionMode $TPRIMEPROC$mode --year $YEAR $SYSTEMATICS
     if $RUN; then
