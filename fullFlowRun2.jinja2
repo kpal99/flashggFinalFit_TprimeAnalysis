@@ -52,7 +52,7 @@ echo ================================== runCombine =============================
 echo ============================================================================
 {{ pwd }}/Combine/runCombine_.sh -y Run2 -s {{ TprimeProc }}
 {{ pwd }}/Combine/runCombine_.sh -y Run2 -s {{ TprimeProc }} -e
-{{ pwd }}/Combine/SMH2bkg.py Datacard_{{ TprimeProc }}_Run2_woSyst.txt Datacard_{{ TprimeProc }}_Run2_woSystB.txt
+python3 {{ pwd }}/Combine/SMH2bkg.py Combine/Datacard_{{ TprimeProc }}_Run2_woSyst.txt Combine/Datacard_{{ TprimeProc }}_Run2_woSystB.txt
 {{ pwd }}/Combine/runCombine_.sh -y Run2 -s {{ TprimeProc }} -b
 
 echo ============================================================================
