@@ -305,6 +305,23 @@ for cidx in range(len(cats)):
     err = max( abs(bval-l), abs(bval-u) )
     h_data.SetBinError(ibin,err)
 
+  # If blinded: explicitly zero out content/error in blinding region so no points are drawn
+  # there in the top panel (this must come AFTER the Poisson-error loop above, since that
+  # loop assigns non-zero errors even to zero-content bins, which is what was making
+  # "empty" points appear inside the blinded region).
+  if not opt.unblind:
+    for ibin in range(1,h_data.GetNbinsX()+1):
+      bcenter = h_data.GetBinCenter(ibin)
+      if (bcenter>blindingRegion[0])&(bcenter<blindingRegion[1]):
+        h_data.SetBinContent(ibin,0)
+        h_data.SetBinError(ibin,0)
+    if opt.doCatWeights:
+      for ibin in range(1,h_wdata.GetNbinsX()+1):
+        bcenter = h_wdata.GetBinCenter(ibin)
+        if (bcenter>blindingRegion[0])&(bcenter<blindingRegion[1]):
+          h_wdata.SetBinContent(ibin,0)
+          h_wdata.SetBinError(ibin,0)
+
   # Scale data histogram
   h_data.Scale(opt.dataScaler)
   if opt.doCatWeights: h_wdata.Scale(opt.dataScaler)

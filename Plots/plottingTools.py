@@ -190,15 +190,21 @@ def makeSplusBPlot(workspace,hD,hSB,hB,hS,hDr,hBr,hSr,cat,options,dB=None,reduce
     hB['pdfNBins'].SetLineColor(2)
     hB['pdfNBins'].Draw("Hist same c")
 
-  # Set data style
+  # Set data style (Main plot)
   gD = ROOT.TGraphAsymmErrors()
+  pt_idx = 0
   for ibin in range(1,hD.GetNbinsX()+1):
-    gD.SetPoint(ibin-1,hD.GetBinCenter(ibin),hD.GetBinContent(ibin))
+    bcenter = hD.GetBinCenter(ibin)
+    # Skip points in blinding region if not unblinded
+    if (not options.unblind) and (bcenter > blindingRegion[0]) and (bcenter < blindingRegion[1]):
+      continue
+    gD.SetPoint(pt_idx, bcenter, hD.GetBinContent(ibin))
     l = scipy.stats.gamma.interval(0.68,hD.GetBinContent(ibin))[0]
     # Catch for zero entries
     if l!=l: l = 0
     u = scipy.stats.gamma.interval(0.68,hD.GetBinContent(ibin)+1)[1]
-    gD.SetPointError(ibin-1,0,0,abs(hD.GetBinContent(ibin)-l),abs(hD.GetBinContent(ibin)-u))
+    gD.SetPointError(pt_idx, 0, 0, abs(hD.GetBinContent(ibin)-l), abs(hD.GetBinContent(ibin)-u))
+    pt_idx += 1
   gD.SetMarkerColor(1)
   gD.SetMarkerStyle(20)
   gD.SetFillColor(2)
@@ -255,7 +261,8 @@ def makeSplusBPlot(workspace,hD,hSB,hB,hS,hDr,hBr,hSr,cat,options,dB=None,reduce
   h_axes_ratio.GetYaxis().SetLabelOffset(0.007)
   h_axes_ratio.GetYaxis().SetTitle("")
   h_axes_ratio.Draw()
-  # Draw bands 
+  hSr.Scale(hS_scale_factor)
+  # Draw bands
   if options.doBands:
     gr_2sig_r.Draw("LE3SAME")
     gr_1sig_r.Draw("LE3SAME")
@@ -279,15 +286,21 @@ def makeSplusBPlot(workspace,hD,hSB,hB,hS,hDr,hBr,hSr,cat,options,dB=None,reduce
     hBr.SetLineColor(2)
     hBr.Draw("Hist same c")
 
-  # Set data style
+  # Set data style (Ratio plot)
   gDr = ROOT.TGraphAsymmErrors()
+  pt_idx_r = 0
   for ibin in range(1,hDr.GetNbinsX()+1):
-    gDr.SetPoint(ibin-1,hDr.GetBinCenter(ibin),hDr.GetBinContent(ibin))
+    bcenter = hDr.GetBinCenter(ibin)
+    # Skip points in blinding region if not unblinded
+    if (not options.unblind) and (bcenter > blindingRegion[0]) and (bcenter < blindingRegion[1]):
+      continue
+    gDr.SetPoint(pt_idx_r, bcenter, hDr.GetBinContent(ibin))
     l = scipy.stats.gamma.interval(0.68,hD.GetBinContent(ibin))[0]
     # Catch for zero entries
     if l!=l: l = 0
     u = scipy.stats.gamma.interval(0.68,hD.GetBinContent(ibin)+1)[1]
-    gDr.SetPointError(ibin-1,0,0,abs(hD.GetBinContent(ibin)-l),abs(hD.GetBinContent(ibin)-u))
+    gDr.SetPointError(pt_idx_r, 0, 0, abs(hD.GetBinContent(ibin)-l), abs(hD.GetBinContent(ibin)-u))
+    pt_idx_r += 1
   gDr.SetMarkerColor(1)
   gDr.SetMarkerStyle(20)
   gDr.SetFillColor(2)
