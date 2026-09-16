@@ -10,6 +10,42 @@ ROOT.gStyle.SetOptStat(0)
 ROOT.gROOT.SetBatch(True)  # Disable graphical output for batch mode
 ROOT.gErrorIgnoreLevel = ROOT.kWarning
 
+# Colors used for the extra (band-less) central-line-only decay widths,
+# cycled through if there are more than len(EXTRA_LINE_COLORS) extra widths.
+EXTRA_LINE_COLORS = [ROOT.kCyan + 2, ROOT.kMagenta,  ROOT.kGreen + 2, ROOT.kOrange + 7]
+
+
+def readLimitTree(file_name, mass, label=""):
+    """Open file_name, read the 5 quantile values from the 'limit' tree.
+    Returns a list of 5 floats, or None if the file/tree/entries are invalid."""
+    file_ = ROOT.TFile.Open(file_name, "READ")
+    if not file_ or file_.IsZombie():
+        print(f"Error: Could not open {file_name}, skipping mass {mass}{label}")
+        return None
+
+    tree_ = file_.Get("limit")
+    if not tree_:
+        print(f"Error: Could not find 'limit' tree in {file_name}, skipping mass {mass}{label}")
+        file_.Close()
+        return None
+
+    if tree_.GetEntries() < 5:
+        print(f"Error: {file_name} has only {tree_.GetEntries()} entries (need 5), skipping mass {mass}{label}")
+        file_.Close()
+        return None
+
+    tree_.SetBranchStatus("*", 1)
+    qlimit = np.zeros(1, dtype=np.float64)
+    tree_.SetBranchAddress("limit", qlimit)
+
+    vals = [None] * 5
+    for ievent in range(5):
+        tree_.GetEntry(ievent)
+        vals[ievent] = qlimit[0]
+    file_.Close()
+    return vals
+
+
 def makeBrazilPlot(args):
     massList = [700, 800, 900, 1000, 1100, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600]
 
@@ -21,8 +57,10 @@ def makeBrazilPlot(args):
 
     year = args.year
 
-    # Use lists instead of pre-sized numpy arrays, so we can skip
-    # any mass point whose file/tree is missing or incomplete.
+    # ---- Primary decay width (first in list): full ±1/±2 sigma bands ----
+    primaryDecayWidth = decayWidthList[0]
+    extraDecayWidths = decayWidthList[1:]
+
     x_list = []
     y_list = []
     y1SigmaLower_list = []
@@ -31,34 +69,12 @@ def makeBrazilPlot(args):
     y2SigmaHigher_list = []
 
     for mass in massList:
-        tprimeProc = f"TprimeM{mass}Decay{decayWidthList[0]}pct"
+        tprimeProc = f"TprimeM{mass}Decay{primaryDecayWidth}pct"
         file_name = f"higgsCombine_{tprimeProc}_{year}_withSyst.AsymptoticLimits.mH{args.mH}.root"
 
-        file_ = ROOT.TFile.Open(file_name, "READ")
-        if not file_ or file_.IsZombie():
-            print(f"Error: Could not open {file_name}, skipping mass {mass}")
+        vals = readLimitTree(file_name, mass)
+        if vals is None:
             continue
-
-        tree_ = file_.Get("limit")
-        if not tree_:
-            print(f"Error: Could not find 'limit' tree in {file_name}, skipping mass {mass}")
-            file_.Close()
-            continue
-
-        if tree_.GetEntries() < 5:
-            print(f"Error: {file_name} has only {tree_.GetEntries()} entries (need 5), skipping mass {mass}")
-            file_.Close()
-            continue
-
-        tree_.SetBranchStatus("*", 1)
-        qlimit = np.zeros(1, dtype=np.float64)
-        tree_.SetBranchAddress("limit", qlimit)
-
-        vals = [None] * 5
-        for ievent in range(5):
-            tree_.GetEntry(ievent)
-            vals[ievent] = qlimit[0]
-        file_.Close()
 
         y2SigmaLower_val, y1SigmaLower_val, y_val, y1SigmaHigher_val, y2SigmaHigher_val = vals
 
@@ -74,7 +90,7 @@ def makeBrazilPlot(args):
               f"{round(y_val, 2)}, {round(y1SigmaHigher_val, 2)}, {round(y2SigmaHigher_val, 2)}")
 
     if not x_list:
-        print("Error: No valid mass points found, nothing to plot.")
+        print("Error: No valid mass points found for primary decay width, nothing to plot.")
         return
 
     # Convert to numpy arrays now that we know which masses actually succeeded
@@ -86,44 +102,20 @@ def makeBrazilPlot(args):
     y2SigmaLower = np.array(y2SigmaLower_list, dtype=np.float64)
     y2SigmaHigher = np.array(y2SigmaHigher_list, dtype=np.float64)
     massLengthZeros = np.zeros(massCount)
-    tprime_xs = np.ones(massCount)
 
     # --- Stat-only (woSyst) overlay: fully independent pass, so a bad/missing
     # woSyst file for a given mass doesn't remove that mass from the withSyst
-    # curves above, and vice versa.
+    # curves above, and vice versa. Uses the primary decay width.
     x_wo_list = []
     y_wo_list = []
     if args.woSyst:
         for mass in massList:
-            tprimeProc = f"TprimeM{mass}Decay{decayWidthList[0]}pct"
+            tprimeProc = f"TprimeM{mass}Decay{primaryDecayWidth}pct"
             file_name_wo = f"higgsCombine_{tprimeProc}_{year}_woSyst.AsymptoticLimits.mH{args.mH}.root"
 
-            file_wo = ROOT.TFile.Open(file_name_wo, "READ")
-            if not file_wo or file_wo.IsZombie():
-                print(f"Error: Could not open {file_name_wo}, skipping mass {mass} for Stat-only")
+            vals_wo = readLimitTree(file_name_wo, mass, label=" for Stat-only")
+            if vals_wo is None:
                 continue
-
-            tree_wo = file_wo.Get("limit")
-            if not tree_wo:
-                print(f"Error: Could not find 'limit' tree in {file_name_wo}, skipping mass {mass} for Stat-only")
-                file_wo.Close()
-                continue
-
-            if tree_wo.GetEntries() < 5:
-                print(f"Error: {file_name_wo} has only {tree_wo.GetEntries()} entries (need 5), "
-                      f"skipping mass {mass} for Stat-only")
-                file_wo.Close()
-                continue
-
-            tree_wo.SetBranchStatus("*", 1)
-            qlimit_wo = np.zeros(1, dtype=np.float64)
-            tree_wo.SetBranchAddress("limit", qlimit_wo)
-
-            vals_wo = [None] * 5
-            for ievent in range(5):
-                tree_wo.GetEntry(ievent)
-                vals_wo[ievent] = qlimit_wo[0]
-            file_wo.Close()
 
             # Order is: -2sigma, -1sigma, central (0.5 quantile), +1sigma, +2sigma
             y_wo_val = vals_wo[2]
@@ -136,6 +128,37 @@ def makeBrazilPlot(args):
         if not x_wo_list:
             print("Warning: --woSyst was set but no valid Stat-only mass points were found; "
                   "skipping Stat-only overlay.")
+
+    # --- Extra decay widths: central line only, no error bands ---
+    # Each entry: (decayWidth, x_array, y_array)
+    extraLines_data = []
+    for dw in extraDecayWidths:
+        x_extra_list = []
+        y_extra_list = []
+        for mass in massList:
+            tprimeProc = f"TprimeM{mass}Decay{dw}pct"
+            file_name_extra = f"higgsCombine_{tprimeProc}_{year}_withSyst.AsymptoticLimits.mH{args.mH}.root"
+
+            vals_extra = readLimitTree(file_name_extra, mass, label=f" for Decay{dw}pct")
+            if vals_extra is None:
+                continue
+
+            y_extra_val = vals_extra[2]  # central (0.5 quantile) only
+
+            x_extra_list.append(mass)
+            y_extra_list.append(y_extra_val)
+
+            print(f"{tprimeProc}: {round(y_extra_val, 2)}")
+
+        if not x_extra_list:
+            print(f"Warning: No valid mass points found for Decay{dw}pct; skipping this overlay.")
+            continue
+
+        extraLines_data.append((
+            dw,
+            np.array(x_extra_list, dtype=np.float64),
+            np.array(y_extra_list, dtype=np.float64),
+        ))
 
     # got from CAT tutorial
     # https://gitlab.cern.ch/cms-analysis/analysisexamples/plotting-demo/-/blob/master/3-tutorial_CAT_limitplot.ipynb
@@ -162,7 +185,7 @@ def makeBrazilPlot(args):
     dummy_hist.GetXaxis().SetTitle("T mass [GeV]")
     dummy_hist.GetYaxis().SetTitle("95% CL limit on #mu")
     dummy_hist.SetTitle("")
-# Draw the dummy histogram first to define the axes
+    # Draw the dummy histogram first to define the axes
     dummy_hist.Draw()
 
     y2SigmaLowerError = abs(y - y2SigmaLower)
@@ -209,6 +232,17 @@ def makeBrazilPlot(args):
         compareLine.SetLineColor(ROOT.kRed)
         compareLine.Draw("SAME")
 
+    # Overlay: extra decay-width central lines (no error bands), each a distinct color
+    extraLineObjs = []  # keep refs alive: (graph, decayWidth)
+    for i, (dw, x_extra, y_extra) in enumerate(extraLines_data):
+        color = EXTRA_LINE_COLORS[i % len(EXTRA_LINE_COLORS)]
+        gr = ROOT.TGraph(len(x_extra), x_extra, y_extra)
+        gr.SetLineWidth(2)
+        gr.SetLineStyle(1)
+        gr.SetLineColor(color)
+        gr.Draw("SAME")
+        extraLineObjs.append((gr, dw))
+
     # Canva3 and plotting
     tex1 = ROOT.TLatex()
     tex1.SetNDC()
@@ -233,7 +267,7 @@ def makeBrazilPlot(args):
     legend.SetBorderSize(0)
     legend.SetTextSize(0.03)
     legend.SetFillStyle(0)
-    legend.AddEntry(centralLine, "Expected (#mu)", "l")
+    legend.AddEntry(centralLine, f"Expected (#mu), #Gamma/m_{{T}}={primaryDecayWidth}%", "l")
     legend.AddEntry(theoryXsLine, "Theoretical (#mu)", "l")
     legend.AddEntry(oneStdDevLine, "#pm 1 std. deviation", "f")
     legend.AddEntry(twoStdDevLine, "#pm 2 std. deviation", "f")
@@ -241,6 +275,8 @@ def makeBrazilPlot(args):
         legend.AddEntry(statOnlyLine, "Stat-only", "l")
     if args.compare and compareLine is not None:
         legend.AddEntry(compareLine, "B2G-21-007", "l")
+    for gr, dw in extraLineObjs:
+        legend.AddEntry(gr, f"Expected (#mu), #Gamma/m_{{T}}={dw}%", "l")
 
     legend.Draw()
     canvas.Update()
@@ -252,7 +288,8 @@ def makeBrazilPlot(args):
     if args.outFile:
         fileName = f"{args.outDir}/{args.outFile}"
     else:
-        fileName = f"{args.outDir}/{year}_limit_mu_decay{decayWidthList[0]}pct"
+        allDecayWidths = "_".join(str(d) for d in decayWidthList)
+        fileName = f"{args.outDir}/{year}_limit_mu_decay{allDecayWidths}pct"
     canvas.SaveAs(f"{fileName}.png")
     canvas.SaveAs(f"{fileName}.pdf")
     canvas.SaveAs(f"{fileName}.C")
@@ -268,7 +305,10 @@ def main():
     parser.add_argument("--outDir", required=True, help="Name of the output directory")
     parser.add_argument("--outFile", help="Name of the limit file")
     parser.add_argument("--year", required=True, default="", help="Year that's written in higgAnalysis filename")
-    parser.add_argument("--decayWidth", default=5, help="Decay width of Higgs used for limit extraction, default is 5")
+    parser.add_argument("--decayWidth", default="5",
+                         help="Comma-separated list of decay widths of Higgs used for limit extraction, e.g. "
+                              "'5,10,20,30'. The FIRST value gets the full +/-1/2 sigma bands; any additional "
+                              "values are overlaid as central-line-only curves (no error bands). Default is '5'.")
     parser.add_argument("--mH", default=125.38, type=float, help="Mass of Higgs using during asymptotic limit calculations, default is 125.38")
     parser.add_argument("--compare", action="store_true", help="If set, overlay the B2G-21-007 comparison limit curve")
     parser.add_argument("--woSyst", action="store_true", help="If set, overlay the Stat-only (woSyst) central limit curve, read from separate woSyst files")
